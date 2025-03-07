@@ -1,0 +1,317 @@
+<?php include 'data.php'; 
+?>
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
+   
+    <a href="index" class="brand-link">
+      <img src="<?php echo $brand_logo; ?>" alt="Logo" class="brand-image img-circle elevation-2" style="width: 70px; height: auto; object-fit: contain;  background-color: white;object-position: top; border-radius: 40%">
+      <span  class="brand-text font-weight-dark"  style="text-decoration: none;"><?php echo $brand_name; ?> </span>
+    </a>
+     <!-- Brand Logo -->
+     <style>
+      .sidebar-dark-primary {
+    background-color:rgb(38, 107, 107) !important; 
+    color: white !important;
+}
+
+.sidebar-dark-primary .nav-link  {
+    color: white !important;
+}
+
+.sidebar-dark-primary .nav-link:hover {
+    background-color:rgb(33, 70, 77) !important; /* Darker pink on hover */
+}
+</style>
+<?php
+$role = $_SESSION["user_role"];
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "beauty";
+$port = 3307;
+$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?> 
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+        <?php
+ $mobile = $_SESSION["mobile"];
+        $sql = "SELECT file FROM admin_login_details WHERE mobile = '$mobile'";
+        $result = mysqli_query($conn, $sql);
+        if ($result && mysqli_num_rows($result) > 0) {
+          $row = mysqli_fetch_assoc($result);
+          $imagePath = $row['file'] ;
+        }
+        ?>
+          <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block" style="text-decoration: none;" > 
+
+
+
+
+          <!-- <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block" style="text-decoration: none;" > -->
+            <?php
+              // if (session_name() == "admin_session")  
+              if ($_SESSION['user_role'] == 1)
+              {
+          echo '<span style="color:rgb(229, 240, 243); font-weight:500";>' . ucwords($_SESSION["name"]) . "&nbsp;".'</span>';
+              }
+              else{
+                echo '<span style="color:rgb(229, 240, 243); font-weight:500";>' . ucwords($_SESSION["name"]) . "&nbsp;".'</span>';
+              }
+             ?>
+          </a>
+        </div>
+      </div>
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-open">
+            <a href="/beauty_parlour_management_system/admin2/" class="nav-link dashboard1">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+        <?php
+      // $role = (int) $_SESSION["role"];
+      //  if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
+      //  {
+//$role = $_SESSION["role"];
+// if (session_name() == "admin_session") 
+// echo $role;
+//if ($role == 1)
+?>
+    <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/admin_enquiry_message.php" class="nav-link invoice1">
+              <!-- <i class="nav-icon fas fa-copy"></i> -->
+              <!-- <i class="fa fa-file-invoice"></i> -->
+              <i class="fa fa-envelope"></i> 
+
+              <p>
+               Enquiry message 
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+
+
+           <li class="nav-item">
+            <a href="#" class="nav-link add_cutomer nav-link all_appointment nav-link search_appointment">
+            <i class="fa fa-clock"></i>
+              <p>
+                Appointments
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a> 
+            <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/admin_appointment.php" class="nav-link all_appointment">
+              <i class="fa fa-clipboard-list"></i>
+              <p>
+               All Appointments
+              </p>
+            </a>
+          </li>
+    
+          <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/admin_add_customer2.php"  class="nav-link add_cutomer" >
+              <!-- <i class="nav-icon fas fa-th"></i> -->
+              <!-- <i class="fas fa-plus"></i> -->
+              <i class="fa fa-user"></i>
+              <p>
+              Add New Appointment 
+              </p>
+            </a>
+           
+          </li>
+          <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/search_appointment.php" class="nav-link search_appointment">
+              
+              <i class="fa fa-search"></i>
+              <p>
+              Search Appointment
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+</li>
+</ul>
+
+         
+          <li class="nav-item">
+            <a href="#" class="nav-link admin_services nav-link manage_services">
+            <p><i class="fa fa-magic"></i>
+              <p>
+                Services
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a> 
+            <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/admin_services.php" class="nav-link admin_services">
+              <!-- <i class="nav-icon fas fa-th"></i> -->
+              <!-- <i class="fa fa-plus-circle"></i> -->
+              <i class="fa fa-clipboard-list"></i>
+              <p>
+                Add Services
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/manage_service.php" class="nav-link manage_services">
+              <!-- <i class="nav-icon fas fa-th"></i> -->
+              <i class="fa fa-cogs"></i>
+              <p>
+                Manage Services
+              </p>
+            </a>
+            </ul>
+          </li> 
+          <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/admin_invoice.php" class="nav-link invoice1">
+              <!-- <i class="nav-icon fas fa-copy"></i> -->
+              <i class="fa fa-file-invoice"></i>
+              <p>
+               Invoice
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <?php
+// if($role==1)
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
+// if (session_name() == "admin_session") 
+{
+?>
+          <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/total_registration.php" class="nav-link total_registration">
+              <!-- <i class="fa fa-users"></i> -->
+              <i class="fa fa-database"></i>
+              <p>
+               Total registrations
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+</li>
+<?php } ?>
+<?php
+// if($role==1)
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
+// if (session_name() == "admin_session") 
+{
+?>
+          <li class="nav-item">
+            <a href="#" class="nav-link ">
+              <!-- <i class="nav-icon fas fa-copy"></i> -->
+              <!-- <i class="fa fa-file-invoice"></i> -->
+              <!-- <i class="fa fa-id-badge"></i> -->
+              <i class="fa fa-clipboard"></i>
+              <p>
+          Staff details
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/add_new_staff.php" class="nav-link about_us">
+                  <!-- <i class="fa fa-info-circle"></i> -->
+                  <i class="fa fa-user-plus"></i>
+                  <p>Add New Staff</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/staff_details.php" class="nav-link contact_us">
+                <i class="fa fa-address-book"></i>
+                  <p>Staff Details</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link about_us nav-link contact_us admin_review">
+              <!-- <i class="nav-icon fas fa-chart-pie"></i> -->
+              <i class="fa fa-user-cog"></i>
+              <p>
+                Website Manage
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a> 
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/admin_about_us.php" class="nav-link about_us">
+                  <i class="fa fa-info-circle"></i>
+                  <p>About us</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/admin_contact_us.php" class="nav-link contact_us">
+                <i class="fa fa-address-book"></i>
+                  <p>Contact us</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/admin_review.php" class="nav-link admin_review">
+                <!-- <i class="fa fa-address-book"></i> -->
+                <i class="fa fa-star checked"></i>
+                  <p>Comments and review </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <?php } ?>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link ">
+              <!-- <i class="fa fa-users"></i> -->
+              <i class="fa fa-edit"></i>
+              <p>
+               Profile Settings
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/admin_update_profile.php" class="nav-link about_us">
+                  <i class="fa fa-info-circle"></i>
+                  <p>Update profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/admin_change_password.php"  class="nav-link contact_us">
+                <i class="fa fa-address-book"></i>
+                  <p>Change password</p>
+                </a>
+              </li>
+            </ul>
+</li>
+
+          <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/admin_logout.php" class="nav-link">
+            <i class="fa fa-sign-out-alt "></i>
+              <!-- <i class="nav-icon fas fa-copy"></i> -->
+              <p>
+               Logout
+                <!-- <i class="fas fa-angle-left right"></i> -->
+               
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+  
+  </aside>
+  
