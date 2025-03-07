@@ -170,7 +170,7 @@ $sql = "SELECT * FROM tb_services";
       </div>
 </ol>
 
-                    
+<!-- <div id="service_table"></div>             -->
                 <!-- <h3 class="card-title">Appointment Details</h3> -->
                 <h5 class="m-0">OUR SERVICES </h5>
                 
@@ -187,12 +187,13 @@ $sql = "SELECT * FROM tb_services";
                     <?php
  if($role==1)
 {
-?>         <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th> <?php } ?>
+?>       
+  <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th> <?php } ?>
                   </tr>
                   </thead>
                   <tbody>
                   <?php
-  $sql = "SELECT * FROM tb_services";
+  $sql = "SELECT * FROM all_services WHERE service_number = 1";
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);
 $count = 0;
@@ -204,8 +205,8 @@ if (mysqli_num_rows($result) > 0) {
       ?>
       <tr>
       <th scope='row'><?php echo $count; ?></th>
-      <td><?php echo $row['service_name']; ?></td>
-      <td><?php echo $row['service_price']; ?>
+      <td><?php echo $row['all_service']; ?></td>
+      <td><?php echo $row['price']; ?>
 <!-- <td> <a href='/beauty_parlour_management_system/admin2/edit_services.php?id=<?php echo $row["id"]; ?>'>
   <button style='background-color:rgb(23, 162, 184); color: white; border: none; padding: 5px 10px; cursor: pointer;'>Edit</button>
 <a href='/beauty_parlour_management_system/admin2/delete_service.php?id=<?php echo $row["id"]; ?>'>
@@ -294,20 +295,77 @@ loadData();
       </script> -->
       <script>
 $(document).ready(function() {
-    function loadData() {
+    function loadData(request_type, category_id) {
         $.ajax({
             url: "load_service.php",
             type: "POST",
+            data : {request_type: request_type, id:category_id},
+            
             success: function(data) {
-                $("#service").html(data); // Replace content instead of appending
-            },
-            error: function(xhr, status, error) {
-                console.error("Error: " + error); // Log errors if any
+              if(request_type=="sub_service_data")
+            {
+              $("#sub_service").html(data); // Replace content instead of appending
+              console.log(data);
+              console.log("Sending request_type:", request_type);
+              console.log("Sending id:", category_id);
             }
+            else{
+              $("#service").html(data); // Replace content instead of appending
+              console.log(data);
+            }
+               
+            },
+            // error: function(xhr, status, error) {
+            //     console.error("Error: " + error); // Log errors if any
+            // }
         });
     }
 
     loadData(); // Call the function after defining it
+
+    $("#service").on("change",function()
+  {
+    var service = $("#service").val();
+    console.log(service);
+
+    if(service != "")
+  {
+    loadData("sub_service_data", service);
+  }
+  else{
+$("#state").html("");
+  }
+
+
+  })
+  $("#sub_service").on("change",function()
+  {
+    var sub_service = $("#sub_service").val();
+    console.log(sub_service);
+    // loadData("sub_service_data", service);
+     $.ajax({
+        url: "load_service.php", // Your PHP file to handle the request
+        type: "POST",
+        data: { sub_service: sub_service }, // Send sub_service value
+        success: function(response) {
+            // $("#service").html(response); // Update service section with fetched data
+            console.log("Received Data:", response);
+            // $("#example1").html(response); 
+            var tableContent = $(response).find("table").html(); 
+
+if (tableContent) {
+    $("#example1").html("<table class='your-table-class'>" + tableContent + "</table>"); 
+} else {
+    console.warn("No table data found in response.");
+}
+        },
+        error: function(xhr, status, error) {
+            console.error("Error: " + error); // Log any errors
+        }
+    });
+  })
+
+
 });
 </script>
   </body>
