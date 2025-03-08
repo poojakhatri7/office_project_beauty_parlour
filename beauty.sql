@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Mar 06, 2025 at 01:19 PM
+-- Generation Time: Mar 08, 2025 at 04:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,6 +67,86 @@ INSERT INTO `admin_login_details` (`id`, `name`, `mobile`, `email`, `address`, `
 (9, 'pooja khatri', 8707858421, 'Priyanka@gmail.com', 'rjpm1', '123', 1, 'upload-images/hair_06.jpg'),
 (11, 'payal malhotra', 8709875671, 'payal@gmail.com', 'cp', '123', 2, 'upload-images/avatar2.png'),
 (12, 'anushka sharma ', 8685904894, 'anushka@gmail.com', 'kakori road', '123', 2, 'upload-images/avatar2.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `all_services`
+--
+
+CREATE TABLE `all_services` (
+  `a_id` int(40) NOT NULL,
+  `all_service` varchar(200) NOT NULL,
+  `price` int(50) NOT NULL,
+  `service_number` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `all_services`
+--
+
+INSERT INTO `all_services` (`a_id`, `all_service`, `price`, `service_number`) VALUES
+(1, 'Womens Hair cut', 70, 1),
+(2, 'Mens haircut', 60, 1),
+(3, 'blow dry', 44, 1),
+(4, 'updo style', 80, 1),
+(5, 'Child Hair cut ', 100, 1),
+(6, 'brazillan blow out', 180, 2),
+(7, 'Keratin Complex Express', 210, 2),
+(8, 'Keratin Complex', 300, 2),
+(9, 'Keratin Complex Max', 350, 2),
+(10, 'Permanent Wave', 185, 2),
+(11, 'Hair Gloss', 55, 2),
+(12, 'Safe Color Treatment\r\n\r\n', 95, 2),
+(13, 'Hair & Scalp Treatments\r\n\r\n', 240, 2),
+(14, 'Single Process\r\n\r\n', 130, 3),
+(15, 'Double Process', 375, 3),
+(16, 'Full Head Highlights', 380, 3),
+(17, 'Half Head Highlights', 290, 3),
+(18, 'Balayage', 220, 3),
+(19, 'Color Refresh', 130, 3),
+(20, 'Blowdry with Extensions', 95, 4),
+(21, 'Extensions Service', 110, 4),
+(22, 'Keratin Hair Extensions', 860, 4),
+(23, 'Hair Extension Removal', 275, 4),
+(24, 'Herbal Facial', 75, 5),
+(25, 'Deep Cleaning Facial', 130, 5),
+(26, 'Organic Facial', 185, 5),
+(27, 'Four Layer Facial', 140, 5),
+(28, 'Biolight Facial', 165, 5),
+(32, 'Anti-Ageing Facial', 175, 5),
+(33, 'Gentleman’s Facial\r\n\r\n', 60, 5),
+(34, 'Teen Facial', 45, 5),
+(35, 'Facial Add-ons', 85, 5),
+(36, 'Eyebrow Waxing\r\n\r\n', 15, 6),
+(37, 'Bikini Waxing', 30, 6),
+(38, 'Lip Waxing\r\n\r\n', 12, 6),
+(39, 'Half Arm Waxing\r\n\r\n', 30, 6),
+(40, 'Cheeks Waxing\r\n\r\n', 15, 6),
+(41, 'Full Arm Waxing\r\n\r\n', 45, 6),
+(42, 'Full Face Waxing\r\n\r\n', 46, 6),
+(43, 'Half Leg Waxing\r\n\r\n', 30, 6),
+(44, 'Under Arm Waxing', 20, 6),
+(45, 'Full Leg Waxing\r\n\r\n', 50, 6),
+(46, 'Full Application\r\n\r\n', 165, 7),
+(47, 'Eyebrow Shaping\r\n\r\n', 97, 7),
+(48, 'Fast Face', 75, 7),
+(49, 'Brow Tint', 50, 7),
+(50, 'Eyebrow Tinting', 50, 7),
+(51, 'Eyebrow Tinting', 15, 7),
+(52, 'Lash Tint', 50, 7),
+(53, 'Eyelash Tinting\r\n\r\n', 25, 7),
+(54, 'Lash Lift\r\n\r\n', 175, 7),
+(55, 'Lash Application\r\n\r\n', 45, 7),
+(56, 'Eyelash Extensions\r\n\r\n', 155, 7),
+(57, 'Classic Manicure\r\n\r\n', 19, 8),
+(58, 'Spa Manicure\r\n\r\n', 30, 8),
+(59, 'Signature Gel Manicure', 50, 8),
+(60, 'Hard Gel Full Set\r\n\r\n', 85, 8),
+(61, 'Nail Art\r\n\r\n', 20, 9),
+(62, 'Callus Treatment\r\n\r\n', 29, 9),
+(63, 'French Polish\r\n\r\n', 32, 9),
+(64, 'Collagen Mask', 25, 9);
 
 -- --------------------------------------------------------
 
@@ -211,7 +291,8 @@ INSERT INTO `reviews` (`id`, `name`, `rating`, `comment`) VALUES
 (9, 'SHIKHA', 2, ' This beauty parlour is a hidden gem! The hairstylists are experts, and the skincare treatments are amazing. My manicure and pedicure were done with great precision. I always leave feeling refreshed a'),
 (10, 'Kavya ', 2, ' Had a fantastic makeover session! The staff took great care in understanding my skin type and recommended the perfect treatment. The results were beyond my expectations. The hygiene standards are exc'),
 (11, 'Pari Kapoor', 2, ' I got my bridal makeup done here, and it was absolutely stunning! The makeup artists are professionals who know exactly how to enhance natural beauty. The products used were of high quality, and my l'),
-(12, 'DIYA', 2, ' Best beauty parlour I’ve ever visited! The waxing service was painless, and the massage was so relaxing. The atmosphere is clean and soothing. The team is professional and ensures you get the best ca');
+(12, 'DIYA', 2, ' Best beauty parlour I’ve ever visited! The waxing service was painless, and the massage was so relaxing. The atmosphere is clean and soothing. The team is professional and ensures you get the best ca'),
+(13, 'POOJA KHATRI', 1, 'service is good');
 
 -- --------------------------------------------------------
 
@@ -450,6 +531,12 @@ ALTER TABLE `admin_login_details`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `all_services`
+--
+ALTER TABLE `all_services`
+  ADD PRIMARY KEY (`a_id`);
+
+--
 -- Indexes for table `bill`
 --
 ALTER TABLE `bill`
@@ -545,6 +632,12 @@ ALTER TABLE `admin_login_details`
   MODIFY `id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `all_services`
+--
+ALTER TABLE `all_services`
+  MODIFY `a_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
@@ -578,7 +671,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `sub_category_service`
