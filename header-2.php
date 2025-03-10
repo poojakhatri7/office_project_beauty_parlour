@@ -34,7 +34,7 @@
 	        					<ul class="wsmenu-list">
 
 
-									<li class="nl-simple" aria-haspopup="true"><a href="demo-9.php" class="h-link">Home</a></li>
+									<li class="nl-simple" aria-haspopup="true"><a href="./" class="h-link">Home</a></li>
 
 									<li aria-haspopup="true"><a href="#" class="h-link">About <span class="wsarrow"></span></a>
 	            						<ul class="sub-menu">

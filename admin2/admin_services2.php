@@ -70,7 +70,7 @@ $service_price = mysqli_real_escape_string($conn, $service_price);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0">Adding New Services</h4>
+            <!-- <h4 class="m-0">Repairing </h4> -->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <!-- <ol class="breadcrumb float-sm-right">
@@ -89,16 +89,38 @@ $service_price = mysqli_real_escape_string($conn, $service_price);
               <!-- form start -->
               <form class="form-horizontal" action="" method= "post">
                 <div class="card-body">
+                <div class="form-group row">
+    <label for="serviceSelect" class="col-sm-2 col-form-label">SELECT SERVICE</label>
+    <div class="col-sm-4">
+        <select name="service_name" class="form-control" id="serviceSelect">
+            <option value="">Select a Service</option>
+        </select>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="serviceSelect" class="col-sm-2 col-form-label">SELECT SUB SERVICE</label>
+    <div class="col-sm-4">
+        <select name="service_name" class="form-control" id="serviceSelect">
+            <option value="">Select a Sub Service</option>
+        </select>
+    </div>
+</div>
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">SERVICE NAME</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="service_name" class="form-control" id="inputEmail3" placeholder="Enter New Service ">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">ENTER SERVICE NAME</label>
+                    <div class="col-sm-4">
+                      <input type="text" name="service_price" class="form-control" id="inputPassword3" placeholder="Enter new Service">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">SERVICE PRICE</label>
-                    <div class="col-sm-10">
-                      <input type="number" name="service_price" class="form-control" id="inputPassword3" placeholder="Enter New Price">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">ENTER SERVICE PRICE</label>
+                    <div class="col-sm-4">
+                      <input type="number" name="service_price" class="form-control" id="inputPassword3" placeholder="Enter Price">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">DESCRIPTION</label>
+                    <div class="col-sm-4">
+                      <input type="text" name="service_price" class="form-control" id="inputPassword3" placeholder="Any Description of the service">
                     </div>
                   </div>
                   <div class="form-group row">

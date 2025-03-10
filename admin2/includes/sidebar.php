@@ -177,8 +177,17 @@ if (!$conn) {
                 Manage Services
               </p>
             </a>
+            <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/admin_services2.php" class="nav-link manage_services">
+              <!-- <i class="nav-icon fas fa-th"></i> -->
+              <i class="fa fa-cogs"></i>
+              <p>
+              Add Services 2
+              </p>
+            </a>
             </ul>
           </li> 
+          
           <li class="nav-item">
             <a href="/beauty_parlour_management_system/admin2/admin_invoice.php" class="nav-link invoice1">
               <!-- <i class="nav-icon fas fa-copy"></i> -->

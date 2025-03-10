@@ -1,3 +1,15 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "beauty";
+$port = 3307;
+$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -85,18 +97,27 @@
 			============================================= -->
 			<div class="pt-8 pricing-1 pricing-section division">
 				<div class="container">
+				<?php
+								$sql = "Select * from sub_category_service where s_id = 8";
+$result = mysqli_query($conn,$sql);
+if (mysqli_num_rows($result)>0)
+While ($row = mysqli_fetch_assoc($result))
+{
+$s_name = $row ['s_name'];
+
+?>
 
 
 					<!-- CATEGORY TITLE -->
 					<div class="row">	
 						<div class="col">
 							<div class="category-title mb-6 text-center">	
-								<h2 class="h2-title">Hands & Feet</h2>	
+								<h2 class="h2-title"><?php echo $s_name ?></h2>	
 							</div>	
 						</div>
 					</div>
 
-
+					<?php }?>
 					<!-- PRICING-1 WRAPPER -->
 					<div class="pricing-1-wrapper">
 						<div class="row">
@@ -106,91 +127,116 @@
 							<div class="col-lg-6">
 								<div class="pricing-1-table left-column wow fadeInUp">
 									<ul class="pricing-list">
+									<?php
+    $sql = "SELECT * FROM all_services WHERE service_number = 8 LIMIT 5";
+    $result = mysqli_query($conn, $sql);
 
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <li class="pricing-5-item">
+                <div class="detail-price">
+                    <div class="price-name">
+                        <p><?php echo $row['all_service']; ?></p>
+                    </div>
+                    <div class="price-dots"></div>
+                    <div class="price-number">
+                        <p><?php echo $row['price']; ?></p>
+                    </div>
+                </div>
+                <!-- Description Below -->
+                <div class="price-txt">
+                    <p><?php echo $row['description']; ?></p>
+                </div>
+            </li>
+    <?php
+        }
+    }
+    ?>
 										<!-- PRICING ITEM #1 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Classic Manicure</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹19</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 25 minutes</p>
 											</div>
 											
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #2 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Spa Manicure</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹30</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 35 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #3 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Aloe Vera Manicure</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹48</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 45 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- PRICING ITEM #4 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Gel Manicure</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹35</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 40 minutes</p>
 											</div>
 											
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #5 -->
-										<li class="pricing-1-item resp-lst">
+										<!-- <li class="pricing-1-item resp-lst"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>French Manicure</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹42</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 25-35 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 									</ul>	<!-- END PRICING LIST -->
 								</div>
@@ -201,91 +247,116 @@
 							<div class="col-lg-6">
 								<div class="pricing-1-table right-column wow fadeInUp">	
 									<ul class="pricing-list">
+<?php
+    $sql = "SELECT * FROM all_services WHERE service_number = 8 LIMIT 5 OFFSET 5";
+    $result = mysqli_query($conn, $sql);
 
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <li class="pricing-5-item">
+                <div class="detail-price">
+                    <div class="price-name">
+                        <p><?php echo $row['all_service']; ?></p>
+                    </div>
+                    <div class="price-dots"></div>
+                    <div class="price-number">
+                        <p><?php echo $row['price']; ?></p>
+                    </div>
+                </div>
+                <!-- Description Below -->
+                <div class="price-txt">
+                    <p><?php echo $row['description']; ?></p>
+                </div>
+            </li>
+    <?php
+        }
+    }
+    ?>
 										<!-- PRICING ITEM #1 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Signature Gel Manicure</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹50</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 40 minutes</p>
 											</div>
 											
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #2 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Hard Gel Full Set</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹85</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 1,5 - 2 hours</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #3 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Signature Pedicure</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>From ₹65</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 45 minutes</p>
-											</div>
+											</div> -->
 
-										</li>
+										<!-- </li> -->
 
 										<!-- PRICING ITEM #4 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Spa Pedicure</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>From ₹75</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 55 minutes</p>
 											</div>
 											
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #5 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Organic Express Pedi</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹20 - ₹45</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 30 - 55 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 									</ul>	<!-- END PRICING LIST -->
 								</div>
@@ -306,18 +377,26 @@
 			============================================= -->
 			<div class="pt-8 pricing-1 pricing-section division">
 				<div class="container">
+				<?php
+								$sql = "Select * from sub_category_service where s_id = 9";
+$result = mysqli_query($conn,$sql);
+if (mysqli_num_rows($result)>0)
+While ($row = mysqli_fetch_assoc($result))
+{
+$s_name = $row ['s_name'];
 
+?>
 
 					<!-- CATEGORY TITLE -->
 					<div class="row">	
 						<div class="col">
 							<div class="category-title mb-6 text-center">	
-								<h2 class="h2-title">Add-On Services</h2>	
+								<h2 class="h2-title"><?php echo $s_name ?></h2>	
 							</div>	
 						</div>
 					</div>
 
-
+					<?php }?>
 					<!-- PRICING-1 WRAPPER -->
 					<div class="pricing-1-wrapper">
 						<div class="row">
@@ -327,91 +406,116 @@
 							<div class="col-lg-6">
 								<div class="pricing-1-table left-column wow fadeInUp">
 									<ul class="pricing-list">
+									<?php
+    $sql = "SELECT * FROM all_services WHERE service_number = 9 LIMIT 5";
+    $result = mysqli_query($conn, $sql);
 
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <li class="pricing-5-item">
+                <div class="detail-price">
+                    <div class="price-name">
+                        <p><?php echo $row['all_service']; ?></p>
+                    </div>
+                    <div class="price-dots"></div>
+                    <div class="price-number">
+                        <p><?php echo $row['price']; ?></p>
+                    </div>
+                </div>
+                <!-- Description Below -->
+                <div class="price-txt">
+                    <p><?php echo $row['description']; ?></p>
+                </div>
+            </li>
+    <?php
+        }
+    }
+    ?>
 										<!-- PRICING ITEM #1 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Nail Art</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹20</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 15 minutes</p>
 											</div>
 											
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #2 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>French Polish</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹32</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 20 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #3 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Paraffin Mask</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹35</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 20 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- PRICING ITEM #4 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Gel Applications</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹38</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 15 minutes</p>
 											</div>
 											
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #5 -->
-										<li class="pricing-1-item resp-lst">
+										<!-- <li class="pricing-1-item resp-lst"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Gel Polish Removal</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹36</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 25 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 									</ul>	<!-- END PRICING LIST -->
 								</div>
@@ -422,91 +526,117 @@
 							<div class="col-lg-6">
 								<div class="pricing-1-table right-column wow fadeInUp">	
 									<ul class="pricing-list">
+									<ul class="pricing-list">
+									<?php
+    $sql = "SELECT * FROM all_services WHERE service_number = 9 LIMIT 5 OFFSET 5";
+    $result = mysqli_query($conn, $sql);
 
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <li class="pricing-5-item">
+                <div class="detail-price">
+                    <div class="price-name">
+                        <p><?php echo $row['all_service']; ?></p>
+                    </div>
+                    <div class="price-dots"></div>
+                    <div class="price-number">
+                        <p><?php echo $row['price']; ?></p>
+                    </div>
+                </div>
+                <!-- Description Below -->
+                <div class="price-txt">
+                    <p><?php echo $row['description']; ?></p>
+                </div>
+            </li>
+    <?php
+        }
+    }
+    ?>
 										<!-- MENU ITEM #1 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Callus Treatment</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹29</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 30 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #2 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Collagen Mask</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹24</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 20-30 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #3 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Holographic Effect</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹33</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 25-30 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #4 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Acrylic Removal</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹28</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 10-15 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #5 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Acrylic Full Set</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹44</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 35-40 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 									</ul>
 								</div>
