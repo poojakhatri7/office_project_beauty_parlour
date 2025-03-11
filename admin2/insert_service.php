@@ -40,7 +40,7 @@ if($_POST['request_type']=="sub_service_data")
     $query = mysqli_query($conn,$sql);
     echo "pooja";
     // $str = '<option value="">Select Service</option>';
-    $str = '<option value="">Select a Sub Service</option>';
+    $str = '<option value="">Select Service</option>';
     while ($row = mysqli_fetch_assoc($query) )
     {
       echo $row['s_id'] ;
@@ -58,7 +58,7 @@ if (isset($_POST['sub_service'])) {
     $service_number = mysqli_real_escape_string($conn, $sub_service);
 
     // Fetch data based on the selected sub-service
-    $query = "SELECT * FROM all_services WHERE service_number = '$service_number' order BY a_id DESC";
+    $query = "SELECT * FROM all_services WHERE service_number = '$service_number'";
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) > 0) {
@@ -119,5 +119,3 @@ if (isset($_POST['sub_service'])) {
     }
 }
 ?>
-
-

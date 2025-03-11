@@ -95,7 +95,7 @@ if (!$conn) {
 //if ($role == 1)
 ?>
     <li class="nav-item">
-            <a href="/beauty_parlour_management_system/admin2/admin_enquiry_message.php" class="nav-link invoice1">
+            <a href="/beauty_parlour_management_system/admin2/admin_enquiry_message.php" class="nav-link admin_enquiry_message">
               <!-- <i class="nav-icon fas fa-copy"></i> -->
               <!-- <i class="fa fa-file-invoice"></i> -->
               <i class="fa fa-envelope"></i> 
@@ -159,16 +159,16 @@ if (!$conn) {
               </p>
             </a> 
             <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="/beauty_parlour_management_system/admin2/admin_services.php" class="nav-link admin_services">
+          <!-- <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/admin_services.php" class="nav-link admin_services"> -->
               <!-- <i class="nav-icon fas fa-th"></i> -->
               <!-- <i class="fa fa-plus-circle"></i> -->
-              <i class="fa fa-clipboard-list"></i>
+              <!-- <i class="fa fa-clipboard-list"></i>
               <p>
                 Add Services
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="/beauty_parlour_management_system/admin2/manage_service.php" class="nav-link manage_services">
               <!-- <i class="nav-icon fas fa-th"></i> -->
@@ -180,9 +180,10 @@ if (!$conn) {
             <li class="nav-item">
             <a href="/beauty_parlour_management_system/admin2/admin_services2.php" class="nav-link manage_services">
               <!-- <i class="nav-icon fas fa-th"></i> -->
-              <i class="fa fa-cogs"></i>
+              <!-- <i class="fa fa-cogs"></i> -->
+                 <i class="fa fa-plus-circle"></i> 
               <p>
-              Add Services 2
+              Add Services 
               </p>
             </a>
             </ul>
@@ -222,7 +223,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
 {
 ?>
           <li class="nav-item">
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link staff_details staff">
               <!-- <i class="nav-icon fas fa-copy"></i> -->
               <!-- <i class="fa fa-file-invoice"></i> -->
               <!-- <i class="fa fa-id-badge"></i> -->
@@ -234,14 +235,14 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/beauty_parlour_management_system/admin2/add_new_staff.php" class="nav-link about_us">
+                <a href="/beauty_parlour_management_system/admin2/add_new_staff.php" class="nav-link staff_details">
                   <!-- <i class="fa fa-info-circle"></i> -->
                   <i class="fa fa-user-plus"></i>
                   <p>Add New Staff</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/beauty_parlour_management_system/admin2/staff_details.php" class="nav-link contact_us">
+                <a href="/beauty_parlour_management_system/admin2/staff_details.php" class="nav-link staff">
                 <i class="fa fa-address-book"></i>
                   <p>Staff Details</p>
                 </a>
@@ -282,7 +283,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
           <?php } ?>
 
           <li class="nav-item">
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link update_profile change_password">
               <!-- <i class="fa fa-users"></i> -->
               <i class="fa fa-edit"></i>
               <p>
@@ -292,13 +293,13 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/beauty_parlour_management_system/admin2/admin_update_profile.php" class="nav-link about_us">
+                <a href="/beauty_parlour_management_system/admin2/admin_update_profile.php" class="nav-link update_profile">
                   <i class="fa fa-info-circle"></i>
                   <p>Update profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/beauty_parlour_management_system/admin2/admin_change_password.php"  class="nav-link contact_us">
+                <a href="/beauty_parlour_management_system/admin2/admin_change_password.php"  class="nav-link change_password">
                 <i class="fa fa-address-book"></i>
                   <p>Change password</p>
                 </a>

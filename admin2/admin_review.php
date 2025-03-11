@@ -27,16 +27,18 @@ if (isset($_POST['submit'])) {
     // Get the form data
     $name = $_POST['name'];  
     $comment = $_POST['comment']; 
-    $rating = $_POST['rating'];
+    // $rating = $_POST['rating'];
     echo $name;
     echo $comment;
-    echo $rating;
-    $query = "INSERT INTO reviews values ('','$name','$rating','$comment')"; 
+    // echo $rating;
+    $query = "INSERT INTO reviews values ('','$name','$comment')"; 
     // $query = "INSERT INTO reviews (name, rating, comment,created_at) VALUES ('$name', '$rating','$comment',currenttimestamp())";
     // $query = "INSERT INTO reviews (id,name, rating, comment, created_at) VALUES ('','$name', '$rating', '$comment', currenttimestamp())";
 
-    mysqli_query($conn,$query);
-   // echo"<script> alert('Review added Successfully ') </script>";
+    if(mysqli_query($conn,$query));
+    {
+   echo"<script> alert('Review added Successfully ') </script>";
+    }
     // Execute the query directly
     // if ($conn->query($sql) === TRUE) {
     //     echo "Data updated successfully!";
@@ -112,7 +114,7 @@ if (isset($_POST['submit'])) {
                       <textarea name="comment" class="form-control" id="inputEmail3" placeholder=""> </textarea>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Rating</label>
                     <div class="col-sm-10">
 <select id="rating" name = "rating">
@@ -125,7 +127,7 @@ if (isset($_POST['submit'])) {
 </select>
 
                     
-                  </div>
+                  </div> -->
                  
                 
                   <!-- <div class="form-group row">
@@ -140,7 +142,7 @@ if (isset($_POST['submit'])) {
                       </div>
                     </div>
                   </div> -->
-                </div>
+                <!-- </div> -->
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <!-- <button type="submit" name="submit" class="btn btn-info">UPDATE</button> -->

@@ -171,10 +171,10 @@ if (isset($_POST['submit'])) {
 						<div class="cbox-2 cb-1 mb-5">
 
 							<!-- Title -->
-							<h4>Our Location:</h4>
+							<h4>Our Location :</h4>
 
 							<!-- Address -->
-							<p><?php echo $address; ?></p>
+							<p><?php echo nl2br($address); ?></p>
 							
 
 							<!-- Contacts -->

@@ -64,7 +64,7 @@ include 'db_connection.php';
                       <div class="form-group">
                         <label>Select Category</label>
                         <select class="form-control" id="service">
-                        <option>Select </option>
+                        <option>Select Service Category</option>
                         </select>
                       </div>
                     </div>
@@ -74,11 +74,11 @@ include 'db_connection.php';
                       <div class="form-group">
                         <label>Select Sub Category</label>
                         <select class="form-control"  id="sub_service">
-                        <option>Select </option>
+                        <option>Select category first </option>
                         </select>
                       </div>
                     </div>
-
+</div>
   
   <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
@@ -130,46 +130,27 @@ include 'db_connection.php';
        
         <!-- /.row -->
         <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Our services</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                <thead style="background-color: rgb(51, 139, 139);">
-                  <tr>
-                    <th>S no.</th>
-                    <th>Service name</th>
-                    <th>Service price</th>
-                    <th>Service number</th>
-                    <th>CSS grade</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td></td>
-                    <td>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-</tbody>
-                  </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
+        <div class="card-header">
+            <h3 class="card-title">Our Services</h3>
         </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-      
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(51, 139, 139); color: white;">
+                    <tr>
+                        <th>S No.</th>
+                        <th>Service Name</th>
+                        <th>Service Price</th>
+                        <th>Service Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="5" class="text-center">Select a Service and Sub-service  to see details</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
   
 
   <script>
@@ -196,76 +177,63 @@ include 'db_connection.php';
         });
     </script>
       <script>
-$(document).ready(function() {
-    function loadData(request_type, category_id) {
+$(document).ready(function () {
+
+    // Function to load service categories
+    function loadServices() {
         $.ajax({
             url: "load_service.php",
             type: "POST",
-            data : {request_type: request_type, id:category_id},
-            
-            success: function(data) {
-              if(request_type=="sub_service_data")
-            {
-              $("#sub_service").html(data); // Replace content instead of appending
-              // console.log(data);
-              // console.log("Sending request_type:", request_type);
-              // console.log("Sending id:", category_id);
+            data: { request_type: "service_data" },
+            success: function (data) {
+                $("#service").html(data);
             }
-            else{
-              $("#service").html(data); // Replace content instead of appending
-              console.log(data);
-            }
-               
-            },
-            // error: function(xhr, status, error) {
-            //     console.error("Error: " + error); // Log errors if any
-            // }
         });
     }
 
-    loadData(); // Call the function after defining it
+    // Function to load sub-services based on selected category
+    function loadSubServices(service_id) {
+        $.ajax({
+            url: "load_service.php",
+            type: "POST",
+            data: { request_type: "sub_service_data", id: service_id },
+            success: function (data) {
+                $("#sub_service").html(data);
+            }
+        });
+    }
 
-    $("#service").on("change",function()
-  {
-    var service = $("#service").val();
-    console.log(service);
+    // Load categories on page load
+    loadServices();
 
-    if(service != "")
-  {
-    loadData("sub_service_data", service);
-  }
-  else{
-$("#service").html("");
-  }
-  })
-  $("#sub_service").on("change",function()
-  {
-    var sub_service = $("#sub_service").val();
-    console.log(sub_service);
-    // loadData("sub_service_data", service);
-     $.ajax({
-        url: "load_service.php", // Your PHP file to handle the request
-        type: "POST",
-        data: { sub_service: sub_service }, // Send sub_service value
-        success: function(response) {
-            // $("#service").html(response); // Update service section with fetched data
-            console.log("Received Data:", response);
-            // $("#example1").html(response); 
-            var tableContent = $(response).find(".card-body").html(); 
-
-if (tableContent) {
-    // $("#example1").html("<table class='table table-bordered table-striped'>" + tableContent + "</table>"); 
-    $("#example1").html('<div class="card-body">' + tableContent + '</div>'); 
-    
-} else {
-    console.warn("No table data found in response.");
-}
-        },
-        error: function(xhr, status, error) {
-            console.error("Error: " + error); // Log any errors
+    // On change of service category, load corresponding sub-services
+    $("#service").on("change", function () {
+        var service_id = $(this).val();
+        if (service_id !== "") {
+            loadSubServices(service_id);
+        } else {
+            $("#sub_service").html('<option value="">Select Sub-Service</option>');
         }
     });
-  })
+
+    // On change of sub-service, load corresponding service details in the table
+    $("#sub_service").on("change", function () {
+        var sub_service = $(this).val();
+        $.ajax({
+            url: "load_service.php",
+            type: "POST",
+            data: { sub_service: sub_service },
+            success: function (response) {
+                var tableBody = $(response).find("tbody").html();
+                if (tableBody) {
+                    $("#example1 tbody").html(tableBody);
+                } else {
+                    $("#example1 tbody").html("<tr><td colspan='5' class='text-center'>No services found.</td></tr>");
+                }
+            }
+        });
+    });
+
 });
 </script>
   </body>

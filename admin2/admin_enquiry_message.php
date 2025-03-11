@@ -33,7 +33,7 @@ if (!$conn) {
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
 
     <style type="text/css">
-.all_appointment{
+.admin_enquiry_message{
   /* background : #157daf !important; */
   background :rgb(33, 70, 77) !important;
 }

@@ -156,7 +156,7 @@ $s_name = $row ['s_name'];
 								<div class="pricing-1-table left-column wow fadeInUp">
 									<ul class="pricing-list">
 									<?php
-    $sql = "SELECT * FROM all_services WHERE service_number = 5 LIMIT 5";
+    $sql = "SELECT * FROM all_services WHERE service_number = 5 LIMIT 6";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -277,7 +277,7 @@ $s_name = $row ['s_name'];
 								<div class="pricing-1-table right-column wow fadeInUp">	
 								<ul class="pricing-list">
 									<?php
-    $sql = "SELECT * FROM all_services WHERE service_number = 5 LIMIT 5 OFFSET 5";
+    $sql = "SELECT * FROM all_services WHERE service_number = 5 LIMIT 6 OFFSET 5";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {

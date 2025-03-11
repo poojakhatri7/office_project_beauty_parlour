@@ -52,7 +52,7 @@ if (!$conn) {
             <!-- small box -->
             <div class="small-box " style= "background-color:rgb(68, 151, 184)" >
               <div class="inner">
-              <?php $query1=mysqli_query($conn,"Select * from  tb_services");
+              <?php $query1=mysqli_query($conn,"Select * from  all_services");
 $total_services=mysqli_num_rows($query1);
 ?>
                 <h3 style="color: black;"><?php echo $total_services;?></h3>

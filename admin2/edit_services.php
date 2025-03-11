@@ -25,9 +25,10 @@ if (isset($_POST["submit"])) {
   
     $service_name = $_POST["service_name"];
     $service_price = $_POST["service_price"];
+    $description = $_POST["description"];
     // SQL query to insert data
   //  $query = "UPDATE tb_services  SET  service_name='$service_name', service_price = '$service_price' WHERE id={$id}";
-    $query = "UPDATE `tb_services` SET service_name='$service_name', service_price='$service_price' WHERE id=$id";
+    $query = "UPDATE `all_services` SET all_service='$service_name', price='$service_price', description='$description' WHERE a_id=$id";
     // Execute the query and check for success
     if (mysqli_query($conn, $query)) {
         echo "<script> alert('SERVICE UPDATED SUCCESFULLY'); </script>";
@@ -37,7 +38,7 @@ if (isset($_POST["submit"])) {
 }
 
 //$id = $_GET ['id'];
-$sql = "SELECT * FROM tb_services WHERE id={$id}";
+$sql = "SELECT * FROM all_services WHERE a_id={$id}";
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);
 // Step 4: Check if the query returned any results
@@ -93,19 +94,25 @@ if (mysqli_num_rows($result) > 0) {
                   <!-- <div class="form-group row"> -->
                     <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">S.NO</label> -->
                     <!-- <div class="col-sm-10">
-                      <input type="text" name="id" class="form-control" id="inputEmail3" placeholder="ENTER SERIAL NUMBER " value = "<?php echo $row['id'] ?>">
+                      <input type="text" name="id" class="form-control" id="inputEmail3" placeholder="ENTER SERIAL NUMBER ">
                     </div> -->
                   
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">SERVICE NAME</label>
                     <div class="col-sm-10">
-                      <input type="text" name="service_name" class="form-control" id="inputPassword3" placeholder="ENTER SERVICE NAME" value = "<?php echo $row['service_name'] ?>">
+                      <input type="text" name="service_name" class="form-control" id="inputPassword3" placeholder="ENTER SERVICE NAME" value = "<?php echo $row['all_service'] ?>">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">SERVICE PRICE</label>
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">SERVICE PRICE (Rs)</label>
                     <div class="col-sm-10">
-                      <input type="text" name="service_price" class="form-control" id="inputPassword3" placeholder="ENTER NEW PRICE" value = "<?php echo $row['service_price'] ?>">
+                      <input type="text" name="service_price" class="form-control" id="inputPassword3" placeholder="ENTER NEW PRICE" value = "<?php echo $row['price'] ?>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">DESCRIPTION</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="description" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['description'] ?>">
                     </div>
                   </div>
                   <div class="form-group row">
