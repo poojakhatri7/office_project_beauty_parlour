@@ -178,12 +178,23 @@ if (!$conn) {
               </p>
             </a>
             <li class="nav-item">
-            <a href="/beauty_parlour_management_system/admin2/admin_services2.php" class="nav-link manage_services">
+            <a href="/beauty_parlour_management_system/admin2/admin_services2.php" class="nav-link admin_services">
               <!-- <i class="nav-icon fas fa-th"></i> -->
               <!-- <i class="fa fa-cogs"></i> -->
                  <i class="fa fa-plus-circle"></i> 
               <p>
               Add Services 
+              </p>
+            </a>
+            <li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/add_category.php" class="nav-link admin_services">
+              <!-- <i class="nav-icon fas fa-th"></i> -->
+              <!-- <i class="fa fa-cogs"></i> -->
+                 <!-- <i class="fa fa-plus-circle"></i>  -->
+                 <i class="fa fa-plus-circle"></i>
+               
+              <p>
+              Add Category and Sub Category
               </p>
             </a>
             </ul>
@@ -250,7 +261,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link about_us nav-link contact_us admin_review">
+            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio">
               <!-- <i class="nav-icon fas fa-chart-pie"></i> -->
               <i class="fa fa-user-cog"></i>
               <p>
@@ -272,6 +283,15 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/portfolio.php" class="nav-link portfolio">
+                <!-- <i class="fa fa-address-book"></i> -->
+                <!-- <i class="fa fa-briefcase"></i> -->
+                <!-- <i class="fa fa-folder-open"></i> -->
+                <i class="fa fa-id-card"></i>
+                  <p>Update Portfolio</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/beauty_parlour_management_system/admin2/admin_review.php" class="nav-link admin_review">
                 <!-- <i class="fa fa-address-book"></i> -->
                 <i class="fa fa-star checked"></i>
@@ -281,7 +301,6 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </ul>
           </li>
           <?php } ?>
-
           <li class="nav-item">
             <a href="#" class="nav-link update_profile change_password">
               <!-- <i class="fa fa-users"></i> -->
