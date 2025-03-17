@@ -10,8 +10,6 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 ?>
-
-
 <!doctype html>
 <html lang="en">
 <head>

@@ -23,7 +23,8 @@ include 'db_connection.php';
 <?php
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
-if (isset($_FILES['image'])) {
+// if (isset($_POST['submit']) && isset($_FILES['image']) && isset($_POST['designation']) && isset($_POST['name'])) {
+if ( isset($_FILES['image']) && isset($_POST['designation'] ) && isset($_POST['name'])) {
   // echo "<pre>";
   // print_r($_FILES);
   // echo "</pre>";
@@ -31,12 +32,15 @@ if (isset($_FILES['image'])) {
   $photo = $_FILES["image"]["name"];
   $photo2 = $_FILES["image"]["tmp_name"];
   $uploadPath = "upload-images/" . $photo;
-
+  $designation = $_POST['designation'];
+  $name = $_POST['name'];
   if (move_uploaded_file($photo2, $uploadPath)) {
       echo "Image uploaded successfully! <br>";
       // $sql = "INSERT INTO users (file) VALUES ('$uploadPath')";
       // $sql = "UPDATE portfolio SET file = '$uploadPath' WHERE mobile = '$mobile'";
-      $sql = "INSERT INTO portfolio (file) VALUES ('$uploadPath')";
+    //   $sql = "INSERT INTO staff_gallery (file) VALUES ('$uploadPath')";
+    // $sql = "INSERT INTO staff_gallery (file, designation) VALUES ('$uploadPath', '$designation')";
+    $sql = "INSERT INTO staff_gallery (name, file, designation) VALUES ('$name', '$uploadPath', '$designation')";
       if ($conn->query($sql) === TRUE) {
         echo "Image path saved to database!";
       } else {
@@ -49,38 +53,7 @@ if (isset($_FILES['image'])) {
 
  ?>
 <?php
-
-$updated_name ='';
-$name= $_SESSION["name"];
-$email=  $_SESSION["email"];
-$mobile=   $_SESSION["mobile"];
-$address=  $_SESSION["address"];
-// if(isset($_POST["submit1"])) {
-
-//   $updated_name = mysqli_real_escape_string($conn, $_POST["name"]);
-//   $updated_email = mysqli_real_escape_string($conn, $_POST["email"]);
-//   $mobile = mysqli_real_escape_string($conn, $_POST["mobile"]);
-//   $updated_address = mysqli_real_escape_string($conn, $_POST["address"]);
-//   $check_user = "SELECT * FROM users WHERE mobile = '$mobile'";
-//   $result_user = mysqli_query($conn, $check_user);
-
-//   if(mysqli_num_rows($result_user) > 0) {
-//       // Update the user record (no success/error message)
-//       $query2 = "UPDATE users 
-//                  SET name='$updated_name', email='$updated_email', address='$updated_address',password='123' 
-//                  WHERE mobile='$mobile'";          
-//      if (mysqli_query($conn, $query2))
-//      {
-//       $_SESSION['name'] = $updated_name;
-//       echo"<script> alert('Updation successful') </script>";
-//      }
-//      else
-//      {
-//       echo "Error inserting record: " . mysqli_error($conn);
-//      }
-//   }
-// }
-// ?> 
+?> 
 
 <!doctype html>
 <html lang="en">
@@ -101,7 +74,7 @@ $address=  $_SESSION["address"];
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <h4>Gallery Section</h4>
+          <h4>Update Staff Gallery</h4>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -109,10 +82,10 @@ $address=  $_SESSION["address"];
     <section class="content">
       <div class="container-fluid">
         <div class="row">    
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <div class="card card-info">
               <div class="card-header"style="background-color: rgb(51, 139, 139);">
-                <h3 class="card-title">Update Gallery</h3>
+                <h3 class="card-title">User Profile Photo</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -120,6 +93,20 @@ $address=  $_SESSION["address"];
                 <div class="card-body">
                   <div class="row">
 					    <div class="col-12">
+
+</div>
+<div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">Designation</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="designation" class="form-control" id="name" placeholder="Enter designation" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" >
+                            </div>
+                        </div>
         			     <div  style="text-align: center; margin-top:-15px;"><br>
                    <img src="<?php echo $uploadPath; ?>" width="300" height="200" class="img3" id="profile-img-tag" height="240" width="300">
                           </div>
@@ -131,8 +118,10 @@ $address=  $_SESSION["address"];
 							</label>
 							<div class="col-12 ">
 								<input type="file" name="image" id="profile-img" value="" class="form-control">
+                                <br>
                 <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button>
 							</div>
+
 						</div>
 						 </div>
 						</div> 
@@ -146,7 +135,18 @@ $address=  $_SESSION["address"];
             </div>
             </div>
             
-         
+           
+
+                <div class="card-footer">
+                  <!--<button type="submit" name="update" class="btn btn-primary">Update</button>-->
+                </div>
+              </form>
+            </div>
+            </div>
+            
+          </div>
+        </div>
+     </section>
     
   </div>
 <?php

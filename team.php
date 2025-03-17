@@ -1,3 +1,15 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "beauty";
+$port = 3307;
+$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -113,16 +125,27 @@
 
 						<!-- TEAM MEMBERS WRAPPER -->	
 						<div class="row">
+						<?php
+			$sql = "SELECT * FROM staff_gallery";
+$result = mysqli_query($conn, $sql);
 
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+    //   echo $row['file'];
+	 $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file']; 
+	//   echo '<img src="' . $imagePath . '" width="400" height="400" style="margin:10px;">';
+	
+        ?>		
+			<?php }}?>				
 
 							<!-- TEAM MEMBER #1 -->
 							<div class="col-md-6 col-lg-4">
 								<div class="team-member wow fadeInUp">
-															
+							
 									<!-- Team Member Photo -->
 									<div class="team-member-photo">
 										<div class="hover-overlay"> 
-											<img class="img-fluid" src="images/team-1.jpg" alt="team-member-foto">
+											<img class="img-fluid" src="<?php echo $imagePath ?>" alt="team-member-foto">
 											<div class="item-overlay"></div>
 										</div>
 									</div>
@@ -135,46 +158,46 @@
 										<h5 class="h5-lg">Veronica Aaron</h5>
 
 										<!-- Link -->
-										<p class="tra-link"><a href="artist-details.php">View Profile</a></p>	
+										<!-- <p class="tra-link"><a href="artist-details.php">View Profile</a></p>	 -->
 
 									</div>	
 	
 								</div>									
 							</div>	<!-- END TEAM MEMBER #1 -->
-							
+						
 							
 							<!-- TEAM MEMBER #2 -->
-							<div class="col-md-6 col-lg-4">
-								<div class="team-member wow fadeInUp">
+							<!-- <div class="col-md-6 col-lg-4">
+								<div class="team-member wow fadeInUp"> -->
 															
 									<!-- Team Member Photo -->
-									<div class="team-member-photo">
+									<!-- <div class="team-member-photo">
 										<div class="hover-overlay"> 
 											<img class="img-fluid" src="images/team-2.jpg" alt="team-member-foto">
 											<div class="item-overlay"></div>
 										</div>
-									</div>
+									</div> -->
 												
 									<!-- Team Member Data -->		
-									<div class="team-member-data">	
+									<!-- <div class="team-member-data">	 -->
 
 										<!-- Title -->		
-										<span class="section-id">Salon Manager</span>											
-										<h5 class="h5-lg">Olivia Grosh</h5>
+										<!-- <span class="section-id">Salon Manager</span>											
+										<h5 class="h5-lg">Olivia Grosh</h5> -->
 
 										<!-- Link -->
-										<p class="tra-link"><a href="artist-details.php">View Profile</a></p>	
+										<!-- <p class="tra-link"><a href="artist-details.php">View Profile</a></p>	
 
 									</div>	
 
 								</div>											
-							</div>	<!-- END TEAM MEMBER #2 -->
+							</div>	END TEAM MEMBER #2 -->
 
 
-						</div>	<!-- END TEAM MEMBERS WRAPPER -->	
+						<!-- </div>	END TEAM MEMBERS WRAPPER	 -->
 
 
-					</div>	<!-- END TEAM MEMBERS CATEGORY -->	
+					<!-- </div>	END TEAM MEMBERS CATEGORY	 -->
 
 
 					<hr>	<!-- DIVIDER LINE -->

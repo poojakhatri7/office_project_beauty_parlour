@@ -1,3 +1,17 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "beauty";
+$port = 3307;
+$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -89,10 +103,9 @@
 					</div>
 				</div>	   <!-- End container --> 
 			</section>	<!-- END INNER PAGE TITLE -->
-
-
-
-
+			
+		
+		
 			<!-- GALLERY-1
 			============================================= -->
 			<div id="gallery-1" class="gallery-section division">
@@ -101,7 +114,17 @@
 
 					<!-- IMAGES WRAPPER -->	
 					<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
+					<?php
+			$sql = "SELECT * FROM portfolio";
+$result = mysqli_query($conn, $sql);
 
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+    //   echo $row['file'];
+	 $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file']; 
+	//   echo '<img src="' . $imagePath . '" width="400" height="400" style="margin:10px;">';
+	
+        ?>
 
 						<!-- IMAGE #1 -->
 					  	<div class="col">
@@ -109,13 +132,13 @@
 					  			<div class="hover-overlay"> 
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_01.jpg" alt="gallery-image">			
+									<img class="img-fluid" src=<?php echo $imagePath ?> alt="gallery-image">			
 									<div class="item-overlay"></div>				
 									
 									<!-- Image Zoom -->
 									<div class="image-data">
 										<div class="gallery-link ico-40 color--white">
-											<a class="image-link" href="images/gallery/hair_01.jpg">
+											<a class="image-link" href=<?php echo $imagePath ?>>
 												<span class="flaticon-visibility"></span>
 											</a>
 										</div>																						 
@@ -124,19 +147,19 @@
 						  		</div>
 							</div>
 						</div>
-
+						<?php }}?>
 
 						<!-- IMAGE #2 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_02.jpg" alt="gallery-image">			
-									<div class="item-overlay"></div>				
+									<!-- <img class="img-fluid" src="images/gallery/hair_02.jpg" alt="gallery-image">			
+									<div class="item-overlay"></div>				 -->
 									
 									<!-- Image Zoom -->
-									<div class="image-data">
+									<!-- <div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="image-link" href="images/gallery/hair_02.jpg">
 												<span class="flaticon-visibility"></span>
@@ -146,20 +169,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #3 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_03.jpg" alt="gallery-image">			
-									<div class="item-overlay"></div>				
+									<!-- <img class="img-fluid" src="images/gallery/hair_03.jpg" alt="gallery-image">			
+									<div class="item-overlay"></div>				 -->
 									
 									<!-- Image Zoom -->
-									<div class="image-data gallery-video">
+									<!-- <div class="image-data gallery-video">
 										<div class="gallery-link ico-40 color--white">
 											<a class="video-popup1" href="https://www.youtube.com/embed/SZEflIVnhH8">
 												<span class="flaticon-play"></span>
@@ -169,20 +192,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #4 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_04.jpg" alt="gallery-image">			
+									<!-- <img class="img-fluid" src="images/gallery/hair_04.jpg" alt="gallery-image">			
 									<div class="item-overlay"></div>				
-									
+									 -->
 									<!-- Image Zoom -->
-									<div class="image-data">
+									<!-- <div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="image-link" href="images/gallery/hair_04.jpg">
 												<span class="flaticon-visibility"></span>
@@ -192,20 +215,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #5 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/nail_06.jpg" alt="gallery-image">			
-									<div class="item-overlay"></div>				
+									<!-- <img class="img-fluid" src="images/gallery/nail_06.jpg" alt="gallery-image">			
+									<div class="item-overlay"></div>				 -->
 									
 									<!-- Image Zoom -->
-									<div class="image-data">
+									<!-- <div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="video-popup2" href="https://www.youtube.com/watch?v=7e90gBu4pas">
 												<span class="flaticon-play"></span>
@@ -215,20 +238,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #6 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_06.jpg" alt="gallery-image">			
-									<div class="item-overlay"></div>				
+									<!-- <img class="img-fluid" src="images/gallery/hair_06.jpg" alt="gallery-image">			
+									<div class="item-overlay"></div>				 -->
 									
 									<!-- Image Zoom -->
-									<div class="image-data">
+									<!-- <div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="image-link" href="images/gallery/hair_06.jpg">
 												<span class="flaticon-visibility"></span>
@@ -238,20 +261,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #7 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_07.jpg" alt="gallery-image">			
+									<!-- <img class="img-fluid" src="images/gallery/hair_07.jpg" alt="gallery-image">			
 									<div class="item-overlay"></div>				
-									
+									 -->
 									<!-- Image Zoom -->
-									<div class="image-data">
+									<!-- <div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="image-link" href="images/gallery/hair_07.jpg">
 												<span class="flaticon-visibility"></span>
@@ -261,20 +284,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #8 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_08.jpg" alt="gallery-image">			
+									<!-- <img class="img-fluid" src="images/gallery/hair_08.jpg" alt="gallery-image">			
 									<div class="item-overlay"></div>				
-									
+									 -->
 									<!-- Image Zoom -->
-									<div class="image-data">
+									<!-- <div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="image-link" href="images/gallery/hair_08.jpg">
 												<span class="flaticon-visibility"></span>
@@ -284,20 +307,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #9 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/nail_01.jpg" alt="gallery-image">			
-									<div class="item-overlay"></div>				
+									<!-- <img class="img-fluid" src="images/gallery/nail_01.jpg" alt="gallery-image">			
+									<div class="item-overlay"></div>				 -->
 									
 									<!-- Image Zoom -->
-									<div class="image-data">
+									<!-- <div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="image-link" href="images/gallery/nail_01.jpg">
 												<span class="flaticon-visibility"></span>
@@ -307,20 +330,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #10 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_10.jpg" alt="gallery-image">			
+									<!-- <img class="img-fluid" src="images/gallery/hair_10.jpg" alt="gallery-image">			
 									<div class="item-overlay"></div>				
-									
+									 -->
 									<!-- Image Zoom -->
-									<div class="image-data gallery-video">
+									<!-- <div class="image-data gallery-video">
 										<div class="gallery-link ico-40 color--white">
 											<a class="video-popup2" href="https://www.youtube.com/embed/7e90gBu4pas">
 												<span class="flaticon-play"></span>
@@ -330,20 +353,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #11 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/nail_04.jpg" alt="gallery-image">			
-									<div class="item-overlay"></div>				
+									<!-- <img class="img-fluid" src="images/gallery/nail_04.jpg" alt="gallery-image">			
+									<div class="item-overlay"></div>				 -->
 									
 									<!-- Image Zoom -->
-									<div class="image-data">
+									<!-- <div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="image-link" href="images/gallery/nail_04.jpg">
 												<span class="flaticon-visibility"></span>
@@ -353,20 +376,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #12 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_11.jpg" alt="gallery-image">			
+									<!-- <img class="img-fluid" src="images/gallery/hair_11.jpg" alt="gallery-image">			
 									<div class="item-overlay"></div>				
-									
+									 -->
 									<!-- Image Zoom -->
-									<div class="image-data">
+									<!-- <div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="image-link" href="images/gallery/hair_11.jpg">
 												<span class="flaticon-visibility"></span>
@@ -376,20 +399,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #13 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/nail_02.jpg" alt="gallery-image">			
+									<!-- <img class="img-fluid" src="images/gallery/nail_02.jpg" alt="gallery-image">			
 									<div class="item-overlay"></div>				
-									
+									 -->
 									<!-- Image Zoom -->
-									<div class="image-data">
+									<!-- <div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="image-link" href="images/gallery/nail_02.jpg">
 												<span class="flaticon-visibility"></span>
@@ -399,20 +422,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #14 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_05.jpg" alt="gallery-image">			
-									<div class="item-overlay"></div>				
+									<!-- <img class="img-fluid" src="images/gallery/hair_05.jpg" alt="gallery-image">			
+									<div class="item-overlay"></div>				 -->
 									
 									<!-- Image Zoom -->
-									<div class="image-data gallery-video">
+									<!-- <div class="image-data gallery-video">
 										<div class="gallery-link ico-40 color--white">
 											<a class="video-popup3" href="https://www.youtube.com/embed/0gv7OC9L2s8">
 												<span class="flaticon-play"></span>
@@ -422,20 +445,20 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- IMAGE #15 -->
-					  	<div class="col">
+					  	<!-- <div class="col">
 					  		<div class="gallery-image">
-					  			<div class="hover-overlay"> 
+					  			<div class="hover-overlay">  -->
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="images/gallery/hair_09.jpg" alt="gallery-image">			
-									<div class="item-overlay"></div>				
+									<!-- <img class="img-fluid" src="images/gallery/hair_09.jpg" alt="gallery-image">			
+									<div class="item-overlay"></div>				 -->
 									
 									<!-- Image Zoom -->
-									<div class="image-data color--white">
+									<!-- <div class="image-data color--white">
 										<div class="gallery-link ico-40">
 											<a class="image-link" href="images/gallery/hair_09.jpg">
 												<span class="flaticon-visibility"></span>
@@ -445,7 +468,7 @@
 
 						  		</div>
 							</div>
-						</div>
+						</div> -->
 
 
 					</div>	<!-- END IMAGES WRAPPER -->	

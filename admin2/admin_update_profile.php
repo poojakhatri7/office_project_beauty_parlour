@@ -120,7 +120,7 @@ if(isset($_POST["submit1"])) {
                   <div class="row">
 					    <div class="col-12">
         			     <div  style="text-align: center; margin-top:-15px;"><br>
-                   <img src="<?php echo $uploadPath; ?>" width="300" height="200" class="img3" id="profile-img-tag" hight="240" width="300">
+                   <img src="<?php echo $uploadPath; ?>" width="300" height="200" class="img3" id="profile-img-tag" height="240" width="300">
                           </div>
         			   </div>
 					      <div class="col-12" align="center">
