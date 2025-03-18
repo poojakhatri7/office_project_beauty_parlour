@@ -18,7 +18,6 @@ $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
 ?>
 <?php
 
@@ -27,9 +26,11 @@ if (isset($_POST['submit'])) {
     // $page_title = $_POST['page_title'];  // 'page_title' is used for title input
     // $page_description = $_POST['page_description'];  // 'page_description' is used for description input
     $page_title = mysqli_real_escape_string($conn, $_POST['page_title']);
-    $page_description = mysqli_real_escape_string($conn, $_POST['page_description']);
+    $heading = mysqli_real_escape_string($conn, $_POST['heading']);
+    $text_area = mysqli_real_escape_string($conn, $_POST['text_area']);
+   
     // SQL query to update the data (Not safe - vulnerable to SQL injection)
-    $query = "UPDATE tb_about SET page_title = '$page_title', page_description = '$page_description' WHERE id = 1";
+    $query = "UPDATE tb_about_us SET page_title = '$page_title', heading = '$heading', text_area = '$text_area' WHERE id = 1";
     mysqli_query($conn,$query);
     echo"<script> alert('updated successful') </script>";
     // Execute the query directly
@@ -106,13 +107,34 @@ if (isset($_POST['submit'])) {
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">PAGE TITLE</label>
                     <div class="col-sm-10">
-                      <input type="text" name="page_title" class="form-control" id="inputEmail3" placeholder="ENTER PAGE TITLE">
+                      <input type="text" name="page_title" class="form-control" id="inputEmail3" placeholder="Enter Page Title">
                     </div>
                   </div>
                   <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">HEADING</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="heading" class="form-control" id="inputEmail3" placeholder="Enter Heading of the Description">
+                    </div>
+                  </div>
+                  <!-- <label for="photo">FIRST IMAGE<span class="required"></span>
+							</label>
+							<div class="col-12 ">
+								<input type="file" name="image" id="profile-img" value="" class="form-control"> -->
+                <!-- <br>
+                <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button> -->
+							<!-- </div>
+              <label for="photo">SECOND IMAGE<span class="required"></span>
+							</label>
+							<div class="col-12 ">
+								<input type="file" name="image" id="profile-img" value="" class="form-control"> -->
+                <!-- <br>
+                <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button> -->
+							<!-- </div>
+              <br> -->
+                  <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">PAGE DESCRIPTION</label>
                     <div class="col-sm-10">
-                    <textarea name="page_description" id="editor1" class="form-control" placeholder="ENTER PAGE DESCRIPTION"></textarea>
+                    <textarea name="text_area" id="editor1" class="form-control" placeholder="ENTER PAGE DESCRIPTION"></textarea>
                     </div>
                   </div>
                   <div class="form-group row">

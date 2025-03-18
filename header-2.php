@@ -1,3 +1,15 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "beauty";
+$port = 3307;
+$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
 <header id="header" class="tra-menu navbar-dark white-scroll">
 				<div class="header-wrapper">
 
@@ -49,15 +61,30 @@
 
 								    <!-- SIMPLE NAVIGATION LINK -->
 							    	<!-- <li class="nl-simple" aria-haspopup="true"><a href="pricing-2.php" class="h-link">Services</a></li> -->
+									<?php
+								$sql = "SELECT c_id, c_service FROM category_service"; 
+$result = mysqli_query($conn, $sql);
+?>
 
+<li aria-haspopup="true">
+    <a href="#" class="h-link">Services<span class="wsarrow"></span></a>
+    <ul class="sub-menu">
+        <?php
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<li aria-haspopup="true"><a href="pricing-' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
+			// echo '<li aria-haspopup="true"><a href="pricing">' . htmlspecialchars($row['c_service']) . '</a></li>';
+        }
+        ?>
+    </ul>
+</li>
 
-									<li aria-haspopup="true"><a href="#" class="h-link">Services<span class="wsarrow"></span></a>
+									<!-- <li aria-haspopup="true"><a href="#" class="h-link">Services<span class="wsarrow"></span></a>
 	            						<ul class="sub-menu">
 	            							<li aria-haspopup="true"><a href="pricing-1.php">Hair Services</a></li>
 	            							<li aria-haspopup="true"><a href="pricing-2.php">Beauty Services</a></li>
 											<li aria-haspopup="true"><a href="pricing-3.php">Hands & Feet</a></li>
 						           		</ul>
-								    </li>
+								    </li> -->
 
 								    <!-- DROPDOWN MENU -->
 						        	<!-- <li aria-haspopup="true"><a href="#" class="h-link">Pages <span class="wsarrow"></span></a>

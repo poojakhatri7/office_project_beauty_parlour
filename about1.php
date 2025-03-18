@@ -10,29 +10,46 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT * FROM tb_about_us";
+// Step 2: Execute the query
+// $result = mysqli_query($conn, $sql);
+// // Step 3: Check if the query returned any results
+// if (mysqli_num_rows($result) > 0) {
+//     // Step 4: Fetch the data from the database and display it inside the <h1> tag
+//     while ($row = mysqli_fetch_assoc($result)) {
+//         // Display page title inside an <h1> tag
+// 		$about_sections = [];
+//         // echo "<h1>". $row['page_title'] . "</h1>";
+// 		// $page= $row['page_title'] ;
+// 		// $page_description = $row['page_description'];
+//         // Optionally, you can display the page description or other data below the heading
+//         // echo "<h6>". $row['page_description'] . "</h6>";
+// 		if (mysqli_num_rows($result) > 0) {
+// 			while ($row = mysqli_fetch_assoc($result)) {
+// 				$about_sections[$row['id']] = $row; // Store each row by its ID
+// 			}
+// 		}
+//     }
+// }
+$sql = "SELECT * FROM tb_about";
 $result = mysqli_query($conn, $sql);
+
+$about_sections = []; // Empty array to store data
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-    //   echo $row['file'];
-	//  $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file']; 
-	//   echo '<img src="' . $imagePath . '" width="400" height="400" style="margin:10px;">';
-    // echo "ID: " . $row['page_title'] . "<br>"; // Echo the ID
-    $page_title = $row['page_title'];
-    $heading = $row['heading'];
-    $text_area = $row['text_area'];
-        
-
-    }}
+        $about_sections[$row['id']] = $row; // Store each row by its ID
+    }
+}
+ else {
+    // If no record is found, display a message
+    echo "<p>No record found.</p>";
+}
+ 
 //  echo "<pre>";
 //  print_r($about_sections);
 //  echo "</pre>";
 
 							// Fetch business hours
-
-
-
 $sql = "SELECT * FROM business_hours";
 $result1 = mysqli_query($conn, $sql);
 $business_hours = [];
@@ -289,8 +306,8 @@ $business_hours = [];
 					<div class="col">
 						<div class="page-hero-txt color--white">
 						
-						<h2><?php echo $page_title?></h2>
-						<p></p>	
+						<h2><?php echo $about_sections[1]['page_title'] ?></h2>
+						<p><?php echo $about_sections[1]['page_description']  ?></p>	
 							<!-- <h2>About Demo Studio</h2> -->
 							<!-- <p>Demo salon where you will feel unique and special</p> -->
 						</div>
@@ -318,22 +335,14 @@ $business_hours = [];
 							<div class="ct-03-txt">
 
 								<!-- Section ID -->
-								<span class="section-id"></span>
+								<span class="section-id"><?php echo $about_sections[2]['page_title'] ?></span>
 
 								<!-- Title -->
-								<h2 class="h2-md"><?php echo $heading?></h2>
+								<h2 class="h2-md"><?php echo $about_sections[2]['page_description']  ?></h2>
 
 								<!-- Text -->
-								<!-- <p class="mb-5"><?php echo $text_area?>
-								</p> -->
-                                <p class="mb-5">
-    <?php 
-        $words = explode(" ", $text_area); // Split text into words
-        $limitedText = implode(" ", array_slice($words, 0, 50)); // Get first 30 words
-        echo $limitedText . (count($words) > 40 ? "..." : ""); // Append "..." if text is longer
-    ?>
-</p>
-
+								<p class="mb-5"><?php echo $about_sections[2]['page_content']  ?>
+								</p>
 
 							</div>
 
@@ -363,16 +372,7 @@ $business_hours = [];
 							<div class="ct-03-txt">
 
 								<!-- Text -->
-								<p class="mb-0"><?php 
-                                
-    $words = explode(" ", $text_area); // Split text into words
-    $chunks = array_chunk($words, 50); // Split words into chunks of 30
-
-    $totalChunks = count($chunks);
-    for ($i = 1; $i < $totalChunks; $i++) {
-        echo "<p class='mb-5'>" . implode(" ", $chunks[$i]) . "</p>"; // Print each chunk in a paragraph
-    }
-?>
+								<p class="mb-0"><?php echo $about_sections[2]['page_text'] ?>
 								</p>
 
 							</div>
@@ -401,13 +401,13 @@ $business_hours = [];
 						<div class="txt-block text-center">
 
 							<!-- Section ID -->
-							<span class="section-id">Our Services</span>
+							<span class="section-id"><?php echo $about_sections[3]['page_title'] ?></span>
 
 							<!-- Title -->
-							<h2 class="h2-title">Feel Yourself More Beautiful</h2>
+							<h2 class="h2-title"><?php echo $about_sections[3]['page_description'] ?></h2>
 
 							<!-- Text -->
-							<p class="mb-0"> Embrace your beauty with our expert treatments, designed to enhance your natural features and make you feel radiant. Rediscover your confidence and step out looking and feeling your absolute best with our personalized care and attention.
+							<p class="mb-0"><?php echo $about_sections[3]['page_content'] ?>
 							</p>
 
 						</div>
