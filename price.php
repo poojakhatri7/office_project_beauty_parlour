@@ -172,8 +172,23 @@ $s_name = $row ['s_name'];
 										<!-- PRICING ITEM #1 -->
 										
 										<ul class="pricing-list">
-    <?php
-    $sql = "SELECT * FROM all_services WHERE service_number = 1";
+
+<?php $sql = "SELECT 
+            scs.s_id, 
+            scs.s_name, 
+            scs.description AS subcategory_description, 
+            asv.a_id, 
+            asv.all_service, 
+            asv.price, 
+            asv.description AS service_description
+        FROM sub_category_service scs
+        INNER JOIN all_services asv
+        ON scs.s_id = asv.service_number where  sub_service = $c_id"  ;   
+
+
+
+   
+    // $sql = "SELECT * FROM all_services WHERE service_number = $c_id ";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -190,9 +205,9 @@ $s_name = $row ['s_name'];
                     </div>
                 </div>
                 <!-- Description Below -->
-                <div class="price-txt">
+                <!-- <div class="price-txt">
                     <p><?php echo $row['description']; ?></p>
-                </div>
+                </div> -->
             </li>
     <?php
         }
@@ -200,413 +215,17 @@ $s_name = $row ['s_name'];
     ?>
 </ul>
 
-									<!-- END CUTTING & STYLING -->
-										<!-- MENU ITEM #2 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Men's Haircut</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹45 - ₹92</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #3 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Blow Dry</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>From ₹44</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #4 -->
-										<!-- <li class="pricing-5-item"> -->
-
-											<!-- Title & Price -->
-											<!-- <div class="detail-price">
-												<div class="price-name"><p>Updo/Style</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹75 - ₹164</p></div>
-											</div> -->
-
-											<!-- Description -->
-											<!-- <div class="price-txt">
-												<p>(shampoo not included)</p>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #5 -->
-										<!-- <li class="pricing-5-item"> -->
-
-											<!-- Title & Price -->
-											<!-- <div class="detail-price">
-												<div class="price-name"><p>Child’s Haircut</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹32 - ₹68</p></div>
-											</div> -->
-
-											<!-- Description -->
-											<!-- <div class="price-txt">
-												<p>(12 years old + under)</p>
-											</div> -->
-
-											<?php
-								$sql = "Select * from sub_category_service where s_id = 3";
-$result = mysqli_query($conn,$sql);
-if (mysqli_num_rows($result)>0)
-While ($row = mysqli_fetch_assoc($result))
-{
-$s_name = $row ['s_name'];
-
-?>									
-								
-
-									<!-- PRICING LIST CATEGORY -->
-									<div class="pricing-5-category mt-4 mb-4">
-										<h3><?php echo $s_name ?></h3>
-									</div>
-<?php }?>
-
-									<!-- HAIR COLORING -->
-									<ul class="pricing-list">
-									<?php
-    $sql = "SELECT * FROM all_services WHERE service_number = 3";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
-            <li class="pricing-5-item">
-                <div class="detail-price">
-                    <div class="price-name">
-                        <p><?php echo $row['all_service']; ?></p>
-                    </div>
-                    <div class="price-dots"></div>
-                    <div class="price-number">
-                        <p><?php echo $row['price']; ?></p>
-                    </div>
-                </div>
-                <!-- Description Below -->
-                <div class="price-txt">
-                    <p><?php echo $row['description']; ?></p>
-                </div>
-            </li>
-    <?php
-        }
-    }
-    ?>
-	</ul>
-										<!-- PRICING ITEM #1 -->
-										<!-- <li class="pricing-5-item"> -->
-
-											<!-- Title & Price -->
-											<!-- <div class="detail-price">
-												<div class="price-name"><p>Single Process</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹130 - ₹195</p></div>
-											</div> -->
-
-											<!-- Description -->
-											<!-- <div class="price-txt">
-												<p>(gloss not included)</p>
-											</div>
-
-										</li> -->
-
-										<!-- MENU ITEM #2 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Double Process</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹90 - ₹375</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #3 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Full Head Highlights</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹345 - ₹380</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #4 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Half Head Highlights</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹260 - ₹290</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #5 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Balayage</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹85 - ₹220</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #6 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Color Refresh</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹95 - ₹130</p></div>
-											</div>
-										</li> -->
-
-									</ul>	<!-- END HAIR COLORING -->
-
-
-								</div>
-							</div>	<!-- END PRICING-1 TABLE -->
-
-
-							<!-- PRICING-1 TABLE -->
-							<div class="col-lg-6">
-								<div class="pricing-5-table right-column wow fadeInUp">
-								<?php
-								$sql = "Select * from sub_category_service where s_id = 2";
-$result = mysqli_query($conn,$sql);
-if (mysqli_num_rows($result)>0)
-While ($row = mysqli_fetch_assoc($result))
-{
-$s_name = $row ['s_name'];
-
-?>									
-
-									<!-- PRICING LIST CATEGORY -->
-									<div class="pricing-5-category p5-top mb-4">
-										<h3><?php echo $s_name ?> </h3>
-									</div>
-									<?php }?>
-
-									<!-- HAIR TREATMENTS -->
-									<ul class="pricing-list">
-									<?php
-    $sql = "SELECT * FROM all_services WHERE service_number = 2";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
-            <li class="pricing-5-item">
-                <div class="detail-price">
-                    <div class="price-name">
-                        <p><?php echo $row['all_service']; ?></p>
-                    </div>
-                    <div class="price-dots"></div>
-                    <div class="price-number">
-                        <p><?php echo $row['price']; ?></p>
-                    </div>
-                </div>
-                <!-- Description Below -->
-                <div class="price-txt">
-                    <p><?php echo $row['description']; ?></p>
-                </div>
-            </li>
-    <?php
-        }
-    }
-    ?>
-	</ul>
-
-										<!-- PRICING ITEM #1 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Brazilian Blow Out</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹180 - ₹255</p></div>
-											</div>
-										</li>
-
-										</ul> -->
-										<!-- MENU ITEM #2 -->
-										<!-- <li class="pricing-5-item"> -->
-
-											<!-- Title & Price -->
-											<!-- <div class="detail-price">
-												<div class="price-name"><p>Keratin Complex Express</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹210</p></div>
-											</div> -->
-
-											<!-- Description -->
-											<!-- <div class="price-txt">
-												<p>(Service length 60 minutes)</p>
-											</div>
-
-										</li> -->
-
-										<!-- MENU ITEM #3 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Keratin Complex</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹280 - ₹420</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #4 -->
-										<!-- <li class="pricing-5-item"> -->
-
-											<!-- Title & Price -->
-											<!-- <div class="detail-price">
-												<div class="price-name"><p>Keratin Complex Max</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹350 - ₹495</p></div>
-											</div> -->
-
-											<!-- Description -->
-											<!-- <div class="price-txt">
-												<p>(Includes KC MAX Treatment Spray)</p>
-											</div>
-
-										</li> -->
-
-										<!-- MENU ITEM #5 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Permanent Wave</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹185 - ₹240</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #5 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Hair Gloss</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹40 - ₹55</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #5 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Safe Color Treatment</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹35 - ₹95</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #6 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Hair & Scalp Treatments</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹45 - ₹240</p></div>
-											</div>
-										</li> -->
-
-										<!-- END HAIR TREATMENTS -->
-
-
-									<!-- PRICING LIST CATEGORY -->
-									<?php
-								$sql = "Select * from sub_category_service where s_id = 4";
-$result = mysqli_query($conn,$sql);
-if (mysqli_num_rows($result)>0)
-While ($row = mysqli_fetch_assoc($result))
-{
-$s_name = $row ['s_name'];
-
-?>
-									<div class="pricing-5-category mt-4 mb-4">
-										<h3><?php echo $s_name ?></h3>
-									</div>
-
-									<?php }?>
-									<!-- HAIR EXTENSIONS -->
-									<ul class="pricing-list">
-									<?php
-    $sql = "SELECT * FROM all_services WHERE service_number = 4";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
-            <li class="pricing-5-item">
-                <div class="detail-price">
-                    <div class="price-name">
-                        <p><?php echo $row['all_service']; ?></p>
-                    </div>
-                    <div class="price-dots"></div>
-                    <div class="price-number">
-                        <p><?php echo $row['price']; ?></p>
-                    </div>
-                </div>
-                <!-- Description Below -->
-                <div class="price-txt">
-                    <p><?php echo $row['description']; ?></p>
-                </div>
-            </li>
-    <?php
-        }
-    }
-    ?>
-	</ul>
-									<!-- <ul class="pricing-list"> -->
-
-										<!-- PRICING ITEM #1 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Blowdry with Extensions</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹65 - ₹95</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #2 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Extensions Service</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹110 per hour</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #3 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Keratin Hair Extensions</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹720 - ₹860</p></div>
-											</div>
-										</li> -->
-
-										<!-- MENU ITEM #4 -->
-										<!-- <li class="pricing-5-item">
-											<div class="detail-price">
-												<div class="price-name"><p>Hair Extension Removal</p></div>
-												<div class="price-dots"></div>
-												<div class="price-number"><p>₹85 - ₹275</p></div>
-											</div>
-										</li> -->
-
-									</ul>	<!-- END HAIR EXTENSIONS -->
-
-
-								</div>
-							</div>	<!-- END PRICING-1 TABLE -->
-
-
-						</div>
-					</div>	<!--END  PRICING-1 WRAPPER -->
+	
 
 
 					<!-- BUTTON -->		
-			 		<div class="row">
+			 		<!-- <div class="row">
 			 			<div class="col">
 			 				<div class="more-btn mt-6">
 								<a href="booking.php" class="btn btn--tra-black hover--black">Book Online</a>
 							</div>
-						</div>
-					</div>	<!-- END BUTTON -->	
+						</div> -->
+					<!-- </div>	END BUTTON	 -->
 
 
 				</div>  <!-- End container --> 
