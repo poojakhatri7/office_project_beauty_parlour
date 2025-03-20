@@ -133,18 +133,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <form class="form-horizontal" action="" method= "post">
                 <div class="card-body">
                 <div class="form-group row">
-    <label for="serviceSelect" class="col-sm-2 col-form-label">SELECT SERVICE</label>
+    <label for="serviceSelect" class="col-sm-2 col-form-label"> CATEGORY</label>
     <div class="col-sm-4">
         <select name="service_name" class="form-control" id="service">
-            <option value="">Select a Service</option>
+            <option value="">Select category</option>
         </select>
     </div>
 </div>
 <div class="form-group row">
-    <label for="serviceSelect" class="col-sm-2 col-form-label">SELECT SUB SERVICE</label>
+    <label for="serviceSelect" class="col-sm-2 col-form-label"> SUB CATEGORY</label>
     <div class="col-sm-4">
         <select name="s" class="form-control" id="sub_service">
-            <option value="">Select a Sub Service</option>
+            <option value="">Select Sub category</option>
         </select>
     </div>
 </div>

@@ -145,9 +145,115 @@ $address=  $_SESSION["address"];
               </form>
             </div>
             </div>
-            
-         
-    
+  </div>
+  <div class="container-fluid">
+<div class="card">
+              <div class="card-header">
+                <h5 class="m-0"> Appoitment Details </h5>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(51, 139, 139) ">
+                  <tr>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;">file</th>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Action</th>
+                    <!-- <th>Actions</th> -->
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+//   $sql = "SELECT * FROM tb_appointment";
+// // Step 3: Execute the query
+// $result = mysqli_query($conn, $sql);
+// $count = 0;
+// // Step 4: Check if the query returned any results
+// if (mysqli_num_rows($result) > 0) {
+//     // Step 5: Use a while loop to fetch each row of data
+//     while ($row = mysqli_fetch_assoc($result)) {
+//       $count = $count+1 ;
+//       echo"<tr>
+//       <th scope='row'>".$count."</th> 
+//       <td>".$row['name']."</td>
+//       <td>".$row['email']."</td> 
+//        <td>".$row['date']."</td> 
+//         <td>".$row['prefered_time']."</td> 
+//          <td>".$row['appointment_for']."</td>  
+//         <td> 
+//   <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id={$row["id"]}'>
+
+//     <button style='background-color: rgb(23, 162, 184); color: white; border: none; padding: 5px 10px; cursor: pointer;'>EDIT</button>
+//   </a> 
+//   <a href='/beauty_parlour_management_system/admin2/delete_appointment.php?id={$row["id"]}'>
+//     <button style='background-color: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer;'>DELETE</button>
+//   </a> 
+// </td>
+//  <td>
+//   <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id={$row["id"]}'>
+//       <i class='fas fa-pencil-alt' style='margin-right: 10px; text-decoration: none; border: none; '></i>
+//   </a> 
+//   <a href='/beauty_parlour_management_system/admin2/delete_appointment.php?id={$row["id"]}'>
+//    <i class='fa fa-trash' style='margin-right: 5px; color: red;text-decoration: none; border: none;'></i>
+ 
+//   </a> 
+// </td>
+//     </tr>";
+$sql = "SELECT * FROM portfolio order BY id DESC";
+$result = mysqli_query($conn, $sql);
+$count = 0;
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $count++;
+        ?>
+        <tr>
+            <th scope='row'><?php echo $count; ?></th>
+            <td><?php echo $row['file']; ?></td>
+          
+           
+            <!-- <td> 
+  <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id=<?php echo $row["id"]; ?>'>
+
+    <button style='background-color: rgb(23, 162, 184); color: white; border: none; padding: 5px 10px; '>EDIT</button>
+  </a> 
+  <a href='/beauty_parlour_management_system/admin2/delete_appointment.php?id=<?php echo $row["id"]; ?>'>
+    <button style='background-color: #f44336; color: white; border: none; padding: 5px 10px; '>DELETE</button>
+  </a> 
+</td> -->
+<td>
+    <!-- <div style="display: inline-block; margin-right: 20px;">
+        <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id=<?php echo $row["id"]; ?>'>
+            <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> <!-- Edit icon -->
+        <!-- </a> 
+    </div> --> 
+    <div style="display: inline-block;">
+        <a href='/beauty_parlour_management_system/admin2/delete_appointment.php?id=<?php echo $row["id"]; ?>'>
+            <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
+        </a>
+    </div>
+</td>
+        </tr>
+        <?php
+    }
+} 
+ else {
+    echo "No Appointment found.";
+}
+?>
+
+                  </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
   </div>
 <?php
 include('includes/footer.php');
