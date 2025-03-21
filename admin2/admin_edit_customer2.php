@@ -24,6 +24,11 @@ $totalPrice = $_POST['totalPrice'];
 $discount = $_POST['discount'];
 $totalAfterDiscount = $_POST['totalAfterDiscount'];
 $billing_number = random_int(100000, 999999);
+// echo $billing_number;
+echo "<div style='text-align: center; font-weight: bold;'>$billing_number</div>";
+// echo "<div style='text-align: center; font-weight: bold;'>$selected_services</div>";
+echo "<div style='text-align: center; font-weight: bold;'>" . implode(", ", $selected_services) . "</div>";
+
 //php code
 $appointment_id = $_GET['id'];  // Fetch user_id from the GET method
 $query1 = "UPDATE `tb_appointment` SET name='$name', email='$email',mobile='$mobile',address='$address' WHERE id=$appointment_id";
