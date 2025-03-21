@@ -71,8 +71,9 @@ $result = mysqli_query($conn, $sql);
     <ul class="sub-menu">
         <?php
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<li aria-haspopup="true"><a href="pricing-' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
+            // echo '<li aria-haspopup="true"><a href="pricing-' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
 			// echo '<li aria-haspopup="true"><a href="pricing">' . htmlspecialchars($row['c_service']) . '</a></li>';
+			echo '<li aria-haspopup="true"><a href="pprice.php?c_id=' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
         }
         ?>
     </ul>

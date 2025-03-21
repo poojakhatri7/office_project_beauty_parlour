@@ -151,7 +151,7 @@ if (!$conn) {
 
          
           <li class="nav-item">
-            <a href="#" class="nav-link admin_services nav-link manage_services">
+            <a href="#" class="nav-link admin_services nav-link manage_services add_category admin_services">
             <p><i class="fa fa-magic"></i>
               <p>
                 Services
@@ -187,7 +187,7 @@ if (!$conn) {
               </p>
             </a>
             <li class="nav-item">
-            <a href="/beauty_parlour_management_system/admin2/add_category.php" class="nav-link admin_services">
+            <a href="/beauty_parlour_management_system/admin2/add_category.php" class="nav-link add_category">
               <!-- <i class="nav-icon fas fa-th"></i> -->
               <!-- <i class="fa fa-cogs"></i> -->
                  <!-- <i class="fa fa-plus-circle"></i>  -->

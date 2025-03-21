@@ -227,7 +227,7 @@ if (mysqli_num_rows($result) > 0) {
         <!-- </a> 
     </div> --> 
     <div style="display: inline-block;">
-        <a href='/beauty_parlour_management_system/admin2/delete_appointment.php?id=<?php echo $row["id"]; ?>'>
+        <a href='/beauty_parlour_management_system/admin2/delete_portfolio.php?id=<?php echo $row["id"]; ?>'>
             <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
         </a>
     </div>

@@ -67,7 +67,7 @@ if (isset($_POST['add_sub_category'])) {
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <style type="text/css">
-.admin_services{
+.add_category{
   /* background : #157daf !important; */
   background :rgb(33, 70, 77) !important;
 }
@@ -109,7 +109,9 @@ if (isset($_POST['add_sub_category'])) {
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> DESCRIPTION </label>
                     <div class="col-sm-4">
-                      <input type="text" name="c_description" class="form-control" id="inputPassword3" placeholder=" Description ">
+                      <!-- <input type="text" name="c_description" class="form-control" id="inputPassword3" placeholder=" Description "> -->
+                      <textarea name="c_description" class="form-control" id="inputPassword3" placeholder="Description" rows="4"></textarea>
+
                     </div>
                   </div>
                   <!-- <button type="submit" name="add_category">Add Category</button> -->
@@ -119,19 +121,24 @@ if (isset($_POST['add_sub_category'])) {
 </button>
 </form>
 <hr>
-<form class="form-horizontal" action="" method= "post">
-<?php $category_result = mysqli_query($conn, "SELECT * FROM category_service"); ?>
-                  <div class="form-group row">
-                  <label for="inputPassword3" class="col-sm-2 col-form-label">SELECT</label>
-    <div class="col-sm-4">
-    <select name="c_id" required>
-        <option value="">Select Category</option>
-        <?php while ($row = mysqli_fetch_assoc($category_result)) { ?>
-            <option value="<?= $row['c_id'] ?>"><?= $row['c_service'] ?></option>
-        <?php } ?>
-</div>
-    </select>
-</div>
+
+<form class="form-horizontal" action="" method="post">
+    <?php 
+    $category_result = mysqli_query($conn, "SELECT * FROM category_service"); 
+    ?>
+
+    <div class="form-group row">
+        <label for="c_id" class="col-sm-2 col-form-label">SELECT</label>
+        <div class="col-sm-4">
+            <select name="c_id" id="c_id" class="form-control" required>
+                <option value="">Select Category</option>
+                <?php while ($row = mysqli_fetch_assoc($category_result)) { ?>
+                    <option value="<?= $row['c_id'] ?>"><?= $row['c_service'] ?></option>
+                <?php } ?>
+            </select>
+        </div>
+    </div>
+
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> ADD SUB CATEGORY</label>
                     <div class="col-sm-4">
@@ -141,17 +148,20 @@ if (isset($_POST['add_sub_category'])) {
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> DESCRIPTION </label>
                     <div class="col-sm-4">
-                      <input type="text" name="s_description" class="form-control" id="inputPassword3" placeholder=" Description ">
+                      <!-- <input type="text" name="s_description" class="form-control" id="inputPassword3" placeholder=" Description "> -->
+                      <textarea name="s_description" class="form-control" id="inputPassword3" placeholder="Description" rows="4"></textarea>
+
                     </div>
                   </div>
-                
                 </div>
                 <!-- /.card-body -->
                 <!-- <div class="card-footer"> -->
+                <div class="card-footer">
                 <button type="submit" name="add_sub_category" style="background-color: rgb(51, 139, 139); color: white; 
     border: none; padding: 10px 5px; font-size: 15px; cursor: pointer; border-radius: 7px; font-weight: 500">
     Add Sub Category
 </button>
+                </div>
                   <!-- <button type="submit" name="add_sub_category" class="btn" style="background-color: rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px;  padding: 7px 15px; ">Add Sub Category</button> -->
                   <!-- <button type="submit" class="btn btn-default float-right">Cancel</button> -->
                 <!-- </div> -->
