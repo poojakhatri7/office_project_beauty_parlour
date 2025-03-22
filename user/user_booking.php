@@ -34,7 +34,7 @@ if(mysqli_num_rows($result_appointment) > 0) {
     // $query1 = "UPDATE tb_appointment 
     //            SET name='$name', email='$email', address='$address', date='$date', prefered_time='$preferd_time', appointment_for='$appointment_for' 
     //            WHERE mobile='$mobile'";
-    $query1 = "INSERT INTO tb_appointment values ('','$name','$email','$mobile','$address','$date','$preferd_time','$appointment_for')";
+    $query1 = "INSERT INTO tb_appointment values ('','$name','$email','$mobile','$address','$date','$preferd_time','$appointment_for','')";
    if(mysqli_query($conn, $query1))
    {
     echo"<script> alert('Booking successful') </script>";

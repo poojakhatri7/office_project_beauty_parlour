@@ -56,8 +56,10 @@ if (isset($_POST['add_sub_category'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BEAUTY PARLOUR MANAGEMENT SYSTEM</title>
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>AdminLTE 3 | General Form Elements</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -103,14 +105,14 @@ if (isset($_POST['add_sub_category'])) {
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> ADD CATEGORY</label>
                     <div class="col-sm-4">
-                      <input type="text" name="c_service" class="form-control" id="inputPassword3" placeholder="Category Name">
+                      <input type="text" name="c_service" class="form-control" id="add_category" placeholder="Category Name">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> DESCRIPTION </label>
                     <div class="col-sm-4">
                       <!-- <input type="text" name="c_description" class="form-control" id="inputPassword3" placeholder=" Description "> -->
-                      <textarea name="c_description" class="form-control" id="inputPassword3" placeholder="Description" rows="4"></textarea>
+                      <textarea name="c_description" class="form-control" id="descrption1" placeholder="Description" rows="4"></textarea>
 
                     </div>
                   </div>
@@ -142,14 +144,14 @@ if (isset($_POST['add_sub_category'])) {
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> ADD SUB CATEGORY</label>
                     <div class="col-sm-4">
-                      <input type="text" name="s_name" class="form-control" id="inputPassword3" placeholder="Sub-Category-Name">
+                      <input type="text" name="s_name" class="form-control" id="sub" placeholder="Sub-Category-Name">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> DESCRIPTION </label>
                     <div class="col-sm-4">
                       <!-- <input type="text" name="s_description" class="form-control" id="inputPassword3" placeholder=" Description "> -->
-                      <textarea name="s_description" class="form-control" id="inputPassword3" placeholder="Description" rows="4"></textarea>
+                      <textarea name="s_description" class="form-control" id="description" placeholder="Description" rows="4"></textarea>
 
                     </div>
                   </div>
@@ -169,36 +171,108 @@ if (isset($_POST['add_sub_category'])) {
               </form>
             </div>
 </div>
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Manage Services</title>
-</head>
-<body> -->
+<div class="container-fluid">
+    <!-- First Table: Delete Category -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="m-0"> Delete Category </h5>
+        </div>
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(51, 139, 139)">
+                    <tr>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Service</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Description</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT * FROM category_service ORDER BY c_id DESC";
+                    $result = mysqli_query($conn, $sql);
+                    $count = 0;
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $count++;
+                    ?>
+                            <tr>
+                                <th scope='row'><?php echo $count; ?></th>
+                                <td><?php echo $row['c_service']; ?></td>
+                                <td><?php echo $row['description']; ?></td>
+                                <td>
+                                    <div style="display: inline-block;">
+                                        <a href='/beauty_parlour_management_system/admin2/delete_category.php?id=<?php echo $row["c_id"]; ?>'>
+                                            <i class='fa fa-trash' style='color: red;'></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                    <?php
+                        }
+                    } else {
+                        echo "<tr><td colspan='4' class='text-center text-danger'>No Category Found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<!-- <h2>Add Category</h2>
-<form method="POST">
-    <input type="text" name="c_service" placeholder="Category Name" required>
-    <input type="text" name="c_description" placeholder="Description">
-    <button type="submit" name="add_category">Add Category</button>
-</form> -->
-<!-- 
-<h2>Add Sub-Category</h2>
-<form method="POST">
-    <input type="text" name="s_name" placeholder="Sub-Category Name" required>
-    <input type="text" name="s_description" placeholder="Description">
-    <select name="c_id" required>
-        <option value="">Select Category</option>
-     
-    </select>
-    <button type="submit" name="add_sub_category">Add Sub-Category</button>
-</form> -->
-<!-- 
-</body>
-</html> -->
+    <!-- Second Table: Delete Sub Category -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="m-0"> Delete Sub Category </h5>
+        </div>
+        <div class="card-body">
+            <table id="example2" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(51, 139, 139)">
+                    <tr>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Sub Category</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Description</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Number</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql2 = "SELECT * FROM sub_category_service ORDER BY s_id DESC";
+                    $result2 = mysqli_query($conn, $sql2);
+                    $count2 = 0;
+                    if (mysqli_num_rows($result2) > 0) {
+                        while ($row2 = mysqli_fetch_assoc($result2)) {
+                            $count2++;
+                    ?>
+                            <tr>
+                                <th scope='row'><?php echo $count2; ?></th>
+                                <td><?php echo $row2['s_name']; ?></td>
+                                <td><?php echo $row2['description']; ?></td>
+                                <td><?php echo $row2['sub_service']; ?></td>
+                                <td>
+                                    <div style="display: inline-block;">
+                                        <a href='/beauty_parlour_management_system/admin2/delete_subcategory.php?id=<?php echo $row2["s_id"]; ?>'>
+                                            <i class='fa fa-trash' style='color: red;'></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                    <?php
+                        }
+                    } else {
+                        echo "<tr><td colspan='4' class='text-center text-danger'>No Sub Category Found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
+<!-- DataTable Scripts -->
+
+
+
 <?php
 include('includes/footer.php');
 ?>

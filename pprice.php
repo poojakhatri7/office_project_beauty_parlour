@@ -123,17 +123,25 @@ $description = $row ['description'];
 
 <?php }?>
 
+<!-- <style>
+.dots {
+    flex-grow: 1;  
+    border-bottom: 1px dotted #000; /* Creates dotted effect */
+    margin: 0 10px; /* Small spacing between text and dots */
+    height: 1px; /* Ensures it stays thin */
+    display: inline-block; /* Keeps it in line */
+    width: 50px; /* Limits the dot length */
+    min-width: 50px; /* Ensures consistent width */
+}
+
+	</style> -->
 			<!-- PRICING-5
 			============================================= -->
-            <div class="container pt-8 pricing-5 pricing-section">
+			<div class="container pt-8 pricing-5 pricing-section">
     <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10"> <!-- Adjust width -->
+        <div class="col-lg-8 col-md-10">
             <?php
-            // Get all subcategories for the selected category
-            $sql_subcategories = "SELECT 
-                                    scs.s_id, 
-                                    scs.s_name, 
-                                    scs.description AS subcategory_description
+            $sql_subcategories = "SELECT scs.s_id, scs.s_name, scs.description AS subcategory_description
                                   FROM sub_category_service scs
                                   WHERE scs.sub_service = $c_id"; 
 
@@ -141,37 +149,31 @@ $description = $row ['description'];
 
             if (mysqli_num_rows($result_subcategories) > 0) {
                 while ($subcategory = mysqli_fetch_assoc($result_subcategories)) {
-                    $s_id = $subcategory['s_id']; // Subcategory ID
+                    $s_id = $subcategory['s_id'];
             ?>
-                    <!-- Subcategory Title -->
                     <div class="pricing-5-category mb-4">
                         <h3 class="text-center"><?php echo $subcategory['s_name']; ?></h3>
                         <p class="text-muted text-center"><?php echo $subcategory['subcategory_description']; ?></p>
                     </div>
 
                     <?php
-                    // Get all services related to this subcategory
-                    $sql_services = "SELECT 
-                                        asv.a_id, 
-                                        asv.all_service, 
-                                        asv.price, 
-                                        asv.description AS service_description
-                                    FROM all_services asv
-                                    WHERE asv.service_number = $s_id"; 
+                    $sql_services = "SELECT asv.a_id, asv.all_service, asv.price, asv.description AS service_description
+                                     FROM all_services asv
+                                     WHERE asv.service_number = $s_id"; 
 
                     $result_services = mysqli_query($conn, $sql_services);
 
-                    // Check if services exist for this subcategory
                     if (mysqli_num_rows($result_services) > 0) {
                     ?>
                         <ul class="pricing-list">
                             <?php while ($service = mysqli_fetch_assoc($result_services)) { ?>
-                                <li class="pricing-5-item d-flex justify-content-between align-items-center">
-                                    <div class="price-name">
-                                        <p><?php echo $service['all_service']; ?></p>
+                                <li class="pricing-5-item d-flex justify-content-between align-items-center gap-3">
+                                    <div class="price-name flex-grow-1">
+                                        <p class="mb-0"><?php echo $service['all_service']; ?></p>
                                     </div>
+									<div class="dots"></div> <!-- Dots appear here -->
                                     <div class="price-number">
-                                        <p class="fw-bold"><?php echo $service['price']; ?></p>
+                                        <p class="fw-bold mb-0"><?php echo $service['price']; ?></p>
                                     </div>
                                 </li>
                             <?php } ?>
@@ -189,21 +191,6 @@ $description = $row ['description'];
     </div>
 </div>
 
-
-
-
-					<!-- BUTTON -->		
-			 		<!-- <div class="row">
-			 			<div class="col">
-			 				<div class="more-btn mt-6">
-								<a href="booking.php" class="btn btn--tra-black hover--black">Book Online</a>
-							</div>
-						</div> -->
-					<!-- </div>	END BUTTON	 -->
-
-
-				</div>  <!-- End container --> 
-			</div>	<!-- PRICING-5  -->
 
 
 

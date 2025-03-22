@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p style="color: red; font-weight:700"><?php echo $error; ?></p>
 <?php endif; ?>
 <?php if ($success): ?>
-    <p style="color: green;font-weight:700;"><?php echo $success; ?></p>
+    <p style="color: rgb(51, 139, 139);font-weight:700;"><?php echo $success; ?></p>
 <?php endif; ?>
                             <label for="mobile" class="col-sm-2 col-form-label">Old Password</label>
                             <div class="col-sm-4">

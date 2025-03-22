@@ -20,7 +20,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     // Execute the query and check for success
     if (mysqli_query($conn, $sql1)) {
         // Redirect after successful deletion
-        header("Location: /beauty_parlour_management_system/admin2/admin_appointment.php");
+        header("Location: /beauty_parlour_management_system/user/appointment_history.php");
         exit; // Always call exit after a header redirect
     } else {
         // Show detailed error message if the query fails

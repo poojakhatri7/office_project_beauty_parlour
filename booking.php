@@ -180,21 +180,32 @@ if(isset($_POST["submit"])) {
 				                <div class="col-lg-6">
 				                	<input type="tel" name="address" class="form-control phone" placeholder="Address*" required> 
 				                </div>
+								<?php
+$sql = "SELECT c_id, c_service FROM category_service"; 
+$result = mysqli_query($conn, $sql);
+?>
 
-				                <!-- Form Select -->
-				                <div class="col-lg-6">
-				                	<select name="service" class="form-select service" aria-label="Service Select">
-				                		<option selected>Select Service</option>
-				                      	<option>Hair Cut & Styling</option>
-				                      	<option>Hair Coloring</option>
-				                      	<option>Hair Treatments</option>
-				                      	<option>Hair Extensions</option>
-				                      	<option>Skin Care & Facials</option>
-				                      	<option>Body Waxing</option>
-				                      	<option>Makeup & Eyebrows</option>
-				                      	<option>Manicure & Pedicure</option>
-				                    </select>
-				                </div>
+
+
+   
+        <?php
+        while ($row = mysqli_fetch_assoc($result)) {
+            // echo '<li aria-haspopup="true"><a href="pprice.php?c_id=' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
+        }
+        ?>
+<!-- Form Select -->
+<div class="col-lg-6">
+    <select name="service" class="form-select service" aria-label="Service Select">
+        <option selected>Select Service</option>
+        <?php
+        // Reset the result pointer and fetch again for the select box
+        mysqli_data_seek($result, 0);
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<option value="' . $row['c_service'] . '">' . htmlspecialchars($row['c_service']) . '</option>';
+        }
+        ?>
+    </select>
+</div>
 
 				                <!-- Form Select -->
 				                <div class="col-lg-6">

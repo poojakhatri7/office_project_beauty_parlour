@@ -8,7 +8,59 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "beauty";
+$port = 3307;
+$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
+<?php 
+$error = '';
+$success = '';
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the form data
+    $old_password = mysqli_real_escape_string($conn, $_POST['old_password']);
+    $new_password = mysqli_real_escape_string($conn, $_POST['new_password']);
+    $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
+    
+    // Fetch the current password from the database
+    $mobile = $_SESSION['mobile'];  // Assuming user is logged in and their ID is stored in session
+    $query = "SELECT password FROM admin_login_details WHERE mobile = '$mobile'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
 
+    // Check if the old password is correct
+    if (($old_password==$row['password'])) {
+        // Check if the new password and confirm password match
+        if ($new_password === $confirm_password) {
+            // Password validation (optional, can be customized as needed)
+            if (strlen($new_password) >= 2) {  // Example: New password must be at least 6 characters long
+                // Hash the new password before saving it
+                // $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
+
+                // Update the new password in the database
+                $update_query = "UPDATE admin_login_details SET password = '$new_password' WHERE mobile = '$mobile'";
+                if (mysqli_query($conn, $update_query)) {
+                    $success = "Password updated successfully!";
+                } else {
+                    $error = "Error updating password.";
+                }
+            } else {
+                $error = "New password must be at least 2 characters long.";
+            }
+        } else {
+            $error = "New password and confirm password do not match.";
+        }
+    } else {
+        $error = "Old password is incorrect.";
+    }
+}
+?>
 
 <!doctype html>
 <html lang="en">
@@ -46,12 +98,12 @@ include('includes/sidebar.php');
                     <div class="card-body">
                         <div class="form-group row">
                         <br>
-                        <!-- <?php if ($error): ?>
+                        <?php if ($error): ?>
     <p style="color: red; font-weight:700"><?php echo $error; ?></p>
 <?php endif; ?>
 <?php if ($success): ?>
     <p style="color: green;font-weight:700;"><?php echo $success; ?></p>
-<?php endif; ?> -->
+<?php endif; ?>
                             <label for="mobile" class="col-sm-2 col-form-label">Old Password</label>
                             <div class="col-sm-4">
                                 <input type="text" name="old_password" class="form-control" id="mobile" placeholder="Enter old password" >

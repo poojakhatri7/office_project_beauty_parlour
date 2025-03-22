@@ -20,12 +20,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = (int)$_GET['id']; // Cast the id to an integer for safety
 
     // Prepare the SQL query to delete the record
-    $sql1 = "DELETE FROM all_services WHERE a_id = {$id}";
+    $sql1 = "DELETE FROM category_service WHERE c_id = {$id}";
 
     // Execute the query and check for success
     if (mysqli_query($conn, $sql1)) {
         // Redirect after successful deletion
-        header("Location: /beauty_parlour_management_system/admin2/manage_service.php");
+        header("Location: /beauty_parlour_management_system/admin2/add_category.php");
         exit; // Always call exit after a header redirect
     } else {
         // Show detailed error message if the query fails
@@ -33,5 +33,3 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     }
 } 
 ?>
-
-

@@ -149,7 +149,7 @@ $address=  $_SESSION["address"];
   <div class="container-fluid">
 <div class="card">
               <div class="card-header">
-                <h5 class="m-0"> Appoitment Details </h5>
+                <h5 class="m-0">  Update Gallery</h5>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -164,41 +164,7 @@ $address=  $_SESSION["address"];
                   </thead>
                   <tbody>
                   <?php
-//   $sql = "SELECT * FROM tb_appointment";
-// // Step 3: Execute the query
-// $result = mysqli_query($conn, $sql);
-// $count = 0;
-// // Step 4: Check if the query returned any results
-// if (mysqli_num_rows($result) > 0) {
-//     // Step 5: Use a while loop to fetch each row of data
-//     while ($row = mysqli_fetch_assoc($result)) {
-//       $count = $count+1 ;
-//       echo"<tr>
-//       <th scope='row'>".$count."</th> 
-//       <td>".$row['name']."</td>
-//       <td>".$row['email']."</td> 
-//        <td>".$row['date']."</td> 
-//         <td>".$row['prefered_time']."</td> 
-//          <td>".$row['appointment_for']."</td>  
-//         <td> 
-//   <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id={$row["id"]}'>
 
-//     <button style='background-color: rgb(23, 162, 184); color: white; border: none; padding: 5px 10px; cursor: pointer;'>EDIT</button>
-//   </a> 
-//   <a href='/beauty_parlour_management_system/admin2/delete_appointment.php?id={$row["id"]}'>
-//     <button style='background-color: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer;'>DELETE</button>
-//   </a> 
-// </td>
-//  <td>
-//   <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id={$row["id"]}'>
-//       <i class='fas fa-pencil-alt' style='margin-right: 10px; text-decoration: none; border: none; '></i>
-//   </a> 
-//   <a href='/beauty_parlour_management_system/admin2/delete_appointment.php?id={$row["id"]}'>
-//    <i class='fa fa-trash' style='margin-right: 5px; color: red;text-decoration: none; border: none;'></i>
- 
-//   </a> 
-// </td>
-//     </tr>";
 $sql = "SELECT * FROM portfolio order BY id DESC";
 $result = mysqli_query($conn, $sql);
 $count = 0;
