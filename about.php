@@ -677,7 +677,18 @@ $business_hours = [];
 
 		<!-- WIDE IMAGE
 			============================================= -->
-		
+			<?php
+
+$sql = "SELECT * FROM portfolio order BY id DESC LIMIT 1";
+$result = mysqli_query($conn, $sql);
+$count = 0;
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $count++;
+        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
+
+        ?>
 
 
 
@@ -692,10 +703,13 @@ $business_hours = [];
 					<!-- IMAGE BLOCK -->
 					<div class="col">
 						<div id="ab-5-1" class="about-5-img">
-							<img class="img-fluid" src="images/beauty_02.jpg" alt="about-image">
+							<img class="img-fluid" src="<?php echo $imagePath; ?>" alt="Image" style="width: 500px; height: 500px; object-fit: cover;" >
 						</div>
 					</div>
+					<?php
+	} }
 
+?>
 
 					<!-- TEXT BLOCK -->
 					<div class="col-md-8 col-lg-7 order-first order-md-1">
