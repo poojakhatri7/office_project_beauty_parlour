@@ -150,5 +150,5 @@ $result1 = mysqli_query($conn, $sql);
 
 				</div>	   <!-- End container -->										
 			</footer>
-		
+			<?php mysqli_close($conn); // Close database connection ?>
 		<!-- END FOOTER-1 -->

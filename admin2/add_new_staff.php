@@ -42,7 +42,7 @@ if(isset($_POST["submit"])) {
         echo"<script> alert('updated successfully') </script>";
        }
     } else {
-        $query2 = "INSERT INTO admin_login_details  values ('','$name','$mobile','$email','$address','$password','$role')";
+        $query2 = "INSERT INTO admin_login_details  values ('','$name','$mobile','$email','$address','$password','$role','')";
         if ( mysqli_query($conn, $query2))
         {
             echo"<script> alert('New Staff added Successfully') </script>";

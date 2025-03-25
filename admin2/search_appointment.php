@@ -106,66 +106,70 @@ $sdata=$_POST['searchdata'];
          <th>Time</th>
          <th>Mobile</th>
          <th>Address</th>
-         <th>Action</th>
+         <!-- <th>Action</th> -->
 </thead>
 <tbody>
 <?php
-  $sql = "SELECT * FROM tb_appointment WHERE mobile = '$sdata'";
-  $result = mysqli_query($conn, $sql);
-  $count = 0;
-  $appointment_id = null;  // Initialize variable to store appointment_id
+$sql = "SELECT * FROM tb_appointment WHERE mobile = '$sdata'";
+$result = mysqli_query($conn, $sql);
+$count = 0;
+$appointment_id = null;  // Initialize variable to store appointment_id
 
-  if (mysqli_num_rows($result) > 0) {
-      while ($row = mysqli_fetch_assoc($result)) {
-          $appointment_id = $row['id']; // Store the latest appointment_id
-          $count++;
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $appointment_id = $row['id']; // Store the latest appointment_id
+        $count++;
 ?>
-          <tr>
-              <th scope='row'><?php echo $count; ?></th> 
-              <td><?php echo $row['name']; ?></td>
-              <td><?php echo $row['email']; ?></td> 
-              <td><?php echo $row['date']; ?></td>
-              <td><?php echo $row['prefered_time']; ?></td>  
-              <td><?php echo $row['mobile']; ?></td> 
-              <td><?php echo $row['address']; ?></td>
+        <tr>
+            <th scope='row'><?php echo $count; ?></th> 
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['email']; ?></td> 
+            <td><?php echo $row['date']; ?></td>
+            <td><?php echo $row['prefered_time']; ?></td>  
+            <td><?php echo $row['mobile']; ?></td> 
+            <td><?php echo $row['address']; ?></td>
+
 <?php 
-      }
-  } 
-  if ($appointment_id) { // Ensure appointment_id is available
-      $sql1 = "SELECT  appointment_id FROM tb_selected_services WHERE appointment_id = {$appointment_id}";
-      $result1 = mysqli_query($conn, $sql1);
+    } // Close the while loop here to prevent multiple button iterations
 
-      if (mysqli_num_rows($result1) > 0) {
-          while ($row1 = mysqli_fetch_assoc($result1)) { // Different variable name to prevent overwriting
+    if ($appointment_id) { // Ensure appointment_id is available
+        $sql1 = "SELECT appointment_id FROM tb_selected_services WHERE appointment_id = {$appointment_id}";
+        $result1 = mysqli_query($conn, $sql1);
+
+        if (mysqli_num_rows($result1) > 0) {
+            // Button for invoices
 ?>
-              <td>  
-                  <a href='/beauty_parlour_management_system/admin2/invoice_details2.php?appointment_id=<?php echo $row1["appointment_id"]; ?>'>
-                      <button class='btn' style='background-color:rgb(51, 139, 139); color: white; border: none; padding: 5px 10px; cursor: pointer;'>
-                          <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
-                          View
-                      </button>
-                  </a> 
-              </td>
-<?php              
-          }
-      } else { 
-?>
-          <td>  
-              <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id=<?php echo $appointment_id; ?>'>
-                  <button class='btn' style='background-color:rgb(51, 139, 139); color: white; border: none; padding: 5px 10px; cursor: pointer;'>
-                      <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
-                      View
-                  </button>
-              </a> 
-          </td>
+            <!-- <td>  
+                <a href='/beauty_parlour_management_system/admin2/invoice_details2.php?appointment_id=<?php echo $appointment_id; ?>'>
+                    <button class='btn' style='background-color:rgb(51, 139, 139); color: white; border: none; padding: 5px 10px; cursor: pointer;'>
+                        <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
+                        View
+                    </button>
+                </a> 
+            </td> -->
 <?php
-      }
-  }
-  else {
-    echo "<tr><td colspan='6'  style='color: red; font-weight:700 ;text-align: center;'>No Appointment has been booked from this number</td></tr>";
+        }
+         else 
+        { 
+            // Button for editing customer info
+?>
+            <!-- <td>  
+                <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id=<?php echo $appointment_id; ?>'>
+                    <button class='btn' style='background-color:rgb(51, 139, 139); color: white; border: none; padding: 5px 10px; cursor: pointer;'>
+                        <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
+                        View
+                    </button>
+                </a> 
+            </td> -->
+<?php
+        }
+    }
+} else {
+    echo "<tr><td colspan='8' style='color: red; font-weight:700; text-align: center;'>No Appointment has been booked from this number</td></tr>";
 }
 }
 ?>
+
 </tbody>
 </table>
 <?php

@@ -93,4 +93,5 @@
   });
 </script>
 </body>
+<?php mysqli_close($conn); // Close database connection ?>
 </html>

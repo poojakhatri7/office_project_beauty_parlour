@@ -64,7 +64,7 @@ if (!$conn) {
     <i class="fa fa-user-plus fa-lg" style="margin-right: 2px; color: black; font-size: 14px;"></i>
     <a href="/beauty_parlour_management_system/admin2/admin_add_customer2.php" 
        style="text-decoration: none; color: white; font-size: 14px; font-weight: 700;  margin: 4px 2px;">
-      Add New Customer
+   Add Appointment
     </a>
   </button>
 </ol>

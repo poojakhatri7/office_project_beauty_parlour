@@ -6,4 +6,5 @@
     Developed by <a target="_blank" href="https://tvssolution.in/">TVS SOLUTIONS</a>
     </div>
   </footer>
+  
   <!-- <a href="/beauty_parlour_management_system/" class="nav-link">Home</a> -->

@@ -121,7 +121,7 @@ $address=  $_SESSION["address"];
                   <div class="row">
 					    <div class="col-12">
         			     <div  style="text-align: center; margin-top:-15px;"><br>
-                   <img src="<?php echo $uploadPath; ?>" width="300" height="200" class="img3" id="profile-img-tag" height="240" width="300">
+                   <img src="<?php echo $uploadPath; ?>" width="150" height="150" class="img3" id="profile-img-tag" height="240" width="300">
                           </div>
         			   </div>
 					      <div class="col-12" align="center">
@@ -171,27 +171,15 @@ $count = 0;
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $count++;
+        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
         ?>
         <tr>
             <th scope='row'><?php echo $count; ?></th>
-            <td><?php echo $row['file']; ?></td>
-          
+            <td><img src="<?php echo $imagePath; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
            
-            <!-- <td> 
-  <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id=<?php echo $row["id"]; ?>'>
-
-    <button style='background-color: rgb(23, 162, 184); color: white; border: none; padding: 5px 10px; '>EDIT</button>
-  </a> 
-  <a href='/beauty_parlour_management_system/admin2/delete_appointment.php?id=<?php echo $row["id"]; ?>'>
-    <button style='background-color: #f44336; color: white; border: none; padding: 5px 10px; '>DELETE</button>
-  </a> 
-</td> -->
+           
+    
 <td>
-    <!-- <div style="display: inline-block; margin-right: 20px;">
-        <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id=<?php echo $row["id"]; ?>'>
-            <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> <!-- Edit icon -->
-        <!-- </a> 
-    </div> --> 
     <div style="display: inline-block;">
         <a href='/beauty_parlour_management_system/admin2/delete_portfolio.php?id=<?php echo $row["id"]; ?>'>
             <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
@@ -202,9 +190,7 @@ if (mysqli_num_rows($result) > 0) {
         <?php
     }
 } 
- else {
-    echo "No Appointment found.";
-}
+
 ?>
 
                   </table>

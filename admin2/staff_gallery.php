@@ -108,7 +108,7 @@ if ( isset($_FILES['image']) && isset($_POST['designation'] ) && isset($_POST['n
                             </div>
                         </div>
         			     <div  style="text-align: center; margin-top:-15px;"><br>
-                   <img src="<?php echo $uploadPath; ?>" width="300" height="200" class="img3" id="profile-img-tag" height="240" width="300">
+                   <img src="<?php echo $uploadPath; ?>" width="150" height="150" class="img3" id="profile-img-tag" height="240" width="300">
                           </div>
         			   </div>
 					      <div class="col-12" align="center">
