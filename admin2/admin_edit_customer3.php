@@ -19,7 +19,11 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $mobile = $_POST["mobile"];
     $address = $_POST["address"];
-$selected_services = $_POST["services"];
+ // Convert string to array
+
+    // echo "<pre>";
+    // print_r($selected_services); // Debug: Check if multiple services are received correctly
+    // echo "</pre>";
 $totalPrice = $_POST['totalPrice'];
 $discount = $_POST['discount'];
 $totalAfterDiscount = $_POST['totalAfterDiscount'];
@@ -37,49 +41,110 @@ $billing_number = $prefix . $randomNumber;
 // echo "<div style='text-align: center; font-weight: bold;'>" . implode(", ", $selected_services) . "</div>";
 
 //php code
-$appointment_id = $_GET['id'];  // Fetch user_id from the GET method
-$query1 = "UPDATE `tb_appointment` SET name='$name', email='$email',mobile='$mobile',address='$address' WHERE id=$appointment_id";
-$result = mysqli_query($conn, $query1);  
- if (isset($_POST['services']) && !empty($_POST['services'])) {
-    $selected_services = $_POST['services']; // Array of selected services
-    $N = count($selected_services); // Count number of services
+// $appointment_id = $_GET['id'];  // Fetch user_id from the GET method
+// $query1 = "UPDATE `tb_appointment` SET name='$name', email='$email',mobile='$mobile',address='$address' WHERE id=$appointment_id";
+// $result = mysqli_query($conn, $query1);  
+//  if (isset($_POST['services']) && !empty($_POST['services'])) {
+//     $selected_services = $_POST['services']; // Array of selected services
+//     $N = count($selected_services); // Count number of services
    
-    // echo "You selected $N service(s): ";
-    for ($i = 0; $i < $N; $i++) {
-        $service_name = mysqli_real_escape_string($conn, $selected_services[$i]);
+//     // echo "You selected $N service(s): ";
+//     for ($i = 0; $i < $N; $i++) {
+//         $service_name = mysqli_real_escape_string($conn, $selected_services[$i]);
         
+//         // Fetch service price
+//         $sql = "SELECT price FROM all_services WHERE all_service = '$service_name'";
+//         $result = mysqli_query($conn, $sql);
+        
+//         if ($result && mysqli_num_rows($result) > 0) {
+//             $row = mysqli_fetch_assoc($result);
+//             $service_price = $row['price'];
+           
+//             $insert_sql = "
+//             INSERT INTO tb_selected_services (appointment_id, service_name, service_price,billing_number) 
+//             VALUES ('$appointment_id', '$service_name', '$service_price','$billing_number')";
+//             if(mysqli_query($conn, $insert_sql));
+//             {
+//                 echo "<script>
+//                 alert('Invoice generated');
+               
+//                     window.location.href='admin_invoice.php';
+//             </script>";
+//             }
+           
+//             // echo "<span>$service_name</span> ";
+//         } else {
+//             echo "Service '$service_name' not found in the database.<br>";
+//         }
+//     }
+// } else {
+//     echo "No services selected.";
+// }
+// $sql_insert = "INSERT INTO orders (appointment_id, totalPrice, discount, billing_number, created_at) 
+//                VALUES ({$appointment_id}, {$totalPrice}, {$discount}, {$billing_number}, CURTIME())";
+// $result_insert = mysqli_query($conn, $sql_insert);
+// include "db_connection.php"; // Include database connection
+
+$appointment_id = $_GET['id'];  // Fetch appointment ID from the GET method
+
+// Update tb_appointment table
+$query1 = "UPDATE `tb_appointment` SET name='$name', email='$email', mobile='$mobile', address='$address' WHERE id=$appointment_id";
+$result = mysqli_query($conn, $query1);
+
+// Check if services are selected
+if (isset($_POST['services']) && !empty($_POST['services'])) {
+    $selected_services = $_POST['services']; // Array of selected services
+    $totalPrice = 0; // Initialize total price
+    $selected_services = $_POST["selectedServices"];
+    $selected_services = explode(",", $_POST["selectedServices"]);
+    foreach ($selected_services as $service_name) {
+        $service_name = mysqli_real_escape_string($conn, $service_name);
+
         // Fetch service price
         $sql = "SELECT price FROM all_services WHERE all_service = '$service_name'";
         $result = mysqli_query($conn, $sql);
-        
+
         if ($result && mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             $service_price = $row['price'];
-           
+            $totalPrice += $service_price; // Add price to total
+
+            // Insert into tb_selected_services
             $insert_sql = "
-            INSERT INTO tb_selected_services (appointment_id, service_name, service_price,billing_number) 
-            VALUES ('$appointment_id', '$service_name', '$service_price','$billing_number')";
-            if(mysqli_query($conn, $insert_sql));
-            {
-                echo "<script>
-                alert('Invoice generated');
-               
-                    window.location.href='admin_invoice.php';
-            </script>";
+            INSERT INTO tb_selected_services (appointment_id, service_name, service_price, billing_number) 
+            VALUES ('$appointment_id', '$service_name', '$service_price', '$billing_number')";
+            
+            if (!mysqli_query($conn, $insert_sql)) {
+                echo "Error inserting service: " . mysqli_error($conn);
             }
-           
-            // echo "<span>$service_name</span> ";
         } else {
             echo "Service '$service_name' not found in the database.<br>";
         }
     }
+    // Insert into orders table
+    $discount = $_POST['discount'];
+    // $billing_number = $_POST['billing_number'];
+    $totalAfterDiscount = $totalPrice - ($totalPrice * ($discount / 100));
+
+    $sql_insert = "INSERT INTO orders (appointment_id, totalPrice, discount, billing_number, created_at) 
+                   VALUES ('$appointment_id', '$totalPrice', '$discount', '$billing_number', NOW())";
+
+    if (mysqli_query($conn, $sql_insert)) {
+        echo "<script>
+            alert('Invoice generated successfully');
+            window.location.href='admin_invoice.php';
+        </script>";
+    } else {
+        echo "Error inserting into orders: " . mysqli_error($conn);
+    }
 } else {
     echo "No services selected.";
 }
-$sql_insert = "INSERT INTO orders (appointment_id, totalPrice, discount, billing_number, created_at) 
-               VALUES ({$appointment_id}, {$totalPrice}, {$discount}, {$billing_number}, CURTIME())";
-$result_insert = mysqli_query($conn, $sql_insert);
-}
+
+// mysqli_close($conn); // Close database connection
+
+
+ }
 
 $sql = "SELECT * FROM tb_appointment WHERE id={$id}";
 // Step 3: Execute the query
@@ -270,7 +335,7 @@ $(document).ready(function () {
     // Function to load service categories
     function loadServices() {
         $.ajax({
-            url: "load_appointment_service.php",
+            url: "load_appointment_service1.php",
             type: "POST",
             data: { request_type: "service_data" },
             success: function (data) {
@@ -282,7 +347,7 @@ $(document).ready(function () {
     // Function to load sub-services based on selected category
     function loadSubServices(service_id) {
         $.ajax({
-            url: "load_appointment_service.php",
+            url: "load_appointment_service1.php",
             type: "POST",
             data: { request_type: "sub_service_data", id: service_id },
             success: function (data) {
@@ -308,7 +373,7 @@ $(document).ready(function () {
     $("#sub_service").on("change", function () {
         var sub_service = $(this).val();
         $.ajax({
-            url: "load_appointment_service.php",
+            url: "load_appointment_service1.php",
             type: "POST",
             data: { sub_service: sub_service },
             success: function (response) {
@@ -324,23 +389,45 @@ $(document).ready(function () {
 
 });
 </script>
-<h3>Selected Services:</h3>
+<!-- <h3>Selected Services:</h3>
   <div id="selectedServices"></div>
   <div id="totalPrice" name="totalPrice" style="font-weight: bold; margin-top: 20px;">Total: Rs 0.00</div>
   <div class="form-group">
     <label for="discount" style="display: inline-block; width: 200px;">Enter discount percentage </label>
     <input type="number"  id="discount" name="discount" class="form-control d-inline-block" style="width: calc(30% - 100px);" placeholder="Enter discount amount">
 </div>
-<div id="totalAfterDiscount" name="totalAfterDiscount" style="font-weight: bold; margin-top: 20px;">Total after discount: Rs 0.00</div>
+<div id="totalAfterDiscount" name="totalAfterDiscount" style="font-weight: bold; margin-top: 20px;">Total after discount: Rs 0.00</div> -->
  <!-- Hidden inputs for storing total and selected services -->
 
- <input type="hidden" id="hiddenTotalPrice" name="totalPrice">
+ <!-- <input type="hidden" id="hiddenTotalPrice" name="totalPrice">
 
-    <input type="hidden" id="hiddenDiscountedPrice" name="totalAfterDiscount">
+    <input type="hidden" id="hiddenDiscountedPrice" name="totalAfterDiscount"> -->
 <!-- Button section for adding and cancelling -->
- 
+<h3>Selected Services:</h3>
+<div id="selectedServices"></div>
+
+<!-- Display total price -->
+<div id="totalPrice" style="font-weight: bold; margin-top: 20px;">Total: Rs 0.00</div>
+
+<!-- Discount input field -->
+<div class="form-group">
+    <label for="discount" style="display: inline-block; width: 200px;">Enter discount percentage</label>
+    <input type="number" id="discount" name="discount" class="form-control d-inline-block" 
+        style="width: calc(30% - 100px);" placeholder="Enter discount amount">
+</div>
+
+<!-- Display total after discount -->
+<div id="totalAfterDiscount" style="font-weight: bold; margin-top: 20px;">Total after discount: Rs 0.00</div>
+
+<!-- Hidden inputs for storing values before form submission -->
+<input type="hidden" id="hiddenTotalPrice" name="totalPrice">
+<input type="hidden" id="hiddenDiscountedPrice" name="totalAfterDiscount">
+
+<!-- ✅ New hidden input for selected services -->
+<input type="hidden" id="hiddenSelectedServices" name="selectedServices">
+
 <div class="card-footer">
-<button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 20px;  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; " ">Book</button>
+<button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 20px;  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; ">Book</button>
   <button type="submit" class="btn btn-default float-right">Cancel</button>
 </div>
                 <!-- /.card-footer -->
@@ -350,98 +437,90 @@ $(document).ready(function () {
               }  ?>
             </div>
 </div>
-
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const selectedServicesDiv = document.getElementById("selectedServices");
-    const totalPriceDiv = document.getElementById("totalPrice");
-    const discountInput = document.getElementById("discount");
-    const totalAfterDiscountDiv = document.getElementById("totalAfterDiscount");
-
-    const hiddenTotalPriceInput = document.getElementById("hiddenTotalPrice");
-    const hiddenDiscountedPriceInput = document.getElementById("hiddenDiscountedPrice");
+$(document).ready(function () {
+    let selectedServices = new Map(); // Store selected services
 
     function updateSelectedServices() {
         let totalPrice = 0;
-        const selectedServiceIds = new Set();
+        let selectedServiceArray = [];
+        $("#selectedServices").empty(); // Clear previous list
 
-        document.querySelectorAll(".service-checkbox:checked").forEach((checkbox) => {
-            const serviceId = checkbox.value;
-            const serviceName = checkbox.dataset.name;
-            const servicePrice = parseFloat(checkbox.dataset.price);
-            let serviceDiv = document.getElementById(`service-${serviceId}`);
+        selectedServices.forEach((service, serviceName) => {
+            totalPrice += service.price;
+            selectedServiceArray.push(serviceName); // Collect all services
 
-            selectedServiceIds.add(serviceId); // Track selected service
+            let serviceDiv = $(`
+                <div>
+                    ${serviceName} (Rs ${service.price.toFixed(2)}) 
+                    <button class="remove-service" data-service="${serviceName}" style="color: red; border: none; background: none; cursor: pointer;">✖</button>
+                </div>
+            `);
 
-            if (!serviceDiv) {
-                // Create a container for the selected service
-                serviceDiv = document.createElement("div");
-                serviceDiv.id = `service-${serviceId}`;
-                serviceDiv.style.marginBottom = "5px";
-
-                // Display service name and price
-                const serviceText = document.createElement("span");
-                serviceText.textContent = `${serviceName} (Rs ${servicePrice.toFixed(2)})`;
-                serviceDiv.appendChild(serviceText);
-
-                // Create delete button
-                const deleteButton = document.createElement("button");
-                deleteButton.innerHTML = '<i class="fas fa-times"></i>';
-                deleteButton.style.marginLeft = "10px";
-                deleteButton.style.color = "red";
-                deleteButton.style.border = "none";
-                deleteButton.style.background = "transparent";
-                deleteButton.style.cursor = "pointer";
-                deleteButton.style.fontSize = "16px";
-
-                // Remove service when delete button is clicked
-                deleteButton.addEventListener("click", function () {
-                    checkbox.checked = false; // Uncheck the checkbox
-                    serviceDiv.remove(); // Remove from UI
-                    updateSelectedServices(); // Refresh total price
-                });
-
-                serviceDiv.appendChild(deleteButton);
-                selectedServicesDiv.appendChild(serviceDiv);
-            }
-
-            totalPrice += servicePrice; // Add selected service price
+            $("#selectedServices").append(serviceDiv);
         });
+        console.log("Selected Services:");
+    selectedServices.forEach((service, serviceName) => {
+        console.log(`${serviceName}`);
+    });
 
-        // Ensure total price only accounts for selected services
-        totalPrice = Array.from(selectedServiceIds).reduce((sum, serviceId) => {
-            const checkbox = document.querySelector(`.service-checkbox[value="${serviceId}"]`);
-            return checkbox ? sum + parseFloat(checkbox.dataset.price) : sum;
-        }, 0);
+        // ✅ Correctly update hidden input (store all selected services, not just the last one)
+        $("#hiddenSelectedServices").val(selectedServiceArray.join(",")); 
 
-        // Update total price
-        totalPriceDiv.textContent = `Total: Rs ${totalPrice.toFixed(2)}`;
-        hiddenTotalPriceInput.value = totalPrice.toFixed(2);
+        // ✅ Update total price
+        $("#totalPrice").text(`Total: Rs ${totalPrice.toFixed(2)}`);
+        $("#hiddenTotalPrice").val(totalPrice.toFixed(2));
 
-        // Update total after discount
+        // ✅ Update total after discount
         updateTotalAfterDiscount(totalPrice);
     }
 
     function updateTotalAfterDiscount(totalPrice) {
-        const discountValue = parseFloat(discountInput.value) || 0;
-        const discountAmount = (totalPrice * discountValue) / 100;
-        const finalPrice = totalPrice - discountAmount;
+        let discountValue = parseFloat($("#discount").val()) || 0;
+        let finalPrice = totalPrice - (totalPrice * discountValue / 100);
 
-        totalAfterDiscountDiv.textContent = `Total after discount: Rs ${finalPrice.toFixed(2)}`;
-        hiddenDiscountedPriceInput.value = finalPrice.toFixed(2);
+        $("#totalAfterDiscount").text(`Total after discount: Rs ${finalPrice.toFixed(2)}`);
+        $("#hiddenDiscountedPrice").val(finalPrice.toFixed(2));
     }
 
-    // Listen for checkbox changes dynamically
-    document.addEventListener("change", function (event) {
-        if (event.target.classList.contains("service-checkbox")) {
-            updateSelectedServices();
+    // ✅ Event Delegation: Handle checkbox changes (for dynamically loaded checkboxes)
+    $(document).on("change", ".service-checkbox", function () {
+        let serviceName = $(this).val();
+        let servicePrice = parseFloat($(this).data("price"));
+
+        if ($(this).is(":checked")) {
+            selectedServices.set(serviceName, { price: servicePrice });
+        } else {
+            selectedServices.delete(serviceName);
         }
+
+        updateSelectedServices();
     });
 
-    // Listen for discount input changes
-    discountInput.addEventListener("input", function () {
-        const totalPrice = parseFloat(hiddenTotalPriceInput.value) || 0;
-        updateTotalAfterDiscount(totalPrice);
+    // ✅ Remove service from list when clicking the "✖" button
+    $(document).on("click", ".remove-service", function () {
+        let serviceName = $(this).data("service");
+        selectedServices.delete(serviceName);
+
+        // Uncheck the corresponding checkbox
+        $(`.service-checkbox[value="${serviceName}"]`).prop("checked", false);
+
+        updateSelectedServices();
+    });
+
+    // ✅ Update total when discount is applied
+    $("#discount").on("input", function () {
+        updateTotalAfterDiscount(parseFloat($("#hiddenTotalPrice").val()) || 0);
+    });
+
+    // ✅ Handle AJAX request completion
+    $(document).ajaxComplete(function () {
+        $(".service-checkbox").each(function () {
+            if (selectedServices.has($(this).val())) {
+                $(this).prop("checked", true);
+            }
+        });
+        updateSelectedServices();
     });
 });
 </script>

@@ -64,7 +64,7 @@ if (!$conn) {
     <!-- <a href="/beauty_parlour_management_system/admin2/admin_add_customer2.php"  -->
     <a href="#" class="text-white mx-1" data-toggle="modal" data-target="#modal-default" 
        style="text-decoration: none; color:  rgb(238, 230, 217) !important; font-size: 14px; font-weight: 700;  margin: 4px 2px;">
-      Add New Customer
+      Add Appointment
     </a>
   </button>
   <div class="modal fade" id="modal-default">

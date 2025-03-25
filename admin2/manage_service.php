@@ -45,7 +45,11 @@ include 'db_connection.php';
       <ol class="breadcrumb float-sm-right">
       <button class="btn" style="background-color:rgb(51, 139, 139);border: none; cursor: pointer;  padding: 7px 7px;">
     <i class="fa fa-magic" style="margin-right: 2px; color: black; font-size: 14px;"></i>
-    <a href="#" class="text-white mx-1" data-toggle="modal" data-target="#modal-default"
+    <!-- <a href="#" class="text-white mx-1" data-toggle="modal" data-target="#modal-default"
+       style="text-decoration: none; color: black; font-size: 14px; font-weight: 650;  margin: 4px 2px;">
+      Add Services
+    </a> -->
+    <a href="/beauty_parlour_management_system/admin2/admin_services2.php" class="text-white mx-1" 
        style="text-decoration: none; color: black; font-size: 14px; font-weight: 650;  margin: 4px 2px;">
       Add Services
     </a>

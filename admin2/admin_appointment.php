@@ -65,7 +65,7 @@ include 'db_connection.php';
     <!-- <a href="/beauty_parlour_management_system/admin2/admin_add_customer2.php"  -->
     <a href="#" class="text-white mx-1" data-toggle="modal" data-target="#modal-default" 
        style="text-decoration: none; color:  rgb(238, 230, 217) !important; font-size: 14px; font-weight: 700;  margin: 4px 2px;">
-      Add New Customer
+     New Appointment
     </a>
   </button>
   <div class="modal fade" id="modal-default">
@@ -206,7 +206,7 @@ if (mysqli_num_rows($result) > 0) {
 </td> -->
 <td>
     <div style="display: inline-block; margin-right: 20px;">
-        <a href='/beauty_parlour_management_system/admin2/admin_edit_customer2.php?id=<?php echo $row["id"]; ?>'>
+        <a href='/beauty_parlour_management_system/admin2/admin_edit_customer3.php?id=<?php echo $row["id"]; ?>'>
             <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> <!-- Edit icon -->
         </a> 
     </div>
