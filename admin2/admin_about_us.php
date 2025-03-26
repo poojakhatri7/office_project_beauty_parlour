@@ -20,6 +20,50 @@ if (!$conn) {
 }
 ?>
 <?php
+if (isset($_FILES['image'])) {
+
+  $photo = $_FILES["image"]["name"];
+  $photo2 = $_FILES["image"]["tmp_name"];
+  $uploadPath = "upload-images/" . $photo;
+
+  if (move_uploaded_file($photo2, $uploadPath)) {
+      // echo "Image uploaded successfully! <br>";
+      // $sql = "INSERT INTO users (file) VALUES ('$uploadPath')";
+      $sql = "UPDATE tb_about_us SET file1 = '$uploadPath' WHERE id = 1";
+      if ($conn->query($sql) === TRUE) {
+        echo "Image ";
+      } else {
+          echo "Error saving to database: " . $conn->error;
+      }
+    } else {
+      echo "Failed to upload image.";
+  } 
+}
+ ?>
+ <?php
+
+if (isset($_FILES['image1'])) {
+ 
+  $photo = $_FILES["image1"]["name"];
+  $photo2 = $_FILES["image1"]["tmp_name"];
+  $uploadPath = "upload-images/" . $photo;
+
+  if (move_uploaded_file($photo2, $uploadPath)) {
+      // echo "Image uploaded successfully! <br>";
+      // $sql = "INSERT INTO users (file) VALUES ('$uploadPath')";
+      $sql = "UPDATE tb_about_us SET file2 = '$uploadPath' WHERE id = 1";
+      if ($conn->query($sql) === TRUE) {
+        echo "Image ";
+      } else {
+          echo "Error saving to database: " . $conn->error;
+      }
+    } else {
+      echo "Failed to upload image.";
+  } 
+}
+
+ ?>
+<?php
 
 if (isset($_POST['submit'])) {
     // Get the form data
@@ -41,8 +85,6 @@ if (isset($_POST['submit'])) {
     // }
 }
 ?>
-
-
 <html lang="en"> 
   <head>
     <meta charset="utf-8">
@@ -69,20 +111,15 @@ if (isset($_POST['submit'])) {
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
+   
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">About Us</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <!-- <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/beauty_parlour_management_system/">Home</a></li>
-             
-            </ol> -->
-          </div><!-- /.col -->
+          <h4>About Us</h4>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+    <!-- /.content-header -->
+    <section class="content">
     <div class="container-fluid">
     <!-- <form class ="" action="" method= "post" >
     <h3>UPDATE ABOUT US </h3>
@@ -97,64 +134,102 @@ if (isset($_POST['submit'])) {
   <button type="submit" name="submit"class="btn btn-primary">UPDATE</button>
 </form> -->
 <div class="card card-info">
-              <div class="card-header"style="background-color: rgb(51, 139, 139);">
-                <h3 class="card-title">UPDATE ABOUT US</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form class="form-horizontal" action="" method= "post">
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">PAGE TITLE</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="page_title" class="form-control" id="inputEmail3" placeholder="Enter Page Title">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">HEADING</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="heading" class="form-control" id="inputEmail3" placeholder="Enter Heading of the Description">
-                    </div>
-                  </div>
-                  <!-- <label for="photo">FIRST IMAGE<span class="required"></span>
-							</label>
-							<div class="col-12 ">
-								<input type="file" name="image" id="profile-img" value="" class="form-control"> -->
-                <!-- <br>
-                <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button> -->
-							<!-- </div>
-              <label for="photo">SECOND IMAGE<span class="required"></span>
-							</label>
-							<div class="col-12 ">
-								<input type="file" name="image" id="profile-img" value="" class="form-control"> -->
-                <!-- <br>
-                <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button> -->
-							<!-- </div>
-              <br> -->
-                  <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">PAGE DESCRIPTION</label>
-                    <div class="col-sm-10">
-                    <textarea name="text_area" id="editor1" class="form-control" placeholder="ENTER PAGE DESCRIPTION"></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                      <div class="form-check">
-                      </div>
-                    </div>
-                  </div>
+    <div class="card-header" style="background-color: rgb(51, 139, 139);">
+        <h3 class="card-title">Update Image </h3>
+    </div>
+    <!-- /.card-header -->
+
+    <!-- form start -->
+    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+        <div class="card-body">
+            <div class="form-group row">
+                <label for="image1" class="col-sm-2 col-form-label"> IMAGE-1</label>
+                <div class="col-sm-10">
+                    <input type="file" name="image" id="image1" class="form-control">
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <!-- <button type="submit" name="submit" class="btn btn-info">Upadte</button> -->
-                  <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 15px; ">Update</button>
-                  <button type="submit" class="btn btn-default float-right">Cancel</button>
-                </div>
-                <!-- /.card-footer -->
-              </form>
             </div>
+            <div class="form-group row">
+                <label for="image2" class="col-sm-2 col-form-label"> IMAGE-2</label>
+                <div class="col-sm-10">
+                    <input type="file" name="image1" id="image2" class="form-control">
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+
+         <div class="card-footer">
+            <button type="submit" name="submit1" class="btn" style="background-color:rgb(51, 139, 139);color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 15px;">Update Images</button>
+            <button type="reset" class="btn btn-default float-right">Cancel</button>
+        </div>
+        <!-- /.card-footer  -->
+    </form>
 </div>
+<div class="card card-info">
+    <div class="card-header" style="background-color: rgb(51, 139, 139);">
+        <h3 class="card-title">UPDATE ABOUT US</h3>
+    </div>
+    <!-- /.card-header -->
+    <?php
+
+$sql = "SELECT * FROM tb_about_us WHERE id = 1";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+       
+        $title = $row['page_title'];
+		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
+
+        ?>
+  
+    <!-- form start -->
+    <form class="form-horizontal" action="" method="post">
+        <div class="card-body">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">PAGE TITLE</label>
+                <div class="col-sm-10">
+                    <input type="text" name="page_title" class="form-control" id="inputEmail3" placeholder="Enter Page Title">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">HEADING</label>
+                <div class="col-sm-10">
+                    <input type="text" name="heading" class="form-control" id="inputEmail3" placeholder="Enter Heading of the Description">
+                </div>
+            </div>
+            <!-- <div class="form-group row">
+                <label for="image1" class="col-sm-2 col-form-label"> IMAGE-1</label>
+                <div class="col-sm-10">
+                    <input type="file" name="image1" id="image1" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="image2" class="col-sm-2 col-form-label"> IMAGE-2</label>
+                <div class="col-sm-10">
+                    <input type="file" name="image2" id="image2" class="form-control">
+                </div>
+            </div> -->
+
+            <div class="form-group row">
+                <label for="editor1" class="col-sm-2 col-form-label">PAGE DESCRIPTION</label>
+                <div class="col-sm-10">
+                    <textarea name="text_area" id="editor1" class="form-control" placeholder="ENTER PAGE DESCRIPTION"></textarea>
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+            <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); color:  rgb(238, 230, 217);font-weight: 500; font-size: 16px; padding: 7px 15px;">Update</button>
+            <button type="reset" class="btn btn-default float-right">Cancel</button>
+        </div>
+        <!-- /.card-footer -->
+    </form>
+</div>
+
+
 <script> CKEDITOR.replace('editor1');</script>
+<?php }} ?>
 </body>
 </html>
 <?php

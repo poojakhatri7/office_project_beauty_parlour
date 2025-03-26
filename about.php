@@ -335,12 +335,27 @@ $business_hours = [];
 </p>
 
 
+
+<?php
+
+$sql = "SELECT * FROM tb_about_us";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      
+        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file1'];
+		$imagePath1 = "/beauty_parlour_management_system/admin2/" . $row['file2'];
+		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
+
+        ?>
+
 							</div>
 
 
 							<!-- IMAGE -->
 							<div class="ct-03-img">
-								<img class="img-fluid" src="images/beauty_08.jpg" alt="content-image">
+								<img class="img-fluid" src="<?php echo $imagePath; ?>" alt="Image" style="width: 600px; height: 500px; object-fit: cover;" alt="content-image">
 							</div>
 
 
@@ -355,10 +370,10 @@ $business_hours = [];
 
 							<!-- IMAGE -->
 							<div class="ct-03-img mb-5">
-								<img class="img-fluid" src="images/salon_04.jpg" alt="content-image">
+								<img class="img-fluid" src="<?php echo $imagePath1; ?>" alt="Image" style="width: 600px; height: 500px; object-fit: cover;" alt="content-image" alt="content-image">
 							</div>
 
-
+							<?php } } ?>
 							<!-- TEXT -->
 							<div class="ct-03-txt">
 
@@ -710,6 +725,18 @@ if (mysqli_num_rows($result) > 0) {
 	} }
 
 ?>
+<?php
+
+$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
+$result = mysqli_query($conn, $sql);
+$count = 0;
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $count++;
+        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
+
+        ?>
 
 					<!-- TEXT BLOCK -->
 					<div class="col-md-8 col-lg-7 order-first order-md-1">
@@ -726,17 +753,33 @@ if (mysqli_num_rows($result) > 0) {
 
 							<!-- Image -->
 							<div id="ab-5-2" class="about-5-img">
-								<img class="img-fluid" src="images/beauty_03.jpg" alt="about-image">
+								<img class="img-fluid" src="<?php echo $imagePath; ?>" alt="Image" style="width: 500px; height: 500px; object-fit: cover;" alt="about-image">
 							</div>
 
 						</div>
 					</div> <!-- END TEXT BLOCK -->
 
+					<?php
+	} }
+
+?>
+<?php
+
+$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 2";
+$result = mysqli_query($conn, $sql);
+$count = 0;
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $count++;
+        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
+
+        ?>
 
 					<!-- IMAGE BLOCK -->
 					<div class="col order-last order-md-2">
 						<div id="ab-5-3" class="about-5-img">
-							<img class="img-fluid" src="images/beauty_04.jpg" alt="about-image">
+							<img class="img-fluid" src="<?php echo $imagePath; ?>" alt="Image" style="width: 500px; height: 500px; object-fit: cover;" alt="about-image" alt="about-image">
 						</div>
 					</div>
 
@@ -744,7 +787,10 @@ if (mysqli_num_rows($result) > 0) {
 				</div> <!-- End row -->
 			</div> <!-- End container -->
 		</section> <!-- END ABOUT-5 -->
+		<?php
+	} }
 
+?>
 
 
 

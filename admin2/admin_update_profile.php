@@ -45,7 +45,6 @@ if (isset($_FILES['image'])) {
       echo "Failed to upload image.";
   } 
 }
-
  ?>
 <?php
 

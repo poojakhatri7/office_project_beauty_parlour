@@ -234,7 +234,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
 {
 ?>
           <li class="nav-item">
-            <a href="#" class="nav-link staff_details staff update_profile">
+            <a href="#" class="nav-link staff_details staff ">
               <!-- <i class="nav-icon fas fa-copy"></i> -->
               <!-- <i class="fa fa-file-invoice"></i> -->
               <!-- <i class="fa fa-id-badge"></i> -->
@@ -253,7 +253,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/beauty_parlour_management_system/admin2/staff_gallery.php" class="nav-link update_profile">
+                <a href="/beauty_parlour_management_system/admin2/staff_gallery.php" class="nav-link ">
                   <!-- <i class="fa fa-info-circle"></i> -->
                   <!-- <i class="fa fa-user-plus"></i> -->
                   <i class="fa fa-image"></i> 

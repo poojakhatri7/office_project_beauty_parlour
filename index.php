@@ -93,7 +93,7 @@
 								<h2>Unleash your beauty with Demo Beauty Studio</h2>
 
 								<!-- Button -->
-								<a href="pricing-1" class="btn btn--tra-white hover--white">View Salon Menu</a>
+								<a href="pprice.php?c_id=1" class="btn btn--tra-white hover--white">View Salon Menu</a>
 
 							</div>
 						</div>	
@@ -274,7 +274,7 @@
 			 		<div class="row">
 			 			<div class="col">
 			 				<div class="more-btn">
-								<a href="pricing-1" class="btn btn--tra-black hover--black">View Our Menu</a>
+								<a href="pprice.php?c_id=2" class="btn btn--tra-black hover--black">View Our Menu</a>
 							</div>
 						</div>
 					</div>	
@@ -588,7 +588,7 @@
 			 		<div class="row">
 			 			<div class="col">
 			 				<div class="more-btn mt-5">
-								<a href="pricing-2" class="btn btn--tra-black hover--black">View All Prices</a>
+								<a href="pprice.php?c_id=1" class="btn btn--tra-black hover--black">View All Prices</a>
 							</div>
 						</div>
 					</div>

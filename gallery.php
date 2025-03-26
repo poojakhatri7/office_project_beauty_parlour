@@ -132,13 +132,16 @@ if (mysqli_num_rows($result) > 0) {
 					  			<div class="hover-overlay"> 
 
 						  			<!-- Image -->
-									<img class="img-fluid" src=<?php echo $imagePath ?> alt="gallery-image">			
+									<img class="img-fluid" src="<?php echo $imagePath ?>" alt="about-image" style="width: 400px; height: 500px; object-fit: cover;">
+								
+			
 									<div class="item-overlay"></div>				
 									
 									<!-- Image Zoom -->
 									<div class="image-data">
 										<div class="gallery-link ico-40 color--white">
 											<a class="image-link" href=<?php echo $imagePath ?>>
+												
 												<span class="flaticon-visibility"></span>
 											</a>
 										</div>																						 
