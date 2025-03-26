@@ -38,6 +38,8 @@ if (isset($_FILES['image'])) {
     } else {
       echo "Failed to upload image.";
   } 
+  // header("Location: " . $_SERVER['PHP_SELF']); 
+  echo "<script>window.location.href='" . $_SERVER['PHP_SELF'] . "';</script>";
 }
  ?>
  <?php
@@ -60,6 +62,8 @@ if (isset($_FILES['image1'])) {
     } else {
       echo "Failed to upload image.";
   } 
+  // header("Location: " . $_SERVER['PHP_SELF']); 
+  echo "<script>window.location.href='" . $_SERVER['PHP_SELF'] . "';</script>";
 }
 
  ?>
@@ -83,6 +87,7 @@ if (isset($_POST['submit'])) {
     // } else {
     //     echo "Error updating data: " . $conn->error;
     // }
+    echo "<script>window.location.href='" . $_SERVER['PHP_SELF'] . "';</script>";
 }
 ?>
 <html lang="en"> 
@@ -178,23 +183,24 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
        
         $title = $row['page_title'];
-		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
+        $heading = $row['heading'];
+        $text_area = $row['text_area'];
 
         ?>
-  
+
     <!-- form start -->
     <form class="form-horizontal" action="" method="post">
         <div class="card-body">
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">PAGE TITLE</label>
                 <div class="col-sm-10">
-                    <input type="text" name="page_title" class="form-control" id="inputEmail3" placeholder="Enter Page Title">
+                    <input type="text" name="page_title" class="form-control" id="inputEmail3" placeholder="Enter Page Title" value = "<?php echo $title  ?>">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">HEADING</label>
                 <div class="col-sm-10">
-                    <input type="text" name="heading" class="form-control" id="inputEmail3" placeholder="Enter Heading of the Description">
+                    <input type="text" name="heading" class="form-control" id="inputEmail3" placeholder="Enter Heading of the Description" value = "<?php echo $heading ?>" >
                 </div>
             </div>
             <!-- <div class="form-group row">
@@ -213,7 +219,9 @@ if (mysqli_num_rows($result) > 0) {
             <div class="form-group row">
                 <label for="editor1" class="col-sm-2 col-form-label">PAGE DESCRIPTION</label>
                 <div class="col-sm-10">
-                    <textarea name="text_area" id="editor1" class="form-control" placeholder="ENTER PAGE DESCRIPTION"></textarea>
+                    <!-- <textarea name="text_area" id="editor1" class="form-control" placeholder="ENTER PAGE DESCRIPTION" value = "<?php echo $text_area ?>"></textarea> -->
+                    <textarea name="text_area" id="editor1" class="form-control" placeholder="ENTER PAGE DESCRIPTION"><?php echo htmlspecialchars($text_area); ?></textarea>
+
                 </div>
             </div>
         </div>

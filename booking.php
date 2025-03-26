@@ -44,6 +44,7 @@ if(isset($_POST["submit"])) {
 //       $query2 = "INSERT INTO users values ('','$name','$mobile','$email','$address','$pass','')";
 //       mysqli_query($conn, $query2);
 //   }
+echo "<script>window.location.href='".$_SERVER['PHP_SELF']."';</script>";
 }
 ?>
 <!doctype html>

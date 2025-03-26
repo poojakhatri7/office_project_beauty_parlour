@@ -251,7 +251,7 @@ if (isset($_POST['add_sub_category'])) {
                                 <td><?php echo $row2['sub_service']; ?></td>
                                 <td>
                                     <div style="display: inline-block;">
-                                        <a href='/beauty_parlour_management_system/admin2/delete_subcategory.php?id=<?php echo $row2["s_id"]; ?>'>
+                                        <a href='/beauty_parlour_management_system/admin2/delete_sub_category.php?id=<?php echo $row2["s_id"]; ?>'>
                                             <i class='fa fa-trash' style='color: red;'></i>
                                         </a>
                                     </div>

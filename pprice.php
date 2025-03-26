@@ -12,7 +12,7 @@ if (!$conn) {
 ?>
 <?php
 $c_id = $_GET ['c_id'];
-echo $c_id;
+// echo $c_id;
 ?>
 <!doctype html>
 <html lang="en">
@@ -123,18 +123,22 @@ $description = $row ['description'];
 
 <?php }?>
 
-<!-- <style>
-.dots {
-    flex-grow: 1;  
-    border-bottom: 1px dotted #000; /* Creates dotted effect */
-    margin: 0 10px; /* Small spacing between text and dots */
-    height: 1px; /* Ensures it stays thin */
-    display: inline-block; /* Keeps it in line */
-    width: 50px; /* Limits the dot length */
-    min-width: 50px; /* Ensures consistent width */
+<style>
+.price-dots {
+  position: relative;
+  /* display: table-cell; */
+  height: 4px;
+  width: 70%;
+  z-index: 2;
+  background-image: radial-gradient(circle closest-side,#878889 99%,transparent 100%);
+  background-position: 30% 100%;
+  background-size: 5px 2px;
+  background-repeat: repeat-x;
+  flex-grow: 1;
+  
 }
 
-	</style> -->
+	</style>
 			<!-- PRICING-5
 			============================================= -->
 			<div class="container pt-8 pricing-5 pricing-section">
@@ -171,7 +175,7 @@ $description = $row ['description'];
                                     <div class="price-name flex-grow-1">
                                         <p class="mb-0"><?php echo $service['all_service']; ?></p>
                                     </div>
-									<div class="dots"></div> <!-- Dots appear here -->
+									<div class="price-dots "></div> <!-- Dots appear here -->
                                     <div class="price-number">
                                         <p class="fw-bold mb-0"><?php echo $service['price']; ?></p>
                                     </div>
