@@ -32,10 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    WHERE mobile='$mobile'";
         mysqli_query($conn, $query2);
     } else {
+        $pass = 123;
         // Insert a new user (no success/error message)
         // $query2 = "INSERT INTO users (name, username, password, email, date, address, other_info) 
         //            VALUES ('$name', '$mobile', '$mobile', '$email', '$date', '$address', '')";
-        $query2 = "INSERT INTO users values ('','$name','$mobile','$email','$address','','')";
+        $query2 = "INSERT INTO users values ('','$name','$mobile','$email','$address','$pass','')";
         mysqli_query($conn, $query2);
     }
   }

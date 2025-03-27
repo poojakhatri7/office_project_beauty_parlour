@@ -63,7 +63,7 @@ if (!$conn) {
             <!-- small box -->
             <div class="small-box " style= "background-color:rgb(68, 151, 184)">
               <div class="inner">
-              <?php $query1=mysqli_query($conn,"Select * from  tb_services");
+              <?php $query1=mysqli_query($conn,"Select * from  all_services");
 $total_services=mysqli_num_rows($query1);
 ?>
                 <h3><?php echo $total_services;?></h3>
@@ -72,7 +72,7 @@ $total_services=mysqli_num_rows($query1);
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="/beauty_parlour_management_system/user/user_services.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/beauty_parlour_management_system/user/user_services2.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

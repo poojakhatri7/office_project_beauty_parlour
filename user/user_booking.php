@@ -26,33 +26,40 @@ if(isset($_POST["submit"])) {
   $date = mysqli_real_escape_string($conn, $_POST["date"]);
   $preferd_time = mysqli_real_escape_string($conn, $_POST["time"]);
 $appointment_for = mysqli_real_escape_string($conn, $_POST["appointment_for"]);
+// $appointment_for = "pooja";
+$staff ="any";
+
 // Check if the mobile number exists in tb_appointment
-$check_appointment = "SELECT * FROM tb_appointment WHERE mobile = '$mobile'";
+$check_appointment = "SELECT * FROM users WHERE mobile = '$mobile'";
 $result_appointment = mysqli_query($conn, $check_appointment);
 if(mysqli_num_rows($result_appointment) > 0) {
-    // Update the appointment record
-    // $query1 = "UPDATE tb_appointment 
-    //            SET name='$name', email='$email', address='$address', date='$date', prefered_time='$preferd_time', appointment_for='$appointment_for' 
-    //            WHERE mobile='$mobile'";
-    $query1 = "INSERT INTO tb_appointment values ('','$name','$email','$mobile','$address','$date','$preferd_time','$appointment_for','')";
+    $query1 = "INSERT INTO tb_appointment (name, email, mobile, address, date, prefered_time, appointment_for,staff) 
+           VALUES ('$name', '$email', '$mobile', '$address', '$date', '$preferd_time', '$appointment_for','$staff')"; 
+    // $query1 = "INSERT INTO tb_appointment values ('','$name','$email','$mobile','$address','$date','$preferd_time','$appointment_for','')";
    if(mysqli_query($conn, $query1))
    {
     echo"<script> alert('Booking successful') </script>";
   } else {
       echo "Error inserting record: " . mysqli_error($conn);
   }
-} else {
-    // Insert a new appointment
-    // $query1 = "INSERT INTO tb_appointment (name, email, mobile, address, date, preferd_time, appointment_for) 
-    //            VALUES ('$name', '$email', '$mobile', '$address', '$date', '$preferd_time', '$appointment_for')";
-    $query1 = "INSERT INTO tb_appointment values ('','$name','$email','$mobile','$address','$date','$preferd_time','$appointment_for')";
-    if(mysqli_query($conn, $query1))
-    {
-    echo"<script> alert('Appointment successful') </script>";
-  } else {
-      echo "Error inserting record: " . mysqli_error($conn);
-  }
 }
+}
+ // Update the appointment record
+    // $query1 = "UPDATE tb_appointment 
+    //            SET name='$name', email='$email', address='$address', date='$date', prefered_time='$preferd_time', appointment_for='$appointment_for' 
+    //            WHERE mobile='$mobile'";
+// } else {
+//     // Insert a new appointment
+//     // $query1 = "INSERT INTO tb_appointment (name, email, mobile, address, date, preferd_time, appointment_for) 
+//     //            VALUES ('$name', '$email', '$mobile', '$address', '$date', '$preferd_time', '$appointment_for')";
+//     $query1 = "INSERT INTO tb_appointment values ('','$name','$email','$mobile','$address','$date','$preferd_time','$appointment_for')";
+//     if(mysqli_query($conn, $query1))
+//     {
+//     echo"<script> alert('Appointment successful') </script>";
+//   } else {
+//       echo "Error inserting record: " . mysqli_error($conn);
+//   }
+
   // Check if the mobile number exists in tb_appointment
 //   $query = "INSERT INTO tb_appointment values ('','$name','$email','$mobile','$address','$date','$preferd_time','$appointment_for')";
 //   if (mysqli_query($conn, $query)) {
@@ -60,8 +67,6 @@ if(mysqli_num_rows($result_appointment) > 0) {
 // } else {
 //     echo "<script> alert('Something went wrong'); </script>";
 // }
-
-}
 ?>
  <!DOCTYPE html>
 <html lang="en">

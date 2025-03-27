@@ -172,9 +172,9 @@ if (!$conn) {
           <li class="nav-item">
             <a href="/beauty_parlour_management_system/admin2/manage_service.php" class="nav-link manage_services">
               <!-- <i class="nav-icon fas fa-th"></i> -->
-              <i class="fa fa-cogs"></i>
+              <i class="fa fa-spa"></i>
               <p>
-                Manage Services
+                Available Services
               </p>
             </a>
             <li class="nav-item">

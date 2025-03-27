@@ -132,7 +132,7 @@ if (mysqli_num_rows($result) > 0) {
 					  			<div class="hover-overlay"> 
 
 						  			<!-- Image -->
-									<img class="img-fluid" src="<?php echo $imagePath ?>" alt="about-image" style="width: 400px; height: 500px; object-fit: cover;">
+									<img class="img-fluid" src="<?php echo $imagePath ?>" alt="about-image" style="width: 450px; height: 450px; object-fit: cover;">
 								
 			
 									<div class="item-overlay"></div>				

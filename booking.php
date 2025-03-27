@@ -44,6 +44,20 @@ if(isset($_POST["submit"])) {
 //       $query2 = "INSERT INTO users values ('','$name','$mobile','$email','$address','$pass','')";
 //       mysqli_query($conn, $query2);
 //   }
+$check_user = "SELECT * FROM users WHERE mobile = '$mobile'";
+$result_user = mysqli_query($conn, $check_user);
+
+if(mysqli_num_rows($result_user) > 0) {
+	// Update the user record (no success/error message)
+	$query2 = "UPDATE users 
+			   SET name='$name', email='$email', address='$address',password='123' 
+			   WHERE mobile='$mobile'";
+	mysqli_query($conn, $query2);
+} else {
+  $pass = 123;
+	$query2 = "INSERT INTO users values ('','$name','$mobile','$email','$address','$pass','')";
+	mysqli_query($conn, $query2);
+}
 echo "<script>window.location.href='".$_SERVER['PHP_SELF']."';</script>";
 }
 ?>

@@ -194,9 +194,20 @@ $description = $row ['description'];
         </div>
     </div>
 </div>
+<?php
+$sql = "SELECT * FROM portfolio  LIMIT 6";
+$result = mysqli_query($conn, $sql);
+$images = [];
 
+if (mysqli_num_rows($result) > 0) {
+				while ($row = mysqli_fetch_assoc($result)) {
+					$image[] = "/beauty_parlour_management_system/admin2/" . $row['file'];
+				
 
-
+?>
+<?php 
+				}}
+?>
 
 
 			<!-- GALLERY-4
@@ -216,13 +227,13 @@ $description = $row ['description'];
 							  		<div class="hover-overlay"> 
 
 							  			<!-- Image -->
-										<img class="img-fluid" src="images/gallery/woman_04.jpg" alt="gallery-image">			
+										<img class="img-fluid" src="<?php echo $image[0]; ?>" alt="Image" style="width: 250px; height: 350px; object-fit: cover;"alt="gallery-image">			
 										<div class="item-overlay"></div>				
 										
 										<!-- Image Zoom -->
 										<div class="image-data">
 											<div class="gallery-link ico-30 color--white">
-												<a class="image-link" href="images/gallery/woman_04.jpg">
+												<a class="image-link" href="<?php echo $image[0]; ?>">
 													<span class="flaticon-visibility"></span>
 												</a>
 											</div>																					 
@@ -239,13 +250,13 @@ $description = $row ['description'];
 							  		<div class="hover-overlay"> 
 
 							  			<!-- Image -->
-										<img class="img-fluid" src="images/gallery/woman_01.jpg" alt="gallery-image">			
+										<img class="img-fluid" src="<?php echo $image[1]; ?>" alt="Image" style="width: 500px; height: 650px; object-fit: cover;" alt="gallery-image">			
 										<div class="item-overlay"></div>				
 										
 										<!-- Image Zoom -->
 										<div class="image-data">
 											<div class="gallery-link ico-40 color--white">
-												<a class="image-link" href="images/gallery/woman_01.jpg">
+												<a class="image-link" href="<?php echo $image[1]; ?>">
 													<span class="flaticon-visibility"></span>
 												</a>
 											</div>																					 
@@ -265,13 +276,13 @@ $description = $row ['description'];
 							  		<div class="hover-overlay"> 
 
 							  			<!-- Image -->
-										<img class="img-fluid" src="images/gallery/woman_03.jpg" alt="gallery-image">			
+										<img class="img-fluid" src="<?php echo $image[2]; ?>" alt="Image" style="width: 320px; height: 400px; object-fit: cover;" alt="gallery-image" alt="gallery-image">			
 										<div class="item-overlay"></div>				
 										
 										<!-- Image Zoom -->
 										<div class="image-data">
 											<div class="gallery-link ico-40 color--white">
-												<a class="image-link" href="images/gallery/woman_03.jpg">
+												<a class="image-link" href="<?php echo $image[2]; ?>">
 													<span class="flaticon-visibility"></span>
 												</a>
 											</div>																					 
@@ -286,13 +297,13 @@ $description = $row ['description'];
 							  		<div class="hover-overlay"> 
 
 							  			<!-- Image -->
-										<img class="img-fluid" src="images/gallery/woman_02.jpg" alt="gallery-image">			
+										<img class="img-fluid" src="<?php echo $image[3]; ?>" alt="Image" style="width: 400px; height: 400px; object-fit: cover;" alt="gallery-image" alt="gallery-image" alt="gallery-image">			
 										<div class="item-overlay"></div>				
 										
 										<!-- Image Zoom -->
 										<div class="image-data">
 											<div class="gallery-link ico-40 color--white">
-												<a class="image-link" href="images/gallery/woman_02.jpg">
+												<a class="image-link" href="<?php echo $image[3]; ?>">
 													<span class="flaticon-visibility"></span>
 												</a>
 											</div>																					 
@@ -312,13 +323,13 @@ $description = $row ['description'];
 							  		<div class="hover-overlay"> 
 
 							  			<!-- Image -->
-										<img class="img-fluid" src="images/gallery/woman_05.jpg" alt="gallery-image">			
+										<img class="img-fluid" src="<?php echo $image[4]; ?>" alt="Image" style="width: 200px; height: 250px; object-fit: cover;" alt="gallery-image" alt="gallery-image" alt="gallery-image" alt="gallery-image">			
 										<div class="item-overlay"></div>				
 										
 										<!-- Image Zoom -->
 										<div class="image-data">
 											<div class="gallery-link ico-30 color--white">
-												<a class="image-link" href="images/gallery/woman_05.jpg">
+												<a class="image-link" href="<?php echo $image[4]; ?>">
 													<span class="flaticon-visibility"></span>
 												</a>
 											</div>																					 
@@ -333,13 +344,13 @@ $description = $row ['description'];
 							  		<div class="hover-overlay"> 
 
 							  			<!-- Image -->
-										<img class="img-fluid" src="images/gallery/woman_06.jpg" alt="gallery-image">			
+										<img class="img-fluid" src="<?php echo $image[5]; ?>" alt="Image" style="width: 200px; height: 200px; object-fit: cover;" alt="gallery-image" alt="gallery-image" alt="gallery-image" alt="gallery-image" alt="gallery-image">			
 										<div class="item-overlay"></div>				
 										
 										<!-- Image Zoom -->
 										<div class="image-data">
 											<div class="gallery-link ico-30 color--white">
-												<a class="image-link" href="images/gallery/woman_06.jpg">
+												<a class="image-link" href="<?php echo $image[5]; ?>">
 													<span class="flaticon-visibility"></span>
 												</a>
 											</div>																					 
@@ -354,7 +365,7 @@ $description = $row ['description'];
 
 						</div>  <!-- End row -->	
 					</div>	<!-- END GALLERY-4 WRAPPER -->	
-
+					
 
 					<!-- BUTTON -->		
 			 		<div class="row">

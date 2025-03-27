@@ -53,9 +53,9 @@ if (!$conn) {
             <?php 
 // print_r ($_SESSION);
  //echo ucwords($_SESSION["name"]);
- echo '<span style="color:rgb(229, 240, 243); font-weight:500";>' . ucwords($_SESSION["name"]) . "&nbsp;".'</span>'; 
+ echo '<span style="color:rgb(229, 240, 243); font-weight:500; font-size:15px;">' . ucwords($_SESSION["name"]) . "&nbsp;".'</span>'; 
 
- echo '<span style="color:rgb(229, 240, 243); font-weight:500";>' ."(".($_SESSION["mobile"]) .")". '</span>';
+ echo '<span style="color:rgb(229, 240, 243); font-weight:400; font-size:15px;">' ."(".($_SESSION["mobile"]) .")". '</span>';
  //(' . $_SESSION["mobile"] . ')
 ?>
            </a>
@@ -76,7 +76,7 @@ if (!$conn) {
           </li>
           </li>
           <li class="nav-item">
-            <a href="/beauty_parlour_management_system/user/user_services.php" class="nav-link admin_services nav-link manage_services">
+            <a href="/beauty_parlour_management_system/user/user_services2.php" class="nav-link admin_services nav-link manage_services">
             <p><i class="fa fa-magic"></i>
               <p>
                 Services

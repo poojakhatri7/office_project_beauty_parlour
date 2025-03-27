@@ -291,7 +291,20 @@
 			<section class="shape--01 poudre--shape py-7 ct-01 content-section division">
 				<div class="container">
 					<div class="row d-flex align-items-center">
+					<?php
 
+$sql = "SELECT * FROM tb_about_us";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      
+        $image = "/beauty_parlour_management_system/admin2/" . $row['file1'];
+		$page_titile=$row['page_title'];
+		$page_description=$row['text_area'];
+		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
+
+        ?>
 
 						<!-- TEXT BLOCK -->	
 						<div class="col-lg-6 order-last order-lg-2">
@@ -301,10 +314,10 @@
 						 		<span class="section-id">Mind, Body and Soul</span>
 	
 								<!-- Title -->	
-								<h2 class="h2-md">Luxury salon where you will feel unique</h2>
+								<h2 class="h2-md"><?php echo $page_titile ?></h2>
 
 								<!-- Text -->	
-								<p class="mb-0">Step into a world of elegance at our luxury salon, where your uniqueness is celebrated. Our expert team delivers personalized treatments in a serene, upscale environment, ensuring every moment is tailored to your needs. From rejuvenating facials to glamorous styling, we’re here to make you feel extraordinary. Indulge in the ultimate pampering experience and leave feeling confident, beautiful, and truly one of a kind.
+								<p class="mb-0"> <?php echo $page_description ?>
 								</p>
 
 							</div>
@@ -314,7 +327,7 @@
 						<!-- IMAGE BLOCK -->
 						<div class="col-lg-6 order-first order-lg-2">
 							<div class="img-block right-column wow fadeInLeft">
-								<img class="img-fluid" src="images/woman_01.jpg" alt="content-image">
+								<img class="img-fluid" src="<?php echo $image ?>" alt="Image" style="width: 650px; height: 650px; object-fit: cover;" alt="gallery-image" alt="content-image">
 							</div>
 						</div>
 
@@ -323,7 +336,7 @@
 				</div>	   <!-- End container -->
 			</section>	<!-- END TEXT CONTENT -->
 
-
+			<?php }} ?>
 
 
 			<!-- PRICING-1
