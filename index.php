@@ -368,6 +368,20 @@ if (mysqli_num_rows($result) > 0) {
 					<div class="pricing-1-wrapper">
 						<div class="row">
 
+<?php 
+$sql = "SELECT * FROM all_services limit 10";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      
+        $service_name =  $row['all_service'];
+		$price =  $row['price'];
+		$description =  $row['description'];
+		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
+
+        ?>
+
 
 							<!-- PRICING-1 TABLE -->
 							<div class="col-lg-6">
@@ -379,218 +393,218 @@ if (mysqli_num_rows($result) > 0) {
 
 											<!-- Title & Price -->
 											<div class="detail-price">
-												<div class="price-name"><p>Herbal Facial</p></div>
+												<div class="price-name"><p><?php echo  $service_name ?></p></div>
 												<div class="price-dots"></div>
-												<div class="price-number"><p>₹75</p></div>
+												<div class="price-number"><p><?php echo "Rs  ".$price ?></p></div>
 											</div>
 
 											<!-- Description -->
 											<div class="price-txt">
-												<p>Service length 1 hour</p>
+												<p><?php echo $description ?></p>
 											</div>
 											
 										</li>
-
+<br>
 										<!-- MENU ITEM #2 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Deep Cleaning Facial</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹130</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 55 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #3 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Organic Facial</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹185</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 1,5 hours</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- PRICING ITEM #4 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Four Layer Facial</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹140</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 1,5 hours</p>
 											</div>
 											
-										</li>
+										</li> -->
 
 										<!-- PRICING ITEM #5 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Biolight Facial</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹165</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 1,5 hours</p>
 											</div>
 											
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #6 -->
-										<li class="pricing-1-item resp-lst">
+										<!-- <li class="pricing-1-item resp-lst"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Oxygen Blast Facial</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹265</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 60 minutes</p>
-											</div>
+											</div> -->
 
-										</li>
+										<!-- </li> -->
 
-									</ul>	<!-- END PRICING LIST -->
+									<!-- </ul>	END PRICING LIST -->
 								</div>
 							</div>	<!-- END PRICING-1 TABLE -->
 
-
+							<?php }} ?>
 							<!-- PRICING-1 TABLE -->
-							<div class="col-lg-6">
+							<!-- <div class="col-lg-6">
 								<div class="pricing-1-table right-column wow fadeInUp">	
-									<ul class="pricing-list">
+									<ul class="pricing-list"> -->
 
 										<!-- PRICING ITEM #1 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Eyebrow Tinting</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹15+</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 40 minutes</p>
 											</div>
 											
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #2 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Eyelash Tinting</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹25+</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 2 hours</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #3 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Lash Application</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹45+</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 50 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- PRICING ITEM #4 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Eyebrow Shaping</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>₹50 - ₹97</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 1,5 hours</p>
 											</div>
 											
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #5 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Brow Tint</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>From ₹50</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 1 hour</p>
 											</div>
 
-										</li>
+										</li> -->
 
 										<!-- MENU ITEM #6 -->
-										<li class="pricing-1-item">
+										<!-- <li class="pricing-1-item"> -->
 
 											<!-- Title & Price -->
-											<div class="detail-price">
+											<!-- <div class="detail-price">
 												<div class="price-name"><p>Lash Tint</p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p>From ₹50</p></div>
-											</div>
+											</div> -->
 
 											<!-- Description -->
-											<div class="price-txt">
+											<!-- <div class="price-txt">
 												<p>Service length 50 minutes</p>
 											</div>
 
-										</li>
+										</li> -->
 
-									</ul>	<!-- END PRICING LIST -->
-								</div>
-							</div>	<!-- END PRICING-1 TABLE -->
+									<!-- </ul>	END PRICING LIST -->
+								<!-- </div> -->
+							<!-- </div>	END PRICING-1 TABLE -->
 
 
 						</div>

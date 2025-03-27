@@ -127,7 +127,7 @@ include 'db_connection.php';
     <div class="container-fluid">
 <div class="card">
               <div class="card-header">
-                <h5 class="m-0"> Appoitment Details </h5>
+                <h5 class="m-0"> Appointment Details </h5>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
