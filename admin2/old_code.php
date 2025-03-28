@@ -4,16 +4,17 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+include 'db_connection.php';
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
 //$id = $_GET ['id'];
 $id = $_GET ['id'];
 if (isset($_POST["submit"])) {

@@ -5,7 +5,7 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
-
+<?php  include './admin2/db_connection.php'; ?>
 
 
 	

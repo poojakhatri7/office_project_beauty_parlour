@@ -1,15 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+  include '../admin2/db_connection.php';
 // Check if 'id' parameter is set and is a valid number
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = (int)$_GET['id']; // Cast the id to an integer for safety

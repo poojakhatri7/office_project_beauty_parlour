@@ -5,16 +5,17 @@
     header("Location: admin_login1.php");
     exit();
 }
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
+include 'db_connection.php';
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
 // Check if form is submitted
 // if (isset($_POST["submit"])) {
 //     // Get the form data

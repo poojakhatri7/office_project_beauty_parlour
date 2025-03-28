@@ -1,16 +1,17 @@
 
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+include 'db_connection.php';
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
 // if (isset($_POST['request_type'] ==""))
 
 $request_type = isset($_POST['request_type']) ? $_POST['request_type'] : '';

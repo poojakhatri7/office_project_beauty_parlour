@@ -1,15 +1,16 @@
 	
 <hr><?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+include './admin2/db_connection.php';
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
 // Fetch business hours
 $sql = "SELECT day, TIME_FORMAT(open_time, '%h:%i %p') AS open_time, TIME_FORMAT(close_time, '%h:%i %p') AS close_time FROM business_hours";
 $result = mysqli_query($conn, $sql);

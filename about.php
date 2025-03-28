@@ -1,15 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+include './admin2/db_connection.php';
 $sql = "SELECT * FROM tb_about_us";
 $result = mysqli_query($conn, $sql);
 

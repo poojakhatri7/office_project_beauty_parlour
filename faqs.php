@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
 
-
+<?php include './admin2/db_connection.php'; ?>
 
 	
 <!-- Mirrored from dsathemes.com/html/r_eine_1.1/files/faqs.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Dec 2024 10:24:01 GMT -->

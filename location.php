@@ -1,3 +1,5 @@
+<?php include './admin2/db_connection.php'; ?>
+
 <!doctype html>
 <!-- Reine - Beauty Salon HTML5 Template design by DSAThemes (http://www.dsathemes.com) -->
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->

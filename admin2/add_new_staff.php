@@ -8,17 +8,18 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
 // include 'db_connection.php';
+include 'db_connection.php';
 ?>
 <?php
 if(isset($_POST["submit"])) {

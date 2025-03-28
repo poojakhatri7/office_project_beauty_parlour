@@ -1,4 +1,7 @@
-
+<?php include './admin2/db_connection.php'; ?>
+	
+	
+	
 	<!-- PRELOADER SPINNER
 		============================================= -->
 	<div id="loading" class="loading-black">
