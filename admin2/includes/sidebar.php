@@ -109,7 +109,7 @@ if (!$conn) {
 
 
            <li class="nav-item">
-            <a href="#" class="nav-link add_cutomer nav-link all_appointment nav-link search_appointment">
+            <a href="#" class="nav-link add_cutomer nav-link all_appointment  search_appointment delete_appointment">
             <i class="fa fa-clock"></i>
               <p>
                 Appointments
@@ -143,6 +143,16 @@ if (!$conn) {
               <i class="fa fa-search"></i>
               <p>
               Search Appointment
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+</li>
+<li class="nav-item">
+            <a href="/beauty_parlour_management_system/admin2/delete_old_records.php" class="nav-link delete_appointment">
+              
+              <i class="fa fa-trash"></i>
+              <p>
+              Delete old records 
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>

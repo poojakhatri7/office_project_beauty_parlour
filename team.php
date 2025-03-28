@@ -127,7 +127,7 @@ include './admin2/db_connection.php';
 						<!-- TEAM MEMBERS WRAPPER -->	
 						<div class="row">
 						<?php
-			$sql = "SELECT * FROM staff_gallery where designation = 'Management'";
+			$sql = "SELECT * FROM staff_gallery where staff_designation_id = 1";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -138,8 +138,6 @@ if (mysqli_num_rows($result) > 0) {
 	//   echo '<img src="' . $imagePath . '" width="400" height="400" style="margin:10px;">';
 	
         ?>		
-							
-
 							<!-- TEAM MEMBER #1 -->
 							<div class="col-md-6 col-lg-4">
 								<div class="team-member wow fadeInUp">
@@ -147,7 +145,8 @@ if (mysqli_num_rows($result) > 0) {
 									<!-- Team Member Photo -->
 									<div class="team-member-photo">
 										<div class="hover-overlay"> 
-											<img class="img-fluid" src="<?php echo $imagePath ?>" alt="team-member-foto">
+											
+											<img class="img-fluid" src="<?php echo $imagePath; ?>" alt="Image" style="width: 600px; height: 500px; object-fit: cover;" alt="content-image" alt="content-image" alt="team-member-foto">
 											<div class="item-overlay"></div>
 										</div>
 									</div>
@@ -206,24 +205,24 @@ if (mysqli_num_rows($result) > 0) {
 
 
 					<!-- TEAM MEMBERS CATEGORY -->	
-					<div class="team-members-category">
+					<!-- <div class="team-members-category"> -->
 
 
 						<!-- CATEGORY TITLE -->
-						<div class="row">
+						<!-- <div class="row"> -->
 						
-							<div class="col">
+							<!-- <div class="col">
 								<div class="category-title mb-6">	
 									<h2 class="h2-lg">Hair Stylists</h2>	
 								</div>	
 							</div>
-						</div>
+						</div> -->
 
 
 						<!-- TEAM MEMBERS WRAPPER -->	
-						<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+						<!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4"> -->
 						<?php
-			$sql = "SELECT * FROM staff_gallery where designation = 'Hair Stylists'";
+			$sql = "SELECT * FROM staff_gallery where staff_designation_id = 2";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -481,7 +480,7 @@ if (mysqli_num_rows($result) > 0) {
 							</div>
 						</div>
 						<?php
-			$sql = "SELECT * FROM staff_gallery where designation = 'Makeup Artists'";
+			$sql = "SELECT * FROM staff_gallery where staff_designation_id = 2";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -603,7 +602,7 @@ if (mysqli_num_rows($result) > 0) {
 							</div>
 						</div>
 						<?php
-			$sql = "SELECT * FROM staff_gallery where designation = 'Nail Artists'";
+			$sql = "SELECT * FROM staff_gallery staff_designation_id = 4";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {

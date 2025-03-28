@@ -34,7 +34,7 @@ include 'db_connection.php';
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
 
     <style type="text/css">
-.all_appointment{
+.delete_appointment{
   /* background : #157daf !important; */
   background :rgb(33, 70, 77) !important;
 }
@@ -140,7 +140,7 @@ include 'db_connection.php';
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Date</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Time</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Appointment for</th>
-                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Action</th>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
                     <!-- <th>Actions</th> -->
                   </tr>
                   </thead>
@@ -205,16 +205,16 @@ if (mysqli_num_rows($result) > 0) {
   </a> 
 </td> -->
 <td>
-    <div style="display: inline-block; margin-right: 20px;">
+    <!-- <div style="display: inline-block; margin-right: 20px;">
         <a href='/beauty_parlour_management_system/admin2/admin_edit_customer3.php?id=<?php echo $row["id"]; ?>'>
-            <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> <!-- Edit icon -->
+            <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> 
         </a> 
-    </div>
-    <!-- <div style="display: inline-block;">
+    </div> -->
+    <div style="display: inline-block;">
         <a href='/beauty_parlour_management_system/admin2/delete_appointment.php?id=<?php echo $row["id"]; ?>'>
             <i class='fa fa-trash' style='color: red;'></i>
         </a>
-    </div> -->
+    </div>
 </td>
         </tr>
         <?php

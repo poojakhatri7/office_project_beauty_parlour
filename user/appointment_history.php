@@ -94,11 +94,11 @@ if (mysqli_num_rows($result) > 0) {
             <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> <!-- Edit icon -->
         </a> 
     </div>
-    <div style="display: inline-block;">
+    <!-- <div style="display: inline-block;">
         <a href='/beauty_parlour_management_system/user/delete_appointment.php?id=<?php echo $row["id"]; ?>'>
-            <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
+            <i class='fa fa-trash' style='color: red;'></i> 
         </a>
-    </div>
+    </div> -->
 </td>
         </tr>
         <?php

@@ -52,7 +52,7 @@ include './admin2/db_connection.php';
 									<li aria-haspopup="true"><a href="#" class="h-link">About <span class="wsarrow"></span></a>
 	            						<ul class="sub-menu">
 	            							<li aria-haspopup="true"><a href="about.php">About Us</a></li>
-	            							<li aria-haspopup="true"><a href="team.php">Artist + Staff</a></li>
+	            							<li aria-haspopup="true"><a href="team1.php">Artist + Staff</a></li>
 						           		</ul>
 								    </li>
 

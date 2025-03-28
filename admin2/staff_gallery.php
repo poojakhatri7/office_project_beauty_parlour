@@ -21,10 +21,24 @@ include('includes/sidebar.php');
 include 'db_connection.php';
 ?>
 <?php
+if (isset($_POST['submit1'])) {
+  $add_designation = $_POST['add_designation'];
+  $query = "INSERT INTO staff_designation (designation ) VALUES ( '$add_designation')";
+  if (mysqli_query($conn, $query)) {
+      // header("Location: ".$_SERVER['PHP_SELF']); // Redirect to the same page to prevent resubmission
+      // exit();
+      echo "<script>window.location.href='".$_SERVER['PHP_SELF']."';</script>";
+      echo "Category added successfully!";
+  } else {
+      echo "Error: " . mysqli_error($conn);
+  }
+}
+?>
+<?php
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
 // if (isset($_POST['submit']) && isset($_FILES['image']) && isset($_POST['designation']) && isset($_POST['name'])) {
-if ( isset($_FILES['image']) && isset($_POST['designation'] ) && isset($_POST['name'])) {
+if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name'])) {
   // echo "<pre>";
   // print_r($_FILES);
   // echo "</pre>";
@@ -32,7 +46,7 @@ if ( isset($_FILES['image']) && isset($_POST['designation'] ) && isset($_POST['n
   $photo = $_FILES["image"]["name"];
   $photo2 = $_FILES["image"]["tmp_name"];
   $uploadPath = "upload-images/" . $photo;
-  $designation = $_POST['designation'];
+  $staff_designation_id = $_POST['staff_id'];
   $name = $_POST['name'];
   if (move_uploaded_file($photo2, $uploadPath)) {
       echo "Image uploaded successfully! <br>";
@@ -40,7 +54,7 @@ if ( isset($_FILES['image']) && isset($_POST['designation'] ) && isset($_POST['n
       // $sql = "UPDATE portfolio SET file = '$uploadPath' WHERE mobile = '$mobile'";
     //   $sql = "INSERT INTO staff_gallery (file) VALUES ('$uploadPath')";
     // $sql = "INSERT INTO staff_gallery (file, designation) VALUES ('$uploadPath', '$designation')";
-    $sql = "INSERT INTO staff_gallery (name, file, designation) VALUES ('$name', '$uploadPath', '$designation')";
+    $sql = "INSERT INTO staff_gallery (name, file,  staff_designation_id) VALUES ('$name', '$uploadPath', '$staff_designation_id')";
       if ($conn->query($sql) === TRUE) {
         echo "Image path saved to database!";
       } else {
@@ -80,75 +94,139 @@ if ( isset($_FILES['image']) && isset($_POST['designation'] ) && isset($_POST['n
     </div>
     <!-- /.content-header -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="row">    
-            <div class="col-md-8">
-                <div class="card card-info">
-              <div class="card-header"style="background-color: rgb(51, 139, 139);">
-                <h3 class="card-title">User Profile Photo</h3>
+  <div class="container-fluid">
+    <div class="row">    
+      <div class="col-md-10">
+        <div class="card card-info">
+          <div class="card-header" style="background-color: rgb(51, 139, 139);">
+            <h3 class="card-title">User Profile Photo</h3>
+          </div>
+          <!-- /.card-header -->
+
+          <div class="card-body">
+            <!-- First Form: Add Designation -->
+            <form class="form-horizontal" action="" method="post">
+              <div class="row align-items-center">
+                <label for="name" class="col-sm-2 col-form-label">Add Designation</label>
+                
+                <div class="col-sm-6">
+                  <input type="text" name="add_designation" class="form-control" id="name" placeholder="Add new designation">
+                </div>
+                
+                <div class="col-sm-4">
+                  <button type="submit" name="submit1" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Add</button>
+                </div>
               </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form name="form_1" method="post" enctype="multipart/form-data">
-                <div class="card-body">
-                  <div class="row">
-					    <div class="col-12">
+            </form>
+            <hr>
 
-</div>
-<div class="form-group row">
-                            <label for="name" class="col-sm-2 col-form-label">Designation</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="designation" class="form-control" id="name" placeholder="Enter designation" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="name" class="col-sm-2 col-form-label">Name</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" >
-                            </div>
-                        </div>
-        			     <div  style="text-align: center; margin-top:-15px;"><br>
-                   <img src="<?php echo $uploadPath; ?>" width="150" height="150" class="img3" id="profile-img-tag" height="240" width="300">
-                          </div>
-        			   </div>
-					      <div class="col-12" align="center">
-					          <br/>
-						<div class="item form-group">
-							<label for="photo">Select Photo<span class="required">*</span>
-							</label>
-							<div class="col-12 ">
-								<input type="file" name="image" id="profile-img" value="" class="form-control">
-                                <br>
-                <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button>
-							</div>
-
-						</div>
-						 </div>
-						</div> 
+            <!-- Second Form: Upload Photo & Select Designation -->
+            <form name="form_1" method="post" enctype="multipart/form-data">
+              <div class="form-group row">
+                <?php 
+                  $staff_result = mysqli_query($conn, "SELECT * FROM staff_designation"); 
+                ?>
+                <label for="id" class="col-sm-2 col-form-label">Designation</label>
+                <div class="col-sm-10">
+                  <select name="staff_id" id="id" class="form-control" required>
+                    <option value="">Select</option>
+                    <?php while ($row = mysqli_fetch_assoc($staff_result)) { ?>
+                      <option value="<?= $row['id'] ?>"><?= $row['designation'] ?></option>
+                    <?php } ?>
+                  </select>
                 </div>
-                <!-- /.card-body -->
+              </div>
 
-                <div class="card-footer">
-                  <!--<button type="submit" name="update_photo" class="btn btn-success">Update</button>-->
+              <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
                 </div>
-              </form>
-            </div>
+              </div>
+
+              <div style="text-align: center; margin-top: -15px;"><br>
+                <img src="<?php echo $uploadPath; ?>" width="100" height="100" class="img3" id="profile-img-tag">
+              </div>
+
+              <div class="col-12 text-center mt-3">
+                <label for="photo">Select Photo <span class="required">*</span></label>
+                <input type="file" name="image" id="profile-img" class="form-control">
+                <br>
+                <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.card-body -->
+
+          <div class="card-footer">
+            <!--<button type="submit" name="update_photo" class="btn btn-success">Update</button>-->
+          </div>
+        </div> <!-- Closing .card.card-info -->
+      </div> <!-- Closing .col-md-10 -->
+    </div> <!-- Closing .row -->
+    </div>
+            <div class="card">
+        <div class="card-header">
+            <h5 class="m-0"> Update Designation and Staff Gallery  </h5>
+        </div>
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(51, 139, 139)">
+                    <tr>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Staff Designation</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT * FROM Staff_designation ";
+                    $result = mysqli_query($conn, $sql);
+                    $count = 0;
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $count++;
+                    ?>
+                            <tr>
+                                <th scope='row'><?php echo $count; ?></th>
+                               
+                                <td><?php echo $row['designation']; ?></td>
+                                <td>
+                                    <div style="display: inline-block;">
+                                        <a href='/beauty_parlour_management_system/admin2/delete_staff_designation.php?id=<?php echo $row["id"]; ?>'>
+                                            <i class='fa fa-trash' style='color: red;'></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                    <?php
+                        }
+                    } else {
+                        echo "<tr><td colspan='4' class='text-center text-danger'>No Category Found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
             </div>
             
            
 
-                <div class="card-footer">
-                  <!--<button type="submit" name="update" class="btn btn-primary">Update</button>-->
-                </div>
-              </form>
-            </div>
-            </div>
+            
             
           </div>
         </div>
-     </section>
+   
     
   </div>
+    
+  </div> <!-- Closing .container-fluid -->
+</section> <!-- Closing .content -->
+
+
+          
+  
 <?php
 include('includes/footer.php');
 ?>

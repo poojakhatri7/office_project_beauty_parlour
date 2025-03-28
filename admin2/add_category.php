@@ -229,15 +229,17 @@ if (isset($_POST['add_sub_category'])) {
                 <thead style="background-color: rgb(51, 139, 139)">
                     <tr>
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Category</th>
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">Sub Category</th>
-                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Description</th>
-                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Number</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;"> Description</th>
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $sql2 = "SELECT * FROM sub_category_service ORDER BY s_id DESC";
+                    $sql2  = "SELECT * FROM category_service cc INNER JOIN sub_category_service ss ON
+                    cc.c_id = ss.sub_service";
+                    // $sql2 = "SELECT * FROM sub_category_service ORDER BY s_id DESC";
                     $result2 = mysqli_query($conn, $sql2);
                     $count2 = 0;
                     if (mysqli_num_rows($result2) > 0) {
@@ -246,9 +248,9 @@ if (isset($_POST['add_sub_category'])) {
                     ?>
                             <tr>
                                 <th scope='row'><?php echo $count2; ?></th>
+                                <td><?php echo $row2['c_service']; ?></td>
                                 <td><?php echo $row2['s_name']; ?></td>
                                 <td><?php echo $row2['description']; ?></td>
-                                <td><?php echo $row2['sub_service']; ?></td>
                                 <td>
                                     <div style="display: inline-block;">
                                         <a href='/beauty_parlour_management_system/admin2/delete_sub_category.php?id=<?php echo $row2["s_id"]; ?>'>
