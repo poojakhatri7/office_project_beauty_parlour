@@ -1,14 +1,15 @@
 <?php include 'data.php'; ?>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+include '../admin2/db_connection.php';
 ?>
 <?php
  $mobile = $_SESSION["mobile"];

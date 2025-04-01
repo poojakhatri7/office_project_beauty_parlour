@@ -4,7 +4,6 @@
     header("Location: admin_login1.php");
     exit();
 }
-
 include 'db_connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mobile = $_POST['mobile'];

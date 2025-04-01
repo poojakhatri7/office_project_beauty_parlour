@@ -22,16 +22,17 @@
 }
 </style>
 <?php
-$role = $_SESSION["user_role"];
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// $role = $_SESSION["user_role"];
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+include '../admin2/db_connection.php';
 ?> 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -244,7 +245,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
 {
 ?>
           <li class="nav-item">
-            <a href="#" class="nav-link staff_details staff ">
+            <a href="#" class="nav-link staff_details staff update_staff">
               <!-- <i class="nav-icon fas fa-copy"></i> -->
               <!-- <i class="fa fa-file-invoice"></i> -->
               <!-- <i class="fa fa-id-badge"></i> -->
@@ -263,7 +264,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/beauty_parlour_management_system/admin2/staff_gallery.php" class="nav-link ">
+                <a href="/beauty_parlour_management_system/admin2/staff_gallery.php" class="nav-link update_staff">
                   <!-- <i class="fa fa-info-circle"></i> -->
                   <!-- <i class="fa fa-user-plus"></i> -->
                   <i class="fa fa-image"></i> 
@@ -279,7 +280,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio">
+            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio update_portfolio">
               <!-- <i class="nav-icon fas fa-chart-pie"></i> -->
               <i class="fa fa-user-cog"></i>
               <p>
@@ -301,7 +302,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/beauty_parlour_management_system/admin2/portfolio.php" class="nav-link portfolio">
+                <a href="/beauty_parlour_management_system/admin2/portfolio.php" class="nav-link portfolio update_portfolio">
                 <!-- <i class="fa fa-address-book"></i> -->
                 <!-- <i class="fa fa-briefcase"></i> -->
                 <!-- <i class="fa fa-folder-open"></i> -->

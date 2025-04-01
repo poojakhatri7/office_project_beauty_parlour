@@ -78,7 +78,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
-.update_profile{
+.update_staff{
   background :rgb(33, 70, 77) !important;
 }
 </style>
@@ -88,7 +88,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <h4>Update Staff Gallery</h4>
+          <!-- <h4>Update Staff Gallery</h4> -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -99,7 +99,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
       <div class="col-md-10">
         <div class="card card-info">
           <div class="card-header" style="background-color: rgb(51, 139, 139);">
-            <h3 class="card-title">User Profile Photo</h3>
+            <h3 class="card-title"> Update Staff Gallery</h3>
           </div>
           <!-- /.card-header -->
 
@@ -149,7 +149,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
               </div>
 
               <div class="col-12 text-center mt-3">
-                <label for="photo">Select Photo <span class="required">*</span></label>
+                <label for="photo">Select Photo <span class="required"></span></label>
                 <input type="file" name="image" id="profile-img" class="form-control">
                 <br>
                 <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button>
@@ -167,7 +167,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
     </div>
             <div class="card">
         <div class="card-header">
-            <h5 class="m-0"> Update Designation and Staff Gallery  </h5>
+            <h5 class="m-0"> Delete Designation  </h5>
         </div>
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
@@ -180,7 +180,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
                 </thead>
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM Staff_designation ";
+                    $sql = "SELECT * FROM staff_designation ";
                     $result = mysqli_query($conn, $sql);
                     $count = 0;
                     if (mysqli_num_rows($result) > 0) {
@@ -207,14 +207,62 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
                     ?>
                 </tbody>
             </table>
+            
         </div>
+        <div class="card">
+        <div class="card-header">
+            <h5 class="m-0">Delete Staff Gallery</h5>
+        </div>
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(51, 139, 139)">
+                    <tr>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Name</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Designation</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Image</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Image</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // $sql = "SELECT * FROM staff_designation ";
+                    $sql = "SELECT sg.id, sg.name, sd.designation, sg.file
+        FROM staff_gallery sg
+        JOIN staff_designation sd ON sg.staff_designation_id = sd.id";
+                    $result = mysqli_query($conn, $sql);
+                    $count = 0;
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          $image = "/beauty_parlour_management_system/admin2/" . $row['file'];
+                            $count++;
+                    ?>
+                            <tr>
+                                <th scope='row'><?php echo $count; ?></th>
+                                <td><?php echo $row['name']; ?></td>
+                                <td><?php echo $row['designation']; ?></td>
+                                <td><?php echo $row['file']; ?></td>
+                                <td><img src="<?php echo $image; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
+                                <td>
+                                    <div style="display: inline-block;">
+                                        <a href='/beauty_parlour_management_system/admin2/delete_staff_gallery.php?id=<?php echo $row["id"]; ?>'>
+                                            <i class='fa fa-trash' style='color: red;'></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                    <?php
+                        }
+                    } else {
+                        echo "<tr><td colspan='4' class='text-center text-danger'>No Category Found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
     </div>
             </div>
-            
-           
 
-            
-            
           </div>
         </div>
    

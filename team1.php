@@ -118,7 +118,7 @@ include './admin2/db_connection.php';
 						<div class="row">	
 							<div class="col">
 								<div class="category-title mb-6">	
-									<h2 class="h2-lg">Management</h2>	
+									<h2 class="h2-lg">Our Staff Members</h2>	
 								</div>	
 							</div>
 						</div>
@@ -127,9 +127,11 @@ include './admin2/db_connection.php';
 						<!-- TEAM MEMBERS WRAPPER -->	
 						<div class="row">
 						<?php
-			$sql = "SELECT * FROM staff_gallery where staff_designation_id = 1 ";
+			// $sql = "SELECT * FROM staff_gallery where staff_designation_id = 1 ";
+			$sql = "SELECT sg.id, sg.name, sd.designation, sg.file 
+        FROM staff_gallery sg
+        JOIN staff_designation sd ON sg.staff_designation_id = sd.id";
 $result = mysqli_query($conn, $sql);
-
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
     //   echo $row['file'];
@@ -153,9 +155,10 @@ if (mysqli_num_rows($result) > 0) {
 																																						
 									<!-- Team Member Data -->		
 									<div class="team-member-data">
-
+									<h3><?php echo $row['name']; ?></h3>
 										<!-- Title -->		
-										<span class="section-id">Founder & Director</span>	
+										<!-- <span class="section-id">Founder & Director</span>	 -->
+										<p><?php echo $row['designation']; ?></p>
 										<h5 class="h5-lg"></h5>
 
 										<!-- Link -->
