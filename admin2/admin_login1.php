@@ -1,18 +1,9 @@
 <?php
+ session_start();
 if (isset($_SESSION["name"])) {
    header("Location: index.php");
    exit();
 }
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
-
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
 include 'db_connection.php';
 if(isset($_POST["submit"]))
 {
@@ -25,7 +16,7 @@ if(isset($_POST["submit"]))
   {
 if($password== $row["password"])
 {
-    session_start();
+   
 $_SESSION["login"] = true ;
 $_SESSION["id"] = $row["id"];
 $_SESSION["name"] = $row["name"];
@@ -39,7 +30,7 @@ $_SESSION["user_role"] = (int)$row["role"];
 //     session_name("staff_session");
 // }
  
-echo "<script> window.location.href = '/beauty_parlour_management_system/admin2 '; </script>";
+echo "<script> window.location.href = '/beauty_parlour_management_system/admin2'; </script>";
 }
 else {
   echo
@@ -168,6 +159,6 @@ else {
         <p>&copy; 2025 Beauty Parlour Management System. All rights reserved.</p>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 </html>

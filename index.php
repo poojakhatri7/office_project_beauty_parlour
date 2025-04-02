@@ -1,6 +1,5 @@
 <?php include './admin2/db_connection.php'; ?>
 
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -1061,7 +1060,20 @@ if (mysqli_num_rows($result) > 0) {
 							</div>	
 						</div>
 					</div>
+					<?php
+$sql = "SELECT * FROM portfolio  LIMIT 5 OFFSET 1";
+$result = mysqli_query($conn, $sql);
+$images = [];
 
+if (mysqli_num_rows($result) > 0) {
+				while ($row = mysqli_fetch_assoc($result)) {
+					$image_home[] = "/beauty_parlour_management_system/admin2/" . $row['file'];
+				
+
+?>
+<?php 
+				}}
+?>
 
 					<!-- ABOUT-6 CONTENT -->
 					<div class="row">
@@ -1070,7 +1082,7 @@ if (mysqli_num_rows($result) > 0) {
 						<!-- ABOUT-6 IMAGE -->
 						<div class="col-md-6 col-lg-4">
 							<div id="a6-img-1" class="about-6-img">
-								<img class="img-fluid" src="images/beauty_06.jpg" alt="about-image">
+								<img class="img-fluid" src="<?php echo $image_home[0]; ?>" alt="Image" style="width: 515px; height: 620px; object-fit: cover;"alt="gallery-image" alt="about-image">
 							</div>
 						</div>
 
@@ -1093,7 +1105,7 @@ if (mysqli_num_rows($result) > 0) {
 
 								<!-- IMAGE -->
 								<div class="a6-img">
-									<img class="img-fluid" src="images/beauty_07.jpg" alt="about-image">
+									<img class="img-fluid" src="<?php echo $image_home[3]; ?>" alt="about-image">
 								</div>
 
 							</div>
@@ -1103,7 +1115,7 @@ if (mysqli_num_rows($result) > 0) {
 						<!-- ABOUT-6 IMAGE -->
 						<div class="col-md-6 col-lg-4 order-last order-lg-2">
 							<div id="a6-img-2" class="about-6-img">
-								<img class="img-fluid" src="images/beauty_05.jpg" alt="about-image">
+								<img class="img-fluid" src="<?php echo $image_home[4]; ?>" alt="Image" style="width: 515px; height: 620px; object-fit: cover;"alt="gallery-image" alt="about-image" alt="about-image">
 							</div>
 						</div>
 
@@ -1114,16 +1126,16 @@ if (mysqli_num_rows($result) > 0) {
 				</div>	   <!-- End container -->
 			</section>	<!-- END ABOUT-6 -->
 			<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
  // Empty array to store data
 
 

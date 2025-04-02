@@ -148,6 +148,12 @@ include '../admin2/db_connection.php';
               </p>
             </a>
 </li>
+<?php
+// if($role==1)
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
+// if (session_name() == "admin_session") 
+{
+?>
 <li class="nav-item">
             <a href="/beauty_parlour_management_system/admin2/delete_old_records.php" class="nav-link delete_appointment">
               
@@ -158,6 +164,7 @@ include '../admin2/db_connection.php';
               </p>
             </a>
 </li>
+<?php } ?>
 </ul>
 
          
@@ -188,6 +195,12 @@ include '../admin2/db_connection.php';
                 Available Services
               </p>
             </a>
+            <?php
+// if($role==1)
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
+// if (session_name() == "admin_session") 
+{
+?>           
             <li class="nav-item">
             <a href="/beauty_parlour_management_system/admin2/admin_services2.php" class="nav-link admin_services">
               <!-- <i class="nav-icon fas fa-th"></i> -->
@@ -208,6 +221,7 @@ include '../admin2/db_connection.php';
               Add Category and Sub Category
               </p>
             </a>
+            <?php } ?>
             </ul>
           </li> 
           

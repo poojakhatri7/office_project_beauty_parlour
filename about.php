@@ -1,14 +1,4 @@
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
-
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
 include './admin2/db_connection.php';
 $sql = "SELECT * FROM tb_about_us";
 $result = mysqli_query($conn, $sql);
@@ -22,8 +12,6 @@ if (mysqli_num_rows($result) > 0) {
     $page_title = $row['page_title'];
     $heading = $row['heading'];
     $text_area = $row['text_area'];
-        
-
     }}
 //  echo "<pre>";
 //  print_r($about_sections);
@@ -102,8 +90,6 @@ $business_hours = [];
 	<link href="css/responsive.css" rel="stylesheet">
 
 </head>
-
-
 
 <body>
 
