@@ -121,7 +121,7 @@ $address=  $_SESSION["address"];
                   <div class="row">
 					    <div class="col-12">
         			     <div  style="text-align: center; margin-top:-15px;"><br>
-                   <img src="<?php echo $uploadPath; ?>" width="150" height="150" class="img3" id="profile-img-tag" height="240" width="300">
+                   <img src="<?php echo $uploadPath; ?>" width="100" height="100" class="img3" id="profile-img-tag" height="240" width="300">
                           </div>
         			   </div>
 					      <div class="col-12" align="center">

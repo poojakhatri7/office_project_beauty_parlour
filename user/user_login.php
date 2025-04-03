@@ -4,16 +4,6 @@ if (isset($_SESSION["name"])) {
     header("Location: index.php");
     exit();
  }
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
-
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
 include '../admin2/db_connection.php';
 if(isset($_POST["submit"]))
 {
@@ -26,7 +16,6 @@ if(isset($_POST["submit"]))
   {
 if($password== $row["password"])
 {
-   
 $_SESSION["login"] = true ;
 $_SESSION["id"] = $row["id"];
 $_SESSION["name"] = $row["name"];
@@ -36,7 +25,8 @@ $_SESSION["address"] = $row["address"];
 echo "<script> window.location.href = '/beauty_parlour_management_system/user'; </script>";
 // echo "<script> window.location.href = '/beauty_parlour_management_system/user/index.php?id=" . $row["id"] . "'; </script>";
 }
-else{
+else
+{
   echo
   "<script> alert('wrong password') </script>";
 }
@@ -56,8 +46,17 @@ else{
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: #f4f4f9;
+            /* background: #f4f4f9; */
             font-family: 'Arial', sans-serif;
+            background-image: url('../images/login5.jpg');
+
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-attachment: fixed;  
+background-repeat: no-repeat;
+background-size: cover;
         }
 
         .login-container {
@@ -145,10 +144,20 @@ else{
                 <!-- <button type="submit" name="submit" class="btn btn-primary">Login</button> -->                  
 <a href='/beauty_parlour_management_system/user'>
     <button type="submit" name="submit" class="btn btn-primary">Login</button>
-</a> 
+</a>
+
             </form>
+            <div class="forgot-password" style="text-align: center;">
+    <p style="display: inline; margin-right: 5px;">Don't have an account?</p>
+    <a href="/beauty_parlour_management_system/user_registration.php" 
+       style="text-decoration: none; color: #5a2d77; font-weight: bold;">
+        Sign up
+    </a>
+</div>
+
+         
             <div class="forgot-password">
-                <a href="#">Forgot Password?</a>
+                <a href="/beauty_parlour_management_system/">Home</a>
             </div>
         </div>
     </div>

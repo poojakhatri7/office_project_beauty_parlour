@@ -453,7 +453,7 @@ $(document).ready(function () {
             let serviceDiv = $(`
                 <div>
                     ${serviceName} (Rs ${service.price.toFixed(2)}) 
-                    <button class="remove-service" data-service="${serviceName}" style="color: red; border: none; background: none; cursor: pointer;">✖</button>
+                    <button class="remove-service" data-service="${serviceName}" style="color: red !important; border: none; background: none; cursor: pointer;"><i class="fas fa-times"></i></button>
                 </div>
             `);
 

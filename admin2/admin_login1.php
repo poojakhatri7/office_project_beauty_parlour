@@ -52,8 +52,17 @@ else {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: #f4f4f9;
+            /* background: #f4f4f9; */
             font-family: 'Arial', sans-serif;
+            background-image: url('../images/login5.jpg');
+
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-attachment: fixed;  
+background-repeat: no-repeat;
+background-size: cover;
         }
 
         .login-container {
@@ -87,7 +96,7 @@ else {
         }
 
         .btn-primary {
-            background-color:rgb(40, 85, 99);
+            background-color:rgb(56, 89, 121);
             border: none;
             padding: 10px 20px;
             width: 100%;
@@ -95,7 +104,7 @@ else {
             font-size: 16px;
             transition: background-color 0.3s ease;
         }
-
+       
         .btn-primary:hover {
             background-color: #42185e;
         }
@@ -133,7 +142,7 @@ else {
 
     <div class="login-container">
         <div class="login-form">
-            <h2> Login </h2>
+            <h2> Admin Login </h2>
             <form class ="" action="" method= "post" >
                 <!-- Email field -->
                 <div class="form-group">
@@ -146,9 +155,9 @@ else {
                 <!-- Submit button -->
                 <button type="submit" name="submit" class="btn btn-primary">Login</button>
             </form>
-            <div class="forgot-password">
+            <!-- <div class="forgot-password">
                 <a href="#">Forgot Password?</a>
-            </div>
+            </div> -->
             <div class="Home">
                 <a href="/beauty_parlour_management_system/">Home</a>
             </div>

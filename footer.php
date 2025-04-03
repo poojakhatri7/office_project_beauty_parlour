@@ -67,12 +67,12 @@ $time = $row['time'];
 								<h5 class="h5-md">Quick Links</h5>
 
 								<!-- Salon Name -->
-								<p><a href="team.php">Artists + Staff</a></p>
+								<p><a href="team1.php">Artists + Staff</a></p>
 
 								<!-- Address -->
-								<p><a href="pricing-1.php">Hair Services</a></p> 
-								<p><a href="pricing-2.php">Beauty Services</a></p>
-								<p><a href="pricing-3.php">Hands & Feet</a></p>
+								<p><a href="pprice.php?c_id=1">Hair Services</a></p> 
+								<p><a href="pprice.php?c_id=2">Beauty Services</a></p>
+								<p><a href="pprice.php?c_id=3">Hands & Feet</a></p>
 
 							</div>	
 						</div>	

@@ -125,7 +125,7 @@ include 'db_connection.php';
                   </thead>
                   <tbody>
                   <?php
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM users order BY id DESC";
 $result = mysqli_query($conn, $sql);
 $count = 0;
 if (mysqli_num_rows($result) > 0) {

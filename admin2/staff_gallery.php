@@ -66,8 +66,6 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
 }
 
  ?>
-<?php
-?> 
 
 <!doctype html>
 <html lang="en">
@@ -121,7 +119,9 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
             <hr>
 
             <!-- Second Form: Upload Photo & Select Designation -->
+             
             <form name="form_1" method="post" enctype="multipart/form-data">
+              
               <div class="form-group row">
                 <?php 
                   $staff_result = mysqli_query($conn, "SELECT * FROM staff_designation"); 
