@@ -9,15 +9,7 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
+
 include '../admin2/db_connection.php';
 if(isset($_POST["submit"])) {
    $name= $_SESSION["name"];
@@ -39,7 +31,11 @@ if(mysqli_num_rows($result_appointment) > 0) {
     // $query1 = "INSERT INTO tb_appointment values ('','$name','$email','$mobile','$address','$date','$preferd_time','$appointment_for','')";
    if(mysqli_query($conn, $query1))
    {
-    echo"<script> alert('Booking successful') </script>";
+    echo"<script> alert('Booking successful') 
+            window.location.href='appointment_history.php';
+       
+    </script>";
+    
   } else {
       echo "Error inserting record: " . mysqli_error($conn);
   }
@@ -123,14 +119,14 @@ if(mysqli_num_rows($result_appointment) > 0) {
                             </div>
                         </div>
                         <?php
-                                $sql = "SELECT * FROM tb_services";
+                                $sql = "SELECT * FROM all_services";
 $result = $conn->query($sql);
 // $options = "";
 if ($result->num_rows > 0) {
     $options = "<option value='' selected disabled>Select Service</option>\n";
     while($row = $result->fetch_assoc()) {
-        $service_name = $row["service_name"];
-        $service_price = $row["service_price"];
+        $service_name = $row["all_service"];
+        $service_price = $row["price"];
         $options .= "<option value=\"$service_name\">$service_name (Rs  $service_price) </option>\n";
     }
 } else {

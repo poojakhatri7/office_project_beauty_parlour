@@ -122,15 +122,15 @@ if (mysqli_num_rows($result) > 0) {
                     <?php }}  ?>
                   </div>
                   <?php
-                                $sql = "SELECT * FROM tb_services";
+                                $sql = "SELECT * FROM all_services";
 $result = $conn->query($sql);
 // $options = "";
 if ($result->num_rows > 0) {
     $options = "<option value='' selected disabled>Select Service</option>\n";
     while($row = $result->fetch_assoc()) {
-        $service_name = $row["service_name"];
+        $service_name = $row["all_service"];
         // $options .= "<option value=\"$service_name\">$service_name</option>\n";
-        $service_price = $row["service_price"];
+        $service_price = $row["price"];
         $options .= "<option value=\"$service_name\">$service_name (Rs  $service_price) </option>\n";
     }
 } else {
