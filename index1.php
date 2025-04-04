@@ -1,5 +1,7 @@
 <?php include './admin2/db_connection.php'; ?>
 
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,6 +29,8 @@
 		<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;display=swap" rel="stylesheet">	
 		<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Bootstrap Bundle with Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 		<!-- BOOTSTRAP CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -82,29 +86,102 @@
 
 			<!-- HERO-9
 			============================================= -->	
-			<div id="hero-9" class="bg--fixed hero-section">
-
-
-				<!-- HERO-9 TEXT -->	
-				<div class="container">
+			<!-- <div id="hero-9" class="bg--fixed hero-section"> -->
+            <?php
+$sql = "SELECT * FROM banner_management ORDER BY id DESC";
+$result = mysqli_query($conn, $sql);
+?>
+<?php if (mysqli_num_rows($result) > 0): ?>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <?php 
+    $active = true;
+    while ($row = mysqli_fetch_assoc($result)) { 
+        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+        $title = $row['content'];
+    ?>
+      <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
+        <div class="carousel-bg" style="background-image: url('<?php echo $imagePath; ?>'); ">
+        <!-- <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-9">
+        <h1 class="hero-9-txt color--white text-center mt-70"></h1>
+        <a href="pprice.php?c_id=1" class="btn btn--tra-white hover--white">View Salon Menu</a>
+        </div>
+    </div>
+    </div> -->
+          <!-- Optional overlay text -->
+           <!-- HERO-9 TEXT -->	
+				 <div class="container"> 
 					<div class="row justify-content-center">
 						<div class="col-md-10 col-lg-9">
-							<div class="hero-9-txt color--white text-center mt-70">
+							<div class="hero-9-txt color--white text-center mt-70"> 
 
 								<!-- Title -->
-								<h2>Unleash your beauty with Demo Beauty Studio</h2>
+								<h2><?php echo $title; ?></h2>
 
 								<!-- Button -->
 								<a href="pprice.php?c_id=1" class="btn btn--tra-white hover--white">View Salon Menu</a>
 
-							</div>
+							 </div>
 						</div>	
-					</div>	<!-- End row -->
-				</div>  <!-- END HERO-9 TEXT -->
+					 </div>	
+				</div>  
+        </div>
+      </div>
+    <?php 
+      $active = false;
+    } 
+    ?>
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+    <!-- <span class="sr-only">Previous</span> -->
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+    <!-- <span class="sr-only">Next</span> -->
+  </button>
+</div>
+<?php endif; ?>
+
+<style>
+    
+.carousel-bg {
+    text-align: center;
+  background: no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll!important;
+  padding-top: 200px;
+  padding-bottom: 170px;
+
+}
 
 
-				<!-- TRANSPARENT TEXT -->
-				<div class="tra-header">
+    </style>
+
+				<!-- HERO-9 TEXT -->	
+				<!-- <div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-10 col-lg-9">
+							<div class="hero-9-txt color--white text-center mt-70"> -->
+
+								<!-- Title -->
+								<!-- <h2>Unleash your beauty with Demo Beauty Studio</h2> -->
+
+								<!-- Button -->
+								<!-- <a href="pprice.php?c_id=1" class="btn btn--tra-white hover--white">View Salon Menu</a> -->
+
+							<!-- </div>
+						</div>	
+					 </div>	End row -->
+				<!-- </div>  END HERO-9 TEXT --> 
+
+
+				<!-- TRANSPARENT TEXT  -->
+				 <div class="tra-header">
 					<h2 class="color--white">Naturally you</h2>
 				</div>
 

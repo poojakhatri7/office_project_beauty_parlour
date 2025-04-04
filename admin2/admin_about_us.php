@@ -165,7 +165,7 @@ if (isset($_POST['submit'])) {
 
          <div class="card-footer">
             <button type="submit" name="submit1" class="btn" style="background-color:rgb(51, 139, 139);color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 15px;">Update Images</button>
-            <button type="reset" class="btn btn-default float-right">Cancel</button>
+            <button type="reset" class="btn btn-danger float-right">Cancel</button>
         </div>
         <!-- /.card-footer  -->
     </form>
@@ -230,7 +230,7 @@ if (mysqli_num_rows($result) > 0) {
 
         <div class="card-footer">
             <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); color:  rgb(238, 230, 217);font-weight: 500; font-size: 16px; padding: 7px 15px;">Update</button>
-            <button type="reset" class="btn btn-default float-right">Cancel</button>
+            <button type="reset" class="btn btn-danger float-right">Cancel</button>
         </div>
         <!-- /.card-footer -->
     </form>

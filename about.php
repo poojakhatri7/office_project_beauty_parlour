@@ -550,9 +550,6 @@ if (mysqli_num_rows($result) > 0) {
         <?php
         $sql = "SELECT * FROM business_hours";
 $result1 = mysqli_query($conn, $sql);
-// $business_hours = [];
-							while ($row = mysqli_fetch_assoc($result1)) {
-								
 
 ?>
 		<!-- WORKING HOURS
@@ -585,7 +582,7 @@ $result1 = mysqli_query($conn, $sql);
 							</table>
 						</div>
 					</div> <!-- END TABLE -->
-<?php } ?>
+
 
 					<!-- TEXT -->
 					<div class="col-lg-6 order-first order-lg-2">
