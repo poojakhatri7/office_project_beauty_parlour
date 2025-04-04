@@ -178,7 +178,7 @@ $sql ="SELECT
 FROM tb_appointment ta
 JOIN tb_selected_services ts ON ta.id = ts.appointment_id
 GROUP BY ta.id, ts.billing_number
-ORDER BY ta.date DESC;
+ORDER BY ta.id DESC ;
 ";
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);

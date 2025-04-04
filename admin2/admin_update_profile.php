@@ -66,7 +66,11 @@ if(isset($_POST["submit1"])) {
       // Update the user record (no success/error message)
       $query2 = "UPDATE users 
                  SET name='$updated_name', email='$updated_email', address='$updated_address',password='123' 
-                 WHERE mobile='$mobile'";          
+                 WHERE mobile='$mobile'"; 
+                 $query_admin = "UPDATE admin_login_details 
+                 SET name='$updated_name', email='$updated_email', password='123' 
+                 WHERE mobile='$mobile'";  
+                 $result_admin = mysqli_query($conn, $query_admin);       
      if (mysqli_query($conn, $query2))
      {
       $_SESSION['name'] = $updated_name;

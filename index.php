@@ -997,38 +997,37 @@ if (mysqli_num_rows($result) > 0) {
 
 							</div>
 						</div>
+						<?php
+        $sql = "SELECT * FROM business_hours";
+$result1 = mysqli_query($conn, $sql);
+// $business_hours = [];
+							while ($row = mysqli_fetch_assoc($result1)) {
+								
 
+?>					
 
 						<!-- TABLE -->	
 						<div class="col-lg-6">
 							<div class="txt-table right-column wow fadeInLeft">
 								<table class="table">
-									<tbody>
-									    <tr>
-									      	<td>Mon – Wed</td>
-									      	<td> - </td>
-									      	<td class="text-end">10:00 AM - 9:00 PM</td>
-									    </tr>
-									    <tr>
-									      	<td>Thursday</td>
-									      	<td> - </td>
-									      	<td class="text-end">10:00 AM - 7:30 PM</td>
-									    </tr>
-									     <tr>
-									      	<td>Friday</td>
-									      	<td> - </td>
-									      	<td class="text-end">10:00 AM - 9:00 PM</td>
-									    </tr>
-									    <tr class="last-tr">
-									      	<td>Sun - Sun</td>
-									      	<td>-</td>
-									      	<td class="text-end">10:00 AM - 5:00 PM</td>
-									   	 </tr>
-									  </tbody>
+								<tbody>
+                            <?php while ($row = mysqli_fetch_assoc($result1)) { ?>
+                            <tr>
+                                <td><?php echo $row['day']; ?></td>
+                                <td>-</td>
+                                <td class="text-end">
+                                    <?php 
+                                    echo date("h:i A", strtotime($row['open_time'])) . " - " . 
+                                         date("h:i A", strtotime($row['close_time'])); 
+                                    ?>
+                                </td>
+                            </tr>
+                            <?php }  ?>
+                        </tbody>
 								</table>
 							</div>
 						</div>	<!-- END TABLE -->	
-
+						<?php }  ?>
 
 					</div>    <!-- End row -->
 				</div>	   <!-- End container -->

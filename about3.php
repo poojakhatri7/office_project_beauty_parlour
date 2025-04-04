@@ -5,10 +5,20 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
+    //   echo $row['file'];
+	//  $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file']; 
+	//   echo '<img src="' . $imagePath . '" width="400" height="400" style="margin:10px;">';
+    // echo "ID: " . $row['page_title'] . "<br>"; // Echo the ID
     $page_title = $row['page_title'];
     $heading = $row['heading'];
     $text_area = $row['text_area'];
     }}
+//  echo "<pre>";
+//  print_r($about_sections);
+//  echo "</pre>";
+
+							// Fetch business hours
+
 
 
 $sql = "SELECT * FROM business_hours";
@@ -17,6 +27,10 @@ $business_hours = [];
 							while ($row = mysqli_fetch_assoc($result1)) {
 								$business_hours[$row['id']] = $row; 
 }
+//  echo "<pre>";
+//  print_r($business_hours);
+//  echo "</pre>";
+
 
 ?>
 <!doctype html>
@@ -547,14 +561,8 @@ if (mysqli_num_rows($result) > 0) {
 
 
 		<div class="bg--01 bg--scroll ct-12 content-section"></div>
-        <?php
-        $sql = "SELECT * FROM business_hours";
-$result1 = mysqli_query($conn, $sql);
-// $business_hours = [];
-							while ($row = mysqli_fetch_assoc($result1)) {
-								
 
-?>
+
 		<!-- WORKING HOURS
 			============================================= -->
 		<section class="py-8 ct-table content-section division">
@@ -567,25 +575,81 @@ $result1 = mysqli_query($conn, $sql);
 					<div class="col-lg-6 order-last order-lg-2">
 						<div class="txt-table left-column wow fadeInRight">
 							<table class="table">
-                            <tbody>
-                            <?php while ($row = mysqli_fetch_assoc($result1)) { ?>
-                            <tr>
-                                <td><?php echo $row['day']; ?></td>
-                                <td>-</td>
-                                <td class="text-end">
-                                    <?php 
-                                    echo date("h:i A", strtotime($row['open_time'])) . " - " . 
-                                         date("h:i A", strtotime($row['close_time'])); 
-                                    ?>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-					
+								<tbody>
+									<tr>
+										<td> <?php echo $business_hours[1]['day'] ?></td>
+										<td> - </td>
+										<td class="text-end"><?php 
+    echo date("h:i A", strtotime($business_hours[1]['open_time'])) . " - " . 
+         date("h:i A", strtotime($business_hours[1]['close_time'])); 
+    ?></td>
+									
+									</tr>
+									<tr>
+										<td> <?php echo $business_hours[2]['day'] ?></td>
+										<td> - </td>
+										<td class="text-end"><?php 
+    echo date("h:i A", strtotime($business_hours[2]['open_time'])) . " - " . 
+         date("h:i A", strtotime($business_hours[2]['close_time'])); 
+    ?></td>
+									
+									</tr>
+									<tr>
+										<td> <?php echo $business_hours[3]['day'] ?></td>
+										<td> - </td>
+										<td class="text-end"><?php 
+    echo date("h:i A", strtotime($business_hours[3]['open_time'])) . " - " . 
+         date("h:i A", strtotime($business_hours[3]['close_time'])); 
+    ?></td>
+									
+									</tr>
+									<tr>
+										<td> <?php echo $business_hours[4]['day'] ?></td>
+										<td> - </td>
+										<td class="text-end"><?php 
+    echo date("h:i A", strtotime($business_hours[4]['open_time'])) . " - " . 
+         date("h:i A", strtotime($business_hours[4]['close_time'])); 
+    ?></td>
+									
+									</tr>
+									<tr>
+										<td> <?php echo $business_hours[5]['day'] ?></td>
+										<td> - </td>
+										<td class="text-end"><?php 
+    echo date("h:i A", strtotime($business_hours[5]['open_time'])) . " - " . 
+         date("h:i A", strtotime($business_hours[5]['close_time'])); 
+    ?></td>
+									
+									</tr>
+									<tr>
+										<td> <?php echo $business_hours[6]['day'] ?></td>
+										<td> - </td>
+										<td class="text-end"><?php 
+    echo date("h:i A", strtotime($business_hours[6]['open_time'])) . " - " . 
+         date("h:i A", strtotime($business_hours[6]['close_time'])); 
+    ?></td>
+									
+									</tr>
+									<!-- <tr>
+										<td>tuesday</td>
+										<td> - </td>
+										<td class="text-end">10:00 AM - 7:30 PM</td>
+									</tr>
+									<tr>
+										<td>Friday</td>
+										<td> - </td>
+										<td class="text-end">10:00 AM - 9:00 PM</td>
+									</tr>
+									<tr class="last-tr">
+										<td>Sun - Sun</td>
+										<td>-</td>
+										<td class="text-end">10:00 AM - 5:00 PM</td>
+									</tr>  -->
+								</tbody>
 							</table>
 						</div>
 					</div> <!-- END TABLE -->
-<?php } ?>
+
 
 					<!-- TEXT -->
 					<div class="col-lg-6 order-first order-lg-2">
