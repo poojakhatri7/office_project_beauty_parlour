@@ -22,16 +22,7 @@
 }
 </style>
 <?php
-// $role = $_SESSION["user_role"];
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
+
 include '../admin2/db_connection.php';
 ?> 
     <!-- Sidebar -->
@@ -294,7 +285,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio update_portfolio">
+            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio update_portfolio top_slider">
               <!-- <i class="nav-icon fas fa-chart-pie"></i> -->
               <i class="fa fa-user-cog"></i>
               <p>
@@ -303,6 +294,12 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
               </p>
             </a> 
             <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/top_slider.php" class="nav-link top_slider">
+                <i class="fa fa-home"></i>
+                  <p>Top slider</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="/beauty_parlour_management_system/admin2/admin_about_us.php" class="nav-link about_us">
                   <i class="fa fa-info-circle"></i>

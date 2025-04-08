@@ -9,15 +9,7 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
+
 include 'db_connection.php';
 ?>
 <?php
@@ -136,7 +128,6 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
                   </select>
                 </div>
               </div>
-
               <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">

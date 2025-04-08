@@ -91,7 +91,7 @@ $sql = "SELECT * FROM banner_management ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
 ?>
 <?php if (mysqli_num_rows($result) > 0): ?>
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <?php 
     $active = true;
@@ -99,7 +99,7 @@ $result = mysqli_query($conn, $sql);
         $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
         $title = $row['content'];
     ?>
-      <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
+      <div class="carousel-item <?php echo $active ? 'active' : ''; ?>" data-interval ="1000">
         <div class="carousel-bg" style="background-image: url('<?php echo $imagePath; ?>'); ">
         <!-- <div class="container">
         <div class="row justify-content-center">
@@ -120,7 +120,7 @@ $result = mysqli_query($conn, $sql);
 								<h2><?php echo $title; ?></h2>
 
 								<!-- Button -->
-								<!-- <a href="pprice.php?c_id=1" class="btn btn--tra-white hover--white">View Salon Menu</a> -->
+								<a href="pprice.php?c_id=1" class="btn btn--tra-white hover--white">View Salon Menu</a>
 
 							 </div>
 						</div>	
