@@ -1,5 +1,4 @@
 <?php
-
 include './admin2/db_connection.php';
 ?>
 	
