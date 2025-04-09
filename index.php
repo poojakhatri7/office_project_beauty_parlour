@@ -99,7 +99,7 @@ $result = mysqli_query($conn, $sql);
         $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
         $title = $row['content'];
     ?>
-      <div class="carousel-item <?php echo $active ? 'active' : ''; ?>" data-interval ="1000">
+      <div class="carousel-item <?php echo $active ? 'active' : ''; ?>" data-interval ="4000">
         <div class="carousel-bg" style="background-image: url('<?php echo $imagePath; ?>'); ">
         <!-- <div class="container">
         <div class="row justify-content-center">

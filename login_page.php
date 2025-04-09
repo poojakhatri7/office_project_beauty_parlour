@@ -39,7 +39,7 @@ if (isset($_POST["submit"])) {
             echo "<script> window.location.href = '/beauty_parlour_management_system/admin2'; </script>";
             exit();
         } else {
-            echo "<script> alert('Wrong password for admin'); </script>";
+            echo "<script> alert('Wrong password for admin');  window.location.href = 'login_page.php'; </script>";
             exit();
         }
     }
@@ -59,13 +59,13 @@ if (isset($_POST["submit"])) {
             echo "<script> window.location.href = '/beauty_parlour_management_system/user'; </script>";
             exit();
         } else {
-            echo "<script> alert('Wrong password for user'); </script>";
+            echo "<script> alert('Wrong password for user');  window.location.href = 'login_page.php'; </script>";
             exit();
         }
     }
 
     // Not found in either
-    echo "<script> alert('User not registered'); </script>";
+    echo "<script> alert('User not registered');  window.location.href = 'login_page.php'; </script>";
 }
 ?>
 <!DOCTYPE html>
