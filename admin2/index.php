@@ -1,11 +1,6 @@
 
 <?php
- session_start();
- if (!isset($_SESSION["name"])) {
-  header("Location: ../admin_login1.php");
-
-    exit();
-}
+include 'session.php';
 //  $name=   $_SESSION["name"];
 //  $mobile=   $_SESSION["mobile"];
 ?>
@@ -13,16 +8,7 @@
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
 include 'db_connection.php';
 ?>
   <div class="content-wrapper">

@@ -1,10 +1,6 @@
 
 <?php
- session_start();
- if (!isset($_SESSION["name"])) {
-    header("Location: admin_login1.php");
-    exit();
-}
+include 'session.php';
 include 'db_connection.php';
 // $servername = "localhost";
 // $username = "root";

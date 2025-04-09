@@ -1,15 +1,11 @@
 <?php
- session_start();
- if (!isset($_SESSION["name"])) {
-    header("Location: user_login.php");
-    exit();
-}
+ include 'user_session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-
+ 
   include '../admin2/db_connection.php';
 ?>
 <?php 

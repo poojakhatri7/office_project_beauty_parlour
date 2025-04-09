@@ -1,19 +1,6 @@
 <?php
- session_start();
- if (!isset($_SESSION["name"])) {
-    header("Location: admin_login1.php");
-    exit();
-}
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
+include 'session.php';
 include 'db_connection.php';
 // Check if 'id' parameter is set and is a valid number
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {

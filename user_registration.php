@@ -149,7 +149,7 @@ else
             </div>
             <button type="submit" name="submit" class="submit-btn">Create Account</button>
             <div class="form-group" style="text-align: center; margin-top: 10px;">
-        <a href="/beauty_parlour_management_system/user_login.php">Already have a account</a>
+        <a href="/beauty_parlour_management_system/login_page.php">Already have a account</a>
             </div>
         </form>
     </div>

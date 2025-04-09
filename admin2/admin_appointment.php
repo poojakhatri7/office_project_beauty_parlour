@@ -1,9 +1,5 @@
 <?php
- session_start();
- if (!isset($_SESSION["name"])) {
-  header("Location: admin_login1.php");
-  exit();
-}
+include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
