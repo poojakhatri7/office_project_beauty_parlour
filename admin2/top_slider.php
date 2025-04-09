@@ -135,7 +135,6 @@ $address=  $_SESSION["address"];
                   </thead>
                   <tbody>
                   <?php
-
 $sql = "SELECT * FROM banner_management order BY id DESC";
 $result = mysqli_query($conn, $sql);
 $count = 0;
