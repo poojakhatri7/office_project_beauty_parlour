@@ -12,9 +12,7 @@ include 'db_connection.php';
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
 if (isset($_FILES['image'])) {
-  // echo "<pre>";
-  // print_r($_FILES);
-  // echo "</pre>";
+ 
   $mobile=   $_SESSION["mobile"];
   $photo = $_FILES["image"]["name"];
   $photo2 = $_FILES["image"]["tmp_name"];
@@ -40,6 +38,7 @@ $name= $_SESSION["name"];
 $email=  $_SESSION["email"];
 $mobile=   $_SESSION["mobile"];
 $address=  $_SESSION["address"];
+
 if(isset($_POST["submit1"])) {
 
   $updated_name = mysqli_real_escape_string($conn, $_POST["name"]);
@@ -110,11 +109,12 @@ if(isset($_POST["submit1"])) {
                   <div class="row">
                   <?php
  $mobile = $_SESSION["mobile"];
-        $sql = "SELECT file FROM admin_login_details WHERE mobile = '$mobile'";
+        $sql = "SELECT * FROM admin_login_details WHERE mobile = '$mobile'";
         $result = mysqli_query($conn, $sql);
         if ($result && mysqli_num_rows($result) > 0) {
           $row = mysqli_fetch_assoc($result);
           $imagePath = $row['file'] ;
+          $gst_number = $row['gst_number'] ;
         }
         ?>
 					    <div class="col-12">
@@ -177,9 +177,14 @@ if(isset($_POST["submit1"])) {
                       <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" value = "<?php echo $address ?>">
                       <!-- <textarea class="form-control"  name="full_add" id="full_add"   value=""></textarea> --> 
                   </div>
+                  <div class="col-md-6 form-group">
+                      <lable>GST Number</lable>
+                      <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" value = "<?php echo $gst_number ?>">
+                      <!-- <textarea class="form-control"  name="full_add" id="full_add"   value=""></textarea> --> 
+                  </div>
                   <div class="card-footer">
                             <button type="submit" name="submit1" class="btn" style="background-color: rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Save Details</button>
-                            <button type="submit" class="btn btn-danger float-right">Cancel</button>
+                            <button type="cancel" class="btn btn-danger float-right">Cancel</button>
                         </div>
                   </div>
                   

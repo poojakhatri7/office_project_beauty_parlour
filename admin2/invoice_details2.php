@@ -1,20 +1,9 @@
 <?php
 include 'session.php';
+include 'db_connection.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
-include 'db_connection.php';
 ?>
  <?php
  $billing_number = $_GET ['billing_number'];
@@ -174,12 +163,23 @@ if (isset($_GET['appointment_id'])) {
 <body>
   <div class="invoice-container">
     <!-- Header Section -->
+           <?php
+            $sql2 = "SELECT * FROM admin_login_details ";
+            $result2 = mysqli_query($conn, $sql2);
+      if ($row = mysqli_fetch_assoc($result2)) {
+    $gst_number = $row['gst_number'];
+  
+}
+?>
      <?php
     $sql = "SELECT * FROM tb_contact_us";
+   
     $result = mysqli_query($conn, $sql);
+  
     if (mysqli_num_rows($result) > 0) {
         // Step 5: Use a while loop to fetch each row of data
         while ($row = mysqli_fetch_assoc($result)) {
+          $image = "/beauty_parlour_management_system/admin2/" . $row['Logo']; 
       ?>
     <div class="invoice-header">
       <div class="company-info">
@@ -187,11 +187,15 @@ if (isset($_GET['appointment_id'])) {
       <h6><?php echo strtoupper ( $row['address']); ?></h6>
       <h6><?php echo $row['email_us']; ?></h6>
       <h6>Phone:<?php echo $row['mobile_number']; ?></h6>
+        <?php  echo "<h6>GSTIN: $gst_number</h6>"; ?>
+       
       </div>
+
       <div class="gst-info">
         <!-- <h4>GSTIN: 27XXXXXXXXX1Z5</h4> -->
+     
         <p>Date: <?php echo date("d-M-Y"); ?></p>
-        <!-- <p>Invoice #: 2025-0001</p> -->
+        <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="Image" style="width: 100px; height: 100px; object-fit: cover;" alt="content-image" alt="content-image" alt="team-member-foto">
       </div>
     </div>
         <?php }}?>

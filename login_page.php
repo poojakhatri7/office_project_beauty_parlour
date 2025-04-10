@@ -34,6 +34,7 @@ if (isset($_POST["submit"])) {
             $_SESSION["mobile"] = $admin["mobile"];
             $_SESSION["email"] = $admin["email"];
             $_SESSION["address"] = $admin["address"];
+            $_SESSION["gst_number"] = $admin["gst_number"];
             $_SESSION["user_role"] = (int)$admin["role"];
 
             echo "<script> window.location.href = '/beauty_parlour_management_system/admin2'; </script>";

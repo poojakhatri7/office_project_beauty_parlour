@@ -35,18 +35,18 @@ include 'db_connection.php';
 // }
 // ?>
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
 
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// $conn = new mysqli($servername, $username, $password, $dbname, $port);
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
 
 if (isset($_POST['service_name']) && isset($_POST['service_price'])) {
     $service_name = $conn->real_escape_string($_POST['service_name']);

@@ -140,7 +140,7 @@ include 'db_connection.php';
                         <th>S No.</th>
                         <th>Service Name</th>
                         <th>Service Price</th>
-                        <th>Service Number</th>
+                        <!-- <th>Service Number</th> -->
                         <th>Actions</th>
                     </tr>
                 </thead>
