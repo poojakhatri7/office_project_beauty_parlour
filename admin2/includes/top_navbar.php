@@ -1,15 +1,7 @@
 <?php include 'data.php'; ?>
 
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
+
 include '../admin2/db_connection.php';
 ?>
 <?php
@@ -80,7 +72,7 @@ include '../admin2/db_connection.php';
          <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-  <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2 " alt="User Image" style="max-width: 25px; height: auto;">
+  <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2 " alt="User Image" style="width: 30px; height: 30px; object-fit: cover;" alt="gallery-image">
 </a>
   <div class="dropdown-menu  dropdown-menu-right">
           <a href="/beauty_parlour_management_system/admin2/admin_logout.php" class="dropdown-item">

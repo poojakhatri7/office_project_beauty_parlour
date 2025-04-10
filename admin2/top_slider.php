@@ -95,7 +95,7 @@ $address=  $_SESSION["address"];
                             
 							<div class="col-12">
 								<input type="file" name="image" id="profile-img" value="" class="form-control">
-                                <div style="display: flex; justify-content: center;">  
+                <div style="display: flex; justify-content: center;">  
                 <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; margin-top: 20px; ">Upload</button>
 							</div>
 </div>

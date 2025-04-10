@@ -8,7 +8,12 @@ include('includes/sidebar.php');
 include 'db_connection.php';
 ?>
 <?php
+$defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
+$uploadPath = $defaultImage; 
 if(isset($_POST["submit"])) {
+    $photo = $_FILES["image"]["name"];
+    $photo2 = $_FILES["image"]["tmp_name"];
+    $uploadPath = "upload-images/" . $photo;
     $mobile = $_POST['mobile'];
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -16,6 +21,7 @@ if(isset($_POST["submit"])) {
     $password = $_POST['password'];
     $role = $_POST['role'];
 
+    move_uploaded_file($photo2, $uploadPath);
     $check_user = "SELECT * FROM admin_login_details  WHERE mobile = '$mobile'";
     $result_user = mysqli_query($conn, $check_user);
   
@@ -29,12 +35,13 @@ if(isset($_POST["submit"])) {
         echo"<script> alert('updated successfully') </script>";
        }
     } else {
-        $query2 = "INSERT INTO admin_login_details  values ('','$name','$mobile','$email','$address','$password','$role','')";
+        $query2 = "INSERT INTO admin_login_details  values ('','$name','$mobile','$email','$address','$password','$role','$uploadPath')";
         if ( mysqli_query($conn, $query2))
         {
             echo"<script> alert('New Staff added Successfully') </script>";
            }
     }
+    echo "<script>window.location.href='".$_SERVER['PHP_SELF']."';</script>";
 }
 // if(mysqli_query($conn, $query1))
 // {
@@ -55,11 +62,7 @@ if(isset($_POST["submit"])) {
             /* background: #157daf !important; */
             background :rgb(33, 70, 77) !important;
         }
-        /* #error-message {
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
-} */
+ 
     </style>
 </head>
 <body>
@@ -81,7 +84,7 @@ if(isset($_POST["submit"])) {
             <div class="card-header"style="background-color: rgb(51, 139, 139);">
                     <h3 class="card-title">Add Staff Details</h3>
                 </div>
-                <form class="form-horizontal" action="" method="post">
+                <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                     <div class="card-body">
                     <div class="form-group row">          
                     <label for="mobile" class="col-sm-2 col-form-label">MOBILE NUMBER</label>
@@ -130,7 +133,13 @@ if(isset($_POST["submit"])) {
    
                                         </select>
                             </div>
-                        </div>        
+                        </div> 
+                        <div class="form-group row">
+                            <label for="address" class="col-sm-2 col-form-label">IMAGE</label>
+                            <div class="col-sm-6">
+                                <input type="file" name="image" class="form-control" id="address" placeholder="Enter Password" >
+                            </div>
+                        </div>       
                         <div class="card-footer">
                             <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Add New Staff</button>
                             <button type="submit" class="btn btn-danger float-right">Cancel</button>

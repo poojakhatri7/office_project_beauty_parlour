@@ -205,7 +205,7 @@ if (isset($_GET['appointment_id'])) {
         while ($row = mysqli_fetch_assoc($result)) {
       ?>
     <div class="invoice-details">
-      <h3>Billed To:</h3>
+      <h4>Billed To:</h4>
       <p><?php echo ucwords ($row['name']); ?></p>
       <p><?php echo $row['address']; ?></p>
       <p><?php echo $row['mobile']; ?></p>

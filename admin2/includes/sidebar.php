@@ -39,7 +39,7 @@ include '../admin2/db_connection.php';
           $imagePath = $row['file'] ;
         }
         ?>
-          <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2" alt="User Image" style="width: 40px; height: 40px; object-fit: cover;" alt="gallery-image">
         </div>
         <div class="info">
           <a href="#" class="d-block" style="text-decoration: none;" > 
@@ -250,7 +250,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
 {
 ?>
           <li class="nav-item">
-            <a href="#" class="nav-link staff_details staff update_staff">
+            <a href="#" class="nav-link staff_details ">
               <!-- <i class="nav-icon fas fa-copy"></i> -->
               <!-- <i class="fa fa-file-invoice"></i> -->
               <!-- <i class="fa fa-id-badge"></i> -->
@@ -268,14 +268,14 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                   <p>Add New Staff</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="/beauty_parlour_management_system/admin2/staff_gallery.php" class="nav-link update_staff">
+              <!-- <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/staff_gallery.php" class="nav-link update_staff"> -->
                   <!-- <i class="fa fa-info-circle"></i> -->
                   <!-- <i class="fa fa-user-plus"></i> -->
-                  <i class="fa fa-image"></i> 
+                  <!-- <i class="fa fa-image"></i> 
                   <p>Staff Gallery</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="/beauty_parlour_management_system/admin2/staff_details.php" class="nav-link staff">
                 <i class="fa fa-address-book"></i>
@@ -285,7 +285,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio update_portfolio top_slider">
+            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio update_portfolio top_slider staff update_staff">
               <!-- <i class="nav-icon fas fa-chart-pie"></i> -->
               <i class="fa fa-user-cog"></i>
               <p>
@@ -300,6 +300,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                   <p>Top slider</p>
                 </a>
               </li>
+              
               <li class="nav-item">
                 <a href="/beauty_parlour_management_system/admin2/admin_about_us.php" class="nav-link about_us">
                   <i class="fa fa-info-circle"></i>
@@ -326,6 +327,14 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 <!-- <i class="fa fa-address-book"></i> -->
                 <i class="fa fa-star checked"></i>
                   <p>Comments and review </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/staff_gallery.php" class="nav-link update_staff">
+                  <!-- <i class="fa fa-info-circle"></i> -->
+                  <!-- <i class="fa fa-user-plus"></i> -->
+                  <i class="fa fa-image"></i> 
+                  <p>Staff Gallery</p>
                 </a>
               </li>
             </ul>

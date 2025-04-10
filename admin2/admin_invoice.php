@@ -5,16 +5,7 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
 
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
 include 'db_connection.php';
 ?>
 <main class="app-main">
@@ -191,7 +182,7 @@ if (mysqli_num_rows($result) > 0) {
       <td>".$row['name']."</td>
        <td>".$row['mobile']."</td>
        <td>".$row['date']."</td>
-        <td>".$row['time']."</td>
+       <td> ". date("h:i", strtotime($row['time'])) . "</td>
         <td> 
   <a href='/beauty_parlour_management_system/admin2/invoice_details2.php?appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>
      <button class='btn' style='background-color: rgb(51, 139, 139); color: white; border: none; cursor: pointer;  padding: 7px 12px; border: none;  cursor: pointer;'>

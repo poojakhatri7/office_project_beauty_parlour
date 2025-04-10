@@ -35,7 +35,12 @@ if (mysqli_num_rows($result) > 0) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
   <title>AdminLTE 3 | General Form Elements</title>
-
+  <style type="text/css">
+        .staff_details{
+         
+            background :rgb(33, 70, 77) !important;
+        }
+    </style>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -110,26 +115,28 @@ if (mysqli_num_rows($result) > 0) {
                             <div class="col-sm-4">
                                 <!-- <input type="text" name="appointment_for" class="form-control" id="appointment_for" > -->
                                 <select id="role" name="role" class="form-control">
-                                <option value="" selected disabled>Select Role</option>
-                                <option value="1">Admin </option>
-    <option value="2">Staff </option>
+                                <option value="<?php echo $row['role']; ?>">
+    <?php echo ($row['role'] == 1) ? 'Admin' : (($row['role'] == 2) ? 'Staff' : 'Unknown'); ?>
+</option>
+
+
    
                                         </select>
                             </div>
                         </div>        
                         <div class="card-footer">
                             <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139);  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Edit Staff Details</button>
-                            <button type="submit" class="btn btn-default float-right">Cancel</button>
+                            <button type="submit" class="btn btn-danger float-right">Cancel</button>
                         </div>
                     </div>
                 </form>       
             </div>
         </div>
     </div>
-                <div class="card-footer">
+                <!-- <div class="card-footer">
                   <button type="submit" name="submit1" class="btn" style="background-color:rgb(51, 139, 139);">UPDATE</button>
                   <button type="submit" class="btn btn-default float-right">CANCEL</button>
-                </div>
+                </div> -->
                 <!-- /.card-footer -->
               </form>
               <?php     

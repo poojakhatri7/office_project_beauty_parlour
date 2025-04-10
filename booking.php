@@ -9,7 +9,7 @@ if(isset($_POST["submit"])) {
 	$appointment_for = $_POST['service'];
 	$datetime = $_POST['date'];
 	$date = date("Y-m-d", strtotime($datetime));  // Converts to "2025-03-04"
-    $time = date("H:i:s", strtotime($datetime)); 
+    $time = date("H:i", strtotime($datetime)); 
 	$staff = $_POST['staff']; // Converts to "14:30:00"
     $query1 = "INSERT INTO tb_appointment values ('','$name','$email','$mobile','$address','$date','$time','$appointment_for','$staff')";
      if(mysqli_query($conn, $query1))
