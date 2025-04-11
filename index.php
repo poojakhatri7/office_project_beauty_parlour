@@ -96,6 +96,8 @@ $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) { 
         $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
         $title = $row['content'];
+		$Button_name = $row['buttonName'];
+		$Button_Link = $row['buttonLink'];
     ?>
       <div class="carousel-item <?php echo $active ? 'active' : ''; ?>" data-interval ="4000">
         <div class="carousel-bg" style="background-image: url('<?php echo $imagePath; ?>'); ">
@@ -118,7 +120,8 @@ $result = mysqli_query($conn, $sql);
 								<h2><?php echo $title; ?></h2>
 
 								<!-- Button -->
-								<a href="pprice.php?c_id=1" class="btn btn--tra-white hover--white">View Salon Menu</a>
+								 
+								<a href="<?php echo $Button_Link; ?>" class="btn btn--tra-white hover--white"><?php echo $Button_name; ?></a>
 
 							 </div>
 						</div>	

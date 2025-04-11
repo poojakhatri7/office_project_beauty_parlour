@@ -146,8 +146,9 @@ if (mysqli_num_rows($result) > 0) {
             <td><?php echo $row['email']; ?></td>
             <td><?php echo $row['about']; ?></td>
             <td><?php echo $row['message']; ?></td>
-            <td><?php echo $row['created_at']; ?></td>
-            
+          
+            <td><?php echo date("d-m-Y h:i", strtotime($row['created_at'])); ?></td>
+
             <!-- <td> 
   <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id=<?php echo $row["id"]; ?>'>
 

@@ -19,10 +19,12 @@ if(isset($_POST["submit"])) {
   $photo2 = $_FILES["image"]["tmp_name"];
   $uploadPath = "upload-images/" . $photo;
   $content = $_POST['content'];
+  $buttonName = $_POST['buttonName'];
+  $buttonLink = $_POST['buttonLink'];
   if (move_uploaded_file($photo2, $uploadPath)) {
       echo "Image uploaded successfully! <br>";
     //   $sql = "INSERT INTO banner_management (file) VALUES ('$uploadPath')";
-    $sql = "INSERT INTO banner_management (file, content) VALUES ('$uploadPath', '$content')";
+    $sql = "INSERT INTO banner_management (file, content, buttonName, buttonLink) VALUES ('$uploadPath', '$content', '$buttonName', '$buttonLink')";
       if ($conn->query($sql) === TRUE) {
         echo "Image path saved to database!";
       } else {
@@ -68,41 +70,55 @@ $address=  $_SESSION["address"];
     <section class="content">
       <div class="container-fluid">
         <div class="row">    
-            <div class="col-md-4">
+            <div class="col-md-6 mx-auto">
                 <div class="card card-info">
               <div class="card-header"style="background-color: rgb(51, 139, 139);">
                 <h3 class="card-title">Update Slider</h3>
               </div>
               <form name="form_1" method="post" enctype="multipart/form-data">
                 <div class="card-body">
+               
                 <div class="form-group row">
-                <label for="name" class="col-sm-3 col-form-label">Content</label>
-                <div class="col-sm-12">
+                <label for="name" class="col-sm-2 col-form-label">Content</label>
+                <div class="col-sm-10">
                   <input type="text" name="content" class="form-control" id="name" placeholder="Enter content of the slider">
                 </div>
               </div>
-                  <div class="row">
-					    <div class="col-12">
-        			     <div  style="text-align: center; margin-top:-15px;"><br>
-                   <img src="<?php echo $uploadPath; ?>" width="100" height="100" class="img3" id="profile-img-tag" height="240" width="300">
+
+                  <div class="form-group row">
+					
+        			     <div  style="text-align: center; margin-top:-15px; " class="mb-3"><br>
+                   <img src="<?php echo $uploadPath; ?>" width="90" height="90" class="img3" id="profile-img-tag" height="240" width="300">
                           </div>
-        			   </div>
-					      <div class="col-12" >
-					          <br/>
-						<div class="item form-group">
-							<label for="photo">Select slider<span class="required"></span>
-							</label>
-                            
-							<div class="col-12">
+        		
+					 
+     
+						<div class="form-group row">
+							<label for="photo" class="col-sm-2 col-form-label">Select Slider<span class="required"></span> 	</label>
+              <div class="col-sm-10">
 								<input type="file" name="image" id="profile-img" value="" class="form-control">
-                <div style="display: flex; justify-content: center;">  
+</div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Button</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="buttonName" class="form-control" id="inputEmail3" placeholder="Button Name ">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Button Link</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="buttonLink" class="form-control" id="inputEmail3" placeholder="Button Link">
+                    </div>
+                  </div>
+                <div style="display: flex; justify-content: center;">   
                 <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; margin-top: 20px; ">Upload</button>
 							</div>
 </div>
 						</div>
 						 </div>
 						</div> 
-                </div>
+              
                 <!-- /.card-body -->
 
                 <div class="card-footer">
@@ -124,6 +140,8 @@ $address=  $_SESSION["address"];
                   <tr>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Content</th>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Button Name</th>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Button Link</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">file</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Action</th>
                     <!-- <th>Actions</th> -->
@@ -142,6 +160,8 @@ if (mysqli_num_rows($result) > 0) {
         <tr>
             <th scope='row'><?php echo $count; ?></th>
             <td><?php echo $row['content']; ?></td>
+            <td><?php echo $row['buttonName']; ?></td>
+            <td><?php echo $row['buttonLink']; ?></td>
             <td><img src="<?php echo $imagePath; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
 
 <td>

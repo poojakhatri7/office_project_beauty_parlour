@@ -97,7 +97,7 @@ $address=  $_SESSION["address"];
     <section class="content">
       <div class="container-fluid">
         <div class="row">    
-            <div class="col-md-4">
+            <div class="col-md-4 mx-auto">
                 <div class="card card-info">
               <div class="card-header"style="background-color: rgb(51, 139, 139);">
                 <h3 class="card-title">Update Gallery</h3>

@@ -82,7 +82,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
     <section class="content">
   <div class="container-fluid">
     <div class="row">    
-      <div class="col-md-10">
+      <div class="col-md-10 ">
         <div class="card card-info">
           <div class="card-header" style="background-color: rgb(51, 139, 139);">
             <h3 class="card-title"> Update Staff Gallery</h3>

@@ -430,7 +430,7 @@ $(document).ready(function () {
 
 <div class="card-footer">
 <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 20px;  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; ">Book</button>
-  <button type="submit" class="btn btn-default float-right">Cancel</button>
+  <button type="reset" class="btn btn-danger float-right">Cancel</button>
 </div>
                 <!-- /.card-footer -->
               </form>

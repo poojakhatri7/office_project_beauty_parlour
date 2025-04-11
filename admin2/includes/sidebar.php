@@ -100,7 +100,7 @@ include '../admin2/db_connection.php';
           </li>
 
 
-           <li class="nav-item">
+           <li class="nav-item" >
             <a href="#" class="nav-link add_cutomer nav-link all_appointment  search_appointment delete_appointment">
             <i class="fa fa-clock"></i>
               <p>
@@ -108,7 +108,7 @@ include '../admin2/db_connection.php';
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a> 
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="background-color:rgb(47, 131, 131); display:none;">
           <li class="nav-item">
             <a href="/beauty_parlour_management_system/admin2/admin_appointment.php" class="nav-link all_appointment">
               <i class="fa fa-clipboard-list"></i>
@@ -167,7 +167,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a> 
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="background-color:rgb(47, 131, 131); display:none;">
           <!-- <li class="nav-item">
             <a href="/beauty_parlour_management_system/admin2/admin_services.php" class="nav-link admin_services"> -->
               <!-- <i class="nav-icon fas fa-th"></i> -->
@@ -260,7 +260,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="background-color:rgb(47, 131, 131); display:none;">
               <li class="nav-item">
                 <a href="/beauty_parlour_management_system/admin2/add_new_staff.php" class="nav-link staff_details">
                   <!-- <i class="fa fa-info-circle"></i> -->
@@ -293,7 +293,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a> 
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="background-color:rgb(47, 131, 131); display:none;">
             <li class="nav-item">
                 <a href="/beauty_parlour_management_system/admin2/top_slider.php" class="nav-link top_slider">
                 <i class="fa fa-home"></i>
@@ -349,7 +349,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="background-color:rgb(47, 131, 131); display:none;">
               <li class="nav-item">
                 <a href="/beauty_parlour_management_system/admin2/admin_update_profile.php" class="nav-link update_profile">
                   <i class="fa fa-info-circle"></i>

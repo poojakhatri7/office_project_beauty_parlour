@@ -316,7 +316,7 @@ $roundedBill = round($gst_total, 0);
   <!-- Print Button -->
   <form method="POST">
   <div class="text-center">
-  <button type="submit" name="submit" class="btn btn-info" style="background-color:rgb(51, 139, 139)" onclick="printInvoice()">Print Invoice</button>
+  <button type="submit" name="submit" class="btn btn-info" style="background-color:rgb(51, 139, 139); margin-bottom: 20px;" onclick="printInvoice()">Print Invoice</button>
     </div>
     </form>
 <!-- JavaScript Function -->
