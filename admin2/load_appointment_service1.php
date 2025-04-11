@@ -71,7 +71,7 @@ if (isset($_POST['sub_service'])) {
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">S No.</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Name</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Price</th>
-                      <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Number</th>
+                   
                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
                 </tr>
             </thead>
@@ -84,8 +84,8 @@ if (isset($_POST['sub_service'])) {
                     <td>{$sno}</td>
                     <td>{$row['all_service']}</td>
                     <td>{$row['price']}</td>
-                     <td>{$row['service_number']}</td>
-                //  
+                 
+            
               
   <td><input type='checkbox' class='service-checkbox' name='services[]' value='" . $row['all_service'] . "' data-name='" . $row['all_service'] . "' data-price='" . $row['price'] . "'></td>
 

@@ -4,6 +4,7 @@ include 'db_connection.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
+
 ?>
  <?php
  $billing_number = $_GET ['billing_number'];
@@ -195,7 +196,7 @@ if (isset($_GET['appointment_id'])) {
         <!-- <h4>GSTIN: 27XXXXXXXXX1Z5</h4> -->
      
         <p>Date: <?php echo date("d-M-Y"); ?></p>
-        <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="Image" style="width: 100px; height: 100px; object-fit: cover;" alt="content-image" alt="content-image" alt="team-member-foto">
+        <img class="img-fluid" src="<?php echo $brand_logo; ?>" alt="Image" style="width: 120px; height: 100px; object-fit: contain;" alt="content-image" alt="content-image" alt="team-member-foto">
       </div>
     </div>
         <?php }}?>

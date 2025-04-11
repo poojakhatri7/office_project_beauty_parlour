@@ -411,6 +411,12 @@ $(document).ready(function () {
     <input type="number" id="discount" name="discount" class="form-control d-inline-block" 
         style="width: calc(35% - 100px);" placeholder="Enter discount in percentage">
 </div>
+<!-- Discount input field -->
+<div class="form-group">
+    <label for="discountAmount" style="display: inline-block; width: 200px;"> Discount in Amount</label>
+    <input type="number" id="discountAmount" name="discountAmount" class="form-control d-inline-block" 
+        style="width: calc(35% - 100px);" placeholder="Enter discount in amount">
+</div>
 
 <!-- Display total after discount -->
 <div id="totalAfterDiscount" style="font-weight: bold; margin-top: 20px;">Total after discount: Rs 0.00</div>
@@ -435,6 +441,19 @@ $(document).ready(function () {
 </div>
 <script>
 $(document).ready(function () {
+
+// When percentage is typed
+$("#discount").on("input", function () {
+    updateTotalAfterDiscount(parseFloat($("#hiddenTotalPrice").val()) || 0, "percent");
+});
+
+// When amount is typed
+$("#discountAmount").on("input", function () {
+    updateTotalAfterDiscount(parseFloat($("#hiddenTotalPrice").val()) || 0, "amount");
+});
+
+
+
     let selectedServices = new Map(); // Store selected services
 
     function updateSelectedServices() {
@@ -471,13 +490,43 @@ $(document).ready(function () {
         updateTotalAfterDiscount(totalPrice);
     }
 
-    function updateTotalAfterDiscount(totalPrice) {
-        let discountValue = parseFloat($("#discount").val()) || 0;
-        let finalPrice = totalPrice - (totalPrice * discountValue / 100);
+    // function updateTotalAfterDiscount(totalPrice) {
+    //     let discountValue = parseFloat($("#discount").val()) || 0;
+    //     let discountAmount = (totalPrice * discountValue) / 100;
+    //     let finalPrice = totalPrice - (totalPrice * discountValue / 100);
 
-        $("#totalAfterDiscount").text(`Total after discount: Rs ${finalPrice.toFixed(2)}`);
-        $("#hiddenDiscountedPrice").val(finalPrice.toFixed(2));
+    //     $("#discountAmount").val(discountAmount.toFixed(2));
+
+    //     $("#totalAfterDiscount").text(`Total after discount: Rs ${finalPrice.toFixed(2)}`);
+    //     $("#hiddenDiscountedPrice").val(finalPrice.toFixed(2));
+    // }
+    function updateTotalAfterDiscount(totalPrice, triggerSource = "percent") {
+    let discountPercent = parseFloat($("#discount").val()) || 0;
+    let discountAmount = parseFloat($("#discountAmount").val()) || 0;
+    let finalPrice;
+
+    if (triggerSource === "percent") {
+        
+        discountAmount = (totalPrice * discountPercent) / 100;
+        $("#discountAmount").val(discountAmount.toFixed(2));
+        if (discountAmount > 0) {
+    $("#discountAmount").val(discountAmount.toFixed(2));
+} else {
+    $("#discountAmount").val(""); // Clear the input if zero
+}
+
+    } else if (triggerSource === "amount") {
+        discountPercent = (discountAmount / totalPrice) * 100;
+        $("#discount").val(discountPercent.toFixed(2));
     }
+
+    finalPrice = totalPrice - discountAmount;
+
+    // Update total after discount
+    $("#totalAfterDiscount").text(`Total after discount: Rs ${finalPrice.toFixed(2)}`);
+    $("#hiddenDiscountedPrice").val(finalPrice.toFixed(2));
+}
+
 
     // ✅ Event Delegation: Handle checkbox changes (for dynamically loaded checkboxes)
     $(document).on("change", ".service-checkbox", function () {
