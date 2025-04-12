@@ -9,6 +9,9 @@ include('includes/sidebar.php');
 include 'db_connection.php';
 //$id = $_GET ['id'];
 $id = $_GET ['id'];
+$appointment_for = $_GET['appointment_for'];
+
+echo "<div style='text-align: center; font-weight: bold;'>$appointment_for</div>";
 if (isset($_POST["submit"])) {
     // Get the form data
     $name = $_POST["name"];
@@ -150,6 +153,7 @@ if (mysqli_num_rows($result) > 0) {
   // Step 5: Use a while loop to fetch each row of data
   while ($row = mysqli_fetch_assoc($result)) {
 ?>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -158,6 +162,7 @@ if (mysqli_num_rows($result) > 0) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -326,6 +331,10 @@ $(document).on('change', '.service-checkbox', function () {
 });
 </script> -->
 <script>
+    var appointment_for = "<?php echo $appointment_for; ?>";
+</script>
+
+<script>
 $(document).ready(function () {
 
     // Function to load service categories
@@ -408,13 +417,13 @@ $(document).ready(function () {
 <!-- Discount input field -->
 <div class="form-group">
     <label for="discount" style="display: inline-block; width: 200px;"> Discount percentage (%)</label>
-    <input type="number" id="discount" name="discount" class="form-control d-inline-block" 
+    <input type="number" step="0.01" id="discount" name="discount" class="form-control d-inline-block" 
         style="width: calc(35% - 100px);" placeholder="Enter discount in percentage">
 </div>
 <!-- Discount input field -->
 <div class="form-group">
     <label for="discountAmount" style="display: inline-block; width: 200px;"> Discount in Amount</label>
-    <input type="number" id="discountAmount" name="discountAmount" class="form-control d-inline-block" 
+    <input type="number"  step="0.01" id="discountAmount" name="discountAmount" class="form-control d-inline-block" 
         style="width: calc(35% - 100px);" placeholder="Enter discount in amount">
 </div>
 
@@ -509,11 +518,11 @@ $("#discountAmount").on("input", function () {
         
         discountAmount = (totalPrice * discountPercent) / 100;
         $("#discountAmount").val(discountAmount.toFixed(2));
-        if (discountAmount > 0) {
-    $("#discountAmount").val(discountAmount.toFixed(2));
-} else {
-    $("#discountAmount").val(""); // Clear the input if zero
-}
+//         if (discountAmount > 0) {
+//     $("#discountAmount").val(discountAmount.toFixed(2));
+// } else {
+//     $("#discountAmount").val(""); // Clear the input if zero
+// }
 
     } else if (triggerSource === "amount") {
         discountPercent = (discountAmount / totalPrice) * 100;

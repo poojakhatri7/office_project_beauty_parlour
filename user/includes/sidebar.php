@@ -21,16 +21,16 @@
 }
 </style>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "beauty";
+// $port = 3307;
+// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
 ?> 
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -93,7 +93,7 @@ if (!$conn) {
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a> 
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" style="background-color:rgb(53, 94, 94); display:none;">
 <li class="nav-item">
             <a href="/beauty_parlour_management_system/user/user_booking.php" class="nav-link add_cutomer nav-link all_appointment nav-link search_appointment">
             <i class="fa fa-clock"></i>
@@ -135,7 +135,7 @@ if (!$conn) {
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a> 
-<ul class="nav nav-treeview">
+<ul class="nav nav-treeview" style="background-color:rgb(53, 94, 94); display:none;">
 <li class="nav-item">
             <a href="/beauty_parlour_management_system/user/update_profile.php" class="nav-link update_profile">
             <i class="fas fa-edit"></i>

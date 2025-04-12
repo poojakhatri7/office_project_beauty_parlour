@@ -21,9 +21,9 @@ include('includes/sidebar.php');
 ?>
   <div class="content-wrapper">
   <style type="text/css">
-.dashboard1{
-  background :rgb(33, 70, 77) !important;
-}
+/* .dashboard1{
+  background :rgb(126, 159, 165) !important;
+} */
 </style>
     <!-- Content Header (Page header) -->
     <div class="content-header">

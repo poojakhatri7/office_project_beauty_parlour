@@ -120,9 +120,9 @@ $result = mysqli_query($conn, $sql);
 								<h2><?php echo $title; ?></h2>
 
 								<!-- Button -->
-								 
+								<?php if (!empty($Button_Link)) { ?>
 								<a href="<?php echo $Button_Link; ?>" class="btn btn--tra-white hover--white"><?php echo $Button_name; ?></a>
-
+								<?php } ?>
 							 </div>
 						</div>	
 					 </div>	

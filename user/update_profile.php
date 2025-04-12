@@ -5,15 +5,7 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
+
 include '../admin2/db_connection.php';
 ?>
 <?php
@@ -181,9 +173,18 @@ if(isset($_POST["submit1"])) {
               <form name="form_1" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                   <div class="row">
+                  <?php
+ $mobile = $_SESSION["mobile"];
+        $sql = "SELECT * FROM admin_login_details WHERE mobile = '$mobile'";
+        $result = mysqli_query($conn, $sql);
+        if ($result && mysqli_num_rows($result) > 0) {
+          $row = mysqli_fetch_assoc($result);
+          $imagePath = $row['file'] ;
+        }
+        ?>
 					    <div class="col-12">
         			     <div  style="text-align: center; margin-top:-15px;"><br>
-                   <img src="<?php echo $uploadPath; ?>" width="300" height="200" class="img3" id="profile-img-tag" hight="240" width="300">
+                   <img src="<?php echo $imagePath; ?>" width="200" height="200" class="img3" id="profile-img-tag" hight="240" width="300">
                           </div>
         			   </div>
 					      <div class="col-12" align="center">

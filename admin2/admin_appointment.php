@@ -192,7 +192,7 @@ if (mysqli_num_rows($result) > 0) {
 </td> -->
 <td>
     <div style="display: inline-block; margin-right: 20px;">
-        <a href='/beauty_parlour_management_system/admin2/admin_edit_customer4.php?id=<?php echo $row["id"]; ?>'>
+        <a href='/beauty_parlour_management_system/admin2/admin_edit_customer4.php?id=<?php echo $row["id"]; ?>&appointment_for=<?php echo urlencode($row["appointment_for"]); ?>'>
             <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> <!-- Edit icon -->
         </a> 
     </div>

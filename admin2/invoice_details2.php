@@ -218,9 +218,38 @@ if (isset($_GET['appointment_id'])) {
     </div>
     <?php }}?>
     <!-- Table Section -->
+    <?php 
+     //   $sql = "SELECT totalPrice,discount FROM orders WHERE appointment_id={$appointment_id}";
+     $sql = "SELECT totalPrice, discount FROM orders 
+        WHERE appointment_id = {$appointment_id} 
+        AND billing_number = {$billing_number}";
+ $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+          $total = 0 ;
+          $discount = 0;
+          $discount_rupee = 0;
+          $roundedBill = 0;
+          $result = mysqli_query($conn, $sql);
+          while ($row = mysqli_fetch_assoc($result)) {
+            $total = $row['totalPrice'];
+          $discount = $row['discount'];
+          }
+          $formatted_discount = number_format($discount, 0);
+          $discount_rupee = ($total * $discount / 100);
+         
+          $total_discount = $total - ($total * $discount / 100);
+          $gst_total =  $total_discount + ($total_discount * 18 / 100);
+      // if($total > 100)
+      // $discount = $total*5/100;
+      // $total =$total -$total*5/100 ;
+      
+$roundedBill = round($gst_total, 0); 
+// echo "After 5% discount, the rounded bill amount is: ₹" . $roundedBill;
+      ?>
     <?php
     //$sql = "SELECT * FROM tb_contact_us";
     //$sql = "SELECT * FROM tb_appointment WHERE id={$appointment_id}";
+    
     $sql = "SELECT * FROM tb_selected_services WHERE appointment_id={$appointment_id} AND billing_number = {$billing_number}";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
@@ -252,6 +281,9 @@ if (isset($_GET['appointment_id'])) {
         </tr>
     <?php
         }
+        echo "<td>   </td>";
+        echo "<td> TOTAL </td>";
+        echo "<td>  $total </td>";
       }
         ?>
         
@@ -259,39 +291,13 @@ if (isset($_GET['appointment_id'])) {
            </table>
     <!-- Total Section -->
     <div class="invoice-total">
-      <?php 
-     //   $sql = "SELECT totalPrice,discount FROM orders WHERE appointment_id={$appointment_id}";
-     $sql = "SELECT totalPrice, discount FROM orders 
-        WHERE appointment_id = {$appointment_id} 
-        AND billing_number = {$billing_number}";
-
-        if (mysqli_num_rows($result) > 0) {
-          $total = 0 ;
-          $discount = 0;
-          $discount_rupee = 0;
-          $roundedBill = 0;
-          $result = mysqli_query($conn, $sql);
-          while ($row = mysqli_fetch_assoc($result)) {
-            $total = $row['totalPrice'];
-          $discount = $row['discount'];
-          }
-          $formatted_discount = number_format($discount, 0);
-          $discount_rupee = ($total * $discount / 100);
-         
-          $total_discount = $total - ($total * $discount / 100);
-          $gst_total =  $total_discount + ($total_discount * 18 / 100);
-      // if($total > 100)
-      // $discount = $total*5/100;
-      // $total =$total -$total*5/100 ;
-$roundedBill = round($gst_total, 0); 
-// echo "After 5% discount, the rounded bill amount is: ₹" . $roundedBill;
-      ?>
-     <h3><strong> Bill amount is    Rs  :  <?php echo  $total ?> </strong></h3>
+     
+     <!-- <h6><strong> Bill amount is  :  Rs   <?php echo  $total ?> </strong></h6> -->
       <h6><strong> Discount in percent : <?php  echo $formatted_discount ?> % </strong></h6>
       <h6><strong> Discount in Rupees  : <?php echo $discount_rupee ?> </strong></h6>
-      <h6><strong> After  discount bill amount is Rs : <?php echo  $total_discount ?> </strong></h6>
-      <h6><strong> After adding 18% GST :<?php echo  $gst_total ?> </strong></h6>
-      <h6><strong> After  Roundoff bill amount is Rs  : <?php echo  $roundedBill ?> </strong></h6>
+      <h6><strong> After  discount Bill Amount is Rs : <?php echo  $total_discount ?> </strong></h6>
+      <h6><strong> After adding 18% GST : <?php echo  $gst_total ?> </strong></h6>
+      <h4><strong> After  Roundoff Bill Amount is : Rs <?php echo  $roundedBill ?> </strong></h4>
     </div>
     <?php
     if (isset($_POST["submit"])) {
@@ -316,7 +322,7 @@ $roundedBill = round($gst_total, 0);
   <!-- Print Button -->
   <form method="POST">
   <div class="text-center">
-  <button type="submit" name="submit" class="btn btn-info" style="background-color:rgb(51, 139, 139); margin-bottom: 20px;" onclick="printInvoice()">Print Invoice</button>
+  <button type="submit" name="submit" class="btn btn" style="background-color:rgb(51, 139, 139); color:  rgb(238, 230, 217); margin-bottom: 20px;" onclick="printInvoice()">Print Invoice</button>
     </div>
     </form>
 <!-- JavaScript Function -->
