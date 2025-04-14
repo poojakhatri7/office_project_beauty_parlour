@@ -9,13 +9,13 @@ include('includes/sidebar.php');
  <?php
  $billing_number = $_GET ['billing_number'];
        $appointment_id = $_GET ['appointment_id'];
-if (isset($_GET['appointment_id'])) {
-    // Retrieve and echo the value of 'appointment_id' from the URL
-    echo "Appointment ID: " . $_GET['appointment_id'];
-} else {
-    echo "No appointment ID passed in the URL.";
+// if (isset($_GET['appointment_id'])) {
+//     // Retrieve and echo the value of 'appointment_id' from the URL
+//     echo "Appointment ID: " . $_GET['appointment_id'];
+// } else {
+//     echo "No appointment ID passed in the URL.";
   
-}
+// }
 ?>
 <html lang="en">
   <head>
@@ -293,7 +293,7 @@ $roundedBill = round($gst_total, 0);
     <div class="invoice-total">
      
      <!-- <h6><strong> Bill amount is  :  Rs   <?php echo  $total ?> </strong></h6> -->
-      <h6><strong> Discount in percentage (%) : <?php  echo $formatted_discount ?> </strong></h6>
+      <h6><strong> Discount in percentage  : <?php  echo $formatted_discount?> % </strong></h6>
       <h6><strong> Discount in Rupees  : <?php echo $discount_rupee ?> </strong></h6>
       <h6><strong> After  Discount Bill Amount is : Rs <?php echo  $total_discount ?> </strong></h6>
       <h6><strong> After adding 18% GST : Rs <?php echo  $gst_total ?> </strong></h6>

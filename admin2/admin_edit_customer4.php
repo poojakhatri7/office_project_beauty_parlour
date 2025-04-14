@@ -43,8 +43,8 @@ if ($row) {
 }
 
 $billing_number = $prefix . str_pad($nextNumber, 6, "0", STR_PAD_LEFT);
-
-
+$updateQuery = "UPDATE admin_login_details SET last_invoice_no = '$billing_number' WHERE role = '1'";
+mysqli_query($conn, $updateQuery);
 // echo $billing_number;
 // $N = count($selected_services);
 // echo "<div style='text-align: center; font-weight: bold;'>$N</div>";
@@ -115,18 +115,21 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
         $service_name = mysqli_real_escape_string($conn, $service_name);
 
         // Fetch service price
-        $sql = "SELECT price FROM all_services WHERE all_service = '$service_name'";
+        $sql = "SELECT * FROM all_services WHERE all_service = '$service_name'";
         $result = mysqli_query($conn, $sql);
 
         if ($result && mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
+            $c_id = $row['c_id_category_service'];
+            $s_id = $row['service_number'];
+            $a_id = $row['a_id'];
             $service_price = $row['price'];
             $totalPrice += $service_price; // Add price to total
 
             // Insert into tb_selected_services
             $insert_sql = "
-            INSERT INTO tb_selected_services (appointment_id, service_name, service_price, billing_number) 
-            VALUES ('$appointment_id', '$service_name', '$service_price', '$billing_number')";
+            INSERT INTO tb_selected_services (appointment_id, c_id,s_id, a_id, service_name, service_price, billing_number) 
+            VALUES ('$appointment_id','$c_id','$s_id','$a_id', '$service_name', '$service_price', '$billing_number')";
             
             if (!mysqli_query($conn, $insert_sql)) {
                 echo "Error inserting service: " . mysqli_error($conn);

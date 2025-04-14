@@ -30,7 +30,7 @@ if($_POST['request_type']=="sub_service_data")
     $sql = "SELECT * from sub_category_service WHERE sub_service = {$_POST['id']}";
 
     $query = mysqli_query($conn,$sql);
-    echo "pooja";
+    // echo "pooja";
     // $str = '<option value="">Select Service</option>';
     $str = '<option value="">Select a Sub Service</option>';
     while ($row = mysqli_fetch_assoc($query) )

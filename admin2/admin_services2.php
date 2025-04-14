@@ -5,16 +5,7 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
 include 'db_connection.php';
 // Check if form is submitted
 // if (isset($_POST["submit"])) {
@@ -60,10 +51,11 @@ include 'db_connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $sub_service_id = $_POST['s']; // Gets the selected service ID
+  $category_id = $_POST['c_id'];
   $service_name = mysqli_real_escape_string($conn, $_POST['service_name']);
     $price = mysqli_real_escape_string($conn, $_POST['price']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
-    $sql = "INSERT INTO all_services (a_id, all_service,  price, description , service_number) VALUES ('','$service_name', '$price','$description','$sub_service_id')";
+    $sql = "INSERT INTO all_services (a_id, all_service,  price, description , service_number, c_id_category_service) VALUES ('','$service_name', '$price','$description','$sub_service_id','$category_id')";
 
       if (mysqli_query($conn, $sql)) {
           echo "<script>alert('Service added successfully!'); window.location.href='manage_service.php';</script>";
@@ -73,9 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo "Selected Sub-Service ID: " . $sub_service_id;
 }
 ?>
-
-
-
 
 <!doctype html>
 <html lang="en">
@@ -131,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group row">
     <label for="serviceSelect" class="col-sm-2 col-form-label"> CATEGORY</label>
     <div class="col-sm-4">
-        <select name="service_name" class="form-control" id="service">
+        <select name="c_id" class="form-control" id="service">
             <option value="">Select category</option>
         </select>
     </div>
@@ -172,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px;  padding: 7px 15px; ">Add</button>
-                  <button type="submit" class="btn btn-danger float-right">Cancel</button>
+                  <button type="reset" class="btn btn-danger float-right">Cancel</button>
                 </div>
                 <!-- /.card-footer -->
               </form>
