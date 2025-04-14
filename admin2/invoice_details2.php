@@ -282,8 +282,8 @@ $roundedBill = round($gst_total, 0);
     <?php
         }
         echo "<td>   </td>";
-        echo "<td> TOTAL </td>";
-        echo "<td>  $total </td>";
+        echo "<td><b> TOTAL </b></td>";
+        echo "<td> <b> $total </b> </td>";
       }
         ?>
         
@@ -293,10 +293,10 @@ $roundedBill = round($gst_total, 0);
     <div class="invoice-total">
      
      <!-- <h6><strong> Bill amount is  :  Rs   <?php echo  $total ?> </strong></h6> -->
-      <h6><strong> Discount in percent : <?php  echo $formatted_discount ?> % </strong></h6>
+      <h6><strong> Discount in percentage (%) : <?php  echo $formatted_discount ?> </strong></h6>
       <h6><strong> Discount in Rupees  : <?php echo $discount_rupee ?> </strong></h6>
-      <h6><strong> After  discount Bill Amount is Rs : <?php echo  $total_discount ?> </strong></h6>
-      <h6><strong> After adding 18% GST : <?php echo  $gst_total ?> </strong></h6>
+      <h6><strong> After  Discount Bill Amount is : Rs <?php echo  $total_discount ?> </strong></h6>
+      <h6><strong> After adding 18% GST : Rs <?php echo  $gst_total ?> </strong></h6>
       <h4><strong> After  Roundoff Bill Amount is : Rs <?php echo  $roundedBill ?> </strong></h4>
     </div>
     <?php
@@ -322,7 +322,7 @@ $roundedBill = round($gst_total, 0);
   <!-- Print Button -->
   <form method="POST">
   <div class="text-center">
-  <button type="submit" name="submit" class="btn btn" style="background-color:rgb(51, 139, 139); color:  rgb(238, 230, 217); margin-bottom: 20px;" onclick="printInvoice()">Print Invoice</button>
+  <button type="submit" name="submit" class="btn btn" style="background-color:rgb(51, 139, 139); color:  rgb(238, 230, 217); margin-bottom: 20px;" onclick="printInvoice()"> <i class="fa fa-print" style="margin-right: 5px;"></i>Print Invoice</button>
     </div>
     </form>
 <!-- JavaScript Function -->

@@ -11,7 +11,7 @@ include 'db_connection.php';
 $id = $_GET ['id'];
 $appointment_for = $_GET['appointment_for'];
 
-echo "<div style='text-align: center; font-weight: bold;'>$appointment_for</div>";
+// echo "<div style='text-align: center; font-weight: bold;'>$appointment_for</div>";
 if (isset($_POST["submit"])) {
     // Get the form data
     $name = $_POST["name"];
@@ -28,8 +28,23 @@ $discount = $_POST['discount'];
 $totalAfterDiscount = $_POST['totalAfterDiscount'];
 // $billing_number = random_int(100000, 999999);
 $prefix = "98";  // Fixed starting digits
-$randomNumber = random_int(1000, 9999); // Generate remaining random digits
-$billing_number = $prefix . $randomNumber;
+// $randomNumber = random_int(1000, 9999); // Generate remaining random digits
+// $billing_number = $prefix . $randomNumber;
+$billing_number = $prefix . '000001'; // → 980001, 980002, ...
+$query = "SELECT billing_number FROM tb_selected_services ORDER BY id DESC LIMIT 1";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+
+if ($row) {
+    $lastNumber = (int)substr($row['billing_number'], 2); // remove prefix '98'
+    $nextNumber = $lastNumber + 1;
+} else {
+    $nextNumber = 1; // First billing number
+}
+
+$billing_number = $prefix . str_pad($nextNumber, 6, "0", STR_PAD_LEFT);
+
+
 // echo $billing_number;
 // $N = count($selected_services);
 // echo "<div style='text-align: center; font-weight: bold;'>$N</div>";
@@ -139,8 +154,6 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
 } else {
     echo "No services selected.";
 }
-
-// mysqli_close($conn); // Close database connection
 
 
  }

@@ -5,16 +5,7 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
 
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
 include 'db_connection.php';
 if(isset($_POST["submit"])) {
   $name = mysqli_real_escape_string($conn, $_POST["name"]);
@@ -90,60 +81,83 @@ if(isset($_POST["submit"])) {
         <div class="container-fluid">
             <div class="card card-info">
             <div class="card-header"style="background-color: rgb(51, 139, 139);">
+          
                     <h3 class="card-title">ADD CUSTOMER DETAILS</h3>
                 </div>
                 <form class="form-horizontal" action="" method="post">
-                    <div class="card-body">
-                        <div class="form-group row">          
-                        <br>
-                            <label for="mobile" class="col-sm-2 col-form-label">MOBILE NUMBER</label>
-                            <div class="col-sm-4">
-                                <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Enter mobile number"  required>
-                            </div>
-                        </div>
-                        <span id="error-message" style="color: red; display: block; font-weight:600; margin-bottom: 15px; text-align:  justify; padding-center: 200px; "></span>
-                        <div class="form-group row">
-                            <label for="name" class="col-sm-2 col-form-label">NAME</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-2 col-form-label">EMAIL US</label>
-                            <div class="col-sm-10">
-                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="address" class="col-sm-2 col-form-label">ADDRESS</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="date" class="col-sm-2 col-form-label">DATE</label>
-                            <div class="col-sm-10">
-                                <input type="date" name="date" class="form-control" id="date" placeholder="Enter Date Of The Visiting Customer">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="time" class="col-sm-2 col-form-label">TIME</label>
-                            <div class="col-sm-10">
-                                <input type="time" name="time" class="form-control" id="time" placeholder="Enter Time Of Visiting">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="appointment_for" class="col-sm-2 col-form-label"></label>
-                            <div class="col-sm-10">
-                                <input type="hidden" name="appointment_for" class="form-control" id="appointment_for" value="offline booking">
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Add</button>
-                            <button type="submit" class="btn btn-danger float-right">Cancel</button> 
-                        </div>
+             
+    <div class="card-body">
+ 
+
+        <div class="row">
+     
+            <!-- Left Column -->
+            <div class="col-md-6">
+   
+                <div class="form-group row">
+             
+                    <label for="mobile" class="col-sm-4 col-form-label">MOBILE NUMBER</label>
+                    <div class="col-sm-8">
+                        <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Enter mobile number" required>
                     </div>
-                </form>       
+                </div>
+               
+
+                <div class="form-group row">
+                    <label for="email" class="col-sm-4 col-form-label">EMAIL US</label>
+                    <div class="col-sm-8">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="date" class="col-sm-4 col-form-label">DATE</label>
+                    <div class="col-sm-8">
+                        <input type="date" name="date" class="form-control" id="date">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label">NAME</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="address" class="col-sm-4 col-form-label">ADDRESS</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="address" class="form-control" id="address" placeholder="Enter address">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="time" class="col-sm-4 col-form-label">TIME</label>
+                    <div class="col-sm-8">
+                        <input type="time" name="time" class="form-control" id="time">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden field -->
+        <input type="hidden" name="appointment_for" value="offline booking">
+
+        <!-- Error message -->
+        <div class="row">
+    <div class="col-12 text-center">
+        <span id="error-message" style="color: red; font-weight: 600; margin-bottom: 15px; display: inline-block;"></span>
+    </div>
+</div>
+
+        <!-- Footer -->
+        <div class="card-footer">
+            <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Add</button>
+            <button type="reset" class="btn btn-danger float-right">Cancel</button> 
+        </div>
+    </div>
+</form>
+       
             </div>
         </div>
     </div>
