@@ -72,7 +72,7 @@ include '../admin2/db_connection.php';
          <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-  <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2 " alt="User Image" style="width: 30px; height: 30px; object-fit: cover;" alt="gallery-image">
+  <img src="<?php echo $imagePath;?>" class="img-circle elevation-2 " alt="User Image" style="width: 30px; height: 30px; object-fit: cover;" alt="gallery-image">
 </a>
   <div class="dropdown-menu  dropdown-menu-right">
           <a href="/beauty_parlour_management_system/admin2/admin_logout.php" class="dropdown-item">

@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
 include 'session.php';
 include('includes/header.php');
@@ -7,21 +8,48 @@ include('includes/sidebar.php');
 
 <?php
 include 'db_connection.php'; // Include your database connection file
-
+$show_message = false;  // Variable to control whether to show message
+$error_message = '';
 // Handle category form submission
 if (isset($_POST['add_category'])) {
     $c_service = $_POST['c_service'];
     $c_description = $_POST['c_description'];
 
+ // 1. Check for duplicate category
+ $check_query = "SELECT * FROM category_service WHERE c_service = '$c_service'";
+ $result = mysqli_query($conn, $check_query);
+
+ if (mysqli_num_rows($result) > 0) {
+     // Category already exists
+    //  $error_message = "Category already exists!";
+    header("Location: " . $_SERVER['PHP_SELF'] . "?error=1");
+    exit();
+ }  else {
+    
     $query = "INSERT INTO category_service (c_service, description) VALUES ('$c_service', '$c_description')";
     if (mysqli_query($conn, $query)) {
         // header("Location: ".$_SERVER['PHP_SELF']); // Redirect to the same page to prevent resubmission
         // exit();
-        echo "<script>window.location.href='".$_SERVER['PHP_SELF']."';</script>";
-        echo "Category added successfully!";
+        // $show_message = true;
+          // header("Location: ".$_SERVER['PHP_SELF']); // Redirect to the same page to prevent resubmission
+        // echo "<script>window.location.href='".$_SERVER['PHP_SELF']."';</script>";
+        // echo "<script>window.location.href='" . $_SERVER['PHP_SELF'] . "?success=1';</script>";
+        header("Location: " . $_SERVER['PHP_SELF'] . "?success=1");
+        exit();
+        // echo "Category added successfully!";
+        // exit();
+      
+        
     } else {
         echo "Error: " . mysqli_error($conn);
     }
+  }
+    //Check if redirected with success flag
+// if (isset($_GET['success']) && $_GET['success'] == 1) {
+//   $show_message = true;
+// }
+// $show_message = isset($_GET['success']) && $_GET['success'] == 1;
+
 }
 
 
@@ -91,6 +119,10 @@ if (isset($_POST['add_sub_category'])) {
     </div>
  <div class="container-fluid">
 <div class="card card-info">
+
+
+<!-- Span for success message -->
+
               <div class="card-header"style="background-color: rgb(51, 139, 139);">
                 <h3 style=" align-items: center" class="card-title">ADD SERVICES</h3>
               </div>
@@ -98,6 +130,7 @@ if (isset($_POST['add_sub_category'])) {
               <!-- form start -->
               <form class="form-horizontal" action="" method= "post">
                 <div class="card-body">
+                <span id="message" style="color: green; font-weight: 600; margin-bottom: 15px; display: inline-block;"></span>
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> ADD CATEGORY</label>
                     <div class="col-sm-4">
@@ -268,8 +301,25 @@ if (isset($_POST['add_sub_category'])) {
 </div>
 
 <!-- DataTable Scripts -->
+  <!-- If $show_message is true, display the success message -->
+  <script>
+window.onload = function () {
+    const params = new URLSearchParams(window.location.search);
+    const messageEl = document.getElementById('message');
 
+    if (params.get('success') === '1') {
+        messageEl.style.color = "green";
+        messageEl.innerHTML = "Category added successfully. You can add sub-category!";
+        window.history.replaceState({}, document.title, window.location.pathname);
+    } else if (params.get('error') === '1') {
+        messageEl.style.color = "red";
+        messageEl.innerHTML = "Category already exists!";
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+}
+</script>
 
+  </body>
 
 <?php
 include('includes/footer.php');

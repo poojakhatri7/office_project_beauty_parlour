@@ -215,7 +215,37 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             <?php } ?>
             </ul>
           </li> 
-          
+          <li class="nav-item">
+            <a href="#" class="nav-link package">
+            <p><i class="fa fa-toolbox"></i>
+              <p>
+                Packages
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a> 
+            <ul class="nav nav-treeview" style="background-color:rgb(47, 131, 131); display:none;">
+              <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/admin_Add_packages.php" class="nav-link package">
+                  <!-- <i class="fa fa-info-circle"></i> -->
+                  <i class="fa fa-user-plus"></i>
+                  <p>Add New Package</p>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/staff_gallery.php" class="nav-link update_staff"> -->
+                  <!-- <i class="fa fa-info-circle"></i> -->
+                  <!-- <i class="fa fa-user-plus"></i> -->
+                  <!-- <i class="fa fa-image"></i> 
+                  <p>Staff Gallery</p>
+                </a>
+              </li> -->
+              <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/staff_details.php" class="nav-link ">
+                <i class="fa fa-address-book"></i>
+                  <p>Edit old Package</p>
+                </a>
+              </li>
+            </ul>
           <li class="nav-item">
             <a href="/beauty_parlour_management_system/admin2/admin_invoice.php" class="nav-link invoice1">
               <!-- <i class="nav-icon fas fa-copy"></i> -->
@@ -226,6 +256,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
               </p>
             </a>
           </li>
+          
           <?php
 // if($role==1)
 if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)

@@ -114,7 +114,7 @@ $result = mysqli_query($conn, $sql);
 				 <!-- <div class="container">  -->
 					<div class="row justify-content-center">
 						<div class="col-md-10 col-lg-9">
-							<div class="hero-9-txt color--white text-center mt-70"> 
+							<div class="hero-10-txt color--white text-center mt-70"> 
 
 								<!-- Title -->
 								<h2><?php echo $title; ?></h2>
