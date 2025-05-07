@@ -225,7 +225,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </a> 
             <ul class="nav nav-treeview" style="background-color:rgb(47, 131, 131); display:none;">
               <li class="nav-item">
-                <a href="/beauty_parlour_management_system/admin2/admin_Add_packages.php" class="nav-link package">
+                <a href="/beauty_parlour_management_system/admin2/admin_add_packages.php" class="nav-link package">
                   <!-- <i class="fa fa-info-circle"></i> -->
                   <i class="fa fa-user-plus"></i>
                   <p>Add New Package</p>

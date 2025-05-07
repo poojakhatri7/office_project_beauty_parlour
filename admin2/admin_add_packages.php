@@ -17,7 +17,6 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $mobile = $_POST["mobile"];
     $address = $_POST["address"];
-
 $totalPrice = $_POST['totalPrice'];
 $discount = $_POST['discount'];
 $totalAfterDiscount = $_POST['totalAfterDiscount'];
@@ -39,10 +38,6 @@ if ($row) {
 $billing_number = $prefix . str_pad($nextNumber, 6, "0", STR_PAD_LEFT);
 $updateQuery = "UPDATE admin_login_details SET last_invoice_no = '$billing_number' WHERE role = '1'";
 mysqli_query($conn, $updateQuery);
-
-
-
-
 
 
 // Check if services are selected
@@ -101,13 +96,7 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
 
  }
 
-$sql = "SELECT * FROM tb_appointment";
-// Step 3: Execute the query
-$result = mysqli_query($conn, $sql);
-// Step 4: Check if the query returned any results
-if (mysqli_num_rows($result) > 0) {
-  // Step 5: Use a while loop to fetch each row of data
-  while ($row = mysqli_fetch_assoc($result)) {
+
 ?>
 
 <html lang="en">
@@ -192,9 +181,7 @@ if (mysqli_num_rows($result) > 0) {
 </div>
 
 
-<script>
-    var appointment_for = "<?php echo $appointment_for; ?>";
-</script>
+
 
 <script>
 $(document).ready(function () {
@@ -202,7 +189,7 @@ $(document).ready(function () {
     // Function to load service categories
     function loadServices() {
         $.ajax({
-            url: "load_appointment_service1.php",
+            url: "load_appointment_service2.php",
             type: "POST",
             data: { request_type: "service_data" },
             success: function (data) {
@@ -214,7 +201,7 @@ $(document).ready(function () {
     // Function to load sub-services based on selected category
     function loadSubServices(service_id) {
         $.ajax({
-            url: "load_appointment_service1.php",
+            url: "load_appointment_service2.php",
             type: "POST",
             data: { request_type: "sub_service_data", id: service_id },
             success: function (data) {
@@ -240,7 +227,7 @@ $(document).ready(function () {
     $("#sub_service").on("change", function () {
         var sub_service = $(this).val();
         $.ajax({
-            url: "load_appointment_service1.php",
+            url: "load_appointment_service2.php",
             type: "POST",
             data: { sub_service: sub_service },
             success: function (response) {
@@ -292,9 +279,7 @@ $(document).ready(function () {
 </div>
                 <!-- /.card-footer -->
               </form>
-              <?php     
-              }
-              }  ?>
+          
             </div>
 </div>
 <script>
@@ -309,8 +294,6 @@ $("#discount").on("input", function () {
 $("#discountAmount").on("input", function () {
     updateTotalAfterDiscount(parseFloat($("#hiddenTotalPrice").val()) || 0, "amount");
 });
-
-
 
     let selectedServices = new Map(); // Store selected services
 
