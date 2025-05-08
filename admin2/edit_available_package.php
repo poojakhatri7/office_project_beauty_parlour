@@ -8,24 +8,24 @@ include('includes/sidebar.php');
 
 include 'db_connection.php';
 $id = $_GET ['id'];
-if (isset($_POST["submit"])) {
-  $mobile = $_POST["mobile"];
-  $name = $_POST["name"];
-  $email = $_POST["email"];
-  $address = $_POST["address"];
-  $password = $_POST["password"];
-}
+// if (isset($_POST["submit"])) {
+//   $mobile = $_POST["mobile"];
+//   $name = $_POST["name"];
+//   $email = $_POST["email"];
+//   $address = $_POST["address"];
+//   $password = $_POST["password"];
+// }
 
- ?>
+//  ?>
  <?php
- $sql = "SELECT * FROM admin_login_details WHERE id={$id}";
+ $sql = "SELECT * FROM package WHERE id={$id}";
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);
 // Step 4: Check if the query returned any results
 if (mysqli_num_rows($result) > 0) {
   // Step 5: Use a while loop to fetch each row of data
   while ($row = mysqli_fetch_assoc($result)) {
-?>
+// ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -70,20 +70,20 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="container-fluid">
             <div class="card card-info">
             <div class="card-header"style="background-color: rgb(51, 139, 139);">
-                    <h3 class="card-title">Edit Staff Details</h3>
+                    <h3 class="card-title">Edit Package Details</h3>
                 </div>
                 <form class="form-horizontal" action="" method="post">
                     <div class="card-body">
                     <div class="form-group row">          
-                    <label for="mobile" class="col-sm-2 col-form-label">MOBILE NUMBER</label>
+                    <label for="mobile" class="col-sm-2 col-form-label">PACKAGE NAME </label>
                     <div class="col-sm-6">
-                        <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Enter mobile number" value = "<?php echo $row['mobile'] ?>"  required>
+                        <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Enter mobile number" value = "<?php echo $row['package_name'] ?>"  required>
                     </div>
                 </div>
                         <div class="form-group row">
-                            <label for="name" class="col-sm-2 col-form-label">NAME</label>
+                            <label for="name" class="col-sm-2 col-form-label">DESCRIPTION </label>
                             <div class="col-sm-6">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" value = "<?php echo $row['name'] ?>" >
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" value = "<?php echo $row['description'] ?>" >
                             </div>
                         </div>
                         <!-- <div class="form-group row">          
@@ -93,39 +93,25 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                 </div> -->
                 <div class="form-group row">
-                            <label for="email" class="col-sm-2 col-form-label">EMAIL US</label>
+                            <label for="email" class="col-sm-2 col-form-label">PRICE</label>
                             <div class="col-sm-6">
-                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" value = "<?php echo $row['email'] ?>">
+                                <input type="number" name="email" class="form-control" id="email" placeholder="Enter price" value = "<?php echo $row['price'] ?>">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="address" class="col-sm-2 col-form-label">ADDRESS</label>
+                            <label for="address" class="col-sm-2 col-form-label">DISCOUNT</label>
                             <div class="col-sm-6">
-                                <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" value = "<?php echo $row['address'] ?>" >
+                                <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" value = "<?php echo $row['discount'] ?>" >
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="address" class="col-sm-2 col-form-label">PASSWORD</label>
+                            <label for="address" class="col-sm-2 col-form-label">PRICE AFTER DISCOUNT</label>
                             <div class="col-sm-6">
-                                <input type="text" name="password" class="form-control" id="address" placeholder="Enter Password" value = "<?php echo $row['password'] ?>">
+                                <input type="text" name="password" class="form-control" id="address" placeholder="Enter Password" value = "<?php echo $row['price_after_discount'] ?>">
                             </div>
-                        </div>
-    <div class="form-group row">
-                            <label for="role" class="col-sm-2 col-form-label"> ROLE/DESIGNATION </label>
-                            <div class="col-sm-4">
-                                <!-- <input type="text" name="appointment_for" class="form-control" id="appointment_for" > -->
-                                <select id="role" name="role" class="form-control">
-                                <option value="<?php echo $row['role']; ?>">
-    <?php echo ($row['role'] == 1) ? 'Admin' : (($row['role'] == 2) ? 'Staff' : 'Unknown'); ?>
-</option>
-
-
-   
-                                        </select>
-                            </div>
-                        </div>        
+                            
                         <div class="card-footer">
-                            <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139);  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Edit Staff Details</button>
+                            <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139);  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Edit Package Details</button>
                             <button type="submit" class="btn btn-danger float-right">Cancel</button>
                         </div>
                     </div>

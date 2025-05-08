@@ -216,7 +216,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </ul>
           </li> 
           <li class="nav-item">
-            <a href="#" class="nav-link package">
+            <a href="#" class="nav-link package available_package">
             <p><i class="fa fa-toolbox"></i>
               <p>
                 Packages
@@ -227,7 +227,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
               <li class="nav-item">
                 <a href="/beauty_parlour_management_system/admin2/admin_add_packages.php" class="nav-link package">
                   <!-- <i class="fa fa-info-circle"></i> -->
-                  <i class="fa fa-user-plus"></i>
+                  <i class="fa fa-plus"></i>
                   <p>Add New Package</p>
                 </a>
               </li>
@@ -240,9 +240,9 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 </a>
               </li> -->
               <li class="nav-item">
-                <a href="/beauty_parlour_management_system/admin2/staff_details.php" class="nav-link ">
-                <i class="fa fa-address-book"></i>
-                  <p>Edit old Package</p>
+                <a href="/beauty_parlour_management_system/admin2/admin_available_package.php" class="nav-link available_package">
+                <i class="fa fa-box"></i>
+                  <p>Available Packages </p>
                 </a>
               </li>
             </ul>

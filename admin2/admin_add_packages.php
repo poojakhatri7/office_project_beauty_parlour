@@ -5,40 +5,19 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-
 include 'db_connection.php';
 //$id = $_GET ['id'];
-
-
 // echo "<div style='text-align: center; font-weight: bold;'>$appointment_for</div>";
 if (isset($_POST["submit"])) {
-    // Get the form data
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $mobile = $_POST["mobile"];
-    $address = $_POST["address"];
+    $package_name = $_POST['package_name'];
+    $description = $_POST['description'];
 $totalPrice = $_POST['totalPrice'];
 $discount = $_POST['discount'];
 $totalAfterDiscount = $_POST['totalAfterDiscount'];
 // $billing_number = random_int(100000, 999999);
-$prefix = "98";  // Fixed starting digits
+ // Fixed starting digits
 
-$billing_number = $prefix . '000001'; // → 980001, 980002, ...
-$query = "SELECT billing_number FROM tb_selected_services ORDER BY id DESC LIMIT 1";
-$result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
-
-if ($row) {
-    $lastNumber = (int)substr($row['billing_number'], 2); // remove prefix '98'
-    $nextNumber = $lastNumber + 1;
-} else {
-    $nextNumber = 1; // First billing number
-}
-
-$billing_number = $prefix . str_pad($nextNumber, 6, "0", STR_PAD_LEFT);
-$updateQuery = "UPDATE admin_login_details SET last_invoice_no = '$billing_number' WHERE role = '1'";
-mysqli_query($conn, $updateQuery);
-
+$package_number = random_int(100000, 999999);
 
 // Check if services are selected
 if (isset($_POST['services']) && !empty($_POST['services'])) {
@@ -61,42 +40,44 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
             $service_price = $row['price'];
             $totalPrice += $service_price; // Add price to total
 
+              // Insert into orders table
+    $discount = $_POST['discount'];
+    // $billing_number = $_POST['billing_number'];
+    $totalAfterDiscount = $totalPrice - ($totalPrice * ($discount / 100));
             // Insert into tb_selected_services
             $insert_sql = "
-            INSERT INTO tb_selected_services (appointment_id, c_id,s_id, a_id, service_name, service_price, billing_number) 
-            VALUES ('$appointment_id','$c_id','$s_id','$a_id', '$service_name', '$service_price', '$billing_number')";
+            INSERT INTO package (package_name, package_number, description , selected_services , price, discount, price_after_discount) 
+            VALUES ('$package_name','$package_number','$description','$service_name', '$totalPrice', '$discount', '$totalAfterDiscount')";
             
-            if (!mysqli_query($conn, $insert_sql)) {
-                echo "Error inserting service: " . mysqli_error($conn);
+            if (mysqli_query($conn, $insert_sql)) {
+                // echo "Error inserting service: " . mysqli_error($conn);
+                echo "<script>
+                alert('Package inserted successfully');
+                window.location.href='admin_available_package.php';
+            </script>";
+      
             }
         } else {
             echo "Service '$service_name' not found in the database.<br>";
         }
     }
-    // Insert into orders table
-    $discount = $_POST['discount'];
-    // $billing_number = $_POST['billing_number'];
-    $totalAfterDiscount = $totalPrice - ($totalPrice * ($discount / 100));
+  
 
-    $sql_insert = "INSERT INTO orders (appointment_id, totalPrice, discount, billing_number, created_at) 
-                   VALUES ('$appointment_id', '$totalPrice', '$discount', '$billing_number', NOW())";
+    // $sql_insert = "INSERT INTO orders (appointment_id, totalPrice, discount, billing_number, created_at) 
+    //                VALUES ('$appointment_id', '$totalPrice', '$discount', '$billing_number', NOW())";
 
-    if (mysqli_query($conn, $sql_insert)) {
-        echo "<script>
-            alert('Invoice generated successfully');
-            window.location.href='admin_invoice.php';
-        </script>";
-    } else {
-        echo "Error inserting into orders: " . mysqli_error($conn);
-    }
-} else {
-    echo "No services selected.";
+//     if (mysqli_query($conn, $sql_insert)) {
+//         echo "<script>
+//             alert('Invoice generated successfully');
+//             window.location.href='admin_invoice.php';
+//         </script>";
+//     } else {
+//         echo "Error inserting into orders: " . mysqli_error($conn);
+//     }
+// } else {
+//     echo "No services selected.";
 }
-
-
  }
-
-
 ?>
 
 <html lang="en">
@@ -105,7 +86,13 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BEAUTY PARLOUR MANAGEMENT SYSTEM</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
+    <style type="text/css">
+.package{
+  /* background : #157daf !important; */
+  background :rgb(33, 70, 77) !important;
+}
+</style>
+</head>
   <body>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -132,10 +119,15 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">PACKAGE NAME </label>
                     <div class="col-sm-10">
-                      <input type="text" name="name" class="form-control" id="inputEmail3" placeholder="Enter package name">
+                      <input type="text" name="package_name" class="form-control" id="inputEmail3" placeholder="Enter package name">
                     </div>
                   </div>
-     
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">DESCRIPTION</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="description" class="form-control" id="inputEmail3" placeholder="Enter package description">
+                    </div>
+                  </div>
                   <h5 class="my-4">Add Services to the Package</h5>
                   <div class="row">
                     <div class="col-sm-4">
@@ -180,16 +172,13 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
     </div>
 </div>
 
-
-
-
 <script>
 $(document).ready(function () {
 
     // Function to load service categories
     function loadServices() {
         $.ajax({
-            url: "load_appointment_service2.php",
+            url: "load_appointment_service1.php",
             type: "POST",
             data: { request_type: "service_data" },
             success: function (data) {
@@ -201,7 +190,7 @@ $(document).ready(function () {
     // Function to load sub-services based on selected category
     function loadSubServices(service_id) {
         $.ajax({
-            url: "load_appointment_service2.php",
+            url: "load_appointment_service1.php",
             type: "POST",
             data: { request_type: "sub_service_data", id: service_id },
             success: function (data) {
@@ -227,7 +216,7 @@ $(document).ready(function () {
     $("#sub_service").on("change", function () {
         var sub_service = $(this).val();
         $.ajax({
-            url: "load_appointment_service2.php",
+            url: "load_appointment_service1.php",
             type: "POST",
             data: { sub_service: sub_service },
             success: function (response) {
@@ -244,7 +233,7 @@ $(document).ready(function () {
 });
 </script>
 
-<h3>Selected Services for the Packages</h3>
+<h3>Selected Services for the Package</h3>
 <div id="selectedServices"></div>
 
 <!-- Display total price -->
@@ -252,7 +241,7 @@ $(document).ready(function () {
 
 <!-- Discount input field -->
 <div class="form-group">
-    <label for="discount" style="display: inline-block; width: 200px;"> Discount percentage (%)</label>
+    <label for="discount" style="display: inline-block; width: 200px;"> Discount price of package</label>
     <input type="number" step="0.01" id="discount" name="discount" class="form-control d-inline-block" 
         style="width: calc(35% - 100px);" placeholder="Enter discount in percentage">
 </div>
@@ -348,7 +337,7 @@ $("#discountAmount").on("input", function () {
     finalPrice = totalPrice - discountAmount;
 
     // Update total after discount
-    $("#totalAfterDiscount").text(`Total after discount: Rs ${finalPrice.toFixed(2)}`);
+    $("#totalAfterDiscount").text(`Package Price After Discount: Rs ${finalPrice.toFixed(2)}`);
     $("#hiddenDiscountedPrice").val(finalPrice.toFixed(2));
 }
 
