@@ -228,6 +228,18 @@ if (mysqli_num_rows($result) > 0) {
                       <input type="text"name="time" class="form-control" id="inputEmail3" placeholder="ENTER VISITING TIME" value = "<?php echo $row['prefered_time'] ?>">
                     </div>
                   </div>
+<div class="d-flex justify-content-center">
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-secondary active mx-4">
+      <input type="radio" name="options" value="services" autocomplete="off" checked> Services
+    </label>
+    <label class="btn btn-secondary mx-4">
+      <input type="radio" name="options" value="packages" autocomplete="off"> Packages
+    </label>
+  </div>
+</div>
+
+
                   <h4>CHOOSE YOUR SERVICES</h4>
                   <div class="row">
                     <div class="col-sm-4">
