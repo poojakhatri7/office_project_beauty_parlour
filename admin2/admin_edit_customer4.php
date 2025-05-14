@@ -19,7 +19,6 @@ if (isset($_POST["submit"])) {
     $mobile = $_POST["mobile"];
     $address = $_POST["address"];
  // Convert string to array
-
     // echo "<pre>";
     // print_r($selected_services); // Debug: Check if multiple services are received correctly
     // echo "</pre>";
@@ -157,7 +156,6 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
 } else {
     echo "No services selected.";
 }
-
 
  }
 

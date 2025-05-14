@@ -5,7 +5,6 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-
 include 'db_connection.php';
 ?>
 <main class="app-main">
@@ -17,8 +16,10 @@ include 'db_connection.php';
     <title>BEAUTY PARLOUR MANAGEMENT SYSTEM</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style type="text/css">
-.available_package{
+.available_package
+{
   /* background : #157daf !important; */
   background :rgb(33, 70, 77) !important;
 }
@@ -79,11 +80,48 @@ include 'db_connection.php';
                   </tr>
                   </thead>
                   <tbody>
+                  <!-- <a href="#" class="text-white mx-1" data-toggle="modal" data-target="#modal-default" 
+       style="text-decoration: none; color:  rgb(238, 230, 217) !important; font-size: 14px; font-weight: 700;  margin: 4px 2px;">
+     New Appointment
+    </a> -->
+  </button>
+  <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">View Package details </h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+          <!-- <h4 style="color:rgb(1, 12, 6);" >Add New Services </h4> -->
+            <form id="package_form">
+            <div class="form-group">
+              <p><strong>Package Name:</strong> <span id="modalPackageName"></span></p>
+        <p><strong>Description:</strong> <span id="modalDescription"></span></p>
+        <p><strong> Services available in the Package </strong> <span id="modalServices"></span></p>
+        <!-- <p><strong>Price Rs:</strong> <span id="modalPrice"></span></p> -->
+        <p><strong>Total Price:</strong> <span id="modalTotalPrice"></span></p>
+<p><strong>Total Discount:</strong> <span id="modalTotalDiscount"></span></p>
+<p><strong>Total Price After Discount:</strong> <span id="modalPrice"></span></p>
+                    <div class="modal-footer justify-content-between">                
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" name="submit" id="submitBtn1" class="btn btn-secondary">Add</button> -->
+            </div>
+                </form>
+                <div id="message"></div>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
                   <?php
 // $sql ="SELECT DISTINCT package_name, description FROM package " ;
 $sql = "SELECT MIN(id) as id, package_name, description, package_number
         FROM package
-        GROUP BY package_name, description";
+        GROUP BY package_name, description order BY id DESC";
 
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);
@@ -94,29 +132,60 @@ if (mysqli_num_rows($result) > 0) {
    
     while ($row = mysqli_fetch_assoc($result)) {
       $count = $count+1 ;
-      echo "<tr>
-      <th scope='row'>" . $count . "</th>
-      <td>" . $row['package_name'] . "</td>
-      <td>" . $row['description'] . "</td>
+      echo '<tr>
+      <th scope="row">' . $count . '</th>
+      <td>' . $row['package_name'] . '</td>
+      <td>' . $row['description'] . '</td>
       <td>
-          <div style='display: inline-block; margin-right: 20px;'>
-              <a href='/beauty_parlour_management_system/admin2/edit_available_package.php?id=" . $row["id"] . "'>
-                  <i class='fas fa-pencil-alt' style='color: rgb(10, 90, 34);'></i>
-              </a>
-          </div>
-          <div style='display: inline-block;'>
-              <a href='/beauty_parlour_management_system/admin2/delete_package.php?package_number=" . $row["package_number"] . "'>
-                  <i class='fa fa-trash' style='color: red;'></i>
-              </a>
-          </div>
+           <div style="display: inline-block; margin-right: 20px;">
+      <a href="#" class="view-btn" data-toggle="modal" data-target="#modal-default" data-package_number="' . $row["package_number"] . '">
+        <i class="fa fa-eye" style="color: rgb(10, 90, 34);"></i>
+      </a>
+    </div>
+        <div style="display: inline-block;">
+          <a href="/beauty_parlour_management_system/admin2/delete_package.php?package_number=' . $row["package_number"] . '">
+            <i class="fa fa-trash" style="color: red;"></i>
+          </a>
+        </div>
       </td>
-  </tr>";
-  
+    </tr>';
     }
 } else {
     echo "No package found.";
 }
 ?>
+<script>
+$(document).on('click', '.view-btn', function () {
+    const package_number = $(this).data('package_number');
+  console.log("Clicked Package package_number:", package_number ); // Check if ID is correct
+    $.ajax({
+        url: 'get_package.php',
+        type: 'POST',
+        data: { package_number: package_number },
+        dataType: 'json',
+        success: function (data) {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                // $('#modalPackageName').text(data.package_name);
+                // $('#modalDescription').text(data.description);
+                // $('#modalServices').text(data.selected_services); // coming directly from package table
+                // $('#modalPrice').text(data.total_price_after_discount);
+                 $('#modalPackageName').text(data.package_name);
+        $('#modalDescription').text(data.description);
+        $('#modalServices').text(data.selected_services);
+        $('#modalTotalPrice').text(data.total_price);
+        $('#modalTotalDiscount').text(data.total_discount);
+        $('#modalPrice').text(data.total_price_after_discount);
+            }
+        },
+        error: function () {
+            alert('Error fetching package details.');
+        }
+    });
+});
+</script>
+
                   </table>
               </div>
               <!-- /.card-body -->
