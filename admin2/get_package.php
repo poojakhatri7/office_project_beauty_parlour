@@ -38,18 +38,25 @@ if (isset($_POST['package_number'])) {
     if ($row = mysqli_fetch_assoc($main_result)) {
         // Step 2: Get all services for this package_number
         $services = [];
-        $service_sql = "SELECT selected_services FROM package WHERE package_number = {$package_number}";
+          $total_price = 0;
+        $total_discount = 0;
+        $total_price_after_discount = 0;
+        $service_sql = "SELECT * FROM package WHERE package_number = {$package_number}";
         $service_result = mysqli_query($conn, $service_sql);
         
         while ($s = mysqli_fetch_assoc($service_result)) {
             $services[] = $s['selected_services'];
+             $total_price += $s['price'];
+            $total_discount += $s['discount'];
+            $total_price_after_discount += $s['price_after_discount'];
         }
-
         echo json_encode([
             'package_name' => $row['package_name'],
             'description' => $row['description'],
             'selected_services' => implode(', ', $services), // All services combined
-            'price' => $row['price_after_discount'] // You can change to show total if needed
+             'price' =>  $total_price , // You can change to show total if needed
+               'discount' => $row['discount'], // You can change to show total if needed
+            'price_after_discount' => $total_price_after_discount // You can change to show total if needed
         ]);
     } else {
         echo json_encode(['error' => 'Package not found']);

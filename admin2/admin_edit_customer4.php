@@ -176,7 +176,7 @@ if (mysqli_num_rows($result) > 0) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
-    
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -238,8 +238,56 @@ if (mysqli_num_rows($result) > 0) {
     </label>
   </div>
 </div>
+<script>
+$(document).ready(function() {
+  $('input[name="options"]').on('change', function () {
+    const selected = $(this).val();
+    if (selected === 'packages') {
+      $('#packages-section').show();
+      $('#services-section').hide();
+    } else {
+      $('#services-section').show();
+      $('#packages-section').hide();
+    }
+  });
+});
+</script>
+<div id="packages-section" style="display: none;">
+ <div class="container-fluid">
+        <?php
+ $sql = "SELECT * FROM package Group BY package_number  ";
+$result = mysqli_query($conn, $sql);
+$count = 0;
+ $totalprice = 0;
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $count++;
+        $totalprice = $totalprice + $row['price'];
+        ?>
+<div class="col-md-4 mb-3">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title"><strong>Package name </strong><?php echo $row['package_name']; ?></h5>
+      <p class="card-text"><strong>Description: </strong> <?php echo $row['description']; ?></p>
+      <p class="card-text"><strong>Services: </strong> Hair, Facial, Makeup</p>
+      <p class="card-text"><strong>Total Price: </strong><?php echo $totalprice ?></p>
+      <p class="card-text"><strong>Package Discount: </strong><?php echo $row['discount']; ?> </p>
+        <p class="card-text"><strong>Total price after discount </strong> ₹1800</p>
+      <button class="btn btn-outline-primary select-package" data-id="1">Select</button>
+    </div>
+  </div>
+</div>
+<?php } } ?>
+      </div>
+</div>
 
 
+
+
+
+
+
+<div id="services-section">
                   <h4>CHOOSE YOUR SERVICES</h4>
                   <div class="row">
                     <div class="col-sm-4">
@@ -473,6 +521,7 @@ $(document).ready(function () {
               }
               }  ?>
             </div>
+</div>
 </div>
 <script>
 $(document).ready(function () {
