@@ -135,9 +135,9 @@ if(isset($_POST["submit"])) {
                             </div>
                         </div> 
                         <div class="form-group row">
-                            <label for="address" class="col-sm-2 col-form-label">IMAGE</label>
+                            <label for="image" class="col-sm-2 col-form-label">IMAGE</label>
                             <div class="col-sm-6">
-                                <input type="file" name="image" class="form-control" id="address" placeholder="Enter Password" >
+                                <input type="file" name="image" class="form-control" id="address" placeholder="Enter image" >
                             </div>
                         </div>       
                         <div class="card-footer">

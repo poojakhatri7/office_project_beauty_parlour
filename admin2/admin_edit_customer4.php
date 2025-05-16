@@ -5,7 +5,6 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-
 include 'db_connection.php';
 //$id = $_GET ['id'];
 $id = $_GET ['id'];
@@ -167,7 +166,6 @@ if (mysqli_num_rows($result) > 0) {
   // Step 5: Use a while loop to fetch each row of data
   while ($row = mysqli_fetch_assoc($result)) {
 ?>
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -230,10 +228,10 @@ if (mysqli_num_rows($result) > 0) {
                   </div>
 <div class="d-flex justify-content-center">
   <div class="btn-group" data-toggle="buttons">
-    <label class="btn btn-secondary active mx-4">
+    <label class="btn btn-secondary active mx-4 my-5">
       <input type="radio" name="options" value="services" autocomplete="off" checked> Services
     </label>
-    <label class="btn btn-secondary mx-4">
+    <label class="btn btn-secondary mx-4 my-5">
       <input type="radio" name="options" value="packages" autocomplete="off"> Packages
     </label>
   </div>
@@ -253,40 +251,95 @@ $(document).ready(function() {
 });
 </script>
 <div id="packages-section" style="display: none;">
- <div class="container-fluid">
-        <?php
- $sql = "SELECT * FROM package Group BY package_number  ";
-$result = mysqli_query($conn, $sql);
-$count = 0;
- $totalprice = 0;
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $count++;
-        $totalprice = $totalprice + $row['price'];
-        ?>
-<div class="col-md-4 mb-3">
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <h5 class="card-title"><strong>Package name </strong><?php echo $row['package_name']; ?></h5>
-      <p class="card-text"><strong>Description: </strong> <?php echo $row['description']; ?></p>
-      <p class="card-text"><strong>Services: </strong> Hair, Facial, Makeup</p>
-      <p class="card-text"><strong>Total Price: </strong><?php echo $totalprice ?></p>
-      <p class="card-text"><strong>Package Discount: </strong><?php echo $row['discount']; ?> </p>
-        <p class="card-text"><strong>Total price after discount </strong> ₹1800</p>
-      <button class="btn btn-outline-primary select-package" data-id="1">Select</button>
-    </div>
-  </div>
+  <div class="container-fluid">
+    <div class="row"> 
+        <div id="selected-package-message"></div>
+        
+      <?php
+      $sql = "SELECT package_name, description, SUM(price) AS total_price, SUM(price_after_discount) AS total_discount, package_number, discount, GROUP_CONCAT(selected_services) AS services FROM package GROUP BY package_number";
+      $result = mysqli_query($conn, $sql);
+      $count = 0;
+      if (mysqli_num_rows($result) > 0) {
+          while ($row = mysqli_fetch_assoc($result)) {
+              $count++;
+              ?>
+              <div class="col-md-4 mb-3">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <h5 class="card-title"><strong>Package name: </strong><?php echo $row['package_name']; ?></h5>
+                    <p class="card-text"><strong>Description: </strong><?php echo $row['description']; ?></p>
+                    <p class="card-text"><strong>Services: </strong>
+                      <?php 
+                      $serviceList = explode(',', $row['services']);
+                      foreach ($serviceList as $service) {
+                          echo htmlspecialchars(trim($service)) . "<br>";
+                      }
+                      ?>
+                    </p>
+                    <p class="card-text"><strong>Price: </strong> Rs <?php echo $row['total_price']; ?></p>
+                    <p class="card-text"><strong>Package Discount: </strong><?php echo $row['discount']; ?>%</p>
+                    <p class="card-text"><strong>Total After Discount: </strong> <?php echo $row['total_discount']; ?></p> <!-- You may want to calculate this dynamically -->
+                    <button class="btn btn-outline-primary select-package select-package" data-id="<?php echo $row['package_number']; ?>">Select</button>
+                  </div>
+                </div>
+              </div>
+          <?php } 
+      } ?>
+    </div> 
+    <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 20px;  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; ">Book Package</button>
+  <!-- <script>
+$(document).ready(function () {
+  $('.select-package').on('click', function () {
+    const selectedId = $(this).data('id');
+    // Optional: Allow only one selection at a time
+    $('.select-package')
+      .removeClass('btn-success')
+      .addClass('btn-outline-primary')
+      .text('Select')
+      .prop('disabled', false);
+
+    // Update the clicked button
+    $(this)
+      .removeClass('btn-outline-primary')
+      .addClass('btn-success')
+      .text('Package Selected ✅')
+      .prop('disabled', true); // optional: disable after selection
+
+    // Optionally show a message elsewhere on screen
+    $('#selected-package-message').html(
+      `<div class="">Package <strong>${selectedId}</strong> is selected </div>`
+    );
+  });
+});
+</script> -->
+<script>
+$(document).ready(function () {
+  let selectedPackages = [];
+
+  $('.select-package').on('click', function () {
+    const packageId = $(this).data('id');
+
+    // Mark button as selected
+    $(this)
+      .removeClass('btn-outline-primary')
+      .addClass('btn-success')
+      .text('Package Selected ✅')
+      .prop('disabled', true);
+
+    // Add package to selected list
+    selectedPackages.push(packageId);
+
+    // Display all selected packages
+     // Update the message box
+    $('#selected-package-message')
+      .html('Selected Package Numbers: <strong>' + selectedPackages.join(', ') + '</strong>')
+      .show();
+  });
+});
+</script>
+
 </div>
-<?php } } ?>
-      </div>
 </div>
-
-
-
-
-
-
-
 <div id="services-section">
                   <h4>CHOOSE YOUR SERVICES</h4>
                   <div class="row">
@@ -512,7 +565,7 @@ $(document).ready(function () {
 <input type="hidden" id="hiddenSelectedServices" name="selectedServices">
 
 <div class="card-footer">
-<button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 20px;  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; ">Book</button>
+<button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 20px;  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; ">Book Services</button>
   <button type="reset" class="btn btn-danger float-right">Cancel</button>
 </div>
                 <!-- /.card-footer -->
