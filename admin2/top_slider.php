@@ -52,7 +52,7 @@ $address=  $_SESSION["address"];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
-.top_slider{
+.top_slider {
   background :rgb(33, 70, 77) !important;
 }
 </style>
@@ -90,9 +90,6 @@ $address=  $_SESSION["address"];
         			     <div  style="text-align: center; margin-top:-15px; " class="mb-3"><br>
                    <img src="<?php echo $uploadPath; ?>" width="90" height="90" class="img3" id="profile-img-tag" height="240" width="300">
                           </div>
-        		
-					 
-     
 						<div class="form-group row">
 							<label for="photo" class="col-sm-2 col-form-label">Select Slider<span class="required"></span> 	</label>
               <div class="col-sm-10">

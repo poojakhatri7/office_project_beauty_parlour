@@ -84,13 +84,25 @@ $c_id = $_GET ['c_id'];
 
 
 
+<?php
+			$sql = "SELECT * FROM  category_service  WHERE c_id = $c_id";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+    //   echo $row['file'];
+	 $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file']; 
+	//   echo '<img src="' . $imagePath . '" width="400" height="400" style="margin:10px;">';
+	
+        ?>
 
 
-
+<?php } } ?>
 			<!-- INNER PAGE HERO
-			============================================= -->	
-			<section id="pricing-page-1" class="inner-page-hero division">
-				<div class="container">	
+			============================================= -->	  
+			<section id="pricing-page-1" class="inner-page-hero division" style="background-image: url('<?php echo $imagePath; ?>');">
+				
+			<div class="container">	
 					<div class="row">	
 						<div class="col">
 							<div class="page-hero-txt color--white">

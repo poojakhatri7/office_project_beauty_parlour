@@ -10,7 +10,7 @@ include 'db_connection.php';
 ?>
 <?php
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
-$uploadPath = $defaultImage; 
+$uploadPath = '';
 if (isset($_FILES['image'])) {
   // echo "<pre>";
   // print_r($_FILES);
@@ -34,7 +34,6 @@ if (isset($_FILES['image'])) {
       echo "Failed to upload image.";
   } 
 }
-
  ?>
 <?php
 

@@ -13,12 +13,12 @@ $error_message = '';
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
 if (isset($_POST['add_category'])) {
-   $photo = $_FILES["image"]["name"];  
-    $photo2 = $_FILES["image"]["tmp_name"];
-    $uploadPath = "upload-images/" . $photo;
+  $photo = $_FILES["image"]["name"];
+  $photo2 = $_FILES["image"]["tmp_name"];
+  $uploadPath = "upload-images/" . $photo;
     $c_service = $_POST['c_service'];
     $c_description = $_POST['c_description'];
-    move_uploaded_file($photo2, $uploadPath);
+   move_uploaded_file($photo2, $uploadPath);
  // 1. Check for duplicate category
  $check_query = "SELECT * FROM category_service WHERE c_service = '$c_service'";
  $result = mysqli_query($conn, $check_query);
@@ -28,9 +28,8 @@ if (isset($_POST['add_category'])) {
     //  $error_message = "Category already exists!";
     header("Location: " . $_SERVER['PHP_SELF'] . "?error=1");
     exit();
- }  else {
-    
-    $query = "INSERT INTO category_service (c_service, description ,Image) VALUES ('$c_service', '$c_description','$uploadPath')";
+ }  else { 
+    $query = "INSERT INTO category_service (c_service, description ,file) VALUES ('$c_service', '$c_description','$uploadPath')";
     if (mysqli_query($conn, $query)) {
         // header("Location: ".$_SERVER['PHP_SELF']); // Redirect to the same page to prevent resubmission
         // exit();
@@ -132,7 +131,7 @@ if (isset($_POST['add_sub_category'])) {
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="" method= "post">
+              <form class="form-horizontal" action="" method= "post" enctype="multipart/form-data">
                 <div class="card-body">
                 <span id="message" style="color: green; font-weight: 600; margin-bottom: 15px; display: inline-block;"></span>
                   <div class="form-group row">
@@ -179,7 +178,6 @@ if (isset($_POST['add_sub_category'])) {
             </select>
         </div>
     </div>
-
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> ADD SUB CATEGORY</label>
                     <div class="col-sm-4">
@@ -191,7 +189,12 @@ if (isset($_POST['add_sub_category'])) {
                     <div class="col-sm-4">
                       <!-- <input type="text" name="s_description" class="form-control" id="inputPassword3" placeholder=" Description "> -->
                       <textarea name="s_description" class="form-control" id="description" placeholder="Description" rows="4"></textarea>
-
+                    </div>
+                  </div>
+                   <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label"> IMAGE </label>
+                    <div class="col-sm-4">
+                      <input type="file" name="image1" class="form-control" id="add_sub_category" placeholder="Add sub category image ">
                     </div>
                   </div>
                 </div>
@@ -234,13 +237,14 @@ if (isset($_POST['add_sub_category'])) {
                     $count = 0;
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
+                            $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
                             $count++;
                     ?>
                             <tr>
                                 <th scope='row'><?php echo $count; ?></th>
                                 <td><?php echo $row['c_service']; ?></td>
                                 <td><?php echo $row['description']; ?></td>
-                                 <td><?php echo $row['description']; ?></td>
+                                 <td><img src="<?php echo $imagePath; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
                                 <td>
                                     <div style="display: inline-block;">
                                         <a href='/beauty_parlour_management_system/admin2/delete_category.php?id=<?php echo $row["c_id"]; ?>'>
@@ -273,6 +277,7 @@ if (isset($_POST['add_sub_category'])) {
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">Category</th>
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">Sub Category</th>
                         <th style="color: rgb(238, 230, 217); font-weight: 500;"> Description</th>
+                          <th style="color: rgb(238, 230, 217); font-weight: 500;"> Image</th>
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
                     </tr>
                 </thead>
@@ -292,6 +297,7 @@ if (isset($_POST['add_sub_category'])) {
                                 <td><?php echo $row2['c_service']; ?></td>
                                 <td><?php echo $row2['s_name']; ?></td>
                                 <td><?php echo $row2['description']; ?></td>
+                                   <td><?php echo $row2['description']; ?></td>
                                 <td>
                                     <div style="display: inline-block;">
                                         <a href='/beauty_parlour_management_system/admin2/delete_sub_category.php?id=<?php echo $row2["s_id"]; ?>'>
