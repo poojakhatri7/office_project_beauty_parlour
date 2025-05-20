@@ -65,12 +65,18 @@ if (isset($_POST['add_category'])) {
 // }
 
 // Handle sub-category submission
+$defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
+$uploadPath = $defaultImage; 
 if (isset($_POST['add_sub_category'])) {
+   $photo = $_FILES["sub_image"]["name"];
+  $photo2 = $_FILES["sub_image"]["tmp_name"];
+  $uploadPath = "upload-images/" . $photo;
     $s_name = $_POST['s_name'];
     $s_description = $_POST['s_description'];
     $c_id = $_POST['c_id']; // Selected category
-
-    $query = "INSERT INTO sub_category_service (s_name, description, sub_service) VALUES ('$s_name', '$s_description', '$c_id')";
+    // $sub_image = $_POST['sub_image']; // Selected category
+      move_uploaded_file($photo2, $uploadPath);
+    $query = "INSERT INTO sub_category_service (s_name, description, sub_service , file ) VALUES ('$s_name', '$s_description', '$c_id','$uploadPath')";
     mysqli_query($conn, $query);
 }
 
@@ -127,7 +133,7 @@ if (isset($_POST['add_sub_category'])) {
 <!-- Span for success message -->
 
               <div class="card-header"style="background-color: rgb(51, 139, 139);">
-                <h3 style=" align-items: center" class="card-title">ADD SERVICES</h3>
+                <h3 style=" align-items: center" class="card-title">Add Category and Sub-Category</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -140,7 +146,6 @@ if (isset($_POST['add_sub_category'])) {
                       <input type="text" name="c_service" class="form-control" id="add_category" placeholder="Category Name">
                     </div>
                   </div>
-                
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> DESCRIPTION </label>
                     <div class="col-sm-4">
@@ -162,11 +167,10 @@ if (isset($_POST['add_sub_category'])) {
 </form>
 <hr>
 
-<form class="form-horizontal" action="" method="post">
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
     <?php 
     $category_result = mysqli_query($conn, "SELECT * FROM category_service"); 
     ?>
-
     <div class="form-group row">
         <label for="c_id" class="col-sm-2 col-form-label">SELECT</label>
         <div class="col-sm-4">
@@ -194,7 +198,7 @@ if (isset($_POST['add_sub_category'])) {
                    <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> IMAGE </label>
                     <div class="col-sm-4">
-                      <input type="file" name="image1" class="form-control" id="add_sub_category" placeholder="Add sub category image ">
+                      <input type="file" name="sub_image" class="form-control" id="add_sub_category" placeholder="Add sub category image ">
                     </div>
                   </div>
                 </div>
@@ -290,6 +294,7 @@ if (isset($_POST['add_sub_category'])) {
                     $count2 = 0;
                     if (mysqli_num_rows($result2) > 0) {
                         while ($row2 = mysqli_fetch_assoc($result2)) {
+                             $imagePath = "/beauty_parlour_management_system/admin2/" . $row2['file'];
                             $count2++;
                     ?>
                             <tr>
@@ -297,7 +302,7 @@ if (isset($_POST['add_sub_category'])) {
                                 <td><?php echo $row2['c_service']; ?></td>
                                 <td><?php echo $row2['s_name']; ?></td>
                                 <td><?php echo $row2['description']; ?></td>
-                                   <td><?php echo $row2['description']; ?></td>
+                             <td><img src="<?php echo $imagePath; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
                                 <td>
                                     <div style="display: inline-block;">
                                         <a href='/beauty_parlour_management_system/admin2/delete_sub_category.php?id=<?php echo $row2["s_id"]; ?>'>

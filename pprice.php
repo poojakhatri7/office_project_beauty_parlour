@@ -60,9 +60,6 @@ $c_id = $_GET ['c_id'];
 	</head>
 	<body>
 
-
-
-
 		<!-- PRELOADER SPINNER
 		============================================= -->	
 		<?php include 'preloader.php'; ?>
@@ -85,7 +82,7 @@ $c_id = $_GET ['c_id'];
 
 
 <?php
-			$sql = "SELECT * FROM  category_service  WHERE c_id = $c_id";
+$sql = "SELECT * FROM  category_service  WHERE c_id = $c_id";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -95,7 +92,6 @@ if (mysqli_num_rows($result) > 0) {
 	//   echo '<img src="' . $imagePath . '" width="400" height="400" style="margin:10px;">';
 	
         ?>
-
 
 <?php } } ?>
 			<!-- INNER PAGE HERO
@@ -123,7 +119,6 @@ $description = $row ['description'];
 				</div>	   <!-- End container --> 
 			</section>	<!-- END INNER PAGE HERO -->
 
-
 <?php }?>
 
 <style>
@@ -140,13 +135,50 @@ $description = $row ['description'];
   flex-grow: 1;
   
 }
-
 	</style>
+	
+<!-- CARD BOOTSTRAP
+			============================================= -->
+<?php
+$sql_subcategories = "SELECT scs.s_id, scs.s_name, scs.file, scs.description  AS subcategory_description
+                      FROM sub_category_service scs
+                      WHERE scs.sub_service = $c_id"; 
+
+$result_subcategories = mysqli_query($conn, $sql_subcategories);
+
+if (mysqli_num_rows($result_subcategories) > 0) {
+?>
+    <!-- Flex container starts -->
+    <div style="display: flex; flex-wrap: wrap; gap: 3 rem; justify-content: center; padding: 0 2rem;">
+<?php
+    while ($row = mysqli_fetch_assoc($result_subcategories)) {
+	 $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file']; 
+        $s_id = $row['s_id'];
+?>
+        <div class="card mx-4 mt-5" style="width: 15rem; font-size: 0.875rem;" onclick="scrollToSubCategory()">
+       
+          <div class="card-body">
+            <h5 class="card-title" style="font-size: 1.5rem;"><?php echo $row['s_name']; ?></h5>
+			  <img src="<?php echo $imagePath; ?> " class="card-img-top" alt="...">
+            <p class="card-text" style="font-size: 0.85rem;"><?php echo $row['subcategory_description']; ?></p>
+          </div>
+        </div>
+<?php
+    }
+?>
+    </div> <!-- Flex container ends -->
+<?php
+}
+?>
+
+<!-- ============================================= -->
+<div id="sub_category_service" >
 			<!-- PRICING-5
 			============================================= -->
 			<div class="container pt-8 pricing-5 pricing-section">
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
+			
             <?php
             $sql_subcategories = "SELECT scs.s_id, scs.s_name, scs.description AS subcategory_description
                                   FROM sub_category_service scs
@@ -160,7 +192,7 @@ $description = $row ['description'];
             ?>
                     <div class="pricing-5-category mb-4">
                         <h3 class="text-center"><?php echo $subcategory['s_name']; ?></h3>
-                        <p class="text-muted text-center"><?php echo $subcategory['subcategory_description']; ?></p>
+                      
                     </div>
 
                     <?php
@@ -197,6 +229,7 @@ $description = $row ['description'];
         </div>
     </div>
 </div>
+		</div>
 <?php
 $sql = "SELECT * FROM portfolio  LIMIT 6";
 $result = mysqli_query($conn, $sql);
@@ -650,6 +683,11 @@ if (mysqli_num_rows($result) > 0) {
 			  });
 			});
 		</script>
+		<script>
+function scrollToSubCategory() {
+  document.getElementById('sub_category_service').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->															
 		<!--
