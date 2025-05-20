@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: May 16, 2025 at 01:57 PM
+-- Generation Time: May 20, 2025 at 02:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -232,17 +232,17 @@ CREATE TABLE `category_service` (
   `c_id` int(40) NOT NULL,
   `c_service` varchar(200) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
-  `Image` varchar(200) NOT NULL
+  `file` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `category_service`
 --
 
-INSERT INTO `category_service` (`c_id`, `c_service`, `description`, `Image`) VALUES
-(1, 'Hair Services', 'It’s time to give your hair some love', ''),
-(2, 'Beauty Services', 'Unleash your beauty with Reine Studio', ''),
-(3, 'Hand & Feet services', NULL, '');
+INSERT INTO `category_service` (`c_id`, `c_service`, `description`, `file`) VALUES
+(1, 'Hair Services', 'It’s time to give your hair some love', 'upload-images/h.jpg'),
+(2, 'Beauty Services', 'Unleash your beauty with Reine Studio', 'upload-images/15.webp'),
+(3, 'Hand & Feet services', NULL, 'upload-images/34_SB.jpg');
 
 -- --------------------------------------------------------
 
@@ -479,6 +479,7 @@ CREATE TABLE `sub_category_service` (
   `s_id` int(40) NOT NULL,
   `s_name` varchar(200) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
+  `file` varchar(200) NOT NULL,
   `sub_service` int(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -486,18 +487,18 @@ CREATE TABLE `sub_category_service` (
 -- Dumping data for table `sub_category_service`
 --
 
-INSERT INTO `sub_category_service` (`s_id`, `s_name`, `description`, `sub_service`) VALUES
-(1, 'Cutting and Styling', NULL, 1),
-(2, 'Hair treatment', NULL, 1),
-(3, 'Hair Coloring', NULL, 1),
-(4, 'Hair extension', NULL, 1),
-(5, 'Skin Care and facial', NULL, 2),
-(6, 'Body Waxing ', NULL, 2),
-(7, 'Make up & Eyebrow', NULL, 2),
-(8, 'Hand & feet', NULL, 3),
-(9, 'Add on services', NULL, 3),
-(30, 'spa', '', 67),
-(31, 'make up ', 'about ', 68);
+INSERT INTO `sub_category_service` (`s_id`, `s_name`, `description`, `file`, `sub_service`) VALUES
+(1, 'Cutting and Styling', 'Each service is crafted to enhance your unique style and beauty.', 'upload-images/hair_extesion.webp', 1),
+(2, 'Hair treatment', NULL, 'upload-images/hr3.webp', 1),
+(3, 'Hair Coloring', NULL, 'upload-images/12.webp', 1),
+(4, 'Hair extension', NULL, 'upload-images/haircolour.jpg', 1),
+(5, 'Skin Care and facial', NULL, 'upload-images/service.jpg', 2),
+(6, 'Body Waxing ', NULL, 'upload-images/bodywax.webp', 2),
+(7, 'Make up & Eyebrow', NULL, 'upload-images/eyebrow.jpg', 2),
+(8, 'Hand & feet', NULL, 'upload-images/istockphoto-838483760-612x612.jpg', 3),
+(9, 'Add on services', NULL, 'upload-images/makeup-beauty-parlour-for-women.jpg', 3),
+(30, 'spa', '', 'upload-images/h.jpg', 67),
+(31, 'make up ', 'about ', 'upload-images/h.jpg', 68);
 
 -- --------------------------------------------------------
 
@@ -887,7 +888,7 @@ ALTER TABLE `business_hours`
 -- AUTO_INCREMENT for table `category_service`
 --
 ALTER TABLE `category_service`
-  MODIFY `c_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+  MODIFY `c_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 
 --
 -- AUTO_INCREMENT for table `enquiry_message`
@@ -935,7 +936,7 @@ ALTER TABLE `staff_gallery`
 -- AUTO_INCREMENT for table `sub_category_service`
 --
 ALTER TABLE `sub_category_service`
-  MODIFY `s_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `s_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `tb_about`
