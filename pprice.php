@@ -135,6 +135,23 @@ $description = $row ['description'];
   flex-grow: 1;
   
 }
+.plus-sign {
+  /* color: black;
+  margin-right: 15px;
+  font-weight: bold; */
+   display: inline-block;
+  width: 19px;
+  height: 20px;
+  background-color:rgb(25, 122, 151); /* Bootstrap primary blue */
+  color: white;
+  font-weight: light;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 20px;
+  margin-right: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
 	</style>
 	
 <!-- CARD BOOTSTRAP
@@ -208,7 +225,12 @@ if (mysqli_num_rows($result_subcategories) > 0) {
                             <?php while ($service = mysqli_fetch_assoc($result_services)) { ?>
                                 <li class="pricing-5-item d-flex justify-content-between align-items-center gap-3">
                                     <div class="price-name flex-grow-1">
-                                        <p class="mb-0"><?php echo $service['all_service']; ?></p>
+										
+                                        <!-- <p class="mb-0"> <?php echo $service['all_service']; ?></p> -->
+										 <p class="mb-0">
+  <span class="plus-sign">+</span>
+  <span class="service-text"><?php echo $service['all_service']; ?></span>
+</p>
                                     </div>
 									<div class="price-dots "></div> <!-- Dots appear here -->
                                     <div class="price-number">

@@ -114,12 +114,13 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="" method= "post">
+              <form  id="categoryForm" class="form-horizontal" action="" method= "post">
                 <div class="card-body">
+                   <span id="error" style="color: red; display: inline-block; margin: 10px 0;"></span><br>
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">PACKAGE NAME </label>
+                    <label for="inputEmail3"  class="col-sm-2 col-form-label">PACKAGE NAME </label>
                     <div class="col-sm-10">
-                      <input type="text" name="package_name" class="form-control" id="inputEmail3" placeholder="Enter package name">
+                      <input type="text" name="package_name" id="package" class="form-control" id="inputEmail3" placeholder="Enter package name">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -381,6 +382,28 @@ $("#discountAmount").on("input", function () {
         });
         updateSelectedServices();
     });
+});
+</script>
+<script>
+document.getElementById('categoryForm').addEventListener('submit', function (e) {
+  const package = document.getElementById('package');
+  const errorEl = document.getElementById('error');
+  const categoryValue = package.value.trim();
+
+  // Clear any previous error message
+//   errorEl.textContent = "";
+
+  // Validation logic
+  if (categoryValue === "") {
+    //  alert("Package name is required!");
+    errorEl.textContent = "Package  name is required!";
+    package.focus();
+    e.preventDefault(); // Prevent form from submitting
+  } else if (categoryValue.length < 3) {
+    errorEl.textContent = "Category name must be at least 3 characters.";
+    package.focus();
+    e.preventDefault(); // Prevent form from submitting
+  }
 });
 </script>
 </body>

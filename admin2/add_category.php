@@ -47,24 +47,10 @@ if (isset($_POST['add_category'])) {
         echo "Error: " . mysqli_error($conn);
     }
   }
-    //Check if redirected with success flag
-// if (isset($_GET['success']) && $_GET['success'] == 1) {
-//   $show_message = true;
-// }
-// $show_message = isset($_GET['success']) && $_GET['success'] == 1;
+ 
 
 }
 
-
-// if (isset($_POST['add_category'])) {
-//     $c_service = $_POST['c_service'];
-//     $description = $_POST['c_description'];
-
-//     $query = "INSERT INTO category_service (c_service, description) VALUES ('$c_service', '$description')";
-//     mysqli_query($conn, $query);
-// }
-
-// Handle sub-category submission
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
 if (isset($_POST['add_sub_category'])) {
@@ -76,12 +62,25 @@ if (isset($_POST['add_sub_category'])) {
     $c_id = $_POST['c_id']; // Selected category
     // $sub_image = $_POST['sub_image']; // Selected category
       move_uploaded_file($photo2, $uploadPath);
+
+       $check_query1 = "SELECT * FROM sub_category_service WHERE s_name = '$s_name'";
+ $result = mysqli_query($conn, $check_query1);
+ if (mysqli_num_rows($result) > 0) {
+     // Category already exists
+    //  $error_message = "Category already exists!";
+    header("Location: " . $_SERVER['PHP_SELF'] . "?error=1");
+    exit();
+ }
+ else {
+ 
     $query = "INSERT INTO sub_category_service (s_name, description, sub_service , file ) VALUES ('$s_name', '$s_description', '$c_id','$uploadPath')";
-    mysqli_query($conn, $query);
+    if(mysqli_query($conn, $query));
+    {
+        header("Location: " . $_SERVER['PHP_SELF'] . "?success=1");
+        exit();
+    }
 }
-
-// Fetch categories for the dropdown
-
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -168,6 +167,7 @@ if (isset($_POST['add_sub_category'])) {
 <hr>
 
 <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+   <span id="message" style="color: green; font-weight: 600; margin-bottom: 15px; display: inline-block;"></span>
     <?php 
     $category_result = mysqli_query($conn, "SELECT * FROM category_service"); 
     ?>
@@ -330,15 +330,47 @@ window.onload = function () {
     const params = new URLSearchParams(window.location.search);
     const messageEl = document.getElementById('message');
 
-    if (params.get('success') === '1') {
-        messageEl.style.color = "green";
-        messageEl.innerHTML = "Category added successfully. You can add sub-category!";
-        window.history.replaceState({}, document.title, window.location.pathname);
-    } else if (params.get('error') === '1') {
-        messageEl.style.color = "red";
-        messageEl.innerHTML = "Category already exists!";
-        window.history.replaceState({}, document.title, window.location.pathname);
-    }
+   if (params.get('success') === '1') {
+    messageEl.style.color = "green";
+    messageEl.innerHTML = "Category added successfully. You can add sub-category!";
+    window.history.replaceState({}, document.title, window.location.pathname);
+
+    setTimeout(() => {
+        messageEl.innerHTML = "";
+    }, 4000);
+} else if (params.get('error') === '1') {
+    messageEl.style.color = "red";
+    messageEl.innerHTML = "Category already exists!";
+    window.history.replaceState({}, document.title, window.location.pathname);
+
+    setTimeout(() => {
+        messageEl.innerHTML = "";
+    }, 8000);
+}
+}
+</script>
+ <script>
+window.onload = function () {
+    const params = new URLSearchParams(window.location.search);
+    const messageEl = document.getElementById('message');
+
+   if (params.get('success') === '1') {
+    messageEl.style.color = "green";
+    messageEl.innerHTML = "Category added successfully. You can add sub-category!";
+    window.history.replaceState({}, document.title, window.location.pathname);
+
+    setTimeout(() => {
+        messageEl.innerHTML = "";
+    }, 3000);
+} else if (params.get('error') === '1') {
+    messageEl.style.color = "red";
+    messageEl.innerHTML = "Category already exists!";
+    window.history.replaceState({}, document.title, window.location.pathname);
+
+    setTimeout(() => {
+        messageEl.innerHTML = "";
+    }, 5000);
+}
 }
 </script>
 
