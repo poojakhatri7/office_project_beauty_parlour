@@ -22,98 +22,98 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  */
-.modal .modal-dialog.modal-full-width {
+/* .modal .modal-dialog.modal-full-width {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
   left: 0 !important;
   right: 0 !important;
-}
-.modal .modal-content {
+} */
+/* .modal .modal-content {
   border: 0;
   border-radius: 3px;
-}
-.modal.fade.modal-top-left .modal-dialog {
+} */
+/* .modal.fade.modal-top-left .modal-dialog {
   width: 100%;
   position: absolute;
   top: 0;
-}
-@media (min-width: 576px) {
+} */
+/* @media (min-width: 576px) {
   .modal.fade.modal-top-left .modal-dialog {
     left: 1.75rem;
     margin: 1.75rem auto;
   }
-}
-@media (max-width: 767.98px) {
+} */
+/* @media (max-width: 767.98px) {
   .modal.fade.modal-top-left .modal-dialog {
     width: calc(100% - (0.5rem*2));
   }
-}
-.modal.fade.modal-top-right .modal-dialog {
+} */
+/* .modal.fade.modal-top-right .modal-dialog {
   width: 100%;
   position: absolute;
   top: 0;
-}
-@media (min-width: 576px) {
+} */
+/* @media (min-width: 576px) {
   .modal.fade.modal-top-right .modal-dialog {
     right: 1.75rem;
     margin: 1.75rem auto;
   }
-}
-@media (max-width: 767.98px) {
+} */
+/* @media (max-width: 767.98px) {
   .modal.fade.modal-top-right .modal-dialog {
     width: calc(100% - (0.5rem*2));
   }
-}
-.modal.fade.modal-bottom-right .modal-dialog {
+} */
+/* .modal.fade.modal-bottom-right .modal-dialog {
   width: 100%;
   position: absolute;
   bottom: 0;
-}
-@media (min-width: 576px) {
+} */
+/* @media (min-width: 576px) {
   .modal.fade.modal-bottom-right .modal-dialog {
     right: 1.75rem;
     margin: 1.75rem auto;
   }
-}
-@media (max-width: 767.98px) {
+} */
+/* @media (max-width: 767.98px) {
   .modal.fade.modal-bottom-right .modal-dialog {
     width: calc(100% - (0.5rem*2));
   }
-}
-.modal.fade.modal-bottom-left .modal-dialog {
+} */
+/* .modal.fade.modal-bottom-left .modal-dialog {
   width: 100%;
   position: absolute;
   bottom: 0;
-}
-@media (min-width: 576px) {
+} */
+/* @media (min-width: 576px) {
   .modal.fade.modal-bottom-left .modal-dialog {
     left: 1.75rem;
     margin: 1.75rem auto;
   }
-}
-@media (max-width: 767.98px) {
+} */
+/* @media (max-width: 767.98px) {
   .modal.fade.modal-bottom-left .modal-dialog {
     width: calc(100% - (0.5rem*2));
   }
-}
-.modal.fade.modal-bottom-center .modal-dialog {
+} */
+/* .modal.fade.modal-bottom-center .modal-dialog {
   position: absolute;
   bottom: 0;
   right: 0;
   left: 0;
-}
-@media (min-width: 576px) {
+} */
+/* @media (min-width: 576px) {
   .modal.fade.modal-bottom-center .modal-dialog {
     margin: 1.75rem auto;
   }
-}
-@media (max-width: 767.98px) {
+} */
+/* @media (max-width: 767.98px) {
   .modal.fade.modal-bottom-center .modal-dialog {
     width: calc(100% - (0.5rem*2));
   }
-}
-.modal .close {
+} */
+/* .modal .close {
   position: absolute;
   z-index: 1;
   right: 10px !important;
@@ -124,32 +124,32 @@ THE SOFTWARE.
   border-radius: 50%;
   font-size: 1.8rem;
   padding: 0;
-}
-.modal .close:focus {
+} */
+/* .modal .close:focus {
   outline: 0;
-}
-.modal .close span {
+} */
+/* .modal .close span {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M14.7,1.3c-0.4-0.4-1-0.4-1.4,0L8,6.6L2.7,1.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4L6.6,8l-5.3,5.3 c-0.4,0.4-0.4,1,0,1.4C1.5,14.9,1.7,15,2,15s0.5-0.1,0.7-0.3L8,9.4l5.3,5.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L9.4,8l5.3-5.3C15.1,2.3,15.1,1.7,14.7,1.3z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
   color: transparent;
   text-shadow: none;
   background-position: center;
-}
-.modal .close.light span {
+} */
+/* .modal .close.light span {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath d='M14.7,1.3c-0.4-0.4-1-0.4-1.4,0L8,6.6L2.7,1.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4L6.6,8l-5.3,5.3 c-0.4,0.4-0.4,1,0,1.4C1.5,14.9,1.7,15,2,15s0.5-0.1,0.7-0.3L8,9.4l5.3,5.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L9.4,8l5.3-5.3C15.1,2.3,15.1,1.7,14.7,1.3z'/%3E%3C/svg%3E");
-}
-.modal .close.size-sm {
+} */
+/* .modal .close.size-sm {
   transform: scale(0.5);
   right: 0.5rem;
   top: 0.5rem;
-}
-.modal .close.close-pinned {
+} */
+/* .modal .close.close-pinned {
   top: -19px;
   right: -19px;
-}
+} */
 
-.modal[data-popup=true] {
+/* .modal[data-popup=true] {
   position: relative;
   top: unset;
   left: unset;
@@ -157,25 +157,25 @@ THE SOFTWARE.
   bottom: unset;
   width: unset;
   height: unset;
-}
-.modal[data-popup=true].fade.modal-top-left .modal-dialog, .modal[data-popup=true].fade.modal-top-right .modal-dialog, .modal[data-popup=true].fade.modal-bottom-right .modal-dialog, .modal[data-popup=true].fade.modal-bottom-left .modal-dialog, .modal[data-popup=true].fade.modal-bottom-center .modal-dialog {
+} */
+/* .modal[data-popup=true].fade.modal-top-left .modal-dialog, .modal[data-popup=true].fade.modal-top-right .modal-dialog, .modal[data-popup=true].fade.modal-bottom-right .modal-dialog, .modal[data-popup=true].fade.modal-bottom-left .modal-dialog, .modal[data-popup=true].fade.modal-bottom-center .modal-dialog {
   position: fixed;
-}
-.modal[data-popup=true].fade .modal-content {
+} */
+/* .modal[data-popup=true].fade .modal-content {
   box-shadow: 0 20px 60px -2px rgba(18, 21, 35, 0.19);
-}
+} */
 
 .body-scrollable {
   overflow: unset;
   padding-right: unset !important;
 }
-.body-scrollable .modal-backdrop {
+/* .body-scrollable .modal-backdrop {
   display: none;
-}
+} */
 
-.modal-backdrop {
+/* .modal-backdrop {
   background: #2d343a;
-}
+} */
 
 /*Bigger CTA Style Button*/
 .btn-cta {
@@ -250,26 +250,26 @@ THE SOFTWARE.
 }
 
 /*Overlay for images*/
-.modal .overlay {
+/* .modal .overlay {
   background-color: rgba(0, 0, 0, 0.35);
-}
+} */
 
-.modal .overlay-light {
+/* .modal .overlay-light {
   background-color: rgba(0, 0, 0, 0.15);
-}
+} */
 
 /*Negative margins for creating pull effect */
-.modal .pull-up-lg {
+/* .modal .pull-up-lg {
   margin-top: -70px;
-}
+} */
 
 .modal .pull-up-sm {
   /*margin-top: -35px;*/
 }
 
-.modal .border-thick {
+/* .modal .border-thick {
   border-width: 0.3rem !important;
-}
+} */
 
 .bg-img {
   background-size: cover;

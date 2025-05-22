@@ -9,9 +9,9 @@
 		/*	Modal Window
 		/*----------------------------------------------------*/
 			
-		setTimeout(function () {
-		    $(".modal:not(.auto-off)").modal("show");
-		},4600);
+		// setTimeout(function () {
+		//     $(".modal:not(.auto-off)").modal("show");
+		// },4600);
 				
 	});
 

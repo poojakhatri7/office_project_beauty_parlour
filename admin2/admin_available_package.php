@@ -53,9 +53,6 @@ include 'db_connection.php';
     </div>
     <div class="container-fluid">
  
-  <?php
-
-// ?>
   <!-- </tbody>
 </table> -->
 <!-- <a href="/beauty_parlour_management_system/sign_up.php">Create a new account</a> -->
@@ -106,7 +103,7 @@ include 'db_connection.php';
 <p><strong>Package discount (%) :</strong> <span id="modalTotalDiscount"></span></p>
 <p><strong>Total Price After Discount:</strong> <span id="modalPriceAfterDiscount"></span></p>
                     <div class="modal-footer justify-content-between">                
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-deafault" data-dismiss="modal">Close</button>
               <!-- <button type="submit" name="submit" id="submitBtn1" class="btn btn-secondary">Add</button> -->
             </div>
                 </form>
@@ -115,8 +112,7 @@ include 'db_connection.php';
           </div>
           <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
-      </div>
+    
                   <?php
 // $sql ="SELECT DISTINCT package_name, description FROM package " ;
 $sql = "SELECT MIN(id) as id, package_name, description, package_number

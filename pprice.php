@@ -79,8 +79,6 @@ $c_id = $_GET ['c_id'];
 			
 			<!-- END HEADER -->
 
-
-
 <?php
 $sql = "SELECT * FROM  category_service  WHERE c_id = $c_id";
 $result = mysqli_query($conn, $sql);
@@ -151,6 +149,11 @@ $description = $row ['description'];
   margin-right: 8px;
   font-size: 16px;
   transition: background-color 0.3s ease;
+
+}
+.plus-sign:hover {
+  background-color:rgb(189, 31, 44);
+  cursor: pointer;
 }
 	</style>
 	
@@ -228,7 +231,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 										
                                         <!-- <p class="mb-0"> <?php echo $service['all_service']; ?></p> -->
 										 <p class="mb-0">
-  <span class="plus-sign">+</span>
+  <span class="plus-sign" data-bs-toggle = "modal" data-bs-target = "#exampleModal">+</span>
   <span class="service-text"><?php echo $service['all_service']; ?></span>
 </p>
                                     </div>
@@ -252,6 +255,62 @@ if (mysqli_num_rows($result_subcategories) > 0) {
     </div>
 </div>
 		</div>
+
+<!-- Modal for services -->
+<!-- <div class="modal fade" id="modal-default1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Service Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form id="serviceform">
+          <div class="form-group">
+            <p><strong>Service Name:</strong> <span id="modalServiceName"></span></p>
+            <p><strong>Price:</strong> <span id="modalPrice"></span></p>
+            <p><strong>Description:</strong> <span id="modalDescription"></span></p>
+          </div>
+        </form>
+        <div id="message"></div>
+      </div>
+
+      <div class="modal-footer justify-content-between">                
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+<!-- Modal ends -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Service details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <p><strong>Service Name:</strong> Sample Service</p>
+        <p><strong>Price:</strong> $100</p>
+        <p><strong>Description:</strong> Sample description.</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+		
 <?php
 $sql = "SELECT * FROM portfolio  LIMIT 6";
 $result = mysqli_query($conn, $sql);
