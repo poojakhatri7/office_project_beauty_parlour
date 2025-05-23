@@ -50,12 +50,13 @@ include 'db_connection.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
   $sub_service_id = $_POST['s']; // Gets the selected service ID
   $category_id = $_POST['c_id'];
   $service_name = mysqli_real_escape_string($conn, $_POST['service_name']);
     $price = mysqli_real_escape_string($conn, $_POST['price']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
-    $sql = "INSERT INTO all_services (a_id, all_service,  price, description , service_number, c_id_category_service) VALUES ('','$service_name', '$price','$description','$sub_service_id','$category_id')";
+    $sql = "INSERT INTO all_services (a_id, all_service,  price, description , file , service_number, c_id_category_service) VALUES ('','$service_name', '$price','$description','$service_image','$sub_service_id','$category_id')";
 
       if (mysqli_query($conn, $sql)) {
           echo "<script>alert('Service added successfully!'); window.location.href='manage_service.php';</script>";
@@ -149,6 +150,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="inputPassword3" class="col-sm-2 col-form-label">DESCRIPTION</label>
                     <div class="col-sm-4">
                       <input type="text" name="description" class="form-control" id="inputPassword3" placeholder="Any Description of the service">
+                    </div>
+                  </div>
+                    <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE</label>
+                    <div class="col-sm-4">
+                      <input type="file" name="service_image" class="form-control" id="inputPassword3" placeholder="Any Description of the service">
                     </div>
                   </div>
                   <div class="form-group row">

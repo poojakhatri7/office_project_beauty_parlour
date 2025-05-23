@@ -228,10 +228,10 @@ if (mysqli_num_rows($result_subcategories) > 0) {
                             <?php while ($service = mysqli_fetch_assoc($result_services)) { ?>
                                 <li class="pricing-5-item d-flex justify-content-between align-items-center gap-3">
                                     <div class="price-name flex-grow-1">
-										
-                                        <!-- <p class="mb-0"> <?php echo $service['all_service']; ?></p> -->
+																		
+                                       
 										 <p class="mb-0">
-  <span class="plus-sign" data-bs-toggle = "modal" data-bs-target = "#exampleModal">+</span>
+  <span class="plus-sign" data-bs-toggle = "modal" data-bs-target = "#exampleModal" data-service_number="<?php echo $service['a_id']; ?>" >+</span>
   <span class="service-text"><?php echo $service['all_service']; ?></span>
 </p>
                                     </div>
@@ -285,7 +285,20 @@ if (mysqli_num_rows($result_subcategories) > 0) {
     </div>
   </div>
 </div> -->
-<!-- Modal ends -->
+<!-- Modal starts -->
+<!-- <script>
+  document.querySelectorAll('.plus-sign').forEach(function(element) {
+    element.addEventListener('click', function() {
+      console.log("Service Number:", this.getAttribute('data-service_number'));
+    });
+  });
+</script> -->
+
+
+
+
+
+
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -295,10 +308,12 @@ if (mysqli_num_rows($result_subcategories) > 0) {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-body">
-        <p><strong>Service Name:</strong> Sample Service</p>
-        <p><strong>Price:</strong> $100</p>
-        <p><strong>Description:</strong> Sample description.</p>
+      <div class="modal-body"> 
+		<img id="modalServiceImage" src="" alt="Service Image" class="d-block mx-auto" style="max-width: 50%;">
+		 <!-- <p><span id="modalServiceImage"></span></p> -->
+        <p><strong>Service Name:</strong> <span id="modalServiceName"></span></p>
+        <p><strong>Price:</strong>  <span id="modalServicePrice"></span></p>
+        <p><strong>Description:</strong> <span id="modalServiceDescription"></span></p>
       </div>
 
       <div class="modal-footer">
@@ -310,7 +325,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
   </div>
 </div>
 
-		
+		<!-- Modal ends  -->
 <?php
 $sql = "SELECT * FROM portfolio  LIMIT 6";
 $result = mysqli_query($conn, $sql);
@@ -784,8 +799,43 @@ function scrollToSubCategory() {
 			})();
 		</script>
 		-->	
-
-
+<script>
+$(document).on('click', '.plus-sign', function () {
+    const service_number = $(this).data('service_number');
+  console.log("Clicked Package service_number:", service_number ); // Check if ID is correct
+    $.ajax({
+        url: 'get_price.php',
+        type: 'POST',
+        data: { service_number: service_number },
+        dataType: 'json',
+        success: function (data) {
+            if (data.error) {
+                alert(data.error);
+            } else {
+			  console.log("Image path:", data.file); // Debug
+				 $('#modalServiceImage').attr('src', data.file);
+                 $('#modalServiceName').text(data.all_service);
+				   $('#modalServicePrice').text(data.price);
+        $('#modalServiceDescription').text(data.description);
+        // $('#modalServices').text(data.selected_services);
+        // $('#modalTotalPrice').text(data.price);
+        // $('#modalTotalDiscount').text(data.discount);
+        // $('#modalPriceAfterDiscount').text(data.price_after_discount);
+            }
+        },
+        error: function () {
+            alert('Error fetching package detail.');
+        }
+    });
+});
+</script>
+<!-- <script>
+  document.querySelectorAll('.plus-sign').forEach(function(element) {
+    element.addEventListener('click', function() {
+      console.log("Service Number:", this.getAttribute('data-service_number'));
+    });
+  });
+</script> -->
 	</body>
 
 
