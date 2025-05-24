@@ -71,6 +71,7 @@ if (isset($_POST['sub_service'])) {
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">S No.</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Name</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Price</th>
+                      <th style="color: rgb(238, 230, 217); font-weight: 500;">Image</th>
                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
                 </tr>
             </thead>
@@ -83,7 +84,8 @@ if (isset($_POST['sub_service'])) {
                     <td>{$sno}</td>
                     <td>{$row['all_service']}</td>
                     <td>{$row['price']}</td>
-                
+                   <td><img src='{$row['file']}' alt='Service Image' style='width: 50px; height: 50px; object-fit: cover;'></td>
+
                    <td>
         <div style='display: inline-block; margin-right: 20px;'>
             <a href='/beauty_parlour_management_system/admin2/edit_services.php?id=" . $row['a_id'] . "'>

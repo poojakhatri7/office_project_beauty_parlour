@@ -9,13 +9,17 @@ include('includes/sidebar.php');
 include 'db_connection.php';
 $id = $_GET ['id'];
 if (isset($_POST["submit"])) {
-  
+
+   $photo = $_FILES["image"]["name"];
+    $photo2 = $_FILES["image"]["tmp_name"];
+    $uploadPath = "upload-images/" . $photo;
     $service_name = $_POST["service_name"];
     $service_price = $_POST["service_price"];
     $description = $_POST["description"];
+      move_uploaded_file($photo2, $uploadPath);
     // SQL query to insert data
   //  $query = "UPDATE tb_services  SET  service_name='$service_name', service_price = '$service_price' WHERE id={$id}";
-    $query = "UPDATE `all_services` SET all_service='$service_name', price='$service_price', description='$description' WHERE a_id=$id";
+    $query = "UPDATE `all_services` SET all_service='$service_name', price='$service_price', description='$description', file='$uploadPath' WHERE a_id=$id";
     // Execute the query and check for success
     if (mysqli_query($conn, $query)) {
         echo "<script> alert('SERVICE UPDATED SUCCESFULLY'); </script>";
@@ -23,7 +27,6 @@ if (isset($_POST["submit"])) {
         echo "<script> alert('Something went wrong'); </script>";
     }
 }
-
 //$id = $_GET ['id'];
 $sql = "SELECT * FROM all_services WHERE a_id={$id}";
 // Step 3: Execute the query
@@ -76,7 +79,7 @@ if (mysqli_num_rows($result) > 0) {
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="" method= "post">
+              <form class="form-horizontal" action="" method= "post"  enctype="multipart/form-data">
                 <div class="card-body">
                   <!-- <div class="form-group row"> -->
                     <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">S.NO</label> -->
@@ -102,17 +105,23 @@ if (mysqli_num_rows($result) > 0) {
                       <input type="text" name="description" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['description'] ?>">
                     </div>
                   </div>
-                  <div class="form-group row">
+                   <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE</label>
+                    <div class="col-sm-10">
+                      <input type="file" name="image" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['description'] ?>">
+                    </div>
+                  </div>
+                  <!-- <div class="form-group row">
                     <div class="offset-sm-2 col-sm-10">
                       <div class="form-check">
                       </div>
                     </div>
                   </div>
-                </div>
+                </div>  -->
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139);">UPDATE</button>
-                  <button type="submit" class="btn btn-default float-right">CANCEL</button>
+                  <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 20px;  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; ">UPDATE</button>
+                  <button type="submit" class="btn btn-danger float-right">CANCEL</button>
                 </div>
                 <!-- /.card-footer -->
               </form>
@@ -122,6 +131,7 @@ if (mysqli_num_rows($result) > 0) {
 
             </div>
 </div>
+
 
 </body>
 </html>
