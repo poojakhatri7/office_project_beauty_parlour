@@ -184,6 +184,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
           </div>
         </div>
 <?php
+
     }
 ?>
     </div> <!-- Flex container ends -->

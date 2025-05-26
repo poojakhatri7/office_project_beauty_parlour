@@ -108,7 +108,7 @@ if (mysqli_num_rows($result) > 0) {
                    <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE</label>
                     <div class="col-sm-10">
-                      <input type="file" name="image" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['description'] ?>">
+                      <input type="file" name="image" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['file'] ?>">
                     </div>
                   </div>
                   <!-- <div class="form-group row">
@@ -131,8 +131,6 @@ if (mysqli_num_rows($result) > 0) {
 
             </div>
 </div>
-
-
 </body>
 </html>
 <?php

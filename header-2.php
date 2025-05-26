@@ -125,6 +125,7 @@ $result = mysqli_query($conn, $sql);
 
 
 								    <!-- SIMPLE NAVIGATION LINK -->
+									 <li class="nl-simple" aria-haspopup="true"><a href="package.php" class="h-link">Packages</a></li>
 							    	<li class="nl-simple" aria-haspopup="true"><a href="gallery.php" class="h-link">Portfolio</a></li>
 
 									<li class="nl-simple" aria-haspopup="true"><a href="contact.php" class="h-link">Contact</a></li>

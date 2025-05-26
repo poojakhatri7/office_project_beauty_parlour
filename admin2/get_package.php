@@ -35,6 +35,7 @@ if (isset($_POST['package_number'])) {
     $main_sql = "SELECT * FROM package WHERE package_number = {$package_number} LIMIT 1";
     $main_result = mysqli_query($conn, $main_sql);
 
+    
     if ($row = mysqli_fetch_assoc($main_result)) {
         // Step 2: Get all services for this package_number
         $services = [];
