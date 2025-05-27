@@ -8,75 +8,75 @@ include('includes/sidebar.php');
 include 'db_connection.php';
 //$id = $_GET ['id'];
 // echo "<div style='text-align: center; font-weight: bold;'>$appointment_for</div>";
+
 if (isset($_POST["submit"])) {
+    $photo = $_FILES["package_image"]["name"];
+    $photo2 = $_FILES["image"]["tmp_name"];
+    $uploadPath = "upload-images/" . $photo;
     $package_name = $_POST['package_name'];
     $description = $_POST['description'];
-$totalPrice = $_POST['totalPrice'];
-$discount = $_POST['discount'];
-$totalAfterDiscount = $_POST['totalAfterDiscount'];
-$package_number = random_int(100000, 999999);
+    $discount = $_POST['discount'];
+     move_uploaded_file($photo2, $uploadPath);
+    $package_number = random_int(100000, 999999);
 
-// Check if services are selected
-if (isset($_POST['services']) && !empty($_POST['services'])) {
-    $selected_services = $_POST['services']; // Array of selected services
-    $totalPrice = 0; // Initialize total price
-    $selected_services = $_POST["selectedServices"];
-    $selected_services = explode(",", $_POST["selectedServices"]);
-    foreach ($selected_services as $service_name) {
-        $service_name = mysqli_real_escape_string($conn, $service_name);
+    if (isset($_POST["selectedServices"]) && !empty($_POST["selectedServices"])) {
+        $selected_services = explode(",", $_POST["selectedServices"]);
+        $totalPrice = 0;
 
-        // Fetch service price
-        $sql = "SELECT * FROM all_services WHERE all_service = '$service_name'";
-        $result = mysqli_query($conn, $sql);
+        // Calculate total price
+        foreach ($selected_services as $service_name) {
+            $service_name = mysqli_real_escape_string($conn, trim($service_name));
+            $sql = "SELECT price FROM all_services WHERE all_service = '$service_name'";
+            $result = mysqli_query($conn, $sql);
 
-        if ($result && mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $c_id = $row['c_id_category_service'];
-            $s_id = $row['service_number'];
-            $a_id = $row['a_id'];
-            $service_price = $row['price'];
-            $totalPrice += $service_price; // Add price to total
-         $discount = $_POST['discount'];
-    // $billing_number = $_POST['billing_number'];
-    $totalAfterDiscount = $totalPrice - ($totalPrice * ($discount / 100));
-          
-    
-    // Insert into tb_selected_services
-            $insert_sql = "
-            INSERT INTO package (package_name, package_number, description , selected_services , price, discount, price_after_discount) 
-            VALUES ('$package_name','$package_number','$description','$service_name', '$totalPrice', '$discount', '$totalAfterDiscount')";
-            
-            if (mysqli_query($conn, $insert_sql)) {
-                // echo "Error inserting service: " . mysqli_error($conn);
-                echo "<script>
-                alert('Package inserted successfully');
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $totalPrice += $row['price'];
+            } else {
+                echo "Service '$service_name' not found.<br>";
+            }
+        }
+
+        // Insert into package1 table
+        $insert_package_sql = "
+            INSERT INTO package1 (package_name, package_number, description, discount, file) 
+            VALUES ('$package_name', '$package_number', '$description', '$discount', ' $uploadPath')";
+
+        if (mysqli_query($conn, $insert_package_sql)) {
+            $package_id = mysqli_insert_id($conn); // Get inserted ID for foreign key
+
+            // Insert each service into package_services table
+            foreach ($selected_services as $service_name) {
+                $service_name = mysqli_real_escape_string($conn, trim($service_name));
+
+                $sql = "SELECT price FROM all_services WHERE all_service = '$service_name'";
+                $result = mysqli_query($conn, $sql);
+
+                if ($result && mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    $service_price = $row['price'];
+                    $price_after_discount = $service_price - ($service_price * ($discount / 100));
+
+                    $insert_service_sql = "
+                        INSERT INTO package_services (package_id, service_name, price, price_after_discount) 
+                        VALUES ('$package_id', '$service_name', '$service_price', '$price_after_discount')";
+                    
+                    mysqli_query($conn, $insert_service_sql);
+                }
+            }
+
+            echo "<script>
+                alert('Package and related services inserted successfully');
                 window.location.href='admin_available_package.php';
             </script>";
-      
-            }
         } else {
-            echo "Service '$service_name' not found in the database.<br>";
+            echo "Error inserting package: " . mysqli_error($conn);
         }
+    } else {
+        echo "No services selected.";
     }
-  
-
-    // $sql_insert = "INSERT INTO orders (appointment_id, totalPrice, discount, billing_number, created_at) 
-    //                VALUES ('$appointment_id', '$totalPrice', '$discount', '$billing_number', NOW())";
-
-//     if (mysqli_query($conn, $sql_insert)) {
-//         echo "<script>
-//             alert('Invoice generated successfully');
-//             window.location.href='admin_invoice.php';
-//         </script>";
-//     } else {
-//         echo "Error inserting into orders: " . mysqli_error($conn);
-//     }
-// } else {
-//     echo "No services selected.";
 }
- }
 ?>
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -111,11 +111,11 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form  id="categoryForm" class="form-horizontal" action="" method= "post">
+              <form  id="categoryForm" class="form-horizontal" action="" method= "post" enctype="multipart/form-data">
                 <div class="card-body">
                    <span id="error" style="color: red; display: inline-block; margin: 10px 0;"></span><br>
                   <div class="form-group row">
-                    <label for="inputEmail3"  class="col-sm-2 col-form-label">PACKAGE NAME </label>
+                    <label for="inputEmail3"  class="col-sm-2 col-form-label">PACKAGE NAME</label>
                     <div class="col-sm-10">
                       <input type="text" name="package_name" id="package" class="form-control" id="inputEmail3" placeholder="Enter package name">
                     </div>
@@ -124,6 +124,12 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
                     <label for="inputEmail3" class="col-sm-2 col-form-label">DESCRIPTION</label>
                     <div class="col-sm-10">
                       <input type="text" name="description" class="form-control" id="inputEmail3" placeholder="Enter package description">
+                    </div>
+                  </div>
+                   <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">IMAGE</label>
+                    <div class="col-sm-10">
+                      <input type="file" name="package_image" class="form-control" id="inputEmail3" placeholder="Enter package description">
                     </div>
                   </div>
                   <h5 class="my-4">Add Services to the Package</h5>
@@ -264,7 +270,7 @@ $(document).ready(function () {
 <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 20px;  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; ">ADD PACKAGE</button>
   <button type="reset" class="btn btn-danger float-right">Cancel</button>
 </div>
-                <!-- /.card-footer -->
+               
               </form>
           
             </div>

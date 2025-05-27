@@ -27,9 +27,7 @@ $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"
 $uploadPath = $defaultImage; 
 // if (isset($_POST['submit']) && isset($_FILES['image']) && isset($_POST['designation']) && isset($_POST['name'])) {
 if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name'])) {
-  // echo "<pre>";
-  // print_r($_FILES);
-  // echo "</pre>";
+ 
   $mobile=   $_SESSION["mobile"];
   $photo = $_FILES["image"]["name"];
   $photo2 = $_FILES["image"]["tmp_name"];

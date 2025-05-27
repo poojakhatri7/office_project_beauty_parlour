@@ -20,7 +20,6 @@ include 'db_connection.php';
     <style type="text/css">
 .available_package
 {
-  /* background : #157daf !important; */
   background :rgb(33, 70, 77) !important;
 }
 </style>
@@ -69,10 +68,8 @@ include 'db_connection.php';
                   <tr>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Package name</th>
-                  
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Description</th>
-                    <!-- <th style="color: rgb(238, 230, 217); font-weight: 500;">Date</th>
-                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Time</th>-->
+                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Image</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions </th> 
                   </tr>
                   </thead>
@@ -116,9 +113,9 @@ include 'db_connection.php';
       <!-- modal end -->
                   <?php
 // $sql ="SELECT DISTINCT package_name, description FROM package " ;
-$sql = "SELECT MIN(id) as id, package_name, description, package_number
-        FROM package
-        GROUP BY package_name, description order BY id DESC";
+$sql = "SELECT *
+        FROM package1
+        order BY id DESC";
 
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);
@@ -128,11 +125,14 @@ if (mysqli_num_rows($result) > 0) {
     // Step 5: Use a while loop to fetch each row of data
    
     while ($row = mysqli_fetch_assoc($result)) {
+          $image = "/beauty_parlour_management_system/admin2/" . $row['file'];
       $count = $count+1 ;
       echo '<tr>
       <th scope="row">' . $count . '</th>
       <td>' . $row['package_name'] . '</td>
       <td>' . $row['description'] . '</td>
+    <td><img src="' . $image . '" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
+      
       <td>
            <div style="display: inline-block; margin-right: 20px;">
       <a href="#" class="view-btn" data-toggle="modal" data-target="#modal-default" data-package_number="' . $row["package_number"] . '">

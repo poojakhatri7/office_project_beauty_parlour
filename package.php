@@ -98,37 +98,38 @@ include './admin2/db_connection.php';
 				</div>	   <!-- End container --> 
 			</section>	<!-- END INNER PAGE HERO -->
 <?php
-$sql = "SELECT MIN(id) as id, package_name , file ,price_after_discount, discount ,price, description, package_number
-        FROM package
-        GROUP BY package_name, description order BY id DESC";
-
+// $sql = "SELECT MIN(id) as id, package_name , file ,price_after_discount, discount ,price, description, package_number
+//         FROM package
+//         GROUP BY package_name, description order BY id DESC";
+$sql = "select package_name ,discount , SUM(price) AS price 
+ FROM 
+    package
+GROUP BY 
+    package_name; ";
 $result_subcategories = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result_subcategories) > 0) {
-      $services = [];
-          $total_price = 0;
-        $total_discount = 0;
-        $total_price_after_discount = 0;
+    //   $services = [];
+    //       $total_price = 0;
+    //     $total_discount = 0;
+    //     $total_price_after_discount = 0;
 ?>
  <div style="display: flex; flex-wrap: wrap; gap: 3 rem; justify-content: center; padding: 0 2rem;">
 <?php
     while ($s = mysqli_fetch_assoc($result_subcategories)) {
         //   $services[] = $s['selected_services'];
-             $total_price += $s['price'];
-            $total_discount += $s['discount'];
-            $total_price_after_discount += $s['price_after_discount'];
-	 $imagePath = "/beauty_parlour_management_system/admin2/" . $s['file']; 
+    //          $total_price += $s['price'];
+    //         $total_discount += $s['discount'];
+    //         $total_price_after_discount += $s['price_after_discount'];
+	//  $imagePath = "/beauty_parlour_management_system/admin2/" . $s['file']; 
         // $s_id = $row['s_id'];
 ?>
-        <div class="card mx-4 mt-5" style="width: 15rem; font-size: 0.875rem;" onclick="scrollToSubCategory()">
-       
+
+        <div class="card mx-4 mt-5" style="width: 15rem; font-size: 0.875rem;" >
           <div class="card-body">
             <h5 class="card-title" style="font-size: 1.5rem;"><?php echo $s['package_name']; ?></h5>
-<img src="<?php echo $imagePath; ?>" class="card-img-top" alt="..." style="width: 100%; height: 200px; object-fit: cover;">
-           <!-- <p class="card-text" style="font-size: 0.85rem; margin: 0;"><?php echo $total_price; ?></p> -->
-<p class="card-text" style="font-size: 0.85rem; margin: 0;">Price: Rs <?php echo $total_price; ?></p>
-<p class="card-text" style="font-size: 0.85rem; margin: 0;">Discount: Rs <?php echo $total_discount; ?></p>
-<p class="card-text" style="font-size: 0.85rem; margin: 0;">Price After Discount: Rs <?php echo $s['price_after_discount']; ?></p>
+<p class="card-text" style="font-size: 0.85rem; margin: 0;">Price: Rs <?php echo $s['price']; ?></p>
+<p class="card-text" style="font-size: 0.85rem; margin: 0;">Price: Rs <?php echo $s['discount']; ?></p>
 
           </div>
         </div>
