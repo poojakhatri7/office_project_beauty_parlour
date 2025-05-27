@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: May 24, 2025 at 02:12 PM
+-- Generation Time: May 27, 2025 at 02:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,7 @@ CREATE TABLE `admin_login_details` (
 --
 
 INSERT INTO `admin_login_details` (`id`, `name`, `mobile`, `email`, `address`, `password`, `role`, `file`, `gst_number`, `last_invoice_no`) VALUES
-(9, 'pooja khatri', 8707858421, 'pooja@gmail.com', 'rjpm1', '1234', 1, 'upload-images/img-11.jpg', '29AALC6789996', 98000007),
+(9, 'pooja khatri', 8707858421, 'pooja@gmail.com', 'rjpm1', '1234', 1, 'upload-images/img-11.jpg', '29AALC6789996', 98000008),
 (11, 'shikha', 8709875671, 'riya@gmail.com', 'Hazratganj', '1234', 2, 'upload-images/avatar2.png', NULL, NULL),
 (12, 'anushka sharma ', 8685904894, 'anushka@gmail.com', 'kakori road', '123', 2, 'upload-images/avatar2.png', NULL, NULL),
 (16, 'POOJA KHATRI', 8019858421, 'khatri@gmail.com', 'Hazratganj', 'q', 2, 'upload-images/slide-07.jpg', NULL, NULL),
@@ -107,20 +107,17 @@ INSERT INTO `all_services` (`a_id`, `all_service`, `price`, `description`, `file
 (40, 'Cheeks Waxing', 15, 'Service length 2 hours', 'upload-images/cheeks.jpg', 6, 2),
 (41, 'Full Arm Waxing', 45, 'Service length 1,5 hours', 'upload-images/full_armwaxing.jpg', 6, 2),
 (42, 'Full Face Waxing', 46, 'Service length 4 hours', 'upload-images/fullface.jpg', 6, 2),
-(43, 'Half Leg Waxing\r\n\r\n', 30, 'Service length 1 hour', '', 6, 2),
+(43, 'Half Leg Waxing', 30, 'Service length 1 hour', 'upload-images/halflegwaxxjpg.jpg', 6, 2),
 (44, 'Under Arm Waxing', 20, 'Service length 40 mins', 'upload-images/underarm_wax.jpg', 6, 2),
 (45, 'Full Leg Waxing', 50, 'Service length 1,5 hours', 'upload-images/full_legwax.jpg', 6, 2),
-(46, 'Full Application\r\n\r\n', 165, 'Service length 45 minutes', '', 7, 2),
-(47, 'Eyebrow Shaping\r\n\r\n', 97, 'Service length 20 minutes', '', 7, 2),
-(48, 'Fast Face', 75, 'Service length 30 minutes', '', 7, 2),
-(49, 'Brow Tint', 50, 'Service length 20 minutes', '', 7, 2),
-(50, 'Eyebrow Tinting', 50, 'Service length 45 minutes', '', 7, 2),
-(51, 'Eyebrow Tinting', 15, 'Service length 25 minutes', '', 7, 2),
-(52, 'Lash Tint', 50, 'Service length 27 minutes', '', 7, 2),
-(53, 'Eyelash Tinting\r\n\r\n', 25, 'Service length 20 minutes', '', 7, 2),
-(54, 'Lash Lift\r\n\r\n', 175, 'Service length 40 minutes', '', 7, 2),
-(55, 'Lash Application\r\n\r\n', 45, 'Service length 45 minutes', '', 7, 2),
-(56, 'Eyelash Extensions\r\n\r\n', 155, NULL, '', 7, 2),
+(47, 'Eyebrow Shaping', 97, 'Service length 20 minutes', 'upload-images/eyebrowshaping.jpg', 7, 2),
+(48, 'Laser Treatment', 75, 'Service length 30 minutes', 'upload-images/fastface.jpg', 7, 2),
+(49, 'Brow Tint', 50, 'Service length 20 minutes', 'upload-images/browtint.jpg', 7, 2),
+(52, 'Lash Tint', 50, 'Service length 27 minutes', 'upload-images/lashtint1.jpg', 7, 2),
+(53, 'Eyelash Tinting', 25, 'Service length 20 minutes', 'upload-images/eyelashextesion.jpg', 7, 2),
+(54, 'Lash Lift', 175, 'Service length 40 minutes', 'upload-images/eyee.jpg', 7, 2),
+(55, 'Lash Application', 45, 'Service length 45 minutes', 'upload-images/lash_lifted.jpg', 7, 2),
+(56, 'Eyelash Extensions', 155, '', 'upload-images/lashapplication12.jpg', 7, 2),
 (57, 'Classic Manicure', 19, 'Service length 40 minutes', 'upload-images/download.jpg', 8, 3),
 (58, 'Spa Manicure', 30, 'Service length 1 hour', 'upload-images/spa.jpg', 8, 3),
 (59, 'Signature Gel Manicure', 50, 'Service length 30 minutes', 'upload-images/spa1.jpg', 8, 3),
@@ -193,7 +190,8 @@ INSERT INTO `bill` (`Sno`, `appointment_id`, `bill_amount`, `discount_percent`, 
 (15, 41, 500, 20, 400, 472, 472),
 (16, 38, 100, 10, 90, 106, 106),
 (18, 52, 1055, 10, 950, 1120, 1120),
-(19, 54, 784, 10, 706, 833, 833);
+(19, 54, 784, 10, 706, 833, 833),
+(20, 55, 230, 10, 207, 244, 244);
 
 -- --------------------------------------------------------
 
@@ -332,7 +330,8 @@ INSERT INTO `orders` (`id`, `appointment_id`, `totalPrice`, `discount`, `billing
 (45, 53, 144.00, 10.00, '98000004', '2025-05-08 05:39:15'),
 (46, 54, 784.00, 10.00, '98000005', '2025-05-08 05:40:56'),
 (47, 55, 230.00, 10.00, '98000006', '2025-05-15 11:55:27'),
-(48, 55, 260.00, 10.00, '98000007', '2025-05-16 03:51:51');
+(48, 55, 260.00, 10.00, '98000007', '2025-05-16 03:51:51'),
+(49, 55, 1135.00, 10.00, '98000008', '2025-05-27 08:33:30');
 
 -- --------------------------------------------------------
 
@@ -348,22 +347,76 @@ CREATE TABLE `package` (
   `selected_services` varchar(200) NOT NULL,
   `price` int(200) NOT NULL,
   `discount` int(200) DEFAULT NULL,
-  `price_after_discount` int(200) NOT NULL
+  `price_after_discount` int(200) NOT NULL,
+  `file` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `package`
 --
 
-INSERT INTO `package` (`id`, `package_name`, `package_number`, `description`, `selected_services`, `price`, `discount`, `price_after_discount`) VALUES
-(31, 'silver package ', 361706, 'good', 'Hair & Scalp Treatments\r\n\r\n', 240, 10, 216),
-(32, 'silver package ', 361706, 'good', 'Hair Gloss', 295, 10, 266),
-(33, 'silver package ', 361706, 'good', 'Permanent Wave', 480, 10, 432),
-(34, 'silver package ', 361706, 'good', 'Keratin Complex Max', 830, 10, 747),
-(37, 'platinum package ', 906864, 'about the package ', 'Child Hair cut ', 100, 10, 90),
-(38, 'platinum package ', 906864, 'about the package ', 'Hair & Scalp Treatments\r\n\r\n', 340, 10, 306),
-(39, 'platinum package ', 906864, 'about the package ', 'Hair Extension Removal', 615, 10, 554),
-(40, 'platinum package ', 906864, 'about the package ', 'Keratin Hair Extensions', 1475, 10, 1328);
+INSERT INTO `package` (`id`, `package_name`, `package_number`, `description`, `selected_services`, `price`, `discount`, `price_after_discount`, `file`) VALUES
+(50, 'xyz', 434553, 'good', 'Women s Haircut', 200, 10, 180, ''),
+(51, 'xyz', 434553, 'good', 'Child Hair cut', 100, 10, 90, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `package1`
+--
+
+CREATE TABLE `package1` (
+  `id` int(200) NOT NULL,
+  `package_name` varchar(200) NOT NULL,
+  `package_number` varchar(200) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `discount` int(200) NOT NULL,
+  `file` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `package1`
+--
+
+INSERT INTO `package1` (`id`, `package_name`, `package_number`, `description`, `discount`, `file`) VALUES
+(1, 'pack', '412434', 'good', 10, 'upload-images/menshaircut.jpg'),
+(2, 'gfh', '670417', 'good', 10, 'upload-images/blow dry.jpg'),
+(3, 'gold package ', '942758', 'very good package', 10, ' upload-images/lashapplication12.jpg'),
+(4, 'gold', '624391', 'free', 10, ' upload-images/lashapplication12.jpg'),
+(5, 'abc', '416301', 'free', 10, ' upload-images/img-01.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `package_services`
+--
+
+CREATE TABLE `package_services` (
+  `id` int(200) NOT NULL,
+  `package_id` int(200) NOT NULL,
+  `service_name` varchar(200) NOT NULL,
+  `price` int(200) NOT NULL,
+  `price_after_discount` int(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `package_services`
+--
+
+INSERT INTO `package_services` (`id`, `package_id`, `service_name`, `price`, `price_after_discount`) VALUES
+(1, 1, 'Women s Haircut', 200, 180),
+(2, 1, 'Child Hair cut', 100, 90),
+(3, 1, 'Safe Color Treatment', 95, 86),
+(4, 1, 'Hair Gloss', 55, 50),
+(5, 2, 'Women s Haircut', 200, 180),
+(6, 2, 'Safe Color Treatment', 95, 86),
+(7, 3, 'Women s Haircut', 200, 180),
+(8, 3, 'Child Hair cut', 100, 90),
+(9, 3, 'Safe Color Treatment', 95, 86),
+(10, 3, 'Hair Gloss', 55, 50),
+(11, 3, 'Permanent Wave', 185, 167),
+(12, 4, 'Women s Haircut', 200, 180),
+(13, 5, 'Women s Haircut', 200, 180);
 
 -- --------------------------------------------------------
 
@@ -565,9 +618,6 @@ CREATE TABLE `tb_appointment` (
 --
 
 INSERT INTO `tb_appointment` (`id`, `name`, `email`, `mobile`, `address`, `date`, `prefered_time`, `appointment_for`, `staff`) VALUES
-(51, 'Pari Kapoor', 'pari1@gmail.com', 8907843126, 'Hazratganj', '2025-04-16', '22:13', 'offline booking', ''),
-(52, 'Sneha tondon', 'sneha@gmail.com', 9348459403, 'sneha@gmail.com', '2025-04-30', '17:19', 'offline booking', ''),
-(54, 'bhawna khatri', 'bhawna@gmail.com', 8707858421, 'gaziabad', '2025-05-11', '01:10', 'offline booking', ''),
 (55, 'shikha srivastava ', 'shikha@gmail.com', 8904843126, 'Hazratganj', '2025-05-29', '17:27', 'offline booking', '');
 
 -- --------------------------------------------------------
@@ -637,7 +687,9 @@ INSERT INTO `tb_selected_services` (`id`, `appointment_id`, `c_id`, `s_id`, `a_i
 (19, 55, 1, 1, 5, 'Child Hair cut ', 100.00, '98000006', '2025-05-15 11:55:27', '17:25:27'),
 (20, 55, 1, 3, 19, 'Color Refresh', 130.00, '98000006', '2025-05-15 11:55:27', '17:25:27'),
 (21, 55, 2, 5, 35, 'Facial Add-ons', 85.00, '98000007', '2025-05-16 03:51:51', '09:21:51'),
-(22, 55, 2, 5, 32, 'Anti-Ageing Facial', 175.00, '98000007', '2025-05-16 03:51:51', '09:21:51');
+(22, 55, 2, 5, 32, 'Anti-Ageing Facial', 175.00, '98000007', '2025-05-16 03:51:51', '09:21:51'),
+(23, 55, 1, 4, 23, 'Hair Extension Removal', 275.00, '98000008', '2025-05-27 08:33:29', '14:03:29'),
+(24, 55, 1, 4, 22, 'Keratin Hair Extensions', 860.00, '98000008', '2025-05-27 08:33:29', '14:03:29');
 
 -- --------------------------------------------------------
 
@@ -776,6 +828,18 @@ ALTER TABLE `package`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `package1`
+--
+ALTER TABLE `package1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `package_services`
+--
+ALTER TABLE `package_services`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `portfolio`
 --
 ALTER TABLE `portfolio`
@@ -873,7 +937,7 @@ ALTER TABLE `banner_management`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `Sno` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Sno` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `business_hours`
@@ -897,13 +961,25 @@ ALTER TABLE `enquiry_message`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `package`
 --
 ALTER TABLE `package`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `package1`
+--
+ALTER TABLE `package1`
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `package_services`
+--
+ALTER TABLE `package_services`
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `portfolio`
@@ -957,7 +1033,7 @@ ALTER TABLE `tb_appointment`
 -- AUTO_INCREMENT for table `tb_selected_services`
 --
 ALTER TABLE `tb_selected_services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tb_services`
