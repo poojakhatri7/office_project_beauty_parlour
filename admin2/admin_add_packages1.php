@@ -10,12 +10,12 @@ include 'db_connection.php';
 // echo "<div style='text-align: center; font-weight: bold;'>$appointment_for</div>";
 
 if (isset($_POST["submit"])) {
-    $photo = $_FILES["package_image"]["name"];
+ $photo = $_FILES["package_image"]["name"];
     $photo2 = $_FILES["image"]["tmp_name"];
     $uploadPath = "upload-images/" . $photo;
-    $package_name = $_POST['package_name'];
-    $description = $_POST['description'];
-    $discount = $_POST['discount'];
+  $package_name = $_POST['package_name'];
+  $description = $_POST['description'];
+  $discount = $_POST['discount'];
      move_uploaded_file($photo2, $uploadPath);
     $package_number = random_int(100000, 999999);
 
@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
         // Insert into package1 table
         $insert_package_sql = "
             INSERT INTO package1 (package_name, package_number, description, discount, file) 
-            VALUES ('$package_name', '$package_number', '$description', '$discount', ' $uploadPath')";
+            VALUES ('$package_name', '$package_number', '$description', '$discount', '$uploadPath')";
 
         if (mysqli_query($conn, $insert_package_sql)) {
             $package_id = mysqli_insert_id($conn); // Get inserted ID for foreign key
@@ -99,10 +99,9 @@ if (isset($_POST["submit"])) {
       <div class="container-fluid">
         <div class="col-sm-6">
           <div class="col-sm-6">
-          
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </div> 
      <div class="container-fluid">
 <div class="card card-info">

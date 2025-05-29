@@ -35,7 +35,7 @@ include 'db_connection.php';
     </div>
     <div class="container-fluid">
         <?php
- $sql = "SELECT * FROM package Group BY package_number  ";
+ $sql = "SELECT * FROM package1 ";
 $result = mysqli_query($conn, $sql);
 $count = 0;
  $totalprice = 0;
