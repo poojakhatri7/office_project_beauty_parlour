@@ -32,6 +32,7 @@ $c_id = $_GET ['c_id'];
 		<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;display=swap" rel="stylesheet">	
 		<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 		<!-- BOOTSTRAP CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -137,25 +138,36 @@ $description = $row ['description'];
   /* color: black;
   margin-right: 15px;
   font-weight: bold; */
-   display: inline-block;
+   /* display: inline-block;
   width: 19px;
   height: 20px;
   background-color:rgb(25, 122, 151); /* Bootstrap primary blue */
-  color: white;
+  /* color: white;
   font-weight: light;
   border-radius: 100%;
-  text-align: center;
-  line-height: 20px;
+  text-align: center; */
+  /* line-height: 20px;
   margin-right: 8px;
   font-size: 16px;
-  transition: background-color 0.3s ease;
-
-}
-.plus-sign:hover {
-  background-color:rgb(189, 31, 44);
+  transition: background-color 0.3s ease; */ */
+    color:rgb(24, 51, 80);           /* Bootstrap primary color */
+  font-size: 17px;          /* Size of the icon */
+  background-color:rgb(217, 235, 245);/* Light background */
+  padding: 1px;             /* Space around the icon */
+  border-radius: 50%;       /* Make it circular */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  transition: 0.3s ease;
   cursor: pointer;
 }
+.plus-sign:hover {
+  /* background-color:rgb(189, 31, 44);
+  cursor: pointer; */
+    background-color:rgb(176, 203, 231);
+  color: green;
+}
+
 	</style>
+
 	
 <!-- CARD BOOTSTRAP
 			============================================= -->
@@ -194,6 +206,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 
 <!-- ============================================= -->
 <div id="sub_category_service" >
+		
 			<!-- PRICING-5
 			============================================= -->
 			<div class="container pt-8 pricing-5 pricing-section">
@@ -232,7 +245,9 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 																		
                                        
 										 <p class="mb-0">
-  <span class="plus-sign" data-bs-toggle = "modal" data-bs-target = "#exampleModal" data-service_number="<?php echo $service['a_id']; ?>" >+</span>
+										
+<!-- <i class="fa fa-eye eye-icon" ></i> -->
+  <span class="plus-sign" data-bs-toggle = "modal" data-bs-target = "#exampleModal" data-service_number="<?php echo $service['a_id']; ?>" ><i class="fa fa-eye" ></i></span>
   <span class="service-text"><?php echo $service['all_service']; ?></span>
 </p>
                                     </div>
@@ -313,15 +328,15 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 		<img id="modalServiceImage" src="" alt="Service Image" class="d-block mx-auto" style="max-width: 50%;">
 		 <!-- <p><span id="modalServiceImage"></span></p> -->
         <p><strong>Service Name:</strong> <span id="modalServiceName"></span></p>
-        <p><strong>Price:</strong>  <span id="modalServicePrice"></span></p>
+        <p><strong>Price Rs : </strong>  <span id="modalServicePrice"></span></p>
         <p><strong>Description:</strong> <span id="modalServiceDescription"></span></p>
+		   <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">BOOK NOW</button>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
-
     </div>
   </div>
 </div>

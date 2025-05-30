@@ -118,7 +118,6 @@ ON
 GROUP BY 
     p.id";
 
-
 $result_subcategories = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result_subcategories) > 0) {

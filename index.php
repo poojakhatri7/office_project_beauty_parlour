@@ -27,6 +27,8 @@
 		<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;display=swap" rel="stylesheet">	
 		<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
 
 		<!-- BOOTSTRAP CSS -->
@@ -370,6 +372,7 @@ $result = mysqli_query($conn, $sql);
 
 			<!-- TEXT CONTENT
 			============================================= -->
+			
 			<section class="shape--01 poudre--shape py-7 ct-01 content-section division">
 				<div class="container">
 					<div class="row d-flex align-items-center">
@@ -475,6 +478,7 @@ if (mysqli_num_rows($result) > 0) {
 
 											<!-- Title & Price -->
 											<div class="detail-price">
+												<i class="fa fa-eye"></i>
 												<div class="price-name"><p><?php echo  $service_name ?></p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p><?php echo "Rs  ".$price ?></p></div>
