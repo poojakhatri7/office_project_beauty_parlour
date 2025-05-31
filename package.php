@@ -109,6 +109,7 @@ $sql = "SELECT
     p.discount,
     SUM(ps.price) AS total_price,
     SUM(ps.price_after_discount) AS total_price_after_discount
+	
 FROM 
     package1 p
 LEFT JOIN 
@@ -126,6 +127,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
  <div style="display: flex; flex-wrap: wrap; gap: 3 rem; justify-content: center; padding: 0 2rem;">
 <?php
     while ($s = mysqli_fetch_assoc($result_subcategories)) {
+		
 			 $imagePath = "/beauty_parlour_management_system/admin2/" . $s['package_image']; 
         //   $services[] = $s['selected_services'];
     //          $total_price += $s['price'];
@@ -146,6 +148,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 <p class="card-text" style="font-size: 0.85rem; margin: 0;"> <strong>Discount (%) : <?php echo $s['discount']; ?> </strong></p>
 <p class="card-text" style="font-size: 0.85rem; margin: 0;"> <strong>Discount : Rs <?php echo $s['total_price_after_discount']; ?> </strong></p>
 <p class="card-text" style="font-size: 0.85rem; margin: 0;"><strong>Price after discount : Rs <?php echo $s['total_price_after_discount']; ?> </strong></p>
+
           </div>
         </div>
 <?php

@@ -41,6 +41,7 @@ $count = 0;
  $totalprice = 0;
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
+      
         $count++;
         $totalprice = $totalprice + $row['price'];
         ?>

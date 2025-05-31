@@ -109,8 +109,6 @@ include 'db_connection.php';
                 <div id="message"></div>
             </div>
           </div>
-       
-
         </div>
       <!-- modal end -->
                   <?php

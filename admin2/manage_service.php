@@ -140,7 +140,9 @@ include 'db_connection.php';
                         <th>S No.</th>
                         <th>Service Name</th>
                         <th>Service Price (Rs)</th>
-                         <th>Image</th>
+                         <th>Image 1</th>
+                          <th>Image 2</th>
+                            <th>Image 3</th>
                         <!-- <th>Service Number</th> -->
                         <th>Actions</th>
                     </tr>

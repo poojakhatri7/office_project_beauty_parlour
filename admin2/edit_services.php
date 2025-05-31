@@ -10,16 +10,28 @@ include 'db_connection.php';
 $id = $_GET ['id'];
 if (isset($_POST["submit"])) {
 
-   $photo = $_FILES["image"]["name"];
-    $photo2 = $_FILES["image"]["tmp_name"];
-    $uploadPath = "upload-images/" . $photo;
+  $image1 = $_FILES["image1"]["name"];
+$tmp1 = $_FILES["image1"]["tmp_name"];
+$path1 = "upload-images/" . $image1;
+move_uploaded_file($tmp1, $path1);
+
+$image2 = $_FILES["image2"]["name"];
+$tmp2 = $_FILES["image2"]["tmp_name"];
+$path2 = "upload-images/" . $image2;
+move_uploaded_file($tmp2, $path2);
+
+$image3 = $_FILES["image3"]["name"];
+$tmp3 = $_FILES["image3"]["tmp_name"];
+$path3 = "upload-images/" . $image3;
+move_uploaded_file($tmp3, $path3);
+
     $service_name = $_POST["service_name"];
     $service_price = $_POST["service_price"];
     $description = $_POST["description"];
-      move_uploaded_file($photo2, $uploadPath);
+      // move_uploaded_file($photo2, $uploadPath);
     // SQL query to insert data
   //  $query = "UPDATE tb_services  SET  service_name='$service_name', service_price = '$service_price' WHERE id={$id}";
-    $query = "UPDATE `all_services` SET all_service='$service_name', price='$service_price', description='$description', file='$uploadPath' WHERE a_id=$id";
+    $query = "UPDATE `all_services` SET all_service='$service_name', price='$service_price', description='$description', file='$path1',file1='$path2',file2='$path3' WHERE a_id=$id";
     // Execute the query and check for success
     if (mysqli_query($conn, $query)) {
         echo "<script> alert('SERVICE UPDATED SUCCESFULLY'); </script>";
@@ -106,11 +118,24 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                   </div>
                    <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE</label>
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE 1</label>
                     <div class="col-sm-10">
-                      <input type="file" name="image" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['file'] ?>">
+                      <input type="file" name="image1" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['file'] ?>">
                     </div>
                   </div>
+                    <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE 2</label>
+                    <div class="col-sm-10">
+                      <input type="file" name="image2" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['file'] ?>">
+                    </div>
+                  </div>
+                    <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE 3</label>
+                    <div class="col-sm-10">
+                      <input type="file" name="image3" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['file'] ?>">
+                    </div>
+                  </div>
+                 
                   <!-- <div class="form-group row">
                     <div class="offset-sm-2 col-sm-10">
                       <div class="form-check">

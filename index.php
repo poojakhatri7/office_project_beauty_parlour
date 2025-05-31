@@ -160,9 +160,6 @@ $result = mysqli_query($conn, $sql);
   padding-top: 200px;
   padding-bottom: 170px;
 
-
-  
-
 }
 
     </style>
@@ -1042,7 +1039,7 @@ if (mysqli_num_rows($result) > 0) {
 											</div>
 											
 										</li>	<!-- END ACCORDION ITEM #3 -->
-
+	<a href="booking" class="btn btn--tra-black hover--black">BOOK AN APPOINTMENT</a>
 
 									</ul>
 								</div>	<!-- END ACCORDION WRAPPER -->	
