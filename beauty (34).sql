@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: May 31, 2025 at 02:22 PM
+-- Generation Time: Jun 02, 2025 at 02:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -498,27 +498,30 @@ CREATE TABLE `staff_gallery` (
   `id` int(60) NOT NULL,
   `name` varchar(200) DEFAULT NULL,
   `file` varchar(200) DEFAULT NULL,
-  `staff_designation_id` int(200) DEFAULT NULL
+  `staff_designation_id` int(200) DEFAULT NULL,
+  `Short bio` varchar(200) NOT NULL,
+  `Experience` varchar(200) NOT NULL,
+  `Availability` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `staff_gallery`
 --
 
-INSERT INTO `staff_gallery` (`id`, `name`, `file`, `staff_designation_id`) VALUES
-(3, 'shikha', 'upload-images/woman_08.jpg', 1),
-(4, 'divya', 'upload-images/nail_10.jpg', 1),
-(6, 'pooja', 'upload-images/hair_11.jpg', 1),
-(8, 'Pari Kapoor', 'upload-images/team-2.jpg', 2),
-(9, 'shikha srivastava ', 'upload-images/team-5.jpg', 2),
-(10, 'kavya singh', 'upload-images/team-6.jpg', 2),
-(11, 'Nancy Verma', 'upload-images/team-3.jpg', 2),
-(13, 'Diyva Kapoor', 'upload-images/team-8.jpg', 2),
-(19, 'bhawna', 'upload-images/woman_05.jpg', 3),
-(21, 'Pratigya Singh', 'upload-images/team-9.jpg', 3),
-(25, 'Pari Kapoor', 'upload-images/hair_06.jpg', 3),
-(29, 'pooja', 'upload-images/banner-1.jpg', 15),
-(31, 'Pari Kapoor', 'upload-images/beauty_03.jpg', 18);
+INSERT INTO `staff_gallery` (`id`, `name`, `file`, `staff_designation_id`, `Short bio`, `Experience`, `Availability`) VALUES
+(3, 'shikha', 'upload-images/woman_08.jpg', 1, 'Our talented stylists are dedicated to providing ...', '5', '12 am to 5 pm'),
+(4, 'divya', 'upload-images/nail_10.jpg', 1, '', '', ''),
+(6, 'pooja', 'upload-images/hair_11.jpg', 1, '', '', ''),
+(8, 'Pari Kapoor', 'upload-images/team-2.jpg', 2, '', '', ''),
+(9, 'shikha srivastava ', 'upload-images/team-5.jpg', 2, '', '', ''),
+(10, 'kavya singh', 'upload-images/team-6.jpg', 2, '', '', ''),
+(11, 'Nancy Verma', 'upload-images/team-3.jpg', 2, '', '', ''),
+(13, 'Diyva Kapoor', 'upload-images/team-8.jpg', 2, '', '', ''),
+(19, 'bhawna', 'upload-images/woman_05.jpg', 3, '', '', ''),
+(21, 'Pratigya Singh', 'upload-images/team-9.jpg', 3, '', '', ''),
+(25, 'Pari Kapoor', 'upload-images/hair_06.jpg', 3, '', '', ''),
+(29, 'pooja', 'upload-images/banner-1.jpg', 15, '', '', ''),
+(31, 'Pari Kapoor', 'upload-images/beauty_03.jpg', 18, '', '', '');
 
 -- --------------------------------------------------------
 
