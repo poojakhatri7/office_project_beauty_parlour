@@ -38,10 +38,12 @@ include './admin2/db_connection.php';
 		<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;display=swap" rel="stylesheet">	
 		<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 		<!-- BOOTSTRAP CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-				
+				<!-- Bootstrap 5 JS and Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 		<!-- FONT ICONS -->
 		<link href="css/flaticon.css" rel="stylesheet">
 
@@ -102,6 +104,26 @@ include './admin2/db_connection.php';
 			</section>	<!-- END INNER PAGE HERO -->
 
 
+<!-- Modal start -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Staff details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+		 <p><strong>Name :</strong> <span id="modalStaffName"></span></p>
+        <p><strong>Designation :</strong> <span id="modalServiceDesignation"></span></p>
+        <p><strong>Availability :</strong> <span id="modalAvailability"></span></p>
+		 <p><strong> Bio :</strong> <span id="modalServiceBio"></span></p>
+		  <p><strong>Experience :</strong> <span id="modalServiceExperience"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal ends -->
 
 
 			<!-- TEAM-3
@@ -139,7 +161,8 @@ if (mysqli_num_rows($result) > 0) {
 	//  $name =$row['name'];
 	//   echo '<img src="' . $imagePath . '" width="400" height="400" style="margin:10px;">';
 	
-        ?>		
+        ?>	
+										
 							<!-- TEAM MEMBER #1 -->
 							<div class="col-md-6 col-lg-4">
 								<div class="team-member wow fadeInUp">
@@ -155,7 +178,21 @@ if (mysqli_num_rows($result) > 0) {
 																																						
 									<!-- Team Member Data -->		
 									<div class="team-member-data">
-									<h3><?php echo $row['name']; ?></h3>
+<!-- <span class="plus-sign" data-bs-toggle="modal" data-bs-target="#exampleModal"  data-package_number="' . $row["package_number"] . '"  style="cursor: pointer; " >
+  <i class="fa fa-eye" ></i>
+</span> -->
+<span class="plus-sign" 
+      data-bs-toggle="modal" 
+      data-bs-target="#exampleModal" 
+      data-package_number="<?php echo $row['id']; ?>" 
+      style="cursor: pointer;">
+  <i class="fa fa-eye"></i>
+</span>
+
+
+									  <?php echo $row['name']; ?>
+
+
 										<!-- Title -->		
 										<!-- <span class="section-id">Founder & Director</span>	 -->
 										<p><?php echo $row['designation']; ?></p>
@@ -238,7 +275,7 @@ if (mysqli_num_rows($result) > 0) {
 
 		</div>	<!-- END PAGE CONTENT -->	
 
-
+	
 
 
 		<!-- EXTERNAL SCRIPTS
@@ -300,6 +337,38 @@ if (mysqli_num_rows($result) > 0) {
 			})();
 		</script>
 		-->	
+<script>
+$(document).on('click', '.plus-sign', function () {
+    const package_number = $(this).data('id');
+  console.log("Clicked Package id:", id ); // Check if ID is correct
+    $.ajax({
+        url: 'get_staff_details.php',
+        type: 'POST',
+        data: { id: id },
+        dataType: 'json',
+        success: function (data) {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                // $('#modalPackageName').text(data.package_name);
+                // $('#modalDescription').text(data.description);
+                // $('#modalServices').text(data.selected_services); // coming directly from package table
+                // $('#modalPrice').text(data.total_price_after_discount);
+                 $('#modalStaffName').text(data.package_name);
+        $('#modalServiceDesignation').text(data.description);
+        $('#modalAvailability').text(data.selected_services);
+        $('#modalServiceBio').text(data.price);
+        $('#modalServiceExperience').text(data.discount);     
+            }
+        },
+        error: function () {
+            alert('Error fetching package details.');
+        }
+    });
+});
+</script>
+
+
 
 
 	</body>

@@ -475,7 +475,8 @@ if (mysqli_num_rows($result) > 0) {
 
 											<!-- Title & Price -->
 											<div class="detail-price">
-												<i class="fa fa-eye"></i>
+												<!-- <i class="fa fa-eye"  style="margin-right: 10px;"></i> -->
+												 <span class="plus-sign" style="margin-right: 10px;" data-bs-toggle = "modal" data-bs-target = "#exampleModal" data-service_number="<?php echo $service['a_id']; ?>" ><i class="fa fa-eye" ></i></span>
 												<div class="price-name"><p><?php echo  $service_name ?></p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p><?php echo "Rs  ".$price ?></p></div>
@@ -1633,6 +1634,52 @@ $result = mysqli_query($conn, $sql);
 					 </div>
 			    </div>
 			</div>	 -->
+				<!-- Modal starts  -->
+
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Service details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body"> 
+		
+		<!-- <img id="modalServiceImage" src="" alt="Service Image" class="d-block mx-auto" style="max-width: 50%;">			 -->
+        <div id="serviceCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+  <div class="carousel-inner" id="carouselImages"></div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#serviceCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#serviceCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+        <p><strong>Service Name:</strong> <span id="modalServiceName"></span></p>
+        <p><strong>Price Rs : </strong>  <span id="modalServicePrice"></span></p>
+        <p><strong>Description:</strong> <span id="modalServiceDescription"></span></p>
+ <a href="booking" style="text-decoration: none;">
+		<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+  <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; border-radius: 10px; padding: 7px 20px;">
+    BOOK NOW
+  </button>
+   </a>
+</div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+		<!-- Modal ends  -->
 			<!-- END MODAL-2 -->
 
 			<!-- FOOTER-1
