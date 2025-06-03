@@ -476,7 +476,7 @@ if (mysqli_num_rows($result) > 0) {
 											<!-- Title & Price -->
 											<div class="detail-price">
 												<!-- <i class="fa fa-eye"  style="margin-right: 10px;"></i> -->
-												 <span class="plus-sign" style="margin-right: 10px;" data-bs-toggle = "modal" data-bs-target = "#exampleModal" data-service_number="<?php echo $service['a_id']; ?>" ><i class="fa fa-eye" ></i></span>
+												 <span class="plus-sign" style="margin-right: 10px;" data-bs-toggle = "modal" data-bs-target = "#exampleModal" data-service_number="<?php echo $service['a_id']; ?>" > <i class="fa fa-eye" ></i></span>
 												<div class="price-name"><p><?php echo  $service_name ?></p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p><?php echo "Rs  ".$price ?></p></div>
@@ -1634,7 +1634,8 @@ $result = mysqli_query($conn, $sql);
 					 </div>
 			    </div>
 			</div>	 -->
-				<!-- Modal starts  -->
+
+			<!-- Modal starts  -->
 
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -1680,6 +1681,7 @@ $result = mysqli_query($conn, $sql);
 </div>
 
 		<!-- Modal ends  -->
+				
 			<!-- END MODAL-2 -->
 
 			<!-- FOOTER-1
@@ -1761,7 +1763,46 @@ $result = mysqli_query($conn, $sql);
 			})();
 		</script>
 		-->	
+<script>
+$(document).on('click', '.plus-sign', function () {
+    const service_number = $(this).data('service_number');
 
+    $.ajax({
+        url: 'get_price.php',
+        type: 'POST',
+        data: { service_number: service_number },
+        dataType: 'json',
+        success: function (data) {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                $('#modalServiceName').text(data.all_service);
+                $('#modalServicePrice').text(data.price);
+                $('#modalServiceDescription').text(data.description);
+
+                const images = data.images;
+                const carouselInner = $('#carouselImages');
+                carouselInner.empty();
+
+                images.forEach((src, index) => {
+                    const activeClass = index === 0 ? 'active' : '';
+                    carouselInner.append(`
+                        <div class="carousel-item ${activeClass}">
+                            <img src="${src}" class="d-block mx-auto" style="width: 200px; height: 250px; object-fit: cover;" alt="Service Image ${index + 1}">
+                        </div>
+                    `);
+                });
+
+                // const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                // modal.show();
+            }
+        },
+        error: function () {
+            alert('Error fetching service details.');
+        }
+    });
+});
+</script>
 
 	</body>
 

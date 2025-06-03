@@ -5,7 +5,6 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-
 include 'db_connection.php';
 ?>
 <?php
@@ -34,15 +33,18 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
   $uploadPath = "upload-images/" . $photo;
   $staff_designation_id = $_POST['staff_id'];
   $name = $_POST['name'];
+  $bios = $_POST['bios'];
+  $experience = $_POST['experience'];
+  $availability = $_POST['availability'];
   if (move_uploaded_file($photo2, $uploadPath)) {
-      echo "Image uploaded successfully! <br>";
+    
       // $sql = "INSERT INTO users (file) VALUES ('$uploadPath')";
       // $sql = "UPDATE portfolio SET file = '$uploadPath' WHERE mobile = '$mobile'";
     //   $sql = "INSERT INTO staff_gallery (file) VALUES ('$uploadPath')";
     // $sql = "INSERT INTO staff_gallery (file, designation) VALUES ('$uploadPath', '$designation')";
-    $sql = "INSERT INTO staff_gallery (name, file,  staff_designation_id) VALUES ('$name', '$uploadPath', '$staff_designation_id')";
+    $sql = "INSERT INTO staff_gallery (name, file ,  staff_designation_id , Short_bio , Experience , Availability) VALUES ('$name', '$uploadPath', '$staff_designation_id' , '$bios', '$experience' ,'$availability' )";
       if ($conn->query($sql) === TRUE) {
-        echo "Image path saved to database!";
+        // echo "Image path saved to database!";
       } else {
           echo "Error saving to database: " . $conn->error;
       }
@@ -50,7 +52,6 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
       echo "Failed to upload image.";
   } 
 }
-
  ?>
 
 <!doctype html>
@@ -126,6 +127,24 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
                 <label for="name" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                </div>
+              </div>
+               <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Bios</label>
+                <div class="col-sm-10">
+                  <input type="text" name="bios" class="form-control" id="name" placeholder="Write short bios">
+                </div>
+              </div>
+               <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Experience</label>
+                <div class="col-sm-10">
+                  <input type="text" name="experience" class="form-control" id="name" placeholder="Write experience in years">
+                </div>
+              </div>
+               <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Availability</label>
+                <div class="col-sm-10">
+                  <input type="text" name="availability" class="form-control" id="name" placeholder="Enter time of availability">
                 </div>
               </div>
 
@@ -205,7 +224,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">Name</th>
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">Designation</th>
-                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Image</th>
+                        <!-- <th style="color: rgb(238, 230, 217); font-weight: 500;">Image</th> -->
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">Image</th>
                         <th style="color: rgb(238, 230, 217); font-weight: 500;">Action</th>
                     </tr>
@@ -227,7 +246,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
                                 <th scope='row'><?php echo $count; ?></th>
                                 <td><?php echo $row['name']; ?></td>
                                 <td><?php echo $row['designation']; ?></td>
-                                <td><?php echo $row['file']; ?></td>
+                             
                                 <td><img src="<?php echo $image; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
                                 <td>
                                     <div style="display: inline-block;">

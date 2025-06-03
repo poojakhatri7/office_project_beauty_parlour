@@ -114,14 +114,23 @@ include './admin2/db_connection.php';
       </div>
       <div class="modal-body">
        
-		 <p><strong>Name :</strong> <span id="modalStaffName"></span></p>
-        <p><strong>Designation :</strong> <span id="modalServiceDesignation"></span></p>
+		 <p><strong>Name :</strong> <span id="modalStaffName"></span></p>   
         <p><strong>Availability :</strong> <span id="modalAvailability"></span></p>
-		 <p><strong> Bio :</strong> <span id="modalServiceBio"></span></p>
+		 <p><strong> Bios :</strong> <span id="modalServiceBio"></span></p>
 		  <p><strong>Experience :</strong> <span id="modalServiceExperience"></span></p>
+		   <a href="booking" style="text-decoration: none;">
+		<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+  <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 15px; border-radius: 15px; padding: 7px 20px;">
+    BOOK NOW
+  </button>
+   </a>
+</div>
       </div>
+	  
     </div>
+	
   </div>
+  
 </div>
 <!-- Modal ends -->
 
@@ -184,7 +193,7 @@ if (mysqli_num_rows($result) > 0) {
 <span class="plus-sign" 
       data-bs-toggle="modal" 
       data-bs-target="#exampleModal" 
-      data-package_number="<?php echo $row['id']; ?>" 
+      data-id="<?php echo $row['id']; ?>" 
       style="cursor: pointer;">
   <i class="fa fa-eye"></i>
 </span>
@@ -338,38 +347,57 @@ if (mysqli_num_rows($result) > 0) {
 		</script>
 		-->	
 <script>
-$(document).on('click', '.plus-sign', function () {
-    const package_number = $(this).data('id');
-  console.log("Clicked Package id:", id ); // Check if ID is correct
-    $.ajax({
-        url: 'get_staff_details.php',
-        type: 'POST',
-        data: { id: id },
-        dataType: 'json',
-        success: function (data) {
-            if (data.error) {
-                alert(data.error);
-            } else {
-                // $('#modalPackageName').text(data.package_name);
-                // $('#modalDescription').text(data.description);
-                // $('#modalServices').text(data.selected_services); // coming directly from package table
-                // $('#modalPrice').text(data.total_price_after_discount);
-                 $('#modalStaffName').text(data.package_name);
-        $('#modalServiceDesignation').text(data.description);
-        $('#modalAvailability').text(data.selected_services);
-        $('#modalServiceBio').text(data.price);
-        $('#modalServiceExperience').text(data.discount);     
-            }
-        },
-        error: function () {
-            alert('Error fetching package details.');
-        }
-    });
+// $(document).on('click', '.plus-sign', function () {
+//     const package_number = $(this).data('id');
+//   console.log("Clicked Package id:", id ); // Check if ID is correct
+//     $.ajax({
+//         url: 'get_staff_details.php',
+//         type: 'POST',
+//         data: { id: id },
+//         dataType: 'json',
+//         success: function (data) {
+//             if (data.error) {
+//                 alert(data.error);
+//             } else {
+//                 // $('#modalPackageName').text(data.package_name);
+//                 // $('#modalDescription').text(data.description);
+//                 // $('#modalServices').text(data.selected_services); // coming directly from package table
+//                 // $('#modalPrice').text(data.total_price_after_discount);
+//                  $('#modalStaffName').text(data.package_name);
+//         $('#modalServiceDesignation').text(data.description);
+//         $('#modalAvailability').text(data.selected_services);
+//         $('#modalServiceBio').text(data.price);
+//         $('#modalServiceExperience').text(data.discount);     
+//             }
+//         },
+//         error: function () {
+//             alert('Error fetching package details.');
+//         }
+//     });
+// });
+$('.plus-sign').on('click', function () {
+
+  const id = $(this).data('id'); 
+ console.log("Clicked Package package_number:", id ); // Check if ID is correct
+  $.ajax({
+    url: 'get_staff_details.php',
+    type: 'POST',
+    data: { id: id },
+    dataType: 'json',
+    success: function (response) {
+      if (response.status === 'success') {
+        $('#modalStaffName').text(response.name);
+        $('#modalAvailability').text(response.Availability);
+        $('#modalServiceBio').text(response.bios);
+		 $('#modalServiceExperience').text(response.experience);
+      } else {
+        alert(response.message);
+      }
+    }
+  });
 });
+
 </script>
-
-
-
 
 	</body>
 
