@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jun 02, 2025 at 02:14 PM
+-- Generation Time: Jun 04, 2025 at 02:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -62,6 +62,8 @@ CREATE TABLE `all_services` (
   `a_id` int(40) NOT NULL,
   `all_service` varchar(200) NOT NULL,
   `price` int(50) NOT NULL,
+  `discount_percentage` int(200) NOT NULL,
+  `price_after_discount` int(200) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
   `file` varchar(200) NOT NULL,
   `file1` varchar(200) NOT NULL,
@@ -74,65 +76,65 @@ CREATE TABLE `all_services` (
 -- Dumping data for table `all_services`
 --
 
-INSERT INTO `all_services` (`a_id`, `all_service`, `price`, `description`, `file`, `file1`, `file2`, `service_number`, `c_id_category_service`) VALUES
-(2, 'Mens haircut', 50, 'The simplest men hairstyles are the buzz cut, crew cut, Ivy League, classic side part, undercut, textured French crop, slick back, comb over', 'upload-images/lash_lifted.jpg', 'upload-images/', 'upload-images/', 1, 1),
-(3, 'blow dry', 44, 'Start by applying a volumizing spray onto your hair and roots', 'upload-images/blow dry.jpg', '', '', 1, 1),
-(5, 'Child Hair cut ', 100, 'Quiff Hairstyle with Short Sides. Buzz Cut. Caesar Cut. Brushed Back Hair with Fade. drop fade with quiff. Curtain Bangs. Scissor Cut kids.', 'upload-images/child hair cut.jpg', '', '', 1, 1),
-(6, 'brazillan blow out', 180, '(Includes KC MAX Treatment Spray)', 'upload-images/brazillian.jpg', '', '', 2, 1),
-(8, 'Keratin Complex', 300, 'A revolutionary smoothing treatment that infuses keratin deep into the hair cuticle, reducing frizz and curl, and leaving hair smooth, shiny, and manageable.', 'upload-images/keratin.jpg', '', '', 2, 1),
-(9, 'Keratin Complex Max', 350, '(Service length 60 minutes)', 'upload-images/max.jpg', '', '', 2, 1),
-(10, 'Permanent Wave', 185, 'The Permanent Wave service at Jolie Spa provides a way to add long-lasting curls or waves to your hair, offering volume and texture', 'upload-images/wave.jpg', '', '', 2, 1),
-(11, 'Hair Gloss', 55, 'provides hair with high shine and a subtle wash of color while improving the look and feel of hair.', 'upload-images/hair-gloss.jpg', '', '', 2, 1),
-(12, 'Safe Color Treatment', 95, 'These alternatives use natural colorants like henna, indigo, cassia, and coffee, providing a gentle and effective way to color hair without damaging it. ', 'upload-images/colour.jpg', '', '', 2, 1),
-(13, 'Hair & Scalp Treatments', 240, 'After thoroughly washing hair, the stylist or person performing the treatment will apply a scalp mask or treatment that meets the specific needs of the scalp.', 'upload-images/scalp_treatment.jpg', '', '', 2, 1),
-(14, 'Single Process', 130, 'A single process refers to any color service that is done in one step. It can also be reffered to as a base color or a ', 'upload-images/single.jpg', '', '', 3, 1),
-(15, 'Double Process', 375, '(gloss not included)', 'upload-images/double.jpg', '', '', 3, 1),
-(16, 'Full Head Highlights', 380, 'This technique provides an even, cohesive colour boost that enhances the overall look with a luminous, multi-tonal effect', 'upload-images/full.jpg', '', '', 3, 1),
-(17, 'Half Head Highlights', 290, '', 'upload-images/half.jpg', '', '', 3, 1),
-(18, 'Balayage', 220, 'Dye or lightener is usually painted on, starting midshaft and becoming denser as it moves down the section of hair to the ends', 'upload-images/balayaye.jpg', '', '', 3, 1),
-(19, 'Color Refresh', 130, 'Color Refresh Autumn Red 300 ml is a red color bomb containing red color pigments', 'upload-images/refresh.webp', '', '', 3, 1),
-(20, 'Blowdry with Extensions', 95, 'Blowdry your hair in a downward motion to help prevent frizz and smooth your strands', 'upload-images/extension.jpg', '', '', 4, 1),
-(21, 'Extensions Service', 110, 'Discover the New & Trendy World of Hair Extensions. At the forefront of beauty, we offer premium hair extensions that cater to all hair types and tones.', 'upload-images/extensionservice.jpg', '', '', 4, 1),
-(22, 'Keratin Hair Extensions', 860, 'Unlike most hair extension types, keratin bond extensions last about 3 to 6 months', 'upload-images/keratinn.jpg', '', '', 4, 1),
-(23, 'Hair Extension Removal', 275, 'Fast Acting Remover for Tape-in Hair Extensions, Wig Glue, and Double-Sided Extension Tape', 'upload-images/removal.jpg', '', '', 4, 1),
-(24, 'Herbal Facial', 67, 'Service length 1 hour', 'upload-images/herbal.jpg', '', '', 5, 2),
-(25, 'Deep Cleaning Facial', 130, 'Service length 55 minutes', 'upload-images/cleaning.jpg', '', '', 5, 2),
-(26, 'Organic Facial', 185, 'Service length 1,5 hours', 'upload-images/organic.jpg', '', '', 5, 2),
-(27, 'Four Layer Facial', 140, 'Service length 1,5 hours', 'upload-images/images1234.jpg', '', '', 5, 2),
-(28, 'Biolight Facial', 165, 'Service length 1,5 hours', 'upload-images/biolight.jpg', '', '', 5, 2),
-(32, 'Anti-Ageing Facial', 175, 'Service length 50 minutes', 'upload-images/anti.jpg', '', '', 5, 2),
-(33, 'Gentleman’s Facial', 60, 'Service length 50 minutes', 'upload-images/gentleman.jpg', '', '', 5, 2),
-(34, 'Teen Facial', 45, 'Service length 45 minutes', 'upload-images/aa.jpg', 'upload-images/anti.jpg', 'upload-images/aqwe.jpg', 5, 2),
-(36, 'Eyebrow Waxing', 15, 'Service length 45 minutes', 'upload-images/download (1).jpg', '', '', 6, 2),
-(38, 'Lip Waxing', 12, 'Service length 40 minutes', 'upload-images/lip.jpg', '', '', 6, 2),
-(39, 'Half Arm Waxing', 30, 'Service length 1,5 hours', 'upload-images/halfarm.jpg', '', '', 6, 2),
-(40, 'Cheeks Waxing', 15, 'Service length 2 hours', 'upload-images/cheeks.jpg', '', '', 6, 2),
-(41, 'Full Arm Waxing', 45, 'Service length 1,5 hours', 'upload-images/full_armwaxing.jpg', '', '', 6, 2),
-(42, 'Full Face Waxing', 46, 'Service length 4 hours', 'upload-images/fullface.jpg', '', '', 6, 2),
-(43, 'Half Leg Waxing', 30, 'Service length 1 hour', 'upload-images/halflegwaxxjpg.jpg', '', '', 6, 2),
-(44, 'Under Arm Waxing', 20, 'Service length 40 mins', 'upload-images/underarm_wax.jpg', '', '', 6, 2),
-(45, 'Full Leg Waxing', 50, 'Service length 1,5 hours', 'upload-images/full_legwax.jpg', '', '', 6, 2),
-(47, 'Eyebrow Shaping', 97, 'Service length 20 minutes', 'upload-images/eyebrowshaping.jpg', '', '', 7, 2),
-(48, 'Laser Treatment', 75, 'Service length 30 minutes', 'upload-images/fastface.jpg', '', '', 7, 2),
-(49, 'Brow Tint', 50, 'Service length 20 minutes', 'upload-images/browtint.jpg', '', '', 7, 2),
-(52, 'Lash Tint', 50, 'Service length 27 minutes', 'upload-images/lashtint1.jpg', '', '', 7, 2),
-(53, 'Eyelash Tinting', 25, 'Service length 20 minutes', 'upload-images/eyelashextesion.jpg', '', '', 7, 2),
-(54, 'Lash Lift', 175, 'Service length 40 minutes', 'upload-images/eyee.jpg', '', '', 7, 2),
-(55, 'Lash Application', 45, 'Service length 45 minutes', 'upload-images/lash_lifted.jpg', '', '', 7, 2),
-(56, 'Eyelash Extensions', 155, '', 'upload-images/lashapplication12.jpg', '', '', 7, 2),
-(57, 'Classic Manicure', 19, 'Service length 40 minutes', 'upload-images/download.jpg', '', '', 8, 3),
-(58, 'Spa Manicure', 30, 'Service length 1 hour', 'upload-images/spa.jpg', '', '', 8, 3),
-(59, 'Signature Gel Manicure', 50, 'Service length 30 minutes', 'upload-images/spa1.jpg', '', '', 8, 3),
-(60, 'Hard Gel Full Set', 85, 'Service length 30 - 55 minutes', 'upload-images/b.jpg', '', '', 8, 3),
-(61, 'Nail Art', 20, 'Service length 30 minutes', 'upload-images/nail_art.jpg', '', '', 9, 3),
-(62, 'Callus Treatment', 29, 'Service length 45 minutes', 'upload-images/treatment.jpg', '', '', 9, 3),
-(63, 'French Polish', 32, 'Service length 1 hour', 'upload-images/qwe.jpg', '', '', 9, 3),
-(64, 'Collagen Mask', 25, 'Service length 45 minutes', 'upload-images/collagen.jpg', '', '', 9, 3),
-(65, 'Organic Express Pedi', 76, 'Service length 30 - 55 minutes', 'upload-images/images1.jpg', '', '', 8, 3),
-(66, 'Aloe Vera Manicure', 55, 'Service length 45 minutes', 'upload-images/images12.jpg', '', '', 8, 3),
-(67, 'French Manicure', 100, 'Service length 25-35 minutes', 'upload-images/french.jpg', '', '', 8, 3),
-(90, 'djlsdfkd', 23, 'we', '', '', '', 31, 68),
-(98, 'Women s Haircut', 200, 'Short hair cuts for women, long hair styles, curly hair styles, bob hairstyles, womens hairstyles', 'upload-images/aa.jpg', 'upload-images/anti.jpg', 'upload-images/aqwe.jpg', 1, 1);
+INSERT INTO `all_services` (`a_id`, `all_service`, `price`, `discount_percentage`, `price_after_discount`, `description`, `file`, `file1`, `file2`, `service_number`, `c_id_category_service`) VALUES
+(2, 'Mens haircut', 100, 10, 90, 'The simplest men hairstyles are the buzz cut, crew cut, Ivy League, classic side part, undercut, textured French crop, slick back, comb over', 'upload-images/haircut11.jpg', 'upload-images/haircut12.jpg', 'upload-images/hairr.jpg', 1, 1),
+(3, 'blow dry', 100, 10, 90, 'Start by applying a volumizing spray onto your hair and roots', 'upload-images/blowdry1.jpg', 'upload-images/blowdry2.jpg', 'upload-images/blowdry3.jpg', 1, 1),
+(5, 'Child Hair cut ', 200, 10, 180, 'Quiff Hairstyle with Short Sides. Buzz Cut. Caesar Cut. Brushed Back Hair with Fade. drop fade with quiff. Curtain Bangs. Scissor Cut kids.', 'upload-images/child hair cut.jpg', 'upload-images/child1.jpg', 'upload-images/child2.jpg', 1, 1),
+(6, 'brazillan blow out', 180, 0, 0, '(Includes KC MAX Treatment Spray)', 'upload-images/brazillian.jpg', '', '', 2, 1),
+(8, 'Keratin Complex', 300, 0, 0, 'A revolutionary smoothing treatment that infuses keratin deep into the hair cuticle, reducing frizz and curl, and leaving hair smooth, shiny, and manageable.', 'upload-images/keratin.jpg', '', '', 2, 1),
+(9, 'Keratin Complex Max', 350, 0, 0, '(Service length 60 minutes)', 'upload-images/max.jpg', '', '', 2, 1),
+(10, 'Permanent Wave', 185, 0, 0, 'The Permanent Wave service at Jolie Spa provides a way to add long-lasting curls or waves to your hair, offering volume and texture', 'upload-images/wave.jpg', '', '', 2, 1),
+(11, 'Hair Gloss', 55, 0, 0, 'provides hair with high shine and a subtle wash of color while improving the look and feel of hair.', 'upload-images/hair-gloss.jpg', '', '', 2, 1),
+(12, 'Safe Color Treatment', 95, 0, 0, 'These alternatives use natural colorants like henna, indigo, cassia, and coffee, providing a gentle and effective way to color hair without damaging it. ', 'upload-images/colour.jpg', '', '', 2, 1),
+(13, 'Hair & Scalp Treatments', 240, 0, 0, 'After thoroughly washing hair, the stylist or person performing the treatment will apply a scalp mask or treatment that meets the specific needs of the scalp.', 'upload-images/scalp_treatment.jpg', '', '', 2, 1),
+(14, 'Single Process', 130, 0, 0, 'A single process refers to any color service that is done in one step. It can also be reffered to as a base color or a ', 'upload-images/single.jpg', '', '', 3, 1),
+(15, 'Double Process', 375, 0, 0, '(gloss not included)', 'upload-images/double.jpg', '', '', 3, 1),
+(16, 'Full Head Highlights', 380, 0, 0, 'This technique provides an even, cohesive colour boost that enhances the overall look with a luminous, multi-tonal effect', 'upload-images/full.jpg', '', '', 3, 1),
+(17, 'Half Head Highlights', 290, 0, 0, '', 'upload-images/half.jpg', '', '', 3, 1),
+(18, 'Balayage', 220, 0, 0, 'Dye or lightener is usually painted on, starting midshaft and becoming denser as it moves down the section of hair to the ends', 'upload-images/balayaye.jpg', '', '', 3, 1),
+(19, 'Color Refresh', 130, 0, 0, 'Color Refresh Autumn Red 300 ml is a red color bomb containing red color pigments', 'upload-images/refresh.webp', '', '', 3, 1),
+(20, 'Blowdry with Extensions', 95, 0, 0, 'Blowdry your hair in a downward motion to help prevent frizz and smooth your strands', 'upload-images/extension.jpg', '', '', 4, 1),
+(21, 'Extensions Service', 110, 0, 0, 'Discover the New & Trendy World of Hair Extensions. At the forefront of beauty, we offer premium hair extensions that cater to all hair types and tones.', 'upload-images/extensionservice.jpg', '', '', 4, 1),
+(22, 'Keratin Hair Extensions', 860, 0, 0, 'Unlike most hair extension types, keratin bond extensions last about 3 to 6 months', 'upload-images/keratinn.jpg', '', '', 4, 1),
+(23, 'Hair Extension Removal', 275, 0, 0, 'Fast Acting Remover for Tape-in Hair Extensions, Wig Glue, and Double-Sided Extension Tape', 'upload-images/removal.jpg', '', '', 4, 1),
+(24, 'Herbal Facial', 80, 5, 76, 'Service length 1 hour', 'upload-images/herbal.jpg', 'upload-images/herbalfacial1.jpg', 'upload-images/herbalfacial2.jpg', 5, 2),
+(25, 'Deep Cleaning Facial', 130, 25, 98, 'Service length 55 minutes', 'upload-images/deepcleaning3.jpg', 'upload-images/herbalfacial2.jpg', 'upload-images/deepcleaning2.jpg', 5, 2),
+(26, 'Organic Facial', 185, 7, 172, 'Service length 1,5 hours', 'upload-images/organic.jpg', 'upload-images/FACIAL--scaled.jpg', 'upload-images/facial231.jpg', 5, 2),
+(27, 'Four Layer Facial', 140, 50, 70, 'A four-layer facial is a skincare treatment that involves applying multiple layers of products to the face, often focusing on specific skin concerns like aging, brightening, or hydration. ', 'upload-images/fourlayer2.jpg', 'upload-images/fourlayer3.jpg', 'upload-images/fourlayerfacial1.jpg', 5, 2),
+(28, 'Biolight Facial', 165, 20, 132, 'Biolight facials aim to reduce the appearance of dark spots, age spots, acne scars, and hyperpigmentation, leaving skin more radiant and even-toned. ', 'upload-images/biolight1.jpg', 'upload-images/biologht2.jpg', 'upload-images/biolight3.jpg', 5, 2),
+(32, 'Anti-Ageing Facial', 175, 0, 0, 'Service length 50 minutes', 'upload-images/anti.jpg', '', '', 5, 2),
+(33, 'Gentleman’s Facial', 60, 0, 0, 'Service length 50 minutes', 'upload-images/gentleman.jpg', '', '', 5, 2),
+(34, 'Teen Facial', 200, 20, 160, 'Specific to teenagers, this facial helps to control and minimize acne breakouts. Includes a gentle cleansing, exfoliation, extractions and customized masque', 'upload-images/teenfacial2.jpg', 'upload-images/teenfacial1.jpg', 'upload-images/teenfacial3.jpg', 5, 2),
+(36, 'Eyebrow Waxing', 15, 10, 14, 'Eyebrow waxing is a safe and effective way to remove unwanted hair. Here are a few reasons why you should consider seeing a cosmetic specialist to have your eyebrows waxed: Longer Regrowth Period.', 'upload-images/eyebrowwax3.jpg', 'upload-images/eyebrow2.jpg', 'upload-images/eyebrowwax1.jpg', 6, 2),
+(38, 'Lip Waxing', 12, 25, 9, 'Service length 40 minutes', 'upload-images/lip.jpg', 'upload-images/lipwaxiing3.jpg', 'upload-images/lipwaxing2.jpg', 6, 2),
+(39, 'Half Arm Waxing', 30, 0, 0, 'Service length 1,5 hours', 'upload-images/halfarm.jpg', '', '', 6, 2),
+(40, 'Cheeks Waxing', 15, 0, 0, 'Service length 2 hours', 'upload-images/cheeks.jpg', '', '', 6, 2),
+(41, 'Full Arm Waxing', 45, 0, 0, 'Service length 1,5 hours', 'upload-images/full_armwaxing.jpg', '', '', 6, 2),
+(42, 'Full Face Waxing', 46, 0, 0, 'Service length 4 hours', 'upload-images/fullface.jpg', '', '', 6, 2),
+(43, 'Half Leg Waxing', 30, 0, 0, 'Service length 1 hour', 'upload-images/halflegwaxxjpg.jpg', '', '', 6, 2),
+(44, 'Under Arm Waxing', 20, 0, 0, 'Service length 40 mins', 'upload-images/underarm_wax.jpg', '', '', 6, 2),
+(45, 'Full Leg Waxing', 50, 0, 0, 'Service length 1,5 hours', 'upload-images/full_legwax.jpg', '', '', 6, 2),
+(47, 'Eyebrow Shaping', 97, 0, 0, 'Service length 20 minutes', 'upload-images/eyebrowshaping.jpg', '', '', 7, 2),
+(48, 'Laser Treatment', 75, 0, 0, 'Service length 30 minutes', 'upload-images/fastface.jpg', '', '', 7, 2),
+(49, 'Brow Tint', 50, 0, 0, 'Service length 20 minutes', 'upload-images/browtint.jpg', '', '', 7, 2),
+(52, 'Lash Tint', 50, 0, 0, 'Service length 27 minutes', 'upload-images/lashtint1.jpg', '', '', 7, 2),
+(53, 'Eyelash Tinting', 25, 0, 0, 'Service length 20 minutes', 'upload-images/eyelashextesion.jpg', '', '', 7, 2),
+(54, 'Lash Lift', 175, 0, 0, 'Service length 40 minutes', 'upload-images/eyee.jpg', '', '', 7, 2),
+(55, 'Lash Application', 45, 0, 0, 'Service length 45 minutes', 'upload-images/lash_lifted.jpg', '', '', 7, 2),
+(56, 'Eyelash Extensions', 155, 0, 0, '', 'upload-images/lashapplication12.jpg', '', '', 7, 2),
+(57, 'Classic Manicure', 19, 0, 0, 'Service length 40 minutes', 'upload-images/download.jpg', '', '', 8, 3),
+(58, 'Spa Manicure', 30, 0, 0, 'Service length 1 hour', 'upload-images/spa.jpg', '', '', 8, 3),
+(59, 'Signature Gel Manicure', 50, 0, 0, 'Service length 30 minutes', 'upload-images/spa1.jpg', '', '', 8, 3),
+(60, 'Hard Gel Full Set', 85, 0, 0, 'Service length 30 - 55 minutes', 'upload-images/b.jpg', '', '', 8, 3),
+(61, 'Nail Art', 20, 0, 0, 'Service length 30 minutes', 'upload-images/nail_art.jpg', '', '', 9, 3),
+(62, 'Callus Treatment', 29, 0, 0, 'Service length 45 minutes', 'upload-images/treatment.jpg', '', '', 9, 3),
+(63, 'French Polish', 32, 0, 0, 'Service length 1 hour', 'upload-images/qwe.jpg', '', '', 9, 3),
+(64, 'Collagen Mask', 25, 0, 0, 'Service length 45 minutes', 'upload-images/collagen.jpg', '', '', 9, 3),
+(65, 'Organic Express Pedi', 76, 0, 0, 'Service length 30 - 55 minutes', 'upload-images/images1.jpg', '', '', 8, 3),
+(66, 'Aloe Vera Manicure', 55, 0, 0, 'Service length 45 minutes', 'upload-images/images12.jpg', '', '', 8, 3),
+(67, 'French Manicure', 100, 0, 0, 'Service length 25-35 minutes', 'upload-images/french.jpg', '', '', 8, 3),
+(90, 'djlsdfkd', 23, 0, 0, 'we', '', '', '', 31, 68),
+(98, 'Women s Haircut', 200, 25, 150, 'Short hair cuts for women, long hair styles, curly hair styles, bob hairstyles, womens hairstyles', 'upload-images/womens1.jpg', 'upload-images/womenshaircut2.jpg', 'upload-images/womenshaircut3.jpg', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -153,11 +155,12 @@ CREATE TABLE `banner_management` (
 --
 
 INSERT INTO `banner_management` (`id`, `file`, `content`, `buttonName`, `buttonLink`) VALUES
-(2, 'upload-images/hero-9.jpg', 'Skin care studio', NULL, NULL),
+(2, 'upload-images/hero-9.jpg', 'Skin care studio', 'View Menu', 'https://www.pexels.com/search/spa/'),
 (3, 'upload-images/slide-1.jpg', 'Unleash your beauty with Demo Beauty Studio', NULL, NULL),
 (9, 'upload-images/slide-15.jpg', 'Hair Care Studio', NULL, NULL),
 (13, 'upload-images/slide-3.jpg', 'make up studio', NULL, NULL),
-(21, 'upload-images/img-07.jpg', 'artist', 'View Salon Menu', 'https://tvssolution.in/web/logo/tvs_logo.png');
+(30, 'upload-images/makeupp.avif', 'Beauty salon', 'View Menu', 'https://www.pexels.com/search/spa/	'),
+(31, 'upload-images/studio11.avif', 'Beauty salon', '', '');
 
 -- --------------------------------------------------------
 
@@ -486,7 +489,8 @@ INSERT INTO `staff_designation` (`id`, `designation`) VALUES
 (1, 'Management'),
 (2, 'Hair Stylist'),
 (3, 'Makeup-artist'),
-(4, 'Nail Artists');
+(4, 'Nail Artists'),
+(20, 'xyz');
 
 -- --------------------------------------------------------
 
@@ -499,7 +503,7 @@ CREATE TABLE `staff_gallery` (
   `name` varchar(200) DEFAULT NULL,
   `file` varchar(200) DEFAULT NULL,
   `staff_designation_id` int(200) DEFAULT NULL,
-  `Short bio` varchar(200) NOT NULL,
+  `Short_bio` varchar(200) NOT NULL,
   `Experience` varchar(200) NOT NULL,
   `Availability` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -508,20 +512,21 @@ CREATE TABLE `staff_gallery` (
 -- Dumping data for table `staff_gallery`
 --
 
-INSERT INTO `staff_gallery` (`id`, `name`, `file`, `staff_designation_id`, `Short bio`, `Experience`, `Availability`) VALUES
-(3, 'shikha', 'upload-images/woman_08.jpg', 1, 'Our talented stylists are dedicated to providing ...', '5', '12 am to 5 pm'),
-(4, 'divya', 'upload-images/nail_10.jpg', 1, '', '', ''),
-(6, 'pooja', 'upload-images/hair_11.jpg', 1, '', '', ''),
-(8, 'Pari Kapoor', 'upload-images/team-2.jpg', 2, '', '', ''),
-(9, 'shikha srivastava ', 'upload-images/team-5.jpg', 2, '', '', ''),
-(10, 'kavya singh', 'upload-images/team-6.jpg', 2, '', '', ''),
-(11, 'Nancy Verma', 'upload-images/team-3.jpg', 2, '', '', ''),
-(13, 'Diyva Kapoor', 'upload-images/team-8.jpg', 2, '', '', ''),
-(19, 'bhawna', 'upload-images/woman_05.jpg', 3, '', '', ''),
-(21, 'Pratigya Singh', 'upload-images/team-9.jpg', 3, '', '', ''),
-(25, 'Pari Kapoor', 'upload-images/hair_06.jpg', 3, '', '', ''),
-(29, 'pooja', 'upload-images/banner-1.jpg', 15, '', '', ''),
-(31, 'Pari Kapoor', 'upload-images/beauty_03.jpg', 18, '', '', '');
+INSERT INTO `staff_gallery` (`id`, `name`, `file`, `staff_designation_id`, `Short_bio`, `Experience`, `Availability`) VALUES
+(3, 'shikha', 'upload-images/woman_08.jpg', 1, 'Our talented stylists are dedicated to providing.', '5', '12 am to 5 pm'),
+(4, 'divya', 'upload-images/nail_10.jpg', 1, 'Dedicated to enhancing natural beauty through creativity and precision.', '2', '12 am to 5 pm'),
+(6, 'pooja', 'upload-images/hair_11.jpg', 1, 'Professional hairstylist specializing in trendy cuts, color, and styling. Known for personalized consultations and transforming hair with care and confidence.', '4', '12 am to 5 pm'),
+(8, 'Pari Kapoor', 'upload-images/team-2.jpg', 2, 'Skilled beautician offering a wide range of skincare, facial, and grooming services. Committed to providing relaxing experiences and visible results for every client.', '7', '12 am to 5 pm'),
+(9, 'shikha srivastava ', 'upload-images/team-5.jpg', 2, 'Known for personalized consultations and transforming hair with care and confidence.', '8', '12 am to 5 pm'),
+(10, 'kavya singh', 'upload-images/team-6.jpg', 2, 'Known for personalized consultations and transforming hair with care and confidence.', '12', '12 am to 5 pm'),
+(11, 'Nancy Verma', 'upload-images/team-3.jpg', 2, 'Skilled beautician offering a wide range of skincare, facial, and grooming services. Committed to providing relaxing experiences and visible results for every client.', '10', '12 am to 5 pm'),
+(13, 'Diyva Kapoor', 'upload-images/team-8.jpg', 2, 'Dedicated to enhancing natural beauty through creativity and precision.', '15', '12 am to 5 pm'),
+(19, 'bhawna', 'upload-images/woman_05.jpg', 3, 'Professional hairstylist specializing in trendy cuts, color, and styling. Known for personalized consultations and transforming hair with care and confidence.', '5', '12 am to 5 pm'),
+(21, 'Pratigya Singh', 'upload-images/team-9.jpg', 3, 'Skilled beautician offering a wide range of skincare, facial, and grooming services. Committed to providing relaxing experiences and visible results for every client.', '7', '12 am to 5 pm'),
+(25, 'Pari Kapoor', 'upload-images/hair_06.jpg', 3, 'Dedicated to enhancing natural beauty through creativity and precision.', '8', '12 am to 5 pm'),
+(29, 'pooja', 'upload-images/banner-1.jpg', 15, 'Dedicated to enhancing natural beauty through creativity and precision.', '9', '12 am to 5 pm'),
+(31, 'Pari Kapoor', 'upload-images/beauty_03.jpg', 18, 'Our talented stylists are dedicated to providing.', '15', '12 am to 5 pm'),
+(33, 'pooja', 'upload-images/lashtint1.jpg', 20, 'good', '6', '12 am to 5 pm');
 
 -- --------------------------------------------------------
 
@@ -934,7 +939,7 @@ ALTER TABLE `all_services`
 -- AUTO_INCREMENT for table `banner_management`
 --
 ALTER TABLE `banner_management`
-  MODIFY `id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `bill`
@@ -1000,13 +1005,13 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `staff_designation`
 --
 ALTER TABLE `staff_designation`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `staff_gallery`
 --
 ALTER TABLE `staff_gallery`
-  MODIFY `id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `sub_category_service`
