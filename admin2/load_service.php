@@ -71,6 +71,8 @@ if (isset($_POST['sub_service'])) {
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">S No.</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Name</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Price</th>
+                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Discount</th>
+                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Discount</th>
                       <th style="color: rgb(238, 230, 217); font-weight: 500;">Image</th>
                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
                 </tr>
@@ -84,6 +86,8 @@ if (isset($_POST['sub_service'])) {
                     <td>{$sno}</td>
                     <td>{$row['all_service']}</td>
                     <td>{$row['price']}</td>
+                     <td>{$row['discount_percentage']}</td>
+                      <td>{$row['price_after_discount']}</td>
                    <td><img src='{$row['file']}' alt='Service Image' style='width: 50px; height: 50px; object-fit: cover;'></td>
  <td><img src='{$row['file1']}' alt='Service Image' style='width: 50px; height: 50px; object-fit: cover;'></td>
   <td><img src='{$row['file2']}' alt='Service Image' style='width: 50px; height: 50px; object-fit: cover;'></td>

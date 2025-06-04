@@ -140,15 +140,17 @@ include 'db_connection.php';
                         <th>S No.</th>
                         <th>Service Name</th>
                         <th>Service Price (Rs)</th>
-                         <th>Image 1</th>
-                          <th>Image 2</th>
-                            <th>Image 3</th>
+                         <th>Discount (%)</th>
+                          <th>Offer Price (Rs)</th>
+                         <th>Image </th>
+                          <th>Image </th>
+                            <th>Image </th>
                         <!-- <th>Service Number</th> -->
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td colspan="5" class="text-center">Select a Service and Sub-service  to see details</td></tr>
+                    <tr><td colspan="9" class="text-center">Select a Service and Sub-service  to see details</td></tr>
                 </tbody>
             </table>
         </div>

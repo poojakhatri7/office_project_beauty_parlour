@@ -10,28 +10,69 @@ include 'db_connection.php';
 $id = $_GET ['id'];
 if (isset($_POST["submit"])) {
 
-  $image1 = $_FILES["image1"]["name"];
-$tmp1 = $_FILES["image1"]["tmp_name"];
-$path1 = "upload-images/" . $image1;
-move_uploaded_file($tmp1, $path1);
+//   $image1 = $_FILES["image1"]["name"];
+// $tmp1 = $_FILES["image1"]["tmp_name"];
+// $path1 = "upload-images/" . $image1;
+// move_uploaded_file($tmp1, $path1);
 
-$image2 = $_FILES["image2"]["name"];
-$tmp2 = $_FILES["image2"]["tmp_name"];
-$path2 = "upload-images/" . $image2;
-move_uploaded_file($tmp2, $path2);
+// $image2 = $_FILES["image2"]["name"];
+// $tmp2 = $_FILES["image2"]["tmp_name"];
+// $path2 = "upload-images/" . $image2;
+// move_uploaded_file($tmp2, $path2);
 
-$image3 = $_FILES["image3"]["name"];
-$tmp3 = $_FILES["image3"]["tmp_name"];
-$path3 = "upload-images/" . $image3;
-move_uploaded_file($tmp3, $path3);
+// $image3 = $_FILES["image3"]["name"];
+// $tmp3 = $_FILES["image3"]["tmp_name"];
+// $path3 = "upload-images/" . $image3;
+// move_uploaded_file($tmp3, $path3);
+$imageUpdates = [];
+
+if (!empty($_FILES["image1"]["name"])) {
+    $image1 = $_FILES["image1"]["name"];
+    $tmp1 = $_FILES["image1"]["tmp_name"];
+    $path1 = "upload-images/" . $image1;
+    move_uploaded_file($tmp1, $path1);
+    $imageUpdates[] = "file = '$path1'";
+}
+
+if (!empty($_FILES["image2"]["name"])) {
+    $image2 = $_FILES["image2"]["name"];
+    $tmp2 = $_FILES["image2"]["tmp_name"];
+    $path2 = "upload-images/" . $image2;
+    move_uploaded_file($tmp2, $path2);
+    $imageUpdates[] = "file1 = '$path2'";
+}
+
+if (!empty($_FILES["image3"]["name"])) {
+    $image3 = $_FILES["image3"]["name"];
+    $tmp3 = $_FILES["image3"]["tmp_name"];
+    $path3 = "upload-images/" . $image3;
+    move_uploaded_file($tmp3, $path3);
+    $imageUpdates[] = "file2 = '$path3'";
+}
 
     $service_name = $_POST["service_name"];
     $service_price = $_POST["service_price"];
     $description = $_POST["description"];
+    $discount_percentage = $_POST["discount_percentage"];
+    $discount_percentage = $_POST["discount_percentage"];
+    $price_after_discount = $_POST["price_after_discount"];
       // move_uploaded_file($photo2, $uploadPath);
     // SQL query to insert data
   //  $query = "UPDATE tb_services  SET  service_name='$service_name', service_price = '$service_price' WHERE id={$id}";
-    $query = "UPDATE `all_services` SET all_service='$service_name', price='$service_price', description='$description', file='$path1',file1='$path2',file2='$path3' WHERE a_id=$id";
+    // $query = "UPDATE `all_services` SET all_service='$service_name', price='$service_price', discount_percentage='$discount_percentage' ,price_after_discount='$price_after_discount', description='$description',  file='$path1',file1='$path2',file2='$path3' WHERE a_id=$id";
+$mainUpdate = "
+    all_service = '$service_name',
+    price = '$service_price',
+    discount_percentage = '$discount_percentage',
+    price_after_discount = '$price_after_discount',
+    description = '$description'
+";
+if (!empty($imageUpdates)) {
+    $mainUpdate .= ", " . implode(", ", $imageUpdates);
+}
+
+$query = "UPDATE all_services SET $mainUpdate WHERE a_id = $id";
+
     // Execute the query and check for success
     if (mysqli_query($conn, $query)) {
         echo "<script> alert('SERVICE UPDATED SUCCESFULLY'); </script>";
@@ -108,7 +149,19 @@ if (mysqli_num_rows($result) > 0) {
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">SERVICE PRICE (Rs)</label>
                     <div class="col-sm-10">
-                      <input type="text" name="service_price" class="form-control" id="inputPassword3" placeholder="ENTER NEW PRICE" value = "<?php echo $row['price'] ?>">
+                      <input type="text" id="service_price" name="service_price" class="form-control" id="inputPassword3" placeholder="ENTER NEW PRICE" value = "<?php echo $row['price'] ?>">
+                    </div>
+                  </div>
+                   <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label"> DISCOUNT (%)</label>
+                    <div class="col-sm-10">
+                      <input type="text" id="discount_percentage" name="discount_percentage" class="form-control" id="inputPassword3" placeholder="ENTER DISCOUNT AMOUNT" value = "<?php echo $row['discount_percentage'] ?>">
+                    </div>
+                  </div>
+                   <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label"> OFFER PRICE (Rs) </label>
+                    <div class="col-sm-10">
+                      <input type="text" id="price_after_discount" name="price_after_discount" class="form-control" id="inputPassword3" placeholder="ENTER OFFER PRICE" value = "<?php echo $row['price_after_discount'] ?>">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -126,13 +179,13 @@ if (mysqli_num_rows($result) > 0) {
                     <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE 2</label>
                     <div class="col-sm-10">
-                      <input type="file" name="image2" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['file'] ?>">
+                      <input type="file" name="image2" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['file1'] ?>">
                     </div>
                   </div>
                     <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE 3</label>
                     <div class="col-sm-10">
-                      <input type="file" name="image3" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['file'] ?>">
+                      <input type="file" name="image3" class="form-control" id="inputPassword3" placeholder="ENTER DESCRIPTION" value = "<?php echo $row['file2'] ?>">
                     </div>
                   </div>
                  
@@ -156,6 +209,28 @@ if (mysqli_num_rows($result) > 0) {
 
             </div>
 </div>
+
+<script>
+const priceInput = document.getElementById('service_price');
+const discountInput = document.getElementById('discount_percentage');
+const offerPriceInput = document.getElementById('price_after_discount');
+
+function calculateOfferPrice() {
+    const price = parseFloat(priceInput.value);
+    const discount = parseFloat(discountInput.value);
+
+    if (!isNaN(price) && !isNaN(discount)) {
+        const discountAmount = (price * discount) / 100;
+        const finalPrice = price - discountAmount;
+        offerPriceInput.value = finalPrice.toFixed(2); // Round to 2 decimals
+    } else {
+        offerPriceInput.value = ''; // Clear if invalid input
+    }
+}
+
+priceInput.addEventListener('input', calculateOfferPrice);
+discountInput.addEventListener('input', calculateOfferPrice);
+</script>
 </body>
 </html>
 <?php

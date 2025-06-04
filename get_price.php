@@ -54,6 +54,7 @@ if (isset($_POST['service_number'])) {
     $sql = "SELECT * FROM all_services WHERE a_id = $service_number";
     $result = mysqli_query($conn, $sql);
 
+
     if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
 
@@ -66,6 +67,8 @@ if (isset($_POST['service_number'])) {
             'images' => $images,
             'all_service' => $row['all_service'],
             'price' => $row['price'],
+             'price_after_discount' => $row['price_after_discount'],
+               'discount_percentage' => $row['discount_percentage'],
             'description' => $row['description']
         ]);
     } else {

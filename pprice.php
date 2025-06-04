@@ -341,11 +341,13 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 </div>
 
         <p><strong>Service Name:</strong> <span id="modalServiceName"></span></p>
-        <p><strong>Price Rs : </strong>  <span id="modalServicePrice"></span></p>
+        <!-- <p><strong>Price : </strong>  <span id="modalServicePrice"></span></p> -->
+		 <p><strong>Price :</strong> <span id="modalServicePrice"></span> <span id="modalDiscount" style="color: rgb(106, 90, 205); font-weight: bold;"></span></p>
+		 <p><strong>Offer Price : </strong>  <span id="modalOfferPrice"></span></p>
         <p><strong>Description:</strong> <span id="modalServiceDescription"></span></p>
  <a href="booking" style="text-decoration: none;">
 		<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-  <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; border-radius: 10px; padding: 7px 20px;">
+  <button type="submit" name="submit" class="btn" style="background-color: rgb(42, 35, 90); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; border-radius: 10px; padding: 7px 20px;">
     BOOK NOW
   </button>
    </a>
@@ -849,7 +851,10 @@ $(document).on('click', '.plus-sign', function () {
                 alert(data.error);
             } else {
                 $('#modalServiceName').text(data.all_service);
-                $('#modalServicePrice').text(data.price);
+              $('#modalServicePrice').html('<s>Rs ' + data.price + '</s>'); 
+			//    $('#modalOfferPrice').html('Rs ' + data.price_after_discount ); 
+			$('#modalOfferPrice').html('<strong>Rs ' + data.price_after_discount + '</strong>');
+			   $('#modalDiscount').html('(' + data.discount_percentage + '% OFF)' ); 
                 $('#modalServiceDescription').text(data.description);
 
                 const images = data.images;
