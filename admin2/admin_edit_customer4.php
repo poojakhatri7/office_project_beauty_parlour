@@ -254,37 +254,77 @@ $(document).ready(function() {
   <div class="container-fluid">
     <div class="row"> 
         <div id="selected-package-message"></div>
-        
-      <?php
-      $sql = "SELECT package_name, description, SUM(price) AS total_price, SUM(price_after_discount) AS total_discount, package_number, discount, GROUP_CONCAT(selected_services) AS services FROM package GROUP BY package_number";
-      $result = mysqli_query($conn, $sql);
-      $count = 0;
-      if (mysqli_num_rows($result) > 0) {
-          while ($row = mysqli_fetch_assoc($result)) {
-              $count++;
-              ?>
-              <div class="col-md-4 mb-3">
-                <div class="card shadow-sm h-100">
-                  <div class="card-body">
-                    <h5 class="card-title"><strong>Package name: </strong><?php echo $row['package_name']; ?></h5>
-                    <p class="card-text"><strong>Description: </strong><?php echo $row['description']; ?></p>
-                    <p class="card-text"><strong>Services: </strong>
-                      <?php 
-                      $serviceList = explode(',', $row['services']);
-                      foreach ($serviceList as $service) {
-                          echo htmlspecialchars(trim($service)) . "<br>";
-                      }
-                      ?>
-                    </p>
-                    <p class="card-text"><strong>Price: </strong> Rs <?php echo $row['total_price']; ?></p>
-                    <p class="card-text"><strong>Package Discount: </strong><?php echo $row['discount']; ?>%</p>
-                    <p class="card-text"><strong>Total After Discount: </strong> <?php echo $row['total_discount']; ?></p> <!-- You may want to calculate this dynamically -->
-                    <button class="btn btn-outline-primary select-package select-package" data-id="<?php echo $row['package_number']; ?>">Select</button>
-                  </div>
-                </div>
-              </div>
-          <?php } 
-      } ?>
+        <?php
+    $sql ="SELECT 
+    p.id AS package_id,
+    p.package_name,
+    p.file AS package_image,
+    p.description,
+    p.discount,
+    GROUP_CONCAT(ps.service_name SEPARATOR ',') AS services,
+    SUM(ps.price) AS total_price,
+    SUM(ps.price_after_discount) AS total_price_after_discount
+FROM 
+    package1 p
+LEFT JOIN 
+    package_services ps 
+ON 
+    p.id = ps.package_id
+GROUP BY 
+    p.id " ;
+
+$services = [];
+$result_subcategories = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result_subcategories) > 0) {
+
+?>
+
+ <div style="display: flex; flex-wrap: wrap; gap: 3 rem; justify-content: center; padding: 0 2rem;">
+<?php
+    while ($s = mysqli_fetch_assoc($result_subcategories)) {
+		
+			 $imagePath = "/beauty_parlour_management_system/admin2/" . $s['package_image']; 
+          $services[] = $s['services'];
+    //          $total_price += $s['price'];
+    //         $total_discount += $s['discount'];
+    //         $total_price_after_discount += $s['price_after_discount'];
+	//  $imagePath = "/beauty_parlour_management_system/admin2/" . $s['file']; 
+        // $s_id = $row['s_id'];
+?>
+<?php $serviceList = implode(',', $services); ?>
+        <div class="card mx-4 mt-5" style="width: 15rem; font-size: 0.875rem;" >
+          <div class="card-body">
+            <h5 class="card-title" style="font-size: 1.5rem;"><?php echo $s['package_name']; ?></h5>
+
+ <img src="<?php echo $imagePath; ?>" class="card-img-top" alt="..." style="width: 200px; height: 200px; object-fit: cover; ">
+
+
+<p class="card-text " style="font-size: 0.95rem; margin: 0;"> <strong>Price : </strong> <s> Rs <?php echo $s['total_price']; ?> </s> </p>
+<?php $services = explode(',', $s['services']);  ?>
+    <p class="card-text" style="font-size: 0.98rem; margin: 0;">
+        <strong>Services available :</strong>
+    </p>
+    <ol style="padding-left: 20px; margin-top: 4px; font-size: 0.9rem; color: #444;">
+        <?php foreach ($services as $service): ?>
+            <li><?php echo htmlspecialchars($service); ?></li>
+        <?php endforeach; ?>
+    </ol>
+<p class="card-text" style="font-size: 0.95rem; margin: 0;"> <strong>Description : </strong> <?php echo $s['description']; ?> </p>
+<p class="card-text" style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);"> <strong>Discount (%) : </strong> <?php echo $s['discount']; ?> </p>
+<p class="card-text" style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);  "><strong>Price after discount : </strong> Rs <?php echo $s['total_price_after_discount']; ?> </p>
+
+
+
+          </div>
+        </div>
+<?php
+    }
+?>
+    </div> <!-- Flex container ends -->
+<?php
+}
+?>
     </div> 
     <button type="submit" name="submit" class="btn" style="background-color:rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 20px;  color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px; ">Book Package</button>
   <!-- <script>
@@ -374,7 +414,7 @@ $(document).ready(function () {
                         <th>S No.</th>
                         <th>Service Name</th>
                         <th>Service Price</th>
-                        <!-- <th>Service Number</th> -->
+                         <th>Service Image</th> 
                         <th>Select</th>
                     </tr>
                 </thead>

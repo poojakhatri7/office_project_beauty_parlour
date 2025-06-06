@@ -161,6 +161,10 @@ $result = mysqli_query($conn, $sql);
   padding-bottom: 170px;
 
 }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1); /* makes white icon black */
+}
 
     </style>
 
@@ -460,6 +464,7 @@ if (mysqli_num_rows($result) > 0) {
         $service_name =  $row['all_service'];
 		$price =  $row['price'];
 		$description =  $row['description'];
+		
 		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
 
         ?>
@@ -476,7 +481,7 @@ if (mysqli_num_rows($result) > 0) {
 											<!-- Title & Price -->
 											<div class="detail-price">
 												<!-- <i class="fa fa-eye"  style="margin-right: 10px;"></i> -->
-												 <span class="plus-sign" style="margin-right: 10px;" data-bs-toggle = "modal" data-bs-target = "#exampleModal" data-service_number="<?php echo $service['a_id']; ?>" > <i class="fa fa-eye" ></i></span>
+												 <span class="plus-sign" style="margin-right: 10px;" data-bs-toggle = "modal" data-bs-target = "#exampleModal" data-service_number="<?php echo $row['a_id']; ?>" > <i class="fa fa-eye" ></i></span>
 												<div class="price-name"><p><?php echo  $service_name ?></p></div>
 												<div class="price-dots"></div>
 												<div class="price-number"><p><?php echo "Rs  ".$price ?></p></div>
@@ -1635,7 +1640,7 @@ $result = mysqli_query($conn, $sql);
 			    </div>
 			</div>	 -->
 
-			<!-- Modal starts  -->
+				<!-- Modal starts  -->
 
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -1660,11 +1665,13 @@ $result = mysqli_query($conn, $sql);
 </div>
 
         <p><strong>Service Name:</strong> <span id="modalServiceName"></span></p>
-        <p><strong>Price Rs : </strong>  <span id="modalServicePrice"></span></p>
+        <!-- <p><strong>Price : </strong>  <span id="modalServicePrice"></span></p> -->
+		 <p><strong>Price :</strong> <span id="modalServicePrice"></span> <span id="modalDiscount" style="color: rgb(106, 90, 205); font-weight: bold;"></span></p>
+		 <p><strong>Offer Price : </strong>  <span id="modalOfferPrice"></span></p>
         <p><strong>Description:</strong> <span id="modalServiceDescription"></span></p>
  <a href="booking" style="text-decoration: none;">
 		<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-  <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; border-radius: 10px; padding: 7px 20px;">
+  <button type="submit" name="submit" class="btn" style="background-color: rgb(42, 35, 90); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; border-radius: 10px; padding: 7px 20px;">
     BOOK NOW
   </button>
    </a>
@@ -1680,8 +1687,8 @@ $result = mysqli_query($conn, $sql);
   </div>
 </div>
 
-		<!-- Modal ends  -->
-				
+		<!-- Modal ends  -->	
+
 			<!-- END MODAL-2 -->
 
 			<!-- FOOTER-1
@@ -1777,7 +1784,10 @@ $(document).on('click', '.plus-sign', function () {
                 alert(data.error);
             } else {
                 $('#modalServiceName').text(data.all_service);
-                $('#modalServicePrice').text(data.price);
+              $('#modalServicePrice').html('<s>Rs ' + data.price + '</s>'); 
+			//    $('#modalOfferPrice').html('Rs ' + data.price_after_discount ); 
+			$('#modalOfferPrice').html('<strong>Rs ' + data.price_after_discount + '</strong>');
+			   $('#modalDiscount').html('(' + data.discount_percentage + '% OFF)' ); 
                 $('#modalServiceDescription').text(data.description);
 
                 const images = data.images;

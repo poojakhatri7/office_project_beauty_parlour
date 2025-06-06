@@ -101,15 +101,47 @@ include './admin2/db_connection.php';
 // $sql = "SELECT MIN(id) as id, package_name , file ,price_after_discount, discount ,price, description, package_number
 //         FROM package
 //         GROUP BY package_name, description order BY id DESC";
-$sql = "SELECT 
+// $sql = "SELECT 
+//     p.id AS package_id,
+//     p.package_name,
+//     p.file AS package_image,
+//     p.description,
+//     p.discount,
+//     SUM(ps.price) AS total_price,
+//     SUM(ps.price_after_discount) AS total_price_after_discount
+	
+// FROM 
+//     package1 p
+// LEFT JOIN 
+//     package_services ps 
+// ON 
+//     p.id = ps.package_id
+// GROUP BY 
+//     p.id";
+//  $sql = "SELECT 
+//     p.id AS package_id,
+//     p.package_name,
+//     p.file AS package_image,
+//     p.description,
+//     p.discount,
+//     ps.service_name,
+//     ps.price,
+//     ps.price_after_discount
+// FROM 
+//     package1 p
+// LEFT JOIN 
+//     package_services ps 
+// ON 
+//     p.id = ps.package_id ";
+$sql ="SELECT 
     p.id AS package_id,
     p.package_name,
     p.file AS package_image,
     p.description,
     p.discount,
+    GROUP_CONCAT(ps.service_name SEPARATOR ',') AS services,
     SUM(ps.price) AS total_price,
     SUM(ps.price_after_discount) AS total_price_after_discount
-	
 FROM 
     package1 p
 LEFT JOIN 
@@ -117,37 +149,50 @@ LEFT JOIN
 ON 
     p.id = ps.package_id
 GROUP BY 
-    p.id";
+    p.id " ;
 
+$services = [];
 $result_subcategories = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result_subcategories) > 0) {
-  
+
 ?>
+
  <div style="display: flex; flex-wrap: wrap; gap: 3 rem; justify-content: center; padding: 0 2rem;">
 <?php
     while ($s = mysqli_fetch_assoc($result_subcategories)) {
 		
 			 $imagePath = "/beauty_parlour_management_system/admin2/" . $s['package_image']; 
-        //   $services[] = $s['selected_services'];
+          $services[] = $s['services'];
     //          $total_price += $s['price'];
     //         $total_discount += $s['discount'];
     //         $total_price_after_discount += $s['price_after_discount'];
 	//  $imagePath = "/beauty_parlour_management_system/admin2/" . $s['file']; 
         // $s_id = $row['s_id'];
 ?>
-
+<?php $serviceList = implode(',', $services); ?>
         <div class="card mx-4 mt-5" style="width: 15rem; font-size: 0.875rem;" >
           <div class="card-body">
             <h5 class="card-title" style="font-size: 1.5rem;"><?php echo $s['package_name']; ?></h5>
 
  <img src="<?php echo $imagePath; ?>" class="card-img-top" alt="..." style="width: 240px; height: 250px; object-fit: cover; ">
 
-<p class="card-text" style="font-size: 0.85rem; margin: 0;"> <strong>Price : Rs <?php echo $s['total_price']; ?></strong></p>
-<p class="card-text" style="font-size: 0.85rem; margin: 0;"> <strong>Description : <?php echo $s['description']; ?> </strong></p>
-<p class="card-text" style="font-size: 0.85rem; margin: 0;"> <strong>Discount (%) : <?php echo $s['discount']; ?> </strong></p>
-<p class="card-text" style="font-size: 0.85rem; margin: 0;"> <strong>Discount : Rs <?php echo $s['total_price_after_discount']; ?> </strong></p>
-<p class="card-text" style="font-size: 0.85rem; margin: 0;"><strong>Price after discount : Rs <?php echo $s['total_price_after_discount']; ?> </strong></p>
+
+<p class="card-text " style="font-size: 0.95rem; margin: 0;"> <strong>Price : </strong> <s> Rs <?php echo $s['total_price']; ?> </s> </p>
+<?php $services = explode(',', $s['services']);  ?>
+    <p class="card-text" style="font-size: 0.98rem; margin: 0;">
+        <strong>Services available :</strong>
+    </p>
+    <ol style="padding-left: 20px; margin-top: 4px; font-size: 0.9rem; color: #444;">
+        <?php foreach ($services as $service): ?>
+            <li><?php echo htmlspecialchars($service); ?></li>
+        <?php endforeach; ?>
+    </ol>
+<p class="card-text" style="font-size: 0.95rem; margin: 0;"> <strong>Description : </strong> <?php echo $s['description']; ?> </p>
+<p class="card-text" style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);"> <strong>Discount (%) : </strong> <?php echo $s['discount']; ?> </p>
+<p class="card-text" style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);  "><strong>Price after discount : </strong> Rs <?php echo $s['total_price_after_discount']; ?> </p>
+
+
 
           </div>
         </div>

@@ -117,12 +117,12 @@ include './admin2/db_connection.php';
 		 <p><strong>Name :</strong> <span id="modalStaffName"></span></p>   
         <p><strong>Availability :</strong> <span id="modalAvailability"></span></p>
 		 <p><strong> Bios :</strong> <span id="modalServiceBio"></span></p>
-		  <p><strong>Experience :</strong> <span id="modalServiceExperience"></span></p>
+		  <p><strong>Experience :</strong> <span id="modalServiceExperience"></span> years</p>
 		   <a href="booking" style="text-decoration: none;">
 		<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-  <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 15px; border-radius: 15px; padding: 7px 20px;">
+  <button type="submit" name="submit" class="btn" style="background-color: rgb(42, 35, 90); color: rgb(238, 230, 217); font-weight: 500; font-size: 15px; border-radius: 15px; padding: 7px 20px;">
     BOOK NOW
-  </button>
+  </button> 
    </a>
 </div>
       </div>

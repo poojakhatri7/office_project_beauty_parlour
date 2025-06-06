@@ -32,7 +32,7 @@ if (isset($_POST['package_number'])) {
 
     // Step 1: Get the first row to fetch common package details
     $main_sql = "SELECT * FROM package1 WHERE package_number = {$package_number} ";
-    $main_result = mysqli_query($conn, $main_sql);
+     $main_result = mysqli_query($conn, $main_sql);
 
     
     if ($row = mysqli_fetch_assoc($main_result)) {
