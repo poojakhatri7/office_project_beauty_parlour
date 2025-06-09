@@ -251,6 +251,7 @@ $(document).ready(function() {
 });
 </script>
 <div id="packages-section" style="display: none;">
+    <div id="selected-package-message" class="mt-3 text-dark" style="font-weight: 500;"></div>
   <div class="container-fluid">
     <div class="row"> 
         <div id="selected-package-message"></div>
@@ -295,6 +296,9 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 <?php $serviceList = implode(',', $services); ?>
         <div class="card mx-4 mt-5" style="width: 15rem; font-size: 0.875rem;" >
           <div class="card-body">
+         <div class="mb-2"> <!-- Bootstrap margin-bottom utility -->
+      <input type="checkbox" id="selectpackage" name="selectpackage"  class="package-checkbox" name="selectpackage[]" value="<?php echo $s['package_id']; ?>" data-package-name="<?php echo htmlspecialchars($s['package_name']); ?>">
+    </div>
             <h5 class="card-title" style="font-size: 1.5rem;"><?php echo $s['package_name']; ?></h5>
 
  <img src="<?php echo $imagePath; ?>" class="card-img-top" alt="..." style="width: 200px; height: 200px; object-fit: cover; ">
@@ -352,7 +356,7 @@ $(document).ready(function () {
   });
 });
 </script> -->
-<script>
+<!-- <script>
 $(document).ready(function () {
   let selectedPackages = [];
 
@@ -376,7 +380,7 @@ $(document).ready(function () {
       .show();
   });
 });
-</script>
+</script> -->
 
 </div>
 </div>
@@ -746,6 +750,32 @@ $("#discountAmount").on("input", function () {
     });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const checkboxes = document.querySelectorAll('.package-checkbox');
+  const messageDiv = document.getElementById('selected-package-message');
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+      let selectedPackages = [];
+
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          const packageName = cb.getAttribute('data-package-name');
+          selectedPackages.push(packageName);
+        }
+      });
+
+      if (selectedPackages.length > 0) {
+        messageDiv.innerHTML = "Selected package(s): <strong>" + selectedPackages.join(', ') + "</strong>";
+      } else {
+        messageDiv.innerHTML = "";
+      }
+    });
+  });
+});
+</script>
+
 </body>
 </html>
 <?php
