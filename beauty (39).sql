@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jun 06, 2025 at 02:20 PM
+-- Generation Time: Jun 10, 2025 at 02:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -107,21 +107,21 @@ INSERT INTO `all_services` (`a_id`, `all_service`, `price`, `discount_percentage
 (34, 'Teen Facial', 200, 20, 160, 'Specific to teenagers, this facial helps to control and minimize acne breakouts. Includes a gentle cleansing, exfoliation, extractions and customized masque', 'upload-images/teenfacial2.jpg', 'upload-images/teenfacial1.jpg', 'upload-images/teenfacial3.jpg', 5, 2),
 (36, 'Eyebrow Waxing', 15, 10, 14, 'Eyebrow waxing is a safe and effective way to remove unwanted hair. Here are a few reasons why you should consider seeing a cosmetic specialist to have your eyebrows waxed: Longer Regrowth Period.', 'upload-images/eyebrowwax3.jpg', 'upload-images/eyebrow2.jpg', 'upload-images/eyebrowwax1.jpg', 6, 2),
 (38, 'Lip Waxing', 12, 25, 9, 'Service length 40 minutes', 'upload-images/lip.jpg', 'upload-images/lipwaxiing3.jpg', 'upload-images/lipwaxing2.jpg', 6, 2),
-(39, 'Half Arm Waxing', 30, 0, 0, 'Service length 1,5 hours', 'upload-images/halfarm.jpg', '', '', 6, 2),
-(40, 'Cheeks Waxing', 15, 0, 0, 'Service length 2 hours', 'upload-images/cheeks.jpg', '', '', 6, 2),
-(41, 'Full Arm Waxing', 45, 0, 0, 'Service length 1,5 hours', 'upload-images/full_armwaxing.jpg', '', '', 6, 2),
-(42, 'Full Face Waxing', 46, 0, 0, 'Service length 4 hours', 'upload-images/fullface.jpg', '', '', 6, 2),
-(43, 'Half Leg Waxing', 30, 0, 0, 'Service length 1 hour', 'upload-images/halflegwaxxjpg.jpg', '', '', 6, 2),
-(44, 'Under Arm Waxing', 20, 0, 0, 'Service length 40 mins', 'upload-images/underarm_wax.jpg', '', '', 6, 2),
-(45, 'Full Leg Waxing', 50, 0, 0, 'Service length 1,5 hours', 'upload-images/full_legwax.jpg', '', '', 6, 2),
-(47, 'Eyebrow Shaping', 97, 0, 0, 'Service length 20 minutes', 'upload-images/eyebrowshaping.jpg', '', '', 7, 2),
-(48, 'Laser Treatment', 75, 0, 0, 'Service length 30 minutes', 'upload-images/fastface.jpg', '', '', 7, 2),
-(49, 'Brow Tint', 50, 0, 0, 'Service length 20 minutes', 'upload-images/browtint.jpg', '', '', 7, 2),
-(52, 'Lash Tint', 50, 0, 0, 'Service length 27 minutes', 'upload-images/lashtint1.jpg', '', '', 7, 2),
+(39, 'Half Arm Waxing', 30, 20, 24, 'Service length 1,5 hours', 'upload-images/halfarm.jpg', 'upload-images/halfarm1.jpg', 'upload-images/halfarm2.jpg', 6, 2),
+(40, 'Cheeks Waxing', 15, 25, 11, 'Service length 2 hours', 'upload-images/cheeks.jpg', 'upload-images/cheecks1.jpg', 'upload-images/cheeks2.jpg', 6, 2),
+(41, 'Full Arm Waxing', 45, 40, 27, 'Service length 1,5 hours', 'upload-images/full_armwaxing.jpg', 'upload-images/fullarmwax234.jpg', 'upload-images/fullarmwax45.jpg', 6, 2),
+(42, 'Full Face Waxing', 100, 20, 80, 'Service length 4 hours', 'upload-images/fullface.jpg', 'upload-images/face1jpg.jpg', 'upload-images/face2.jpg', 6, 2),
+(43, 'Half Leg Waxing', 30, 10, 27, 'Service length 1 hour', 'upload-images/waxing-half-67.jpg', 'upload-images/halflegwax12.jpg', 'upload-images/waxing-half-67.jpg', 6, 2),
+(44, 'Under Arm Waxing', 20, 10, 18, 'Service length 40 mins', 'upload-images/halfarmwax342.jpg', 'upload-images/halfarm232.jpg', 'upload-images/halfarmwax342.jpg', 6, 2),
+(45, 'Full Leg Waxing', 50, 25, 38, 'Service length 1,5 hours', 'upload-images/full_legwax.jpg', 'upload-images/fullleg45.jpg', 'upload-images/fullwax1234.png', 6, 2),
+(47, 'Eyebrow Shaping', 50, 25, 38, 'Service length 20 minutes', 'upload-images/eyebrowshaping.jpg', 'upload-images/Eyebrow-Shaping12.jpg', 'upload-images/eyebrowshaping45.jpg', 7, 2),
+(48, 'Laser Treatment', 400, 10, 360, 'Service length 30 minutes', 'upload-images/fastface.jpg', 'upload-images/antiaging1.jpg', 'upload-images/biologht2.jpg', 7, 2),
+(49, 'Brow Tint', 50, 10, 45, 'Service length 20 minutes', 'upload-images/browtint.jpg', 'upload-images/browtint12.jpg', 'upload-images/browtint121.jpg', 7, 2),
+(52, 'Lash Tint', 200, 0, 200, 'Service length 27 minutes', 'upload-images/lashtint1.jpg', 'upload-images/tintt.jpg', '', 7, 2),
 (53, 'Eyelash Tinting', 25, 0, 0, 'Service length 20 minutes', 'upload-images/eyelashextesion.jpg', '', '', 7, 2),
 (54, 'Lash Lift', 175, 0, 0, 'Service length 40 minutes', 'upload-images/eyee.jpg', '', '', 7, 2),
-(55, 'Lash Application', 45, 0, 0, 'Service length 45 minutes', 'upload-images/lash_lifted.jpg', '', '', 7, 2),
-(56, 'Eyelash Extensions', 155, 0, 0, '', 'upload-images/lashapplication12.jpg', '', '', 7, 2),
+(55, 'Lash Application', 45, 21, 36, 'Service length 45 minutes', 'upload-images/lash_lifted.jpg', '', '', 7, 2),
+(56, 'Eyelash Extensions', 155, 10, 140, 'Introducing our exquisite collection of eyelashes made from natural mink hair. Unlike synthetic fibers, these lashes offer a luxurious and wispy feel.', 'upload-images/lashapplication12.jpg', 'upload-images/eyelashextion56.jpg', 'upload-images/eyelashextension12.jpg', 7, 2),
 (57, 'Classic Manicure', 19, 25, 14, 'Service length 40 minutes', 'upload-images/download.jpg', 'upload-images/classicmanicure1.jpg', 'upload-images/manicure123.jpg', 8, 3),
 (58, 'Spa Manicure', 30, 60, 12, 'Service length 1 hour', 'upload-images/spa.jpg', 'upload-images/spamanicure1.jpg', 'upload-images/spamanicure345.jpg', 8, 3),
 (59, 'Signature Gel Manicure', 50, 70, 15, 'Service length 30 minutes', 'upload-images/spa1.jpg', 'upload-images/signaturegel1.jpg', 'upload-images/signature2.jpg', 8, 3),
@@ -155,12 +155,13 @@ CREATE TABLE `banner_management` (
 --
 
 INSERT INTO `banner_management` (`id`, `file`, `content`, `buttonName`, `buttonLink`) VALUES
-(2, 'upload-images/hero-9.jpg', 'Skin care studio', 'View Menu', 'https://www.pexels.com/search/spa/'),
-(3, 'upload-images/slide-1.jpg', 'Unleash your beauty with Demo Beauty Studio', NULL, NULL),
-(9, 'upload-images/slide-15.jpg', 'Hair Care Studio', NULL, NULL),
-(13, 'upload-images/slide-3.jpg', 'make up studio', NULL, NULL),
-(30, 'upload-images/makeupp.avif', 'Beauty salon', 'View Menu', 'https://www.pexels.com/search/spa/	'),
-(31, 'upload-images/studio11.avif', 'Beauty salon', '', '');
+(2, 'upload-images/hero-9.jpg', 'Skin care studio', 'View Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=3'),
+(3, 'upload-images/slide-1.jpg', 'Unleash your beauty with Demo Beauty Studio', 'View Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=1'),
+(9, 'upload-images/slide-15.jpg', 'Hair Care Studio', 'View Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=3'),
+(13, 'upload-images/slide-3.jpg', 'make up studio', 'View Menu', NULL),
+(30, 'upload-images/makeupp.avif', 'Beauty salon', 'View Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=2'),
+(35, 'upload-images/wallpaper51.jpg', 'artist', 'demo studio Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=3'),
+(38, 'upload-images/wallpaper71.jpg', 'artist', 'demo studio Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=2');
 
 -- --------------------------------------------------------
 
@@ -377,6 +378,30 @@ INSERT INTO `package1` (`id`, `package_name`, `package_number`, `description`, `
 (10, 'Gold package', '305836', 'Permanent color treatment is traditional oxidization color treatment – oxidization refers to the chemical process that makes it possible to alter the color at the core of the hair', 10, 'upload-images/biolight3.jpg'),
 (11, 'silver package ', '648184', 'A \"facial\" is a skin treatment designed to cleanse, exfoliate, and hydrate the skin, often targeting specific concerns like acne, wrinkles, or uneven skin tone', 32, 'upload-images/teenfacial3.jpg'),
 (12, 'premium package', '326045', 'Service length 1,5 hours', 10, 'upload-images/blowdry1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `package_selected`
+--
+
+CREATE TABLE `package_selected` (
+  `id` int(200) NOT NULL,
+  `appointment_id` int(200) DEFAULT NULL,
+  `package_name` varchar(200) DEFAULT NULL,
+  `package1_id` int(200) DEFAULT NULL,
+  `package_number` int(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `package_selected`
+--
+
+INSERT INTO `package_selected` (`id`, `appointment_id`, `package_name`, `package1_id`, `package_number`) VALUES
+(1, 57, 'Gold Package', 0, 0),
+(2, NULL, NULL, 9, NULL),
+(5, NULL, NULL, 9, NULL),
+(6, NULL, NULL, 10, NULL);
 
 -- --------------------------------------------------------
 
@@ -835,6 +860,12 @@ ALTER TABLE `package1`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `package_selected`
+--
+ALTER TABLE `package_selected`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `package_services`
 --
 ALTER TABLE `package_services`
@@ -932,7 +963,7 @@ ALTER TABLE `all_services`
 -- AUTO_INCREMENT for table `banner_management`
 --
 ALTER TABLE `banner_management`
-  MODIFY `id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `bill`
@@ -975,6 +1006,12 @@ ALTER TABLE `package`
 --
 ALTER TABLE `package1`
   MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `package_selected`
+--
+ALTER TABLE `package_selected`
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `package_services`
