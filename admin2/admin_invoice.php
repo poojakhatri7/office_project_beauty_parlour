@@ -5,7 +5,6 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-
 include 'db_connection.php';
 ?>
 <main class="app-main">
@@ -196,6 +195,48 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "No invoice found.";
 }
+
+
+
+
+
+// package section 
+$sql ="SELECT 
+    ta.id AS appointment_id, 
+    ta.name AS name, 
+    ta.date,
+    ta.mobile, 
+    sp.package1_id
+    FROM tb_appointment ta
+JOIN package_selected sp ON ta.id = sp.appointment_id
+";
+// Step 3: Execute the query
+$result = mysqli_query($conn, $sql);
+$count = 0;
+// Step 4: Check if the query returned any results
+if (mysqli_num_rows($result) > 0) {
+    // Step 5: Use a while loop to fetch each row of data
+   
+    while ($row = mysqli_fetch_assoc($result)) {
+      $count = $count+2 ;
+      echo"<tr>
+      <th scope='row'>".$count."</th> 
+     <td>".$row['package1_id']."</td>
+      <td>".$row['name']."</td>
+       <td>".$row['mobile']."</td>
+       <td>".$row['date']."</td>
+     
+       
+    </tr>";
+    }
+} else {
+    echo "No invoice found.";
+}
+
+
+
+
+
 ?>
                   </table>
               </div>
