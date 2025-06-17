@@ -17,7 +17,7 @@ include 'db_connection.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-.invoice1{
+.invoice1 {
   /* background : #157daf !important; */
   background :rgb(33, 70, 77) !important;
 }
@@ -174,7 +174,7 @@ if (mysqli_num_rows($result) > 0) {
     // Step 5: Use a while loop to fetch each row of data
    
     while ($row = mysqli_fetch_assoc($result)) {
-      $count = $count+1 ;
+      $count = $count + 1 ;
       echo"<tr>
       <th scope='row'>".$count."</th> 
      <td>".$row['billing_number']."</td>
@@ -198,15 +198,15 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-
-
 // package section 
 $sql ="SELECT 
     ta.id AS appointment_id, 
     ta.name AS name, 
     ta.date,
     ta.mobile, 
-    sp.package1_id
+    sp.package1_id,
+     sp.billing_number,
+      sp.time
     FROM tb_appointment ta
 JOIN package_selected sp ON ta.id = sp.appointment_id
 ";
@@ -221,12 +221,19 @@ if (mysqli_num_rows($result) > 0) {
       $count = $count+2 ;
       echo"<tr>
       <th scope='row'>".$count."</th> 
-     <td>".$row['package1_id']."</td>
+     <td>".$row['billing_number']."</td>
       <td>".$row['name']."</td>
        <td>".$row['mobile']."</td>
        <td>".$row['date']."</td>
-     
-       
+        <td> ". date("h:i", strtotime($row['time'])) . "</td>
+        <td> 
+  <a href='/beauty_parlour_management_system/admin2/invoice_details2.php?appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>
+     <button class='btn' style='background-color: rgb(51, 139, 139); color: white; border: none; cursor: pointer;  padding: 7px 12px; border: none;  cursor: pointer;'>
+      <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
+      View
+     </button>
+  </a> 
+</td>
     </tr>";
     }
 } else {

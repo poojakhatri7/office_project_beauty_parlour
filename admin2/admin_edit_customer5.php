@@ -115,6 +115,21 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitpackage'])) {
+  $appointment_id = $_GET['id'];  // Fetch appointment ID from the GET method
+
+  $prefix = "97"; 
+  $billing_number = $prefix . '000001'; 
+  $query = "SELECT billing_number FROM package_selected ORDER BY id DESC LIMIT 1";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+
+  if ($row) {
+    $lastNumber = (int)substr($row['billing_number'], 2); // remove prefix '98'
+    $nextNumber = $lastNumber + 1;
+} else {
+    $nextNumber = 1; // First billing number
+}
+$billing_number = $prefix . str_pad($nextNumber, 6, "0", STR_PAD_LEFT);
     if (!empty($_POST['selectpackage'])) {
         $selectedPackages = $_POST['selectpackage']; // array of package IDs
         // $packageNames = $_POST['package_names'];     // associative array: [package_id => package_name]
@@ -123,17 +138,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitpackage'])) {
         foreach ($selectedPackages as $packageId) {
             // Sanitize inputs
             $packageId = mysqli_real_escape_string($conn, $packageId);
-            // $packageName = mysqli_real_escape_string($conn, $packageNames[$packageId]);
-            // $packageNumber = mysqli_real_escape_string($conn, generatePackageNumber());
+          
 
-            $sql = "INSERT INTO package_selected ( package1_id ) 
-                    VALUES ( '$packageId' )";
+
+              // Optional: Fetch package_name and package_number if you want to use or store them
+            $query = "SELECT * FROM package1 WHERE id = '$packageId'";
+            $result = mysqli_query($conn, $query);
+            if ($row = mysqli_fetch_assoc($result)) {
+                $packageName = $row['package_name'];
+                $packageNumber = $row['package_number'];
+                $discount = $row['discount'];
+
+ $sql_insert = "INSERT INTO orders (appointment_id,  discount, billing_number, created_at) 
+                   VALUES ('$appointment_id',  '$discount', '$billing_number', NOW())";
+
+  mysqli_query($conn, $sql_insert);
+
+            $sql = "INSERT INTO package_selected ( package1_id , appointment_id , billing_number , package_name ) 
+                    VALUES ( '$packageId' , '$appointment_id' , '$billing_number' , '$packageName' )";
 
             if (!mysqli_query($conn, $sql)) {
                 echo "Error inserting package ID $packageId: " . mysqli_error($conn);
             }
         }
-
+      }
         echo "<script>alert('Package(s) booked successfully.'); window.location.href='admin_invoice.php';</script>";
     } else {
         echo "<script>alert('Please select at least one package.'); window.history.back();</script>";
