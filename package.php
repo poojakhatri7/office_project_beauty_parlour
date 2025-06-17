@@ -151,6 +151,7 @@ ON
 GROUP BY 
     p.id " ;
 
+
 $services = [];
 $result_subcategories = mysqli_query($conn, $sql);
 

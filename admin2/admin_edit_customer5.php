@@ -162,7 +162,7 @@ $billing_number = $prefix . str_pad($nextNumber, 6, "0", STR_PAD_LEFT);
             }
         }
       }
-        echo "<script>alert('Package(s) booked successfully.'); window.location.href='admin_invoice.php';</script>";
+        echo "<script>alert('Package booked successfully.'); window.location.href='admin_invoice.php';</script>";
     } else {
         echo "<script>alert('Please select at least one package.'); window.history.back();</script>";
     }
@@ -312,7 +312,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
         <div class="card mx-4 mt-5" style="width: 15rem; font-size: 0.875rem;" >
           <div class="card-body">
          <div class="mb-2"> <!-- Bootstrap margin-bottom utility -->
-      <input type="checkbox" id="selectpackage"  class="package-checkbox" name="selectpackage[]" value="<?php echo $s['package_id']; ?>" data-package-name="<?php echo htmlspecialchars($s['package_name']); ?>">
+      <input type="radio" id="selectpackage"  class="package-checkbox" name="selectpackage[]" value="<?php echo $s['package_id']; ?>" data-package-name="<?php echo htmlspecialchars($s['package_name']); ?>">
       <input type="hidden" name="package_names[<?php echo $s['package_id']; ?>]" value="<?php echo $s['package_name']; ?>">
     </div>
             <h5 class="card-title" style="font-size: 1.5rem;"><?php echo $s['package_name']; ?></h5>

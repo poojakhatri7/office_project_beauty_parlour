@@ -134,6 +134,7 @@ include 'db_connection.php';
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Invoice number</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Customer name</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Mobile number</th>
+                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Type</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Date</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Time</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
@@ -154,6 +155,7 @@ include 'db_connection.php';
 // FROM tb_appointment p
 // INNER JOIN tb_selected_services c
 // ON p.id = c.appointment_id";
+$count = 0;
 $sql ="SELECT 
     ta.id AS appointment_id, 
     ta.name AS name, 
@@ -168,7 +170,7 @@ ORDER BY ta.id DESC ;
 ";
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);
-$count = 0;
+
 // Step 4: Check if the query returned any results
 if (mysqli_num_rows($result) > 0) {
     // Step 5: Use a while loop to fetch each row of data
@@ -180,6 +182,7 @@ if (mysqli_num_rows($result) > 0) {
      <td>".$row['billing_number']."</td>
       <td>".$row['name']."</td>
        <td>".$row['mobile']."</td>
+       <td> Service </td>
        <td>".$row['date']."</td>
        <td> ". date("h:i", strtotime($row['time'])) . "</td>
         <td> 
@@ -209,25 +212,28 @@ $sql ="SELECT
       sp.time
     FROM tb_appointment ta
 JOIN package_selected sp ON ta.id = sp.appointment_id
+GROUP BY sp.billing_number
+ORDER BY ta.id DESC 
 ";
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);
-$count = 0;
+
 // Step 4: Check if the query returned any results
 if (mysqli_num_rows($result) > 0) {
     // Step 5: Use a while loop to fetch each row of data
    
     while ($row = mysqli_fetch_assoc($result)) {
-      $count = $count+2 ;
+      $count++;
       echo"<tr>
-      <th scope='row'>".$count."</th> 
+      <th scope='row'>$count</th> 
      <td>".$row['billing_number']."</td>
       <td>".$row['name']."</td>
        <td>".$row['mobile']."</td>
+            <td> Package </td>
        <td>".$row['date']."</td>
         <td> ". date("h:i", strtotime($row['time'])) . "</td>
         <td> 
-  <a href='/beauty_parlour_management_system/admin2/invoice_details2.php?appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>
+  <a href='/beauty_parlour_management_system/admin2/invoice_package.php?package1_id={$row["package1_id"]}&appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>
      <button class='btn' style='background-color: rgb(51, 139, 139); color: white; border: none; cursor: pointer;  padding: 7px 12px; border: none;  cursor: pointer;'>
       <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
       View

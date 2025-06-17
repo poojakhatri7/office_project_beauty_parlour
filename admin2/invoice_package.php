@@ -254,7 +254,45 @@ $roundedBill = round($gst_total, 0);
     //$sql = "SELECT * FROM tb_contact_us";
     //$sql = "SELECT * FROM tb_appointment WHERE id={$appointment_id}";
     
-    $sql = "SELECT * FROM tb_selected_services WHERE appointment_id={$appointment_id} AND billing_number = {$billing_number}";
+    // $sql = "SELECT * FROM package_selected WHERE appointment_id={$appointment_id} AND billing_number = {$billing_number}";
+//     $sql ="SELECT 
+//     p.id AS package_id,
+//     p.package_name,
+//     p.file AS package_image,
+//     p.description,
+//     p.discount,
+//     GROUP_CONCAT(ps.service_name SEPARATOR ',') AS services,
+//     SUM(ps.price) AS total_price,
+//     SUM(ps.price_after_discount) AS total_price_after_discount
+// FROM 
+//     package1 p
+// LEFT JOIN 
+//     package_services ps 
+// ON 
+//     p.id = ps.package_id
+// GROUP BY 
+//     p.id  " ;
+$sql ="SELECT 
+    p.id AS package_id,
+    p.package_name,
+    p.file AS package_image,
+    p.description,
+    p.discount,
+    GROUP_CONCAT(ps.service_name SEPARATOR ', ') AS services,
+    SUM(ps.price) AS total_price,
+    SUM(ps.price_after_discount) AS total_price_after_discount
+FROM 
+    package_selected sel
+JOIN 
+    package1 p ON sel.package1_id = p.id
+LEFT JOIN 
+    package_services ps ON p.id = ps.package_id
+WHERE 
+    sel.appointment_id = {$appointment_id} 
+    AND sel.billing_number = {$billing_number}
+GROUP BY 
+    p.id " ;
+
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         // Step 5: Use a while loop to fetch each row of data
@@ -263,7 +301,7 @@ $roundedBill = round($gst_total, 0);
       <thead>
         <tr>
         <th>S no.</th>
-          <th>Service</th>
+          <th>Package</th>
           <th>Price (Rs)</th>
         </tr>
       </thead>
@@ -273,21 +311,26 @@ $roundedBill = round($gst_total, 0);
         while ($row = mysqli_fetch_assoc($result)) {
             ?>
           <?php 
-           $service_name =$row['service_name'];
-           $service_price = $row['service_price'];
+           $service_name =$row['package_name'];
+           $service_price =$row['total_price'];
            $count = $count + 1;
-           ?>
-           
+            $services[] = $row['services'];
+           ?>  
         <tr> 
         <td><?php echo $count; ?></td>
-          <td><?php echo $service_name ?></td>
-          <td><?php echo $service_price ?></td>
+           <td>
+    <b><?php echo $service_name; ?></b><br>
+    <small style="font-size: 1.0em; color: black;">
+      ( <?php echo nl2br($row['services']); ?> )
+    </small>
+  </td>
+         <td><?php echo $service_price ?></td>
         </tr>
     <?php
         }
         echo "<td>   </td>";
         echo "<td><b> TOTAL </b></td>";
-        echo "<td> <b> $total </b> </td>";
+        echo "<td> <b> $service_price </b> </td>";
       }
         ?>
         
@@ -297,7 +340,14 @@ $roundedBill = round($gst_total, 0);
     <div class="invoice-total">
      
      <!-- <h6><strong> Bill amount is  :  Rs   <?php echo  $total ?> </strong></h6> -->
-      <h6><strong> Discount in percentage  : <?php  echo $formatted_discount?> % </strong></h6>
+      <h6><strong> Discount in percentage  : <?php  echo $discount?> % </strong></h6>
+      <?php      
+      
+      $discount_rupee = ($service_price * $discount / 100);
+      $total_discount = $service_price - ($service_price * $discount / 100);
+       $gst_total =  $total_discount + ($total_discount * 18 / 100);
+       $roundedBill = round($gst_total, 0); 
+      ?>
       <h6><strong> Discount in Rupees  : <?php echo $discount_rupee ?> </strong></h6>
       <h6><strong> After  Discount Bill Amount is : Rs <?php echo  $total_discount ?> </strong></h6>
       <h6><strong> After adding 18% GST : Rs <?php echo  $gst_total ?> </strong></h6>
