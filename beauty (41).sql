@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jun 10, 2025 at 02:03 PM
+-- Generation Time: Jun 18, 2025 at 01:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,7 @@ CREATE TABLE `admin_login_details` (
 --
 
 INSERT INTO `admin_login_details` (`id`, `name`, `mobile`, `email`, `address`, `password`, `role`, `file`, `gst_number`, `last_invoice_no`) VALUES
-(9, 'pooja khatri', 8707858421, 'pooja@gmail.com', 'rjpm1', '1234', 1, 'upload-images/img-11.jpg', '29AALC6789996', 98000011),
+(9, 'pooja khatri', 8707858421, 'pooja@gmail.com', 'rjpm1', '1234', 1, 'upload-images/img-11.jpg', '29AALC6789996', 98000015),
 (11, 'shikha', 8709875671, 'riya@gmail.com', 'Hazratganj', '1234', 2, 'upload-images/avatar2.png', NULL, NULL),
 (12, 'anushka sharma ', 8685904894, 'anushka@gmail.com', 'kakori road', '123', 2, 'upload-images/avatar2.png', NULL, NULL),
 (16, 'POOJA KHATRI', 8019858421, 'khatri@gmail.com', 'Hazratganj', 'q', 2, 'upload-images/slide-07.jpg', NULL, NULL),
@@ -117,10 +117,10 @@ INSERT INTO `all_services` (`a_id`, `all_service`, `price`, `discount_percentage
 (47, 'Eyebrow Shaping', 50, 25, 38, 'Service length 20 minutes', 'upload-images/eyebrowshaping.jpg', 'upload-images/Eyebrow-Shaping12.jpg', 'upload-images/eyebrowshaping45.jpg', 7, 2),
 (48, 'Laser Treatment', 400, 10, 360, 'Service length 30 minutes', 'upload-images/fastface.jpg', 'upload-images/antiaging1.jpg', 'upload-images/biologht2.jpg', 7, 2),
 (49, 'Brow Tint', 50, 10, 45, 'Service length 20 minutes', 'upload-images/browtint.jpg', 'upload-images/browtint12.jpg', 'upload-images/browtint121.jpg', 7, 2),
-(52, 'Lash Tint', 200, 0, 200, 'Service length 27 minutes', 'upload-images/lashtint1.jpg', 'upload-images/tintt.jpg', '', 7, 2),
+(52, 'Lash Tint', 200, 0, 200, 'Service length 27 minutes', 'upload-images/lashtint1.jpg', 'upload-images/tintt.jpg', 'upload-images/browtint121.jpg', 7, 2),
 (53, 'Eyelash Tinting', 25, 0, 0, 'Service length 20 minutes', 'upload-images/eyelashextesion.jpg', '', '', 7, 2),
-(54, 'Lash Lift', 175, 0, 0, 'Service length 40 minutes', 'upload-images/eyee.jpg', '', '', 7, 2),
-(55, 'Lash Application', 45, 21, 36, 'Service length 45 minutes', 'upload-images/lash_lifted.jpg', '', '', 7, 2),
+(54, 'Lash Lift', 175, 65, 61, 'Service length 40 minutes', 'upload-images/eyee.jpg', 'upload-images/eye1.png', 'upload-images/eyepic45.jpg', 7, 2),
+(55, 'Lash Application', 45, 21, 36, 'Service length 45 minutes', 'upload-images/lash_lifted.jpg', 'upload-images/lashapplication11.jpg', 'upload-images/lash901.jpg', 7, 2),
 (56, 'Eyelash Extensions', 155, 10, 140, 'Introducing our exquisite collection of eyelashes made from natural mink hair. Unlike synthetic fibers, these lashes offer a luxurious and wispy feel.', 'upload-images/lashapplication12.jpg', 'upload-images/eyelashextion56.jpg', 'upload-images/eyelashextension12.jpg', 7, 2),
 (57, 'Classic Manicure', 19, 25, 14, 'Service length 40 minutes', 'upload-images/download.jpg', 'upload-images/classicmanicure1.jpg', 'upload-images/manicure123.jpg', 8, 3),
 (58, 'Spa Manicure', 30, 60, 12, 'Service length 1 hour', 'upload-images/spa.jpg', 'upload-images/spamanicure1.jpg', 'upload-images/spamanicure345.jpg', 8, 3),
@@ -184,7 +184,8 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`Sno`, `appointment_id`, `bill_amount`, `discount_percent`, `bill_after_discount`, `adding_gst`, `round_off_bill`) VALUES
-(1, 57, 690, 10, 621, 733, 733);
+(1, 57, 690, 10, 621, 733, 733),
+(2, 58, 0, 10, 302, 356, 356);
 
 -- --------------------------------------------------------
 
@@ -204,7 +205,7 @@ CREATE TABLE `business_hours` (
 --
 
 INSERT INTO `business_hours` (`id`, `day`, `open_time`, `close_time`) VALUES
-(1, 'Monday', '10:00:00', '21:00:00'),
+(1, 'Monday', '03:00:00', '21:00:00'),
 (2, 'Tuesday', '10:00:00', '21:00:00'),
 (3, 'Wednesday', '10:00:00', '21:00:00'),
 (4, 'Thursday', '10:00:00', '19:30:00'),
@@ -276,57 +277,24 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `appointment_id`, `totalPrice`, `discount`, `billing_number`, `created_at`) VALUES
-(1, 1, 360.90, 10.00, '988167', '2025-03-25 06:42:37'),
-(2, 1, 401.00, 10.00, '987517', '2025-03-25 06:49:01'),
-(3, 1, 516.00, 10.00, '982058', '2025-03-25 06:52:59'),
-(4, 14, 306.00, 10.00, '982530', '2025-03-27 07:04:38'),
-(5, 23, 341.00, 10.00, '982427', '2025-03-27 09:41:42'),
-(6, 24, 501.00, 7.00, '984539', '2025-03-27 12:16:18'),
-(7, 28, 196.00, 10.00, '982038', '2025-04-01 08:58:24'),
-(8, 31, 1209.00, 10.00, '985511', '2025-04-03 08:47:29'),
-(9, 30, 406.00, 10.00, '985676', '2025-04-03 09:41:51'),
-(10, 33, 240.00, 10.00, '985802', '2025-04-04 04:45:10'),
-(11, 34, 306.00, 10.00, '981378', '2025-04-04 06:45:50'),
-(12, 35, 195.00, 10.00, '985901', '2025-04-08 05:19:32'),
-(13, 35, 290.00, 30.00, '982927', '2025-04-09 11:08:26'),
-(14, 41, 500.00, 20.00, '987774', '2025-04-11 06:47:06'),
-(15, 42, 130.00, 10.00, '989017', '2025-04-12 10:12:55'),
-(16, 38, 100.00, 10.00, '986180', '2025-04-12 10:16:03'),
-(17, 43, 140.00, 10.00, '983628', '2025-04-12 10:16:52'),
-(18, 43, 600.00, 10.00, '983141', '2025-04-12 10:17:17'),
-(19, 43, 335.00, 10.00, '985222', '2025-04-12 10:26:48'),
-(20, 28, 1390.00, 32.00, '988578', '2025-04-12 10:27:30'),
-(21, 44, 166.00, 10.00, '0001', '2025-04-14 06:23:39'),
-(22, 39, 100.00, 10.00, '980001', '2025-04-14 06:24:53'),
-(23, 32, 50.00, 10.00, '980001', '2025-04-14 06:25:22'),
-(24, 44, 400.00, 10.00, '980001', '2025-04-14 06:29:03'),
-(25, 46, 260.00, 7.00, '980001', '2025-04-14 06:30:11'),
-(26, 47, 335.00, 10.00, '980002', '2025-04-14 06:42:02'),
-(27, 48, 1406.00, 10.00, '980003', '2025-04-14 06:44:09'),
-(28, 49, 1301.00, 7.00, '980004', '2025-04-14 07:05:43'),
-(29, 49, 66.00, 10.00, '980005', '2025-04-14 07:08:01'),
-(30, 49, 66.00, 10.00, '98000006', '2025-04-14 07:09:00'),
-(31, 50, 166.00, 10.00, '98000001', '2025-04-14 07:11:52'),
-(32, 50, 260.00, 10.00, '98000002', '2025-04-14 07:13:25'),
-(33, 50, 110.00, 10.00, '98000003', '2025-04-14 08:25:34'),
-(34, 50, 50.00, 10.00, '98000004', '2025-04-14 08:36:30'),
-(35, 50, 66.00, 10.00, '98000005', '2025-04-14 08:37:47'),
-(36, 50, 820.00, 5.00, '98000006', '2025-04-14 10:17:56'),
-(37, 50, 130.00, 10.00, '98000007', '2025-04-14 11:13:39'),
-(38, 50, 230.00, 10.00, '98000008', '2025-04-14 11:25:33'),
-(39, 50, 260.00, 10.00, '98000009', '2025-04-14 11:28:31'),
-(40, 50, 1064.00, 10.00, '98000010', '2025-04-14 11:33:39'),
-(41, 51, 144.00, 10.00, '98000001', '2025-04-14 11:44:16'),
-(42, 52, 1055.00, 10.00, '98000002', '2025-04-14 11:46:21'),
-(43, 52, 150.00, 7.00, '98000003', '2025-04-21 09:19:11'),
-(44, 0, 194.00, 10.00, '', '2025-05-08 05:30:05'),
-(45, 53, 144.00, 10.00, '98000004', '2025-05-08 05:39:15'),
-(46, 54, 784.00, 10.00, '98000005', '2025-05-08 05:40:56'),
-(47, 55, 230.00, 10.00, '98000006', '2025-05-15 11:55:27'),
-(48, 55, 260.00, 10.00, '98000007', '2025-05-16 03:51:51'),
-(49, 55, 1135.00, 10.00, '98000008', '2025-05-27 08:33:30'),
-(50, 56, 280.00, 25.00, '98000009', '2025-06-06 10:00:14'),
-(51, 57, 690.00, 10.00, '98000010', '2025-06-06 10:08:44');
+(1, 57, 300.00, 32.00, '98000012', '2025-06-11 11:27:32'),
+(2, 58, 0.00, 10.00, '97000003', '2025-06-11 11:40:01'),
+(3, 58, 400.00, 10.00, '98000013', '2025-06-11 11:48:08'),
+(4, 58, 0.00, 10.00, '97000004', '2025-06-17 04:38:41'),
+(5, 59, 735.00, 32.00, '98000014', '2025-06-17 09:10:55'),
+(6, 59, 0.00, 10.00, '97000005', '2025-06-17 09:11:27'),
+(7, 58, 0.00, 32.00, '97000006', '2025-06-17 09:57:12'),
+(8, 59, 0.00, 40.00, '97000007', '2025-06-17 10:05:07'),
+(9, 59, 0.00, 10.00, '97000008', '2025-06-17 10:58:29'),
+(10, 59, 0.00, 10.00, '97000008', '2025-06-17 10:58:29'),
+(11, 59, 0.00, 32.00, '97000008', '2025-06-17 10:58:29'),
+(12, 59, 0.00, 40.00, '97000008', '2025-06-17 10:58:29'),
+(13, 59, 0.00, 10.00, '97000009', '2025-06-17 11:39:41'),
+(14, 59, 0.00, 10.00, '97000001', '2025-06-17 11:46:18'),
+(15, 59, 0.00, 32.00, '97000002', '2025-06-17 12:08:13'),
+(16, 58, 0.00, 40.00, '97000003', '2025-06-18 04:34:13'),
+(17, 59, 470.00, 35.00, '98000015', '2025-06-18 04:46:26'),
+(18, 58, 0.00, 10.00, '97000004', '2025-06-18 05:00:53');
 
 -- --------------------------------------------------------
 
@@ -377,7 +345,7 @@ INSERT INTO `package1` (`id`, `package_name`, `package_number`, `description`, `
 (9, 'platinum package ', '328101', 'A haircut, in the most common sense, is the act of cutting and styling hair, usually performed by a barber or stylist', 10, 'upload-images/biolight1.jpg'),
 (10, 'Gold package', '305836', 'Permanent color treatment is traditional oxidization color treatment – oxidization refers to the chemical process that makes it possible to alter the color at the core of the hair', 10, 'upload-images/biolight3.jpg'),
 (11, 'silver package ', '648184', 'A \"facial\" is a skin treatment designed to cleanse, exfoliate, and hydrate the skin, often targeting specific concerns like acne, wrinkles, or uneven skin tone', 32, 'upload-images/teenfacial3.jpg'),
-(12, 'premium package', '326045', 'Service length 1,5 hours', 10, 'upload-images/blowdry1.jpg');
+(13, 'hair package', '774800', 'different styling of hair ', 40, 'upload-images/blowdry1.jpg');
 
 -- --------------------------------------------------------
 
@@ -390,18 +358,21 @@ CREATE TABLE `package_selected` (
   `appointment_id` int(200) DEFAULT NULL,
   `package_name` varchar(200) DEFAULT NULL,
   `package1_id` int(200) DEFAULT NULL,
-  `package_number` int(200) DEFAULT NULL
+  `package_number` int(200) DEFAULT NULL,
+  `billing_number` int(200) DEFAULT NULL,
+  `created_at` timestamp(6) NULL DEFAULT current_timestamp(6),
+  `time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `package_selected`
 --
 
-INSERT INTO `package_selected` (`id`, `appointment_id`, `package_name`, `package1_id`, `package_number`) VALUES
-(1, 57, 'Gold Package', 0, 0),
-(2, NULL, NULL, 9, NULL),
-(5, NULL, NULL, 9, NULL),
-(6, NULL, NULL, 10, NULL);
+INSERT INTO `package_selected` (`id`, `appointment_id`, `package_name`, `package1_id`, `package_number`, `billing_number`, `created_at`, `time`) VALUES
+(1, 59, 'Gold package', 10, NULL, 97000001, '2025-06-17 11:46:18.965669', '00:00:00'),
+(2, 59, 'silver package ', 11, NULL, 97000002, '2025-06-17 12:08:13.843512', '00:00:00'),
+(3, 58, 'hair package', 13, NULL, 97000003, '2025-06-18 04:34:13.611622', '00:00:00'),
+(4, 58, 'Gold package', 10, NULL, 97000004, '2025-06-18 05:00:53.990436', '00:00:00');
 
 -- --------------------------------------------------------
 
@@ -431,7 +402,14 @@ INSERT INTO `package_services` (`id`, `package_id`, `service_name`, `price`, `pr
 (7, 12, 'Women s Haircut', 200, 180),
 (8, 12, 'Mens haircut', 100, 90),
 (9, 12, 'Color Refresh', 130, 117),
-(10, 12, 'Single Process', 130, 117);
+(10, 12, 'Single Process', 130, 117),
+(11, 13, 'Women s Haircut', 200, 120),
+(12, 13, 'Mens haircut', 100, 60),
+(13, 13, 'Keratin Complex', 300, 180),
+(14, 14, 'Women s Haircut', 200, 60),
+(15, 14, 'Child Hair cut', 200, 60),
+(16, 14, 'blow dry', 100, 30),
+(17, 14, 'Mens haircut', 100, 30);
 
 -- --------------------------------------------------------
 
@@ -638,7 +616,8 @@ CREATE TABLE `tb_appointment` (
 --
 
 INSERT INTO `tb_appointment` (`id`, `name`, `email`, `mobile`, `address`, `date`, `prefered_time`, `appointment_for`, `staff`) VALUES
-(57, 'POOJA KHATRI', 'khatri@gmail.com', 8907843126, 'Hazratganj', '2025-07-09', '18:38', 'offline booking', '');
+(58, 'POOJA KHATRI', 'khatri@gmail.com', 8907843126, 'Hazratganj', '2025-06-23', '21:08', 'offline booking', ''),
+(59, 'Pari Kapoor', 'Priyanka@gmail.com', 8719858421, 'Alambhag', '2025-06-18', '17:40', 'offline booking', '');
 
 -- --------------------------------------------------------
 
@@ -715,7 +694,20 @@ INSERT INTO `tb_selected_services` (`id`, `appointment_id`, `c_id`, `s_id`, `a_i
 (27, 57, 2, 5, 34, 'Teen Facial', 200.00, '98000010', '2025-06-06 10:08:44', '15:38:44'),
 (28, 57, 2, 5, 25, 'Deep Cleaning Facial', 130.00, '98000010', '2025-06-06 10:08:44', '15:38:44'),
 (29, 57, 2, 5, 32, 'Anti-Ageing Facial', 175.00, '98000010', '2025-06-06 10:08:44', '15:38:44'),
-(30, 57, 2, 5, 26, 'Organic Facial', 185.00, '98000010', '2025-06-06 10:08:44', '15:38:44');
+(30, 57, 2, 5, 26, 'Organic Facial', 185.00, '98000010', '2025-06-06 10:08:44', '15:38:44'),
+(31, 57, 1, 2, 13, 'Hair & Scalp Treatments', 240.00, '98000011', '2025-06-11 06:19:31', '11:49:31'),
+(32, 57, 1, 1, 3, 'blow dry', 100.00, '98000012', '2025-06-11 11:27:32', '16:57:32'),
+(33, 57, 1, 1, 5, 'Child Hair cut ', 200.00, '98000012', '2025-06-11 11:27:32', '16:57:32'),
+(34, 58, 1, 1, 98, 'Women s Haircut', 200.00, '98000013', '2025-06-11 11:48:08', '17:18:08'),
+(35, 58, 1, 1, 5, 'Child Hair cut ', 200.00, '98000013', '2025-06-11 11:48:08', '17:18:08'),
+(36, 59, 1, 1, 98, 'Women s Haircut', 200.00, '98000014', '2025-06-17 09:10:54', '14:40:54'),
+(37, 59, 1, 1, 5, 'Child Hair cut ', 200.00, '98000014', '2025-06-17 09:10:54', '14:40:54'),
+(38, 59, 1, 2, 13, 'Hair & Scalp Treatments', 240.00, '98000014', '2025-06-17 09:10:54', '14:40:54'),
+(39, 59, 1, 2, 12, 'Safe Color Treatment', 95.00, '98000014', '2025-06-17 09:10:55', '14:40:55'),
+(40, 59, 2, 5, 34, 'Teen Facial', 200.00, '98000015', '2025-06-18 04:46:26', '10:16:26'),
+(41, 59, 2, 5, 33, 'Gentleman’s Facial', 60.00, '98000015', '2025-06-18 04:46:26', '10:16:26'),
+(42, 59, 2, 5, 24, 'Herbal Facial', 80.00, '98000015', '2025-06-18 04:46:26', '10:16:26'),
+(43, 59, 2, 5, 25, 'Deep Cleaning Facial', 130.00, '98000015', '2025-06-18 04:46:26', '10:16:26');
 
 -- --------------------------------------------------------
 
@@ -792,7 +784,8 @@ INSERT INTO `users` (`id`, `name`, `mobile`, `email`, `address`, `password`, `fi
 (37, 'POOJA KHATRI', 8907843124, 'khatri@gmail.com', 'Hazratganj', '12345', ''),
 (38, 'Pari Kapoor', 9347459403, 'khatri@gmail.com', 'Hazratganj', '12345', ''),
 (39, 'bhawna khatri', 8707858421, 'bhawna@gmail.com', 'gaziabad', '123', ''),
-(40, 'shikha srivastava ', 8904843126, 'shikha@gmail.com', 'Hazratganj', '123', '');
+(40, 'shikha srivastava ', 8904843126, 'shikha@gmail.com', 'Hazratganj', '123', ''),
+(41, 'anuj ', 8907843177, 'anuj@gmail.com', 'alambhag', '123456', '');
 
 --
 -- Indexes for dumped tables
@@ -969,7 +962,7 @@ ALTER TABLE `banner_management`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `Sno` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Sno` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `business_hours`
@@ -993,7 +986,7 @@ ALTER TABLE `enquiry_message`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `package`
@@ -1005,19 +998,19 @@ ALTER TABLE `package`
 -- AUTO_INCREMENT for table `package1`
 --
 ALTER TABLE `package1`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `package_selected`
 --
 ALTER TABLE `package_selected`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `package_services`
 --
 ALTER TABLE `package_services`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `portfolio`
@@ -1065,13 +1058,13 @@ ALTER TABLE `tb_about_us`
 -- AUTO_INCREMENT for table `tb_appointment`
 --
 ALTER TABLE `tb_appointment`
-  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `tb_selected_services`
 --
 ALTER TABLE `tb_selected_services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tb_services`
@@ -1083,7 +1076,7 @@ ALTER TABLE `tb_services`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
