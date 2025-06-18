@@ -54,7 +54,7 @@ if (!empty($_FILES["image3"]["name"])) {
     $service_price = $_POST["service_price"];
     $description = $_POST["description"];
     $discount_percentage = $_POST["discount_percentage"];
-    $discount_percentage = $_POST["discount_percentage"];
+    // $discount_percentage = $_POST["discount_percentage"];
     $price_after_discount = $_POST["price_after_discount"];
       // move_uploaded_file($photo2, $uploadPath);
     // SQL query to insert data

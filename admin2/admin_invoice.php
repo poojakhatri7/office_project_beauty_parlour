@@ -156,95 +156,75 @@ include 'db_connection.php';
 // INNER JOIN tb_selected_services c
 // ON p.id = c.appointment_id";
 $count = 0;
-$sql ="SELECT 
-    ta.id AS appointment_id, 
-    ta.name AS name, 
-    ta.date,
-    ta.mobile, 
-    ts.billing_number,
-     ts.time
-FROM tb_appointment ta
-JOIN tb_selected_services ts ON ta.id = ts.appointment_id
-GROUP BY ta.id, ts.billing_number
-ORDER BY ta.id DESC ;
-";
-// Step 3: Execute the query
-$result = mysqli_query($conn, $sql);
-
-// Step 4: Check if the query returned any results
-if (mysqli_num_rows($result) > 0) {
-    // Step 5: Use a while loop to fetch each row of data
-   
-    while ($row = mysqli_fetch_assoc($result)) {
-      $count = $count + 1 ;
-      echo"<tr>
-      <th scope='row'>".$count."</th> 
-     <td>".$row['billing_number']."</td>
-      <td>".$row['name']."</td>
-       <td>".$row['mobile']."</td>
-       <td> Service </td>
-       <td>".$row['date']."</td>
-       <td> ". date("h:i", strtotime($row['time'])) . "</td>
-        <td> 
-  <a href='/beauty_parlour_management_system/admin2/invoice_details2.php?appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>
-     <button class='btn' style='background-color: rgb(51, 139, 139); color: white; border: none; cursor: pointer;  padding: 7px 12px; border: none;  cursor: pointer;'>
-      <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
-      View
-     </button>
-  </a> 
-</td>
-    </tr>";
-    }
-} else {
-    echo "No invoice found.";
-}
-
-
-
-// package section 
-$sql ="SELECT 
-    ta.id AS appointment_id, 
-    ta.name AS name, 
-    ta.date,
-    ta.mobile, 
-    sp.package1_id,
-     sp.billing_number,
-      sp.time
+$sql = "
+    (SELECT 
+        ta.id AS appointment_id, 
+        ta.name AS name, 
+        ta.date,
+        ta.mobile, 
+        ts.billing_number,
+        ts.time AS time,
+        ts.created_at,
+        'Service' AS invoice_type,
+        NULL AS package1_id
     FROM tb_appointment ta
-JOIN package_selected sp ON ta.id = sp.appointment_id
-GROUP BY sp.billing_number
-ORDER BY ta.id DESC 
+    JOIN tb_selected_services ts ON ta.id = ts.appointment_id
+    GROUP BY ts.billing_number)
+
+    UNION ALL
+
+    (SELECT 
+        ta.id AS appointment_id, 
+        ta.name AS name, 
+        ta.date,
+        ta.mobile, 
+        sp.billing_number,
+        NULL AS time,
+        sp.created_at,
+        'Package' AS invoice_type,
+        sp.package1_id
+    FROM tb_appointment ta
+    JOIN package_selected sp ON ta.id = sp.appointment_id
+    GROUP BY sp.billing_number)
+
+    ORDER BY created_at DESC
 ";
-// Step 3: Execute the query
+
+// Execute the query
 $result = mysqli_query($conn, $sql);
 
-// Step 4: Check if the query returned any results
+// Display results
 if (mysqli_num_rows($result) > 0) {
-    // Step 5: Use a while loop to fetch each row of data
-   
     while ($row = mysqli_fetch_assoc($result)) {
-      $count++;
-      echo"<tr>
-      <th scope='row'>$count</th> 
-     <td>".$row['billing_number']."</td>
-      <td>".$row['name']."</td>
-       <td>".$row['mobile']."</td>
-            <td> Package </td>
-       <td>".$row['date']."</td>
-        <td> ". date("h:i", strtotime($row['time'])) . "</td>
-        <td> 
-  <a href='/beauty_parlour_management_system/admin2/invoice_package.php?package1_id={$row["package1_id"]}&appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>
-     <button class='btn' style='background-color: rgb(51, 139, 139); color: white; border: none; cursor: pointer;  padding: 7px 12px; border: none;  cursor: pointer;'>
-      <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
-      View
-     </button>
-  </a> 
-</td>
-    </tr>";
+        $count++;
+        echo "<tr>
+            <th scope='row'>$count</th> 
+            <td>{$row['billing_number']}</td>
+            <td>{$row['name']}</td>
+            <td>{$row['mobile']}</td>
+            <td>{$row['invoice_type']}</td>
+            <td>{$row['date']}</td>
+            <td>" . ($row['time'] ? date("h:i", strtotime($row['time'])) : date("h:i", strtotime($row['created_at']))) . "</td>
+            <td>";
+        
+        if ($row['invoice_type'] === 'Service') {
+            echo "<a href='/beauty_parlour_management_system/admin2/invoice_details2.php?appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>";
+        } else {
+            echo "<a href='/beauty_parlour_management_system/admin2/invoice_package.php?package1_id={$row["package1_id"]}&appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>";
+        }
+
+        echo "<button class='btn' style='background-color: rgb(51, 139, 139); color: white; border: none; cursor: pointer; padding: 7px 12px;'>
+                <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
+                View
+              </button>
+              </a>
+            </td>
+        </tr>";
     }
 } else {
     echo "No invoice found.";
 }
+
 
 
 

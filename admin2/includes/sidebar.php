@@ -316,7 +316,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio update_portfolio top_slider staff update_staff">
+            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio update_portfolio top_slider staff update_staff business_hour">
               <!-- <i class="nav-icon fas fa-chart-pie"></i> -->
               <i class="fa fa-user-cog"></i>
               <p>
@@ -366,6 +366,14 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                   <!-- <i class="fa fa-user-plus"></i> -->
                   <i class="fa fa-image"></i> 
                   <p>Staff Gallery</p>
+                </a>
+              </li>
+                    <li class="nav-item">
+                <a href="/beauty_parlour_management_system/admin2/business_hour.php" class="nav-link business_hour">
+                  <!-- <i class="fa fa-info-circle"></i> -->
+                  <!-- <i class="fa fa-user-plus"></i> -->
+                  <i class="fa fa-clock"></i> 
+                  <p>Update business hours</p>
                 </a>
               </li>
             </ul>
