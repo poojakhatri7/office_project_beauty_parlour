@@ -227,8 +227,8 @@ if (mysqli_num_rows($result_subcategories) > 0) {
                 while ($subcategory = mysqli_fetch_assoc($result_subcategories)) {
                     $s_id = $subcategory['s_id'];
             ?>
-                    <div class="pricing-5-category mb-4">
-                        <h3 class="text-center"><?php echo $subcategory['s_name']; ?></h3>
+                    <div class="pricing-5-category mb-4 mt-4">
+                        <h3 class="text-center "><?php echo $subcategory['s_name']; ?></h3>
                       
                     </div>
 
@@ -243,8 +243,8 @@ if (mysqli_num_rows($result_subcategories) > 0) {
                     ?>
                         <ul class="pricing-list">
                             <?php while ($service = mysqli_fetch_assoc($result_services)) { ?>
-                                <li class="pricing-5-item d-flex justify-content-between align-items-center gap-3">
-                                    <div class="price-name flex-grow-1">
+                                <li class="pricing-5-item d-flex  justify-content-between align-items-center flex-wrap gap-2">
+                                    <div class="price-name flex-grow-1 ">
 																		
                                        
 										 <p class="mb-0">
@@ -252,11 +252,11 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 <!-- <i class="fa fa-eye eye-icon" ></i> -->
   <span class="plus-sign" data-bs-toggle = "modal" data-bs-target = "#exampleModal" data-service_number="<?php echo $service['a_id']; ?>" ><i class="fa fa-eye" ></i></span>
   <span class="service-text"><?php echo $service['all_service']; ?></span>
-</p>
+</p> 
                                     </div>
 									<div class="price-dots "></div> <!-- Dots appear here -->
                                     <div class="price-number">
-                                        <p class="fw-bold mb-0"><?php echo $service['price']; ?></p>
+                                        <p class="fw-bold mb-0"> Rs  <?php echo $service['price']; ?></p>
                                     </div>
                                 </li>
                             <?php } ?>
@@ -397,7 +397,7 @@ if (mysqli_num_rows($result) > 0) {
 							  		<div class="hover-overlay"> 
 
 							  			<!-- Image -->
-										<img class="img-fluid" src="<?php echo $image[0]; ?>" alt="Image" style="width: 250px; height: 350px; object-fit: cover;"alt="gallery-image">			
+										<img class="img-fluid " src="<?php echo $image[0]; ?>"  style="width: 100%; height: 350px; object-fit: cover;"alt="gallery-image">			
 										<div class="item-overlay"></div>				
 										
 										<!-- Image Zoom -->
@@ -493,7 +493,7 @@ if (mysqli_num_rows($result) > 0) {
 							  		<div class="hover-overlay"> 
 
 							  			<!-- Image -->
-										<img class="img-fluid" src="<?php echo $image[4]; ?>" alt="Image" style="width: 200px; height: 250px; object-fit: cover;" alt="gallery-image" alt="gallery-image" alt="gallery-image" alt="gallery-image">			
+										<img class="img-fluid" src="<?php echo $image[4]; ?>" alt="Image" style="width: 100%; height: 300px; object-fit: cover;" alt="gallery-image" alt="gallery-image" alt="gallery-image" alt="gallery-image">			
 										<div class="item-overlay"></div>				
 										
 										<!-- Image Zoom -->
@@ -514,7 +514,7 @@ if (mysqli_num_rows($result) > 0) {
 							  		<div class="hover-overlay"> 
 
 							  			<!-- Image -->
-										<img class="img-fluid" src="<?php echo $image[5]; ?>" alt="Image" style="width: 200px; height: 200px; object-fit: cover;" alt="gallery-image" alt="gallery-image" alt="gallery-image" alt="gallery-image" alt="gallery-image">			
+										<img class="img-fluid" src="<?php echo $image[5]; ?>" alt="Image" style="width: 100%; height: 200px; object-fit: cover;" alt="gallery-image" alt="gallery-image" alt="gallery-image" alt="gallery-image" alt="gallery-image">			
 										<div class="item-overlay"></div>				
 										
 										<!-- Image Zoom -->

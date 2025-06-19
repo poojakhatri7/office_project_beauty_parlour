@@ -176,7 +176,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
           <div class="card-body">
             <h5 class="card-title" style="font-size: 1.5rem;"><?php echo $s['package_name']; ?></h5>
 
- <img src="<?php echo $imagePath; ?>" class="card-img-top" alt="..." style="width: 240px; height: 250px; object-fit: cover; ">
+ <img src="<?php echo $imagePath; ?>" class="card-img-top img-fluid " alt="..." style="width: 240px; height: 250px; object-fit: cover; ">
 
 
 <p class="card-text " style="font-size: 0.95rem; margin: 0;"> <strong>Price : </strong> <s> Rs <?php echo $s['total_price']; ?> </s> </p>
