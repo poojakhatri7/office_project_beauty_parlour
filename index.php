@@ -1,4 +1,7 @@
-<?php include './admin2/db_connection.php'; ?>
+<?php include './admin2/db_connection.php'; 
+
+include 'asset.php';
+?>
 
 <!doctype html>
 <html lang="en">
@@ -12,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 				
   		<!-- SITE TITLE -->
-		<title>Demo Beauty Studio</title>
+		<title> Home | <?php  echo $brand_name ; ?></title>
 							
 		<!-- FAVICON AND TOUCH ICONS -->
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">

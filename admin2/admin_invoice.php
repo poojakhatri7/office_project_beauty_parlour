@@ -61,61 +61,8 @@ include 'db_connection.php';
       </div><!-- /.container-fluid -->
     </div>
     <div class="container-fluid">
-    <!-- <h2>YOUR INVOICE HISTORY </h2>  -->
-  <!-- <br> -->
-   <!-- <table class="table">
-  <thead class="thead-dark"> -->
-    <!-- admin2/admin_appointment.php -->
-    <!-- <thead style="background-color:rgb(23, 162, 184); color: white;">
-    <tr>
-      <th scope="col">S.NO</th>
-      <th scope="col">Appointment Id</th>
-      <th scope="col">Customer name</th>
-      <th scope="col">Date</th>
-      <th scope="col">Action</th>
-      </tr>
-    </tr>
-  </thead>
-  <tbody> -->
-  <?php
-//   = "SELECT distinct FROM tb_selected_services";
-//   $sql= "SELECT DISTINCT * FROM tb_selected_services";
- // $sql=" SELECT DISTINCT appointment_id FROM tb_selected_services";
-//  $sql ="p.name, p.date from tb_appointment p inner join tb_selected_services c on p.id = c.appointment_id";
-// $sql="SELECT distinct p.name, p.date 
-// FROM tb_appointment p 
-// INNER JOIN tb_selected_services c 
-// ON p.id = c.appointment_id";
-// $sql="SELECT DISTINCT p.id AS appointment_id, p.name, p.date
-// FROM tb_appointment p
-// INNER JOIN tb_selected_services c
-// ON p.id = c.appointment_id";
-// // Step 3: Execute the query
-// $result = mysqli_query($conn, $sql);
-// $count = 0;
-// // Step 4: Check if the query returned any results
-// if (mysqli_num_rows($result) > 0) {
-//     // Step 5: Use a while loop to fetch each row of data
    
-//     while ($row = mysqli_fetch_assoc($result)) {
-//       $count = $count+1 ;
-//       echo"<tr>
-//       <th scope='row'>".$count."</th> 
-//      <td>".$row['appointment_id']."</td>
-//       <td>".$row['name']."</td>
-//        <td>".$row['date']."</td>
-//         <td> 
-//   <a href='/beauty_parlour_management_system/admin2/invoice_details2.php?appointment_id={$row["appointment_id"]}'>
-//      <button style='background-color:rgb(23, 162, 184); color: white; border: none; padding: 5px 10px; cursor: pointer;'>VIEW</button>
-     
-//   </a> 
-// </td>
-//     </tr>";
-//     }
-// } else {
-//     echo "No services found.";
-// }
-// ?>
+ 
   <!-- </tbody>
 </table> -->
 <!-- <a href="/beauty_parlour_management_system/sign_up.php">Create a new account</a> -->

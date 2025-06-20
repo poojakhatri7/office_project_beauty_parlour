@@ -1,15 +1,7 @@
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
 
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
 include './admin2/db_connection.php';
+include 'asset.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,8 +15,8 @@ include './admin2/db_connection.php';
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 				
   		<!-- SITE TITLE -->
-		<title>Demo Beauty Studio</title>
-							
+		
+		<title> Team | <?php echo $brand_name ;   ?></title>	
 		<!-- FAVICON AND TOUCH ICONS -->
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="images/favicon.ico" type="image/x-icon">

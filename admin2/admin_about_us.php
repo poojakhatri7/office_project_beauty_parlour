@@ -115,18 +115,7 @@ if (isset($_POST['submit'])) {
     <!-- /.content-header -->
     <section class="content">
     <div class="container-fluid">
-    <!-- <form class ="" action="" method= "post" >
-    <h3>UPDATE ABOUT US </h3>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">PAGE TITLE </label>
-    <input type="text" name="page_title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">PAGE DESCRIPTION</label>
-    <textarea name="page_description" class="form-control" id="exampleInputPassword1"> </textarea>
-  </div>
-  <button type="submit" name="submit"class="btn btn-primary">UPDATE</button>
-</form> -->
+
 <div class="card card-info">
     <div class="card-header" style="background-color: rgb(51, 139, 139);">
         <h3 class="card-title">Update Image </h3>
@@ -192,18 +181,7 @@ if (mysqli_num_rows($result) > 0) {
                     <input type="text" name="heading" class="form-control" id="inputEmail3" placeholder="Enter Heading of the Description" value = "<?php echo $heading ?>" >
                 </div>
             </div>
-            <!-- <div class="form-group row">
-                <label for="image1" class="col-sm-2 col-form-label"> IMAGE-1</label>
-                <div class="col-sm-10">
-                    <input type="file" name="image1" id="image1" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="image2" class="col-sm-2 col-form-label"> IMAGE-2</label>
-                <div class="col-sm-10">
-                    <input type="file" name="image2" id="image2" class="form-control">
-                </div>
-            </div> -->
+        
 
             <div class="form-group row">
                 <label for="editor1" class="col-sm-2 col-form-label">PAGE DESCRIPTION</label>

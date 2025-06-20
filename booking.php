@@ -1,6 +1,6 @@
-
 <?php
 include './admin2/db_connection.php';
+include 'asset.php';
 if(isset($_POST["submit"])) {
 	$name = $_POST['name'];
     $email = $_POST['email'];
@@ -64,7 +64,7 @@ echo "<script>window.location.href='".$_SERVER['PHP_SELF']."';</script>";
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 				
   		<!-- SITE TITLE -->
-		<title>Demo Beauty Studio</title>
+		<title> Booking | <?php echo $brand_name ;   ?></title>
 							
 		<!-- FAVICON AND TOUCH ICONS -->
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">

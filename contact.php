@@ -2,6 +2,7 @@
 
 
 include './admin2/db_connection.php';
+include 'asset.php';
 $sql = "SELECT * FROM tb_contact_us";
 // Step 2: Execute the query
 $result = mysqli_query($conn, $sql);
@@ -60,7 +61,7 @@ if (isset($_POST['submit'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- SITE TITLE -->
-	<title>Demo Beauty Studio</title>
+<title> Contact | <?php echo $brand_name ;   ?></title>
 
 	<!-- FAVICON AND TOUCH ICONS -->
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">

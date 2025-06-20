@@ -7,46 +7,7 @@ include('includes/sidebar.php');
 <?php
 
 include 'db_connection.php';
-// Check if form is submitted
-// if (isset($_POST["submit"])) {
-    // Get the form data
-//     $service_name = $_POST["service_name"];
-//     $service_price = $_POST["service_price"]; 
-//   $service_name = mysqli_real_escape_string($conn, $service_name);
-// $service_price = mysqli_real_escape_string($conn, $service_price);
-    // SQL query to insert data
-    //  $query = "INSERT INTO tb_services (id,service_name, service_price, creation_date) VALUES ('','$service_name', '$service_price',CURRENT_TIMESTAMP())";
-    // $query = "INSERT INTO `tb_services` (id, service_name, service_price) VALUES (NULL, '$service_name', '$service_price')";
 
-    // Execute the query and check for success
-//     if (mysqli_query($conn, $query)) {
-//         echo "<script> alert('Services added successfully'); </script>";
-//     } else {
-//         echo "<script> alert('Something went wrong'); </script>";
-//     }
-// }
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//   $sub_service_id = isset($_POST['sub_service']) ? mysqli_real_escape_string($conn, $_POST['sub_service']) : '';
-//   $service_name = mysqli_real_escape_string($conn, $_POST['service_name']);
-//   $price = mysqli_real_escape_string($conn, $_POST['price']);
-//   $description = mysqli_real_escape_string($conn, $_POST['description']);
-//   // Check if sub_service_id is empty
-//   if (empty($sub_service_id)) {
-//       echo "<script>alert('Please select a sub-service before submitting.'); window.location.href='add_service.php';</script>";
-//       exit();
-//   }
-
-//   // Insert into all_services table
-//   $sql = "INSERT INTO all_services (service_number, all_service, price) VALUES ('$sub_service_id', '$service_name', '$price')";
-
-//   if (mysqli_query($conn, $sql)) {
-//       echo "<script>alert('Service added successfully!'); window.location.href='add_service.php';</script>";
-//   } else {
-//       echo "<script>alert('Error: " . mysqli_error($conn) . "'); </script>";
-//   }
-
-//   mysqli_close($conn);
-// }
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -177,28 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </form>
             </div>
 </div>
-<!-- <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Our Services</h3>
-        </div>
-        <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead style="background-color: rgb(51, 139, 139); color: white;">
-                    <tr>
-                        <th>S No.</th>
-                        <th>Service Name</th>
-                        <th>Service Price</th>
-                        <th>Service Number</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td colspan="5" class="text-center">Select a Service and Sub-service  to see details</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div> -->
+
 <script>
 $(document).ready(function () {
 

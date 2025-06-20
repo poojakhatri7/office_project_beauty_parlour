@@ -38,13 +38,7 @@ include 'db_connection.php';
             <!-- <h5 class="m-0"> APPOINTMENT DETAILS</h5> -->
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <!-- <ol class="breadcrumb float-sm-right">
-            <!-- <li class="breadcrumb-item"><a href="/beauty_parlour_management_system/admin2/admin_add_customer.php">ADD NEW CUSTOMER</a></li> -->
-              <!-- <li class="breadcrumb-item"><a href="/beauty_parlour_management_system/">Home</a></li> -->
-              <!-- <a href="/beauty_parlour_management_system/admin2/admin_add_customer.php" style="text-decoration: none;">
-         <button class="btn btn-success"style= "border: none; cursor: pointer;"> 
-           <li class="breadcrumb-item " style= "color: white;" >ADD NEW CUSTOMER</li> 
-</a>  -->
+           
            <ol>
             <ol class="breadcrumb float-sm-right">
   <button class="btn" style="background-color: rgb(51, 139, 139);;border: none; cursor: pointer;  padding: 7px 7px;">
@@ -161,8 +155,8 @@ if (mysqli_num_rows($result) > 0) {
 <td>
     <!-- <div style="display: inline-block; margin-right: 20px;">
         <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id=<?php echo $row["id"]; ?>'>
-            <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> <!-- Edit icon -->
-        <!-- </a> 
+            <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> 
+         </a> 
     </div> --> 
     <div style="display: inline-block;">
         <a href='/beauty_parlour_management_system/admin2/delete_enquiry_message.php?id=<?php echo $row["id"]; ?>'>

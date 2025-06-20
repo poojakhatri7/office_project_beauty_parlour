@@ -1,4 +1,5 @@
 <?php
+include './admin2/db_connection.php';
 session_start();
 
 // Redirect if already logged in
@@ -17,7 +18,7 @@ if (isset($_SESSION["name"])) {
     exit();
 }
 
-include './admin2/db_connection.php';
+
 
 if (isset($_POST["submit"])) {
     $email = $_POST["email"];

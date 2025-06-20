@@ -43,59 +43,7 @@ if ($row) {
 $billing_number = $prefix . str_pad($nextNumber, 6, "0", STR_PAD_LEFT);
 $updateQuery = "UPDATE admin_login_details SET last_invoice_no = '$billing_number' WHERE role = '1'";
 mysqli_query($conn, $updateQuery);
-// echo $billing_number;
-// $N = count($selected_services);
-// echo "<div style='text-align: center; font-weight: bold;'>$N</div>";
-// echo "<div style='text-align: center; font-weight: bold;'>$discount</div>";
-// echo "<div style='text-align: center; font-weight: bold;'>$billing_number</div>";
-// echo "<div style='text-align: center; font-weight: bold;'>$totalAfterDiscount</div>";
-// echo "<div style='text-align: center; font-weight: bold;'>$selected_services</div>";
-// echo "<div style='text-align: center; font-weight: bold;'>" . implode(", ", $selected_services) . "</div>";
 
-//php code
-// $appointment_id = $_GET['id'];  // Fetch user_id from the GET method
-// $query1 = "UPDATE `tb_appointment` SET name='$name', email='$email',mobile='$mobile',address='$address' WHERE id=$appointment_id";
-// $result = mysqli_query($conn, $query1);  
-//  if (isset($_POST['services']) && !empty($_POST['services'])) {
-//     $selected_services = $_POST['services']; // Array of selected services
-//     $N = count($selected_services); // Count number of services
-   
-//     // echo "You selected $N service(s): ";
-//     for ($i = 0; $i < $N; $i++) {
-//         $service_name = mysqli_real_escape_string($conn, $selected_services[$i]);
-        
-//         // Fetch service price
-//         $sql = "SELECT price FROM all_services WHERE all_service = '$service_name'";
-//         $result = mysqli_query($conn, $sql);
-        
-//         if ($result && mysqli_num_rows($result) > 0) {
-//             $row = mysqli_fetch_assoc($result);
-//             $service_price = $row['price'];
-           
-//             $insert_sql = "
-//             INSERT INTO tb_selected_services (appointment_id, service_name, service_price,billing_number) 
-//             VALUES ('$appointment_id', '$service_name', '$service_price','$billing_number')";
-//             if(mysqli_query($conn, $insert_sql));
-//             {
-//                 echo "<script>
-//                 alert('Invoice generated');
-               
-//                     window.location.href='admin_invoice.php';
-//             </script>";
-//             }
-           
-//             // echo "<span>$service_name</span> ";
-//         } else {
-//             echo "Service '$service_name' not found in the database.<br>";
-//         }
-//     }
-// } else {
-//     echo "No services selected.";
-// }
-// $sql_insert = "INSERT INTO orders (appointment_id, totalPrice, discount, billing_number, created_at) 
-//                VALUES ({$appointment_id}, {$totalPrice}, {$discount}, {$billing_number}, CURTIME())";
-// $result_insert = mysqli_query($conn, $sql_insert);
-// include "db_connection.php"; // Include database connection
 
 $appointment_id = $_GET['id'];  // Fetch appointment ID from the GET method
 

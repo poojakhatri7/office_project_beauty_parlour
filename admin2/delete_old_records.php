@@ -38,7 +38,7 @@ include 'db_connection.php';
             <!-- <h5 class="m-0"> APPOINTMENT DETAILS</h5> -->
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <!-- <ol class="breadcrumb float-sm-right">
+            <!-- <ol class="breadcrumb float-sm-right"> -->
             <!-- <li class="breadcrumb-item"><a href="/beauty_parlour_management_system/admin2/admin_add_customer.php">ADD NEW CUSTOMER</a></li> -->
               <!-- <li class="breadcrumb-item"><a href="/beauty_parlour_management_system/">Home</a></li> -->
               <!-- <a href="/beauty_parlour_management_system/admin2/admin_add_customer.php" style="text-decoration: none;">
