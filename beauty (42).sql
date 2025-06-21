@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jun 17, 2025 at 02:00 PM
+-- Generation Time: Jun 21, 2025 at 02:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,7 @@ CREATE TABLE `admin_login_details` (
 --
 
 INSERT INTO `admin_login_details` (`id`, `name`, `mobile`, `email`, `address`, `password`, `role`, `file`, `gst_number`, `last_invoice_no`) VALUES
-(9, 'pooja khatri', 8707858421, 'pooja@gmail.com', 'rjpm1', '1234', 1, 'upload-images/img-11.jpg', '29AALC6789996', 98000014),
+(9, 'pooja khatri', 8707858421, 'pooja@gmail.com', 'rjpm1', '1234', 1, 'upload-images/img-11.jpg', '29AALC6789996', 98000018),
 (11, 'shikha', 8709875671, 'riya@gmail.com', 'Hazratganj', '1234', 2, 'upload-images/avatar2.png', NULL, NULL),
 (12, 'anushka sharma ', 8685904894, 'anushka@gmail.com', 'kakori road', '123', 2, 'upload-images/avatar2.png', NULL, NULL),
 (16, 'POOJA KHATRI', 8019858421, 'khatri@gmail.com', 'Hazratganj', 'q', 2, 'upload-images/slide-07.jpg', NULL, NULL),
@@ -158,10 +158,10 @@ INSERT INTO `banner_management` (`id`, `file`, `content`, `buttonName`, `buttonL
 (2, 'upload-images/hero-9.jpg', 'Skin care studio', 'View Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=3'),
 (3, 'upload-images/slide-1.jpg', 'Unleash your beauty with Demo Beauty Studio', 'View Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=1'),
 (9, 'upload-images/slide-15.jpg', 'Hair Care Studio', 'View Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=3'),
-(13, 'upload-images/slide-3.jpg', 'make up studio', 'View Menu', NULL),
+(13, 'upload-images/slide-3.jpg', 'Make up studio', 'View Menu', NULL),
 (30, 'upload-images/makeupp.avif', 'Beauty salon', 'View Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=2'),
-(35, 'upload-images/wallpaper51.jpg', 'artist', 'demo studio Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=3'),
-(38, 'upload-images/wallpaper71.jpg', 'artist', 'demo studio Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=2');
+(35, 'upload-images/wallpaper51.jpg', 'Artist', 'demo studio Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=3'),
+(38, 'upload-images/wallpaper71.jpg', 'Artist', 'demo studio Menu', 'http://localhost/beauty_parlour_management_system/pprice.php?c_id=2');
 
 -- --------------------------------------------------------
 
@@ -205,7 +205,7 @@ CREATE TABLE `business_hours` (
 --
 
 INSERT INTO `business_hours` (`id`, `day`, `open_time`, `close_time`) VALUES
-(1, 'Monday', '10:00:00', '21:00:00'),
+(1, 'Monday', '03:00:00', '21:00:00'),
 (2, 'Tuesday', '10:00:00', '21:00:00'),
 (3, 'Wednesday', '10:00:00', '21:00:00'),
 (4, 'Thursday', '10:00:00', '19:30:00'),
@@ -290,33 +290,16 @@ INSERT INTO `orders` (`id`, `appointment_id`, `totalPrice`, `discount`, `billing
 (11, 59, 0.00, 32.00, '97000008', '2025-06-17 10:58:29'),
 (12, 59, 0.00, 40.00, '97000008', '2025-06-17 10:58:29'),
 (13, 59, 0.00, 10.00, '97000009', '2025-06-17 11:39:41'),
-(14, 59, 0.00, 10.00, '97000001', '2025-06-17 11:46:18');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `package`
---
-
-CREATE TABLE `package` (
-  `id` int(200) NOT NULL,
-  `package_name` varchar(200) DEFAULT NULL,
-  `package_number` int(200) NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  `selected_services` varchar(200) NOT NULL,
-  `price` int(200) NOT NULL,
-  `discount` int(200) DEFAULT NULL,
-  `price_after_discount` int(200) NOT NULL,
-  `file` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `package`
---
-
-INSERT INTO `package` (`id`, `package_name`, `package_number`, `description`, `selected_services`, `price`, `discount`, `price_after_discount`, `file`) VALUES
-(50, 'xyz', 434553, 'good', 'Women s Haircut', 200, 10, 180, ''),
-(51, 'xyz', 434553, 'good', 'Child Hair cut', 100, 10, 90, '');
+(14, 59, 0.00, 10.00, '97000001', '2025-06-17 11:46:18'),
+(15, 59, 0.00, 32.00, '97000002', '2025-06-17 12:08:13'),
+(16, 58, 0.00, 40.00, '97000003', '2025-06-18 04:34:13'),
+(17, 59, 470.00, 35.00, '98000015', '2025-06-18 04:46:26'),
+(18, 58, 0.00, 10.00, '97000004', '2025-06-18 05:00:53'),
+(19, 59, 400.00, 75.00, '98000016', '2025-06-19 04:07:22'),
+(20, 58, 0.00, 32.00, '97000005', '2025-06-19 04:07:54'),
+(21, 60, 300.00, 10.00, '98000017', '2025-06-21 05:21:14'),
+(22, 60, 600.00, 32.00, '98000018', '2025-06-21 05:21:52'),
+(23, 60, 0.00, 32.00, '97000006', '2025-06-21 05:22:33');
 
 -- --------------------------------------------------------
 
@@ -341,7 +324,8 @@ INSERT INTO `package1` (`id`, `package_name`, `package_number`, `description`, `
 (9, 'platinum package ', '328101', 'A haircut, in the most common sense, is the act of cutting and styling hair, usually performed by a barber or stylist', 10, 'upload-images/biolight1.jpg'),
 (10, 'Gold package', '305836', 'Permanent color treatment is traditional oxidization color treatment – oxidization refers to the chemical process that makes it possible to alter the color at the core of the hair', 10, 'upload-images/biolight3.jpg'),
 (11, 'silver package ', '648184', 'A \"facial\" is a skin treatment designed to cleanse, exfoliate, and hydrate the skin, often targeting specific concerns like acne, wrinkles, or uneven skin tone', 32, 'upload-images/teenfacial3.jpg'),
-(13, 'hair package', '774800', 'different styling of hair ', 40, 'upload-images/blowdry1.jpg');
+(13, 'hair package', '774800', 'different styling of hair ', 40, 'upload-images/blowdry1.jpg'),
+(15, 'xyz', '160825', 'Service length 1,5 hours', 32, 'upload-images/blowdry23.jpg');
 
 -- --------------------------------------------------------
 
@@ -365,7 +349,12 @@ CREATE TABLE `package_selected` (
 --
 
 INSERT INTO `package_selected` (`id`, `appointment_id`, `package_name`, `package1_id`, `package_number`, `billing_number`, `created_at`, `time`) VALUES
-(1, 59, 'Gold package', 10, NULL, 97000001, '2025-06-17 11:46:18.965669', '00:00:00');
+(1, 59, 'Gold package', 10, NULL, 97000001, '2025-06-17 11:46:18.965669', '00:00:00'),
+(2, 59, 'silver package ', 11, NULL, 97000002, '2025-06-17 12:08:13.843512', '00:00:00'),
+(3, 58, 'hair package', 13, NULL, 97000003, '2025-06-18 04:34:13.611622', '00:00:00'),
+(4, 58, 'Gold package', 10, NULL, 97000004, '2025-06-18 05:00:53.990436', '00:00:00'),
+(5, 58, 'silver package ', 11, NULL, 97000005, '2025-06-19 04:07:54.620163', '00:00:00'),
+(6, 60, 'xyz', 15, NULL, 97000006, '2025-06-21 05:22:33.324352', '00:00:00');
 
 -- --------------------------------------------------------
 
@@ -398,7 +387,13 @@ INSERT INTO `package_services` (`id`, `package_id`, `service_name`, `price`, `pr
 (10, 12, 'Single Process', 130, 117),
 (11, 13, 'Women s Haircut', 200, 120),
 (12, 13, 'Mens haircut', 100, 60),
-(13, 13, 'Keratin Complex', 300, 180);
+(13, 13, 'Keratin Complex', 300, 180),
+(14, 14, 'Women s Haircut', 200, 60),
+(15, 14, 'Child Hair cut', 200, 60),
+(16, 14, 'blow dry', 100, 30),
+(17, 14, 'Mens haircut', 100, 30),
+(18, 15, 'Women s Haircut', 200, 136),
+(19, 15, 'Child Hair cut', 200, 136);
 
 -- --------------------------------------------------------
 
@@ -606,7 +601,8 @@ CREATE TABLE `tb_appointment` (
 
 INSERT INTO `tb_appointment` (`id`, `name`, `email`, `mobile`, `address`, `date`, `prefered_time`, `appointment_for`, `staff`) VALUES
 (58, 'POOJA KHATRI', 'khatri@gmail.com', 8907843126, 'Hazratganj', '2025-06-23', '21:08', 'offline booking', ''),
-(59, 'Pari Kapoor', 'Priyanka@gmail.com', 8719858421, 'Alambhag', '2025-06-18', '17:40', 'offline booking', '');
+(59, 'Pari Kapoor', 'Priyanka@gmail.com', 8719858421, 'Alambhag', '2025-06-18', '17:40', 'offline booking', ''),
+(60, 'shikha', 'shikha@gmail.com', 8709858421, 'Hazratganj', '2025-06-17', '02:50', 'offline booking', '');
 
 -- --------------------------------------------------------
 
@@ -628,7 +624,7 @@ CREATE TABLE `tb_contact_us` (
 --
 
 INSERT INTO `tb_contact_us` (`id`, `mobile_number`, `address`, `email_us`, `time`, `Logo`) VALUES
-(1, 8907843120, '8721 M Central Avenue, Los Angeles, CA 90036', 'hello@yourdomain.com', '20:09', 'upload-images/slide-2.jpg');
+(1, 987654321, 'Hazratganj', 'hello@yourdomain.com', '21:06', 'upload-images/slide-2.jpg');
 
 -- --------------------------------------------------------
 
@@ -692,7 +688,19 @@ INSERT INTO `tb_selected_services` (`id`, `appointment_id`, `c_id`, `s_id`, `a_i
 (36, 59, 1, 1, 98, 'Women s Haircut', 200.00, '98000014', '2025-06-17 09:10:54', '14:40:54'),
 (37, 59, 1, 1, 5, 'Child Hair cut ', 200.00, '98000014', '2025-06-17 09:10:54', '14:40:54'),
 (38, 59, 1, 2, 13, 'Hair & Scalp Treatments', 240.00, '98000014', '2025-06-17 09:10:54', '14:40:54'),
-(39, 59, 1, 2, 12, 'Safe Color Treatment', 95.00, '98000014', '2025-06-17 09:10:55', '14:40:55');
+(39, 59, 1, 2, 12, 'Safe Color Treatment', 95.00, '98000014', '2025-06-17 09:10:55', '14:40:55'),
+(40, 59, 2, 5, 34, 'Teen Facial', 200.00, '98000015', '2025-06-18 04:46:26', '10:16:26'),
+(41, 59, 2, 5, 33, 'Gentleman’s Facial', 60.00, '98000015', '2025-06-18 04:46:26', '10:16:26'),
+(42, 59, 2, 5, 24, 'Herbal Facial', 80.00, '98000015', '2025-06-18 04:46:26', '10:16:26'),
+(43, 59, 2, 5, 25, 'Deep Cleaning Facial', 130.00, '98000015', '2025-06-18 04:46:26', '10:16:26'),
+(44, 59, 1, 1, 98, 'Women s Haircut', 200.00, '98000016', '2025-06-19 04:07:22', '09:37:22'),
+(45, 59, 1, 1, 5, 'Child Hair cut ', 200.00, '98000016', '2025-06-19 04:07:22', '09:37:22'),
+(46, 60, 1, 1, 98, 'Women s Haircut', 200.00, '98000017', '2025-06-21 05:21:14', '10:51:14'),
+(47, 60, 1, 1, 3, 'blow dry', 100.00, '98000017', '2025-06-21 05:21:14', '10:51:14'),
+(48, 60, 2, 5, 34, 'Teen Facial', 200.00, '98000018', '2025-06-21 05:21:52', '10:51:52'),
+(49, 60, 2, 5, 33, 'Gentleman’s Facial', 60.00, '98000018', '2025-06-21 05:21:52', '10:51:52'),
+(50, 60, 2, 5, 32, 'Anti-Ageing Facial', 175.00, '98000018', '2025-06-21 05:21:52', '10:51:52'),
+(51, 60, 2, 5, 28, 'Biolight Facial', 165.00, '98000018', '2025-06-21 05:21:52', '10:51:52');
 
 -- --------------------------------------------------------
 
@@ -826,12 +834,6 @@ ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `package`
---
-ALTER TABLE `package`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `package1`
 --
 ALTER TABLE `package1`
@@ -947,7 +949,7 @@ ALTER TABLE `banner_management`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `Sno` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Sno` bigint(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `business_hours`
@@ -971,31 +973,25 @@ ALTER TABLE `enquiry_message`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `package`
---
-ALTER TABLE `package`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `package1`
 --
 ALTER TABLE `package1`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `package_selected`
 --
 ALTER TABLE `package_selected`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `package_services`
 --
 ALTER TABLE `package_services`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `portfolio`
@@ -1043,13 +1039,13 @@ ALTER TABLE `tb_about_us`
 -- AUTO_INCREMENT for table `tb_appointment`
 --
 ALTER TABLE `tb_appointment`
-  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `tb_selected_services`
 --
 ALTER TABLE `tb_selected_services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `tb_services`
