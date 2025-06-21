@@ -1,7 +1,7 @@
 
 
 <?php
-include 'db_connection.php';
+include 'session.php';
 
 // if (isset($_POST['request_type'] ==""))
 
@@ -93,12 +93,12 @@ if (isset($_POST['sub_service'])) {
   <td><img src='{$row['file2']}' alt='Service Image' style='width: 50px; height: 50px; object-fit: cover;'></td>
                    <td>
         <div style='display: inline-block; margin-right: 20px;'>
-            <a href='/beauty_parlour_management_system/admin2/edit_services.php?id=" . $row['a_id'] . "'>
+            <a href='edit_services?id=" . $row['a_id'] . "'>
                 <i class='fas fa-pencil-alt' style='color:rgb(18, 110, 40);'></i> <!-- Edit icon -->
             </a> 
         </div>
         <div style='display: inline-block;'>
-            <a href='/beauty_parlour_management_system/admin2/delete_service.php?id=" . $row['a_id'] . "'>
+            <a href='delete_service?id=" . $row['a_id'] . "'>
                 <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
             </a>
         </div>

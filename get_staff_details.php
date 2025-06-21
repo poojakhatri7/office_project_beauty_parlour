@@ -1,5 +1,5 @@
 <?php
-include './admin2/db_connection.php';
+include 'db_connection.php';
 
 if (isset($_POST['id'])) {
     $id = intval($_POST['id']); // Ensure it's a number for security

@@ -1,8 +1,7 @@
-
 <?php
-
+include 'user_session.php';
 // if (isset($_POST['request_type'] ==""))
-include '../admin2/db_connection.php';
+
 $request_type = isset($_POST['request_type']) ? $_POST['request_type'] : '';
 // if($_POST['request_type']=="")
 if ($request_type == "service_data")

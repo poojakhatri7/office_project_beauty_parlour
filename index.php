@@ -1,5 +1,5 @@
-<?php include './admin2/db_connection.php'; 
-
+<?php 
+include 'db_connection.php';
 include 'asset.php';
 ?>
 
@@ -167,6 +167,27 @@ $result = mysqli_query($conn, $sql);
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: invert(1); /* makes white icon black */
+}
+@media (max-width: 768px) {
+  .carousel-bg {
+    min-height: 300px;
+    padding-top: 200px;
+    padding-bottom: 100px;
+  }
+
+  .hero-10-txt h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: 50%; /* Move even further down on small screens */
+  }
+
 }
 
     </style>

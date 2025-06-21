@@ -6,7 +6,6 @@ include('includes/sidebar.php');
 ?>
 <?php
 
-include '../admin2/db_connection.php';
 if(isset($_POST["submit"])) {
    $name= $_SESSION["name"];
    $email=  $_SESSION["email"];

@@ -4,9 +4,7 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-<?php
-include 'db_connection.php';
-?>
+
 <main class="app-main">
 <!doctype html>
 <html lang="en">
@@ -49,7 +47,7 @@ include 'db_connection.php';
             <ol class="breadcrumb float-sm-right">
   <button class="btn" style="background-color: rgb(51, 139, 139);border: none; cursor: pointer;  padding: 7px 7px;" >
     <i class="fa fa-user-plus fa-lg" style="margin-right: 2px; color: black; font-size: 14px;"></i>
-    <a href="/beauty_parlour_management_system/admin2/admin_add_customer2.php" 
+    <a href="admin_add_customer2" 
        style="text-decoration: none; color: white; font-size: 14px; font-weight: 700;  margin: 4px 2px;">
    Add Appointment
     </a>
@@ -155,9 +153,9 @@ if (mysqli_num_rows($result) > 0) {
             <td>";
         
         if ($row['invoice_type'] === 'Service') {
-            echo "<a href='/beauty_parlour_management_system/admin2/invoice_details2.php?appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>";
+            echo "<a href='invoice_details2?appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>";
         } else {
-            echo "<a href='/beauty_parlour_management_system/admin2/invoice_package.php?package1_id={$row["package1_id"]}&appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>";
+            echo "<a href='invoice_package?package1_id={$row["package1_id"]}&appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>";
         }
 
         echo "<button class='btn' style='background-color: rgb(51, 139, 139); color: white; border: none; cursor: pointer; padding: 7px 12px;'>

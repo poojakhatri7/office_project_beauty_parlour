@@ -1,3 +1,6 @@
+<?php 
+include 'db_connection.php';
+ ?>
 <!doctype html>
 <!-- Reine - Beauty Salon HTML5 Template design by DSAThemes (http://www.dsathemes.com) -->
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
@@ -5,7 +8,7 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
-<?php  include './admin2/db_connection.php'; ?>
+
 
 
 	

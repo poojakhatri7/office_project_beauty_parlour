@@ -1,10 +1,6 @@
 <?php include 'data.php'; ?>
 
 <?php
-
-include '../admin2/db_connection.php';
-?>
-<?php
  $mobile = $_SESSION["mobile"];
         $sql = "SELECT file FROM admin_login_details WHERE mobile = '$mobile'";
         $result = mysqli_query($conn, $sql);

@@ -8,8 +8,6 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-
-include 'db_connection.php';
 ?>
   <div class="content-wrapper">
   <style type="text/css">
@@ -52,7 +50,7 @@ $total_services=mysqli_num_rows($query1);
                 <i class="ion ion-bag"></i>
               </div>
                 <div class="small-box-footer d-flex justify-content-center">
-    <a href="/beauty_parlour_management_system/admin2/manage_service.php" class="text-white mx-3">
+    <a href="manage_service" class="text-white mx-3">
         More Info <i class="fas fa-arrow-circle-right"></i>
     </a>
     <!-- <a href="#" class="text-white mx-3">
@@ -122,7 +120,7 @@ $totalappointment=mysqli_num_rows($query2);?>
                 <i class="ion ion-stats-bars"></i>
               </div>
               <div class="small-box-footer d-flex justify-content-center">
-    <a href="/beauty_parlour_management_system/admin2/admin_appointment.php" class="text-white mx-3">
+    <a href="admin_appointment" class="text-white mx-3">
         More Info <i class="fas fa-arrow-circle-right"></i>
     </a>
     <!-- <a href="/beauty_parlour_management_system/admin2/add_service.php" class="text-white " data-toggle="modal" data-target="#modal-default1">
@@ -194,7 +192,7 @@ $user_registration=mysqli_num_rows($query3);?>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="/beauty_parlour_management_system/admin2/total_registration.php"  class="small-box-footer" >More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="total_registration"  class="small-box-footer" >More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -218,7 +216,7 @@ $invoice=mysqli_num_rows($query4);?>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="/beauty_parlour_management_system/admin2/admin_invoice.php" class="small-box-footer" >More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="admin_invoice" class="small-box-footer" >More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

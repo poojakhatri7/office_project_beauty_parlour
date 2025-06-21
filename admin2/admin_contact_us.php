@@ -4,19 +4,7 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-<?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
 
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
-include 'db_connection.php';
-?>
 <?php
 if (isset($_POST['submit'])) {
     // Get the form data
@@ -68,21 +56,7 @@ if (isset($_POST['submit'])) {
       </div><!-- /.container-fluid -->
     </div> 
     <div class="container-fluid">
-    <!-- <form class ="" action="" method= "post" >
-    <h3>UPDATE CONTACT US </h3>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">MOBILE NUMBER</label>
-    <input type="text" name="mobile_number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <label for="exampleInputEmail1" class="form-label">ADDRESS</label>
-    <input type="text" name="address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <label for="exampleInputEmail1" class="form-label">EMAIL US</label>
-    <input type="text" name="email_us" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">TIME</label>
-    <input type="text" name="time" class="form-control" id="exampleInputPassword1">
-  </div>
-  <button type="submit" name="submit"class="btn btn-primary">UPDATE</button>
-</form> -->
+   
 <div class="card card-info">
               <div class="card-header"style="background-color: rgb(51, 139, 139);">
                 <h3 class="card-title">UPDATE CONTACT US</h3>

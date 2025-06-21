@@ -5,7 +5,7 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-include 'db_connection.php';
+
 //$id = $_GET ['id'];
 $id = $_GET ['id'];
 $appointment_for = $_GET['appointment_for'];

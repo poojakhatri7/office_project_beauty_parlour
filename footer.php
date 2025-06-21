@@ -1,6 +1,6 @@
 	
-<hr><?php
-include './admin2/db_connection.php';
+	<?php
+include 'db_connection.php';
 
 // Fetch business hours
 $sql = "SELECT day, TIME_FORMAT(open_time, '%h:%i %p') AS open_time, TIME_FORMAT(close_time, '%h:%i %p') AS close_time FROM business_hours";
@@ -39,7 +39,7 @@ $time = $row['time'];
 	word-wrap: break-word;
 }
 </style>
-
+<hr>
 		<!-- FOOTER-1
 			============================================= -->
 			<footer id="footer-3" class="pt-2 footer division">

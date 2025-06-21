@@ -1,4 +1,5 @@
 <?php
+include 'user_session.php';
  session_start();
 include('includes/header.php');
 //include('includes/top_navbar.php');

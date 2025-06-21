@@ -6,7 +6,6 @@ include('includes/sidebar.php');
 ?>
 <?php
 
-include 'db_connection.php';
 $id = $_GET ['id'];
 // if (isset($_POST["submit"])) {
 //   $mobile = $_POST["mobile"];

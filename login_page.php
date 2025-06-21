@@ -1,5 +1,6 @@
 <?php
-include './admin2/db_connection.php';
+include 'db_connection.php';
+include 'asset.php';
 session_start();
 
 // Redirect if already logged in
@@ -75,7 +76,7 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login - Beauty Parlour Management System</title>
+   	<title> Login | <?php echo $brand_name ;   ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {

@@ -5,10 +5,6 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-
-include '../admin2/db_connection.php';
-?>
-<?php
 // $defaultImage = "assets\dist\img\dp.webp-128x128.jpg";
 
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 

@@ -1,5 +1,5 @@
 <?php
-include './admin2/db_connection.php';
+include 'db_connection.php';
 include 'asset.php';
 ?>
 <?php
@@ -542,7 +542,7 @@ if (mysqli_num_rows($result) > 0) {
 			 		<div class="row">
 			 			<div class="col">
 			 				<div class="more-btn">
-								<a href="gallery.php" class="btn btn--tra-black hover--black">Visit Our Gallery</a>
+								<a href="gallery" class="btn btn--tra-black hover--black">Visit Our Gallery</a>
 							</div>
 						</div>
 					</div>	<!-- END BUTTON -->	
@@ -571,7 +571,7 @@ if (mysqli_num_rows($result) > 0) {
 									<h3>Custom Color Service</h3>
 
 									<!-- Button -->	
-									<a href="booking.php" class="btn btn--tra-white hover--white">Book an Appointment</a>
+									<a href="booking" class="btn btn--tra-white hover--white">Book an Appointment</a>
 
 								</div>
 							</div>

@@ -4,9 +4,7 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-<?php
-include 'db_connection.php';
-?>
+
 <?php
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 

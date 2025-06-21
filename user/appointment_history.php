@@ -4,10 +4,6 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-<?php
- 
-  include '../admin2/db_connection.php';
-?>
 <?php 
 $mobile = $_SESSION["mobile"];
 ?>

@@ -6,10 +6,6 @@ include('includes/sidebar.php');
 ?>
 <?php
 
-include 'db_connection.php';
-
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  $photo = $_FILES["service_image"]["name"];
     $photo2 = $_FILES["image"]["tmp_name"];

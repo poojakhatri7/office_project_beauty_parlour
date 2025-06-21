@@ -4,10 +4,7 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-<?php
 
-include 'db_connection.php';
-?>
 <?php
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
 $uploadPath = '';
@@ -166,7 +163,7 @@ if (mysqli_num_rows($result) > 0) {
 
 <td>
     <div style="display: inline-block;">
-        <a href='/beauty_parlour_management_system/admin2/delete_portfolio.php?id=<?php echo $row["id"]; ?>'>
+        <a href='delete_portfolio?id=<?php echo $row["id"]; ?>'>
             <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
         </a>
     </div>

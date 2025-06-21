@@ -5,9 +5,6 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-include 'db_connection.php';
-//$id = $_GET ['id'];
-// echo "<div style='text-align: center; font-weight: bold;'>$appointment_for</div>";
 
 if (isset($_POST["submit"])) {
  $photo = $_FILES["package_image"]["name"];

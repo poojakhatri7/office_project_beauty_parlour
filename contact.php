@@ -1,7 +1,5 @@
 <?php
-
-
-include './admin2/db_connection.php';
+include 'db_connection.php';
 include 'asset.php';
 $sql = "SELECT * FROM tb_contact_us";
 // Step 2: Execute the query

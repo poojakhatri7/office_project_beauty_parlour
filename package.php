@@ -1,5 +1,5 @@
 <?php
-include './admin2/db_connection.php';
+include 'db_connection.php';
 include 'asset.php';
 ?>
 <!doctype html>

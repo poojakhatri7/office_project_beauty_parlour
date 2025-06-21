@@ -6,9 +6,7 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-include 'db_connection.php'; // Include your database connection file
-$show_message = false;  // Variable to control whether to show message
-$error_message = '';
+
 // Handle category form submission
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 

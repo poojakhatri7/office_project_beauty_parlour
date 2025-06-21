@@ -1,6 +1,6 @@
 
 <?php
-include 'db_connection.php';
+include 'session.php';
 if (isset($_POST['package_number'])) {
     $package_number = intval($_POST['package_number']);
 

@@ -4,10 +4,7 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-<?php
 
-include 'db_connection.php';
-?>
 <main class="app-main">
 <!doctype html>
 <html lang="en">
@@ -198,7 +195,7 @@ if (mysqli_num_rows($result) > 0) {
         </a> 
     </div> -->
     <div style="display: inline-block;">
-        <a href='/beauty_parlour_management_system/admin2/delete_appointment.php?id=<?php echo $row["id"]; ?>'>
+        <a href='delete_appointment?id=<?php echo $row["id"]; ?>'>
             <i class='fa fa-trash' style='color: red;'></i>
         </a>
     </div>

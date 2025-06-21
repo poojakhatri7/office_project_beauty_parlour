@@ -1,6 +1,6 @@
 
 <?php
-include './admin2/db_connection.php';
+include 'db_connection.php';
 
 if (isset($_POST['service_number'])) {
     $service_number = intval($_POST['service_number']);

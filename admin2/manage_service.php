@@ -4,9 +4,6 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-<?php
-include 'db_connection.php';
-?>
 
 <main class="app-main">
 <!doctype html>
@@ -45,7 +42,7 @@ include 'db_connection.php';
        style="text-decoration: none; color: black; font-size: 14px; font-weight: 650;  margin: 4px 2px;">
       Add Services
     </a> -->
-    <a href="/beauty_parlour_management_system/admin2/admin_services2.php" class="text-white mx-1" 
+    <a href="admin_services2" class="text-white mx-1" 
        style="text-decoration: none; color: black; font-size: 14px; font-weight: 650;  margin: 4px 2px;">
       Add Services
     </a>

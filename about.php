@@ -1,6 +1,7 @@
 <?php
-include './admin2/db_connection.php';
+include 'db_connection.php';
 include 'asset.php';
+
 $sql = "SELECT * FROM tb_about_us";
 $result = mysqli_query($conn, $sql);
 
@@ -10,7 +11,6 @@ if (mysqli_num_rows($result) > 0) {
     $heading = $row['heading'];
     $text_area = $row['text_area'];
     }}
-
 
 $sql = "SELECT * FROM business_hours";
 $result1 = mysqli_query($conn, $sql);

@@ -4,18 +4,7 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-<?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
-include '../admin2/db_connection.php';
-?>
+
  <?php
        $appointment_id = $_GET ['appointment_id'];
 if (isset($_GET['appointment_id'])) {

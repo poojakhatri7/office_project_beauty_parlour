@@ -1,4 +1,4 @@
-<?php include './admin2/db_connection.php'; ?>
+<?php include 'db_connection.php'; ?>
 	
 	
 	

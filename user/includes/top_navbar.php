@@ -1,16 +1,5 @@
 <?php include 'data.php'; ?>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "beauty";
-$port = 3307;
-$conn = mysqli_connect($servername, $username, $password, $dbname,$port);
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-?>
-<?php
  $mobile = $_SESSION["mobile"];
         $sql = "SELECT file FROM users WHERE mobile = '$mobile'";
         $result = mysqli_query($conn, $sql);

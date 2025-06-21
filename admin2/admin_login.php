@@ -1,6 +1,6 @@
 <?php
 
-include 'db_connection.php';
+include 'session.php';
 if(isset($_POST["submit"]))
 {
   $email = $_POST["email"];

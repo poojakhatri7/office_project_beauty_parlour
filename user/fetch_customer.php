@@ -1,16 +1,7 @@
 
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname,$port);
+ include 'user_session.php';
 
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
-include '../admin2/db_connection.php';
 $response = [
     'success' => false,
     'message' => 'No customer found'

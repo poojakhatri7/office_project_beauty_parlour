@@ -1,8 +1,8 @@
 <?php
-include './admin2/db_connection.php';
+
+include 'db_connection.php';
+include 'admin2/includes/data.php';
 ?>
-	
-	
 	
 	<!-- HEADER
 			============================================= -->
@@ -27,13 +27,15 @@ include './admin2/db_connection.php';
 
 						<!-- HEADER BLACK LOGO -->
 						<div class="desktoplogo">
-							<a href="./" class="logo-black"><img src="images/demo-beauty-studio.webp" alt="logo"></a>
+							<a href="./" class="logo-black"><img src="<?php echo $brand_logo; ?>" alt="logo"  class="brand-image img-circle elevation-2"
+							style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
 						</div>
 
 
 						<!-- HEADER WHITE LOGO -->
 						<div class="desktoplogo">
-							<a href="./" class="logo-white"><img src="images/demo-beauty-studio.webp" alt="logo"></a>
+							<a href="#" class="logo-white"><img src="<?php echo $brand_logo; ?>" alt="logo" class="brand-image img-circle elevation-2" 
+    style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
 						</div>
 
 
@@ -70,7 +72,7 @@ $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
             // echo '<li aria-haspopup="true"><a href="pricing' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
 			// echo '<li aria-haspopup="true"><a href="pricing">' . htmlspecialchars($row['c_service']) . '</a></li>';
-			echo '<li aria-haspopup="true"><a href="pprice.php?c_id=' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
+			echo '<li aria-haspopup="true"><a href="pprice?c_id=' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
         }
         ?>
     </ul>
@@ -124,7 +126,7 @@ $result = mysqli_query($conn, $sql);
 
 
 								<!-- SIMPLE NAVIGATION LINK -->
-								 <li class="nl-simple" aria-haspopup="true"><a href="package.php" class="h-link">Packages</a></li>
+								 <li class="nl-simple" aria-haspopup="true"><a href="package" class="h-link">Packages</a></li>
 
 								<li class="nl-simple" aria-haspopup="true"><a href="gallery" class="h-link">Portfolio</a></li>
 
@@ -139,7 +141,7 @@ $result = mysqli_query($conn, $sql);
 								<li class="nl-simple" aria-haspopup="true">
 									<a href="booking" class="btn btn--tra-white hover--white last-link">Book Online</a>
 								</li> 
-								<li class="nl-simple" aria-haspopup="true"><a href="/beauty_parlour_management_system/login_page.php" target="_blank" class="h-link">Login</a></li>
+								<li class="nl-simple" aria-haspopup="true"><a href="/beauty_parlour_management_system/login_page" target="_blank" class="h-link">Login</a></li>
 								<!-- <li class="nl-simple" aria-haspopup="true"><a href="admin2" target="_blank" class="h-link">admin</a></li> -->
 							</ul>
 						</nav>

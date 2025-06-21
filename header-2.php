@@ -1,6 +1,6 @@
 <?php
 
-include './admin2/db_connection.php';
+include 'db_connection.php';
 ?>
 <header id="header" class="tra-menu navbar-dark white-scroll">
 				<div class="header-wrapper">
@@ -116,10 +116,10 @@ $result = mysqli_query($conn, $sql);
 
 
 								    <!-- SIMPLE NAVIGATION LINK -->
-									 <li class="nl-simple" aria-haspopup="true"><a href="package.php" class="h-link">Packages</a></li>
-							    	<li class="nl-simple" aria-haspopup="true"><a href="gallery.php" class="h-link">Portfolio</a></li>
+									 <li class="nl-simple" aria-haspopup="true"><a href="package" class="h-link">Packages</a></li>
+							    	<li class="nl-simple" aria-haspopup="true"><a href="gallery" class="h-link">Portfolio</a></li>
 
-									<li class="nl-simple" aria-haspopup="true"><a href="contact.php" class="h-link">Contact</a></li>
+									<li class="nl-simple" aria-haspopup="true"><a href="contact" class="h-link">Contact</a></li>
 
 
 							    	<!-- SIMPLE NAVIGATION LINK -->
@@ -128,7 +128,7 @@ $result = mysqli_query($conn, $sql);
 
 								    <!-- SIGN UP BUTTON -->
 								    <li class="nl-simple" aria-haspopup="true">
-								    	<a href="booking.php" class="btn btn--tra-white hover--white last-link book">Book Online</a>
+								    	<a href="booking" class="btn btn--tra-white hover--white last-link book">Book Online</a>
 								    </li> 
 
 

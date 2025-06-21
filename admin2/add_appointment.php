@@ -5,7 +5,7 @@
 //     exit();
 // }
 include 'session.php';
-include 'db_connection.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mobile = $_POST['mobile'];
     $name = $_POST['name'];

@@ -1,11 +1,12 @@
 <?php
+include 'db_connection.php';
  session_start();
 if (isset($_SESSION["name"])) {
    header("Location: index.php");
    exit();
 }
 // include 'db_connection.php';
-include './admin2/db_connection.php';
+
 if(isset($_POST["submit"]))
 {
   

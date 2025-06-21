@@ -1,4 +1,5 @@
 <?php
+include 'user_session.php';
  session_start();
  if (!isset($_SESSION["name"])) {
     header("Location: user_login.php");
@@ -9,19 +10,6 @@
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
-
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
-include '../admin2/db_connection.php';
 ?>
 
 <main class="app-main">

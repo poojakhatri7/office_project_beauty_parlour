@@ -1,7 +1,7 @@
 <?php
 
 include 'session.php';
-include 'db_connection.php';
+
 // Check if 'id' parameter is set and is a valid number
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = (int)$_GET['id']; // Cast the id to an integer for safety

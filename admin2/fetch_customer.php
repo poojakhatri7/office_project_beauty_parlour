@@ -1,7 +1,6 @@
 
 <?php
-
-include 'db_connection.php';
+include 'session.php';
 $response = [
     'success' => false,
     'message' => 'No customer found'
