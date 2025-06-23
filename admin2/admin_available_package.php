@@ -137,7 +137,7 @@ if (mysqli_num_rows($result) > 0) {
       </a>
     </div>
         <div style="display: inline-block;">
-          <a href="/beauty_parlour_management_system/admin2/delete_package.php?package_number=' . $row["package_number"] . '">
+          <a href="delete_data?package_number=' . $row["package_number"] . '">
             <i class="fa fa-trash" style="color: red;"></i>
           </a>
         </div>

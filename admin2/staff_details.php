@@ -71,12 +71,12 @@ if (mysqli_num_rows($result) > 0) {
             <td><?php echo $row['address']; ?></td>
             <td>
     <div style="display: inline-block; margin-right: 20px;">
-        <a href='/beauty_parlour_management_system/admin2/edit_staff_details.php?id=<?php echo $row["id"]; ?>'>
+        <a href='edit_staff_details?id=<?php echo $row["id"]; ?>'>
             <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> <!-- Edit icon -->
         </a> 
     </div>
     <div style="display: inline-block;">
-        <a href='/beauty_parlour_management_system/admin2/delete_staff.php?id=<?php echo $row["id"]; ?>'>
+        <a href='delete_data?id=<?php echo $row["id"]; ?> &table=admin_login_details'>
             <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
         </a>
     </div>

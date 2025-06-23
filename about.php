@@ -30,7 +30,7 @@ $business_hours = [];
 	<meta name="author" content="DSAThemes">
 	<meta name="description" content="Reine - Beauty Salon HTML5 Template">
 	<meta name="keywords"
-		content="DSAThemes, Beauty, Salon, Beauty Parlour, Health Care, Makeup, Nail Salon, Therapy, Treatment">
+	content="DSAThemes, Beauty, Salon, Beauty Parlour, Health Care, Makeup, Nail Salon, Therapy, Treatment">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- SITE TITLE -->

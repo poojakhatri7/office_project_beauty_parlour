@@ -1,5 +1,3 @@
-
-
 <?php
 include 'session.php';
 
@@ -98,7 +96,7 @@ if (isset($_POST['sub_service'])) {
             </a> 
         </div>
         <div style='display: inline-block;'>
-            <a href='delete_service?id=" . $row['a_id'] . "'>
+            <a href='delete_data?id=" . $row['a_id'] . "&table=all_services'>
                 <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
             </a>
         </div>

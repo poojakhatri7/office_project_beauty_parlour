@@ -163,7 +163,7 @@ if (mysqli_num_rows($result) > 0) {
 
 <td>
     <div style="display: inline-block;">
-        <a href='delete_portfolio?id=<?php echo $row["id"]; ?>'>
+        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=portfolio'>
             <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
         </a>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 include 'db_connection.php';
+include 'admin2/includes/data.php';
 ?>
 <header id="header" class="tra-menu navbar-dark white-scroll">
 				<div class="header-wrapper">
@@ -23,13 +24,15 @@ include 'db_connection.php';
 
 	    					<!-- HEADER BLACK LOGO -->
 	    					<div class="desktoplogo">
-	    						<a href="demo-9.php" class="logo-black"><img src="images/demo-beauty-studio.webp" alt="logo"></a>
+	    						<a href="demo-9.php" class="logo-black"><img src="<?php echo $brand_logo; ?>" alt="logo"  class="brand-image img-circle elevation-2"
+							style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
 	    					</div>
 
 
 	    					<!-- HEADER WHITE LOGO -->
 	    					<div class="desktoplogo">
-	    						<a href="demo-9.php" class="logo-white"><img src="images/demo-beauty-studio.webp" alt="logo"></a>
+	    						<a href="demo-9.php" class="logo-white"><img src="<?php echo $brand_logo; ?>" alt="logo"  class="brand-image img-circle elevation-2"
+							style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
 	    					</div>
 
 

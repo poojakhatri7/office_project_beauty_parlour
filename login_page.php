@@ -42,7 +42,7 @@ if (isset($_POST["submit"])) {
             echo "<script> window.location.href = '/beauty_parlour_management_system/admin2'; </script>";
             exit();
         } else {
-            echo "<script> alert('Wrong password for admin');  window.location.href = 'login_page.php'; </script>";
+            echo "<script> alert('Wrong password for admin');  window.location.href = 'login_page'; </script>";
             exit();
         }
     }
@@ -62,13 +62,13 @@ if (isset($_POST["submit"])) {
             echo "<script> window.location.href = '/beauty_parlour_management_system/user'; </script>";
             exit();
         } else {
-            echo "<script> alert('Wrong password for user');  window.location.href = 'login_page.php'; </script>";
+            echo "<script> alert('Wrong password for user');  window.location.href = 'login_page'; </script>";
             exit();
         }
     }
 
     // Not found in either
-    echo "<script> alert('User not registered');  window.location.href = 'login_page.php'; </script>";
+    echo "<script> alert('User not registered');  window.location.href = 'login_page'; </script>";
 }
 ?>
 <!DOCTYPE html>
@@ -183,7 +183,7 @@ background-size: cover;
             </form>
             <div class="forgot-password" style="text-align: center;">
     <p style="display: inline; margin-right: 5px;">Don't have an account?</p>
-    <a href="/beauty_parlour_management_system/user_registration.php" 
+    <a href="user_registration" 
        style="text-decoration: none; color: #5a2d77; font-weight: bold;">
         Sign up
     </a>

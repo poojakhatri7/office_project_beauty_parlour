@@ -249,7 +249,7 @@ if (isset($_POST['add_sub_category'])) {
                                  <td><img src="<?php echo $imagePath; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
                                 <td>
                                     <div style="display: inline-block;">
-                                        <a href='/beauty_parlour_management_system/admin2/delete_category.php?id=<?php echo $row["c_id"]; ?>'>
+                                        <a href='delete_data?id=<?php echo $row["c_id"]; ?>&table=category_service'>
                                             <i class='fa fa-trash' style='color: red;'></i>
                                         </a>
                                     </div>
@@ -303,7 +303,7 @@ if (isset($_POST['add_sub_category'])) {
                              <td><img src="<?php echo $imagePath; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
                                 <td>
                                     <div style="display: inline-block;">
-                                        <a href='/beauty_parlour_management_system/admin2/delete_sub_category.php?id=<?php echo $row2["s_id"]; ?>'>
+                                        <a href='delete_data?id=<?php echo $row2["s_id"]; ?>&table=sub_category_service'>
                                             <i class='fa fa-trash' style='color: red;'></i>
                                         </a>
                                     </div>

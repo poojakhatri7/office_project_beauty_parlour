@@ -161,7 +161,7 @@ if (mysqli_num_rows($result) > 0) {
 
 <td>
     <div style="display: inline-block;">
-        <a href='/beauty_parlour_management_system/admin2/delete_slider.php?id=<?php echo $row["id"]; ?>'>
+        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=banner_management'>
             <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
         </a>
     </div>

@@ -4,7 +4,6 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-
 <main class="app-main">
 <!doctype html>
 <html lang="en">
@@ -195,7 +194,7 @@ if (mysqli_num_rows($result) > 0) {
         </a> 
     </div> -->
     <div style="display: inline-block;">
-        <a href='delete_appointment?id=<?php echo $row["id"]; ?>'>
+        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=tb_appointment'>
             <i class='fa fa-trash' style='color: red;'></i>
         </a>
     </div>

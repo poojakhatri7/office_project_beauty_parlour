@@ -150,7 +150,7 @@ background-size: cover;
             </form>
             <div class="forgot-password" style="text-align: center;">
     <p style="display: inline; margin-right: 5px;">Don't have an account?</p>
-    <a href="/beauty_parlour_management_system/user_registration.php" 
+    <a href="user_registration" 
        style="text-decoration: none; color: #5a2d77; font-weight: bold;">
         Sign up
     </a>

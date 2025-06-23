@@ -13,8 +13,10 @@ include 'admin2/includes/data.php';
 				<!-- MOBILE HEADER -->
 				<div class="wsmobileheader clearfix">
 					<span class="smllogo">
-						<a href="./" class="logo-black"><img src="images/demo-beauty-studio.webp" alt="mobile-logo"></a>
-						<a href="./" class="logo-white"><img src="images/demo-beauty-studio.webp" alt="mobile-logo"></a>
+						<a href="./" class="logo-black"><img src="<?php echo $brand_logo; ?>" alt="mobile-logo"  class="brand-image img-circle elevation-2"
+							style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
+						<a href="./" class="logo-white"><img src="<?php echo $brand_logo; ?>" alt="mobile-logo"  class="brand-image img-circle elevation-2"
+							style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
 					</span>
 					<a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
 				</div>

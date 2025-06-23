@@ -195,7 +195,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
                                 <td><?php echo $row['designation']; ?></td>
                                 <td>
                                     <div style="display: inline-block;">
-                                        <a href='/beauty_parlour_management_system/admin2/delete_staff_designation.php?id=<?php echo $row["id"]; ?>'>
+                                        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=staff_designation'>
                                             <i class='fa fa-trash' style='color: red;'></i>
                                         </a>
                                     </div>
@@ -248,7 +248,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
                                 <td><img src="<?php echo $image; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
                                 <td>
                                     <div style="display: inline-block;">
-                                        <a href='/beauty_parlour_management_system/admin2/delete_staff_gallery.php?id=<?php echo $row["id"]; ?>'>
+                                        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=staff_gallery'>
                                             <i class='fa fa-trash' style='color: red;'></i>
                                         </a>
                                     </div>

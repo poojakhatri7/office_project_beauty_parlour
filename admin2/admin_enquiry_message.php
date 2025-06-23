@@ -156,7 +156,7 @@ if (mysqli_num_rows($result) > 0) {
          </a> 
     </div> --> 
     <div style="display: inline-block;">
-        <a href='delete_enquiry_message?id=<?php echo $row["id"]; ?>'>
+        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=enquiry_message'>
             <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
         </a>
     </div>
