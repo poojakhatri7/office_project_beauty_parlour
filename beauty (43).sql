@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jun 21, 2025 at 02:05 PM
+-- Generation Time: Jun 23, 2025 at 12:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,9 +48,7 @@ INSERT INTO `admin_login_details` (`id`, `name`, `mobile`, `email`, `address`, `
 (9, 'pooja khatri', 8707858421, 'pooja@gmail.com', 'rjpm1', '1234', 1, 'upload-images/img-11.jpg', '29AALC6789996', 98000018),
 (11, 'shikha', 8709875671, 'riya@gmail.com', 'Hazratganj', '1234', 2, 'upload-images/avatar2.png', NULL, NULL),
 (12, 'anushka sharma ', 8685904894, 'anushka@gmail.com', 'kakori road', '123', 2, 'upload-images/avatar2.png', NULL, NULL),
-(16, 'POOJA KHATRI', 8019858421, 'khatri@gmail.com', 'Hazratganj', 'q', 2, 'upload-images/slide-07.jpg', NULL, NULL),
-(17, 'Pari Kapoor', 9907843126, 'apooja@gmail.com', ' RAJAJIPURAM', '12345', 2, 'upload-images/', NULL, NULL),
-(18, 'POOJA KHATRI', 8907843126, 'khatri@gmail.com', 'Hazratganj', 'qw', 2, 'upload-images/slide-06.jpg', NULL, NULL);
+(16, 'POOJA KHATRI', 8019858421, 'khatri@gmail.com', 'Hazratganj', 'q', 2, 'upload-images/slide-07.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -324,8 +322,7 @@ INSERT INTO `package1` (`id`, `package_name`, `package_number`, `description`, `
 (9, 'platinum package ', '328101', 'A haircut, in the most common sense, is the act of cutting and styling hair, usually performed by a barber or stylist', 10, 'upload-images/biolight1.jpg'),
 (10, 'Gold package', '305836', 'Permanent color treatment is traditional oxidization color treatment – oxidization refers to the chemical process that makes it possible to alter the color at the core of the hair', 10, 'upload-images/biolight3.jpg'),
 (11, 'silver package ', '648184', 'A \"facial\" is a skin treatment designed to cleanse, exfoliate, and hydrate the skin, often targeting specific concerns like acne, wrinkles, or uneven skin tone', 32, 'upload-images/teenfacial3.jpg'),
-(13, 'hair package', '774800', 'different styling of hair ', 40, 'upload-images/blowdry1.jpg'),
-(15, 'xyz', '160825', 'Service length 1,5 hours', 32, 'upload-images/blowdry23.jpg');
+(13, 'hair package', '774800', 'different styling of hair ', 40, 'upload-images/blowdry1.jpg');
 
 -- --------------------------------------------------------
 
@@ -393,7 +390,9 @@ INSERT INTO `package_services` (`id`, `package_id`, `service_name`, `price`, `pr
 (16, 14, 'blow dry', 100, 30),
 (17, 14, 'Mens haircut', 100, 30),
 (18, 15, 'Women s Haircut', 200, 136),
-(19, 15, 'Child Hair cut', 200, 136);
+(19, 15, 'Child Hair cut', 200, 136),
+(20, 16, 'Women s Haircut', 200, 180),
+(21, 16, 'Mens haircut', 100, 90);
 
 -- --------------------------------------------------------
 
@@ -601,8 +600,7 @@ CREATE TABLE `tb_appointment` (
 
 INSERT INTO `tb_appointment` (`id`, `name`, `email`, `mobile`, `address`, `date`, `prefered_time`, `appointment_for`, `staff`) VALUES
 (58, 'POOJA KHATRI', 'khatri@gmail.com', 8907843126, 'Hazratganj', '2025-06-23', '21:08', 'offline booking', ''),
-(59, 'Pari Kapoor', 'Priyanka@gmail.com', 8719858421, 'Alambhag', '2025-06-18', '17:40', 'offline booking', ''),
-(60, 'shikha', 'shikha@gmail.com', 8709858421, 'Hazratganj', '2025-06-17', '02:50', 'offline booking', '');
+(59, 'Pari Kapoor', 'Priyanka@gmail.com', 8719858421, 'Alambhag', '2025-06-18', '17:40', 'offline booking', '');
 
 -- --------------------------------------------------------
 
@@ -778,7 +776,9 @@ INSERT INTO `users` (`id`, `name`, `mobile`, `email`, `address`, `password`, `fi
 (38, 'Pari Kapoor', 9347459403, 'khatri@gmail.com', 'Hazratganj', '12345', ''),
 (39, 'bhawna khatri', 8707858421, 'bhawna@gmail.com', 'gaziabad', '123', ''),
 (40, 'shikha srivastava ', 8904843126, 'shikha@gmail.com', 'Hazratganj', '123', ''),
-(41, 'anuj ', 8907843177, 'anuj@gmail.com', 'alambhag', '123456', '');
+(41, 'anuj ', 8907843177, 'anuj@gmail.com', 'alambhag', '123456', ''),
+(42, 'divya tondon', 9807654325, 'divya@gmail.com', 'Alambhag', '12345', ''),
+(43, 'priyanka', 8907843667, 'Priyanka@gmail.com', ' RAJAJIPURAM', '321', '');
 
 --
 -- Indexes for dumped tables
@@ -937,13 +937,13 @@ ALTER TABLE `admin_login_details`
 -- AUTO_INCREMENT for table `all_services`
 --
 ALTER TABLE `all_services`
-  MODIFY `a_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `a_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `banner_management`
 --
 ALTER TABLE `banner_management`
-  MODIFY `id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `bill`
@@ -961,13 +961,13 @@ ALTER TABLE `business_hours`
 -- AUTO_INCREMENT for table `category_service`
 --
 ALTER TABLE `category_service`
-  MODIFY `c_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `c_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
 
 --
 -- AUTO_INCREMENT for table `enquiry_message`
 --
 ALTER TABLE `enquiry_message`
-  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -979,7 +979,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `package1`
 --
 ALTER TABLE `package1`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `package_selected`
@@ -991,13 +991,13 @@ ALTER TABLE `package_selected`
 -- AUTO_INCREMENT for table `package_services`
 --
 ALTER TABLE `package_services`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `portfolio`
 --
 ALTER TABLE `portfolio`
-  MODIFY `id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -1009,19 +1009,19 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `staff_designation`
 --
 ALTER TABLE `staff_designation`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `staff_gallery`
 --
 ALTER TABLE `staff_gallery`
-  MODIFY `id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(60) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `sub_category_service`
 --
 ALTER TABLE `sub_category_service`
-  MODIFY `s_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `s_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `tb_about`
@@ -1039,7 +1039,7 @@ ALTER TABLE `tb_about_us`
 -- AUTO_INCREMENT for table `tb_appointment`
 --
 ALTER TABLE `tb_appointment`
-  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `tb_selected_services`
@@ -1057,7 +1057,7 @@ ALTER TABLE `tb_services`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
