@@ -116,7 +116,7 @@ if (isset($_POST['submit'])) {
                 <div class="card-footer">
                   <!-- <button type="submit" name="submit" class="btn btn-info">UPDATE</button> -->
                   <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(244, 247, 230);; font-weight: 500; font-size: 16px;  padding: 7px 15px; ">Add Review</button>
-                  <button type="submit" class="btn btn-default float-right">CANCEL</button>
+                  <button type="submit" class="btn btn-danger float-right">CANCEL</button>
                 </div>
                 <!-- /.card-footer -->
               </form>

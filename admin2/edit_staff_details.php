@@ -13,9 +13,9 @@ if (isset($_POST["submit"])) {
   $address = $_POST["address"];
   $password = $_POST["password"];
 }
-
- ?>
- <?php
+// $query1 = "UPDATE `admin_login_details` SET name='$name', email='$email', mobile='$mobile', address='$address' WHERE id=$id";
+// $result = mysqli_query($conn, $query1);
+ 
  $sql = "SELECT * FROM admin_login_details WHERE id={$id}";
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);

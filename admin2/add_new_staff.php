@@ -6,8 +6,8 @@ include('includes/sidebar.php');
 
 ?>
 <?php
-$defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
-$uploadPath = $defaultImage; 
+// $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
+$uploadPath = ""; 
 if(isset($_POST["submit"])) {
     $photo = $_FILES["image"]["name"];
     $photo2 = $_FILES["image"]["tmp_name"];
@@ -33,7 +33,7 @@ if(isset($_POST["submit"])) {
         echo"<script> alert('updated successfully') </script>";
        }
     } else {
-        $query2 = "INSERT INTO admin_login_details  values ('','$name','$mobile','$email','$address','$password','$role','$uploadPath')";
+        $query2 = "INSERT INTO admin_login_details (name , mobile , email, address , password , role , file )  values ('$name','$mobile','$email','$address','$password','$role','$uploadPath')";
         if ( mysqli_query($conn, $query2))
         {
             echo"<script> alert('New Staff added Successfully') </script>";

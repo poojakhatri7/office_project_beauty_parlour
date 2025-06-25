@@ -3,9 +3,6 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
-
 
 $id = $_GET ['id'];
 $appointment_for = $_GET['appointment_for'];
