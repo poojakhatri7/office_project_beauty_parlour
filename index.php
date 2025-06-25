@@ -99,7 +99,7 @@ $result = mysqli_query($conn, $sql);
     <?php 
     $active = true;
     while ($row = mysqli_fetch_assoc($result)) { 
-        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+        $imagePath = $web_link.$row['file'];
         $title = $row['content'];
 		$Button_name = $row['buttonName'];
 		$Button_Link = $row['buttonLink'];
@@ -409,7 +409,7 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
       
-        $image = "/beauty_parlour_management_system/admin2/" . $row['file1'];
+        $image = $web_link.$row['file1'];
 		$page_titile=$row['page_title'];
 		$page_description=$row['text_area'];
 		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
@@ -1174,7 +1174,7 @@ $images = [];
 
 if (mysqli_num_rows($result) > 0) {
 				while ($row = mysqli_fetch_assoc($result)) {
-					$image_home[] = "/beauty_parlour_management_system/admin2/" . $row['file'];
+					$image_home[] = $web_link.$row['file'];
 				
 
 ?>

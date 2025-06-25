@@ -159,8 +159,8 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
       
-        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file1'];
-		$imagePath1 = "/beauty_parlour_management_system/admin2/" . $row['file2'];
+        $imagePath = $web_link. $row['file1'];
+		$imagePath1 = $web_link. $row['file2'];
 		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
 
         ?>
@@ -462,7 +462,7 @@ $count = 0;
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $count++;
-        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+        $imagePath = $web_link.$row['file'];
 		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
 
         ?>
@@ -495,7 +495,7 @@ $count = 0;
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $count++;
-        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+        $imagePath = $web_link.$row['file'];
 		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
 
         ?>
@@ -533,7 +533,7 @@ $count = 0;
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $count++;
-        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+        $imagePath = $web_link.$row['file'];
 		//$sql = "SELECT * FROM portfolio ORDER BY id DESC LIMIT 1 OFFSET 1";
 
         ?>

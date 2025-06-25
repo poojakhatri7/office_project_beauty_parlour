@@ -1,9 +1,8 @@
 
 <?php
-
 include 'session.php';
 session_start();
 session_unset();
 session_destroy();
-  header("Location: /beauty_parlour_management_system/login_page");
+  header("Location: ../login_page");
 ?>

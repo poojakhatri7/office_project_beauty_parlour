@@ -164,7 +164,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 <?php
     while ($s = mysqli_fetch_assoc($result_subcategories)) {
 		
-			 $imagePath = "/beauty_parlour_management_system/admin2/" . $s['package_image']; 
+			 $imagePath = $web_link.$s['package_image']; 
           $services[] = $s['services'];
     //          $total_price += $s['price'];
     //         $total_discount += $s['discount'];

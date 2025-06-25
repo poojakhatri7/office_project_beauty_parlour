@@ -237,7 +237,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
                     $count = 0;
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                          $image = "/beauty_parlour_management_system/admin2/" . $row['file'];
+                          $image = "../admin2/" . $row['file'];
                             $count++;
                     ?>
                             <tr>

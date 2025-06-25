@@ -1,6 +1,7 @@
 <?php
+session_start();
 include 'db_connection.php';
- session_start();
+
 if (isset($_SESSION["name"])) {
    header("Location: index.php");
    exit();
@@ -32,7 +33,7 @@ $_SESSION["user_role"] = (int)$row["role"];
 //     session_name("staff_session");
 // }
  
-echo "<script> window.location.href = '/beauty_parlour_management_system/admin2'; </script>";
+echo "<script> window.location.href = 'admin2'; </script>";
 }
 else {
   echo

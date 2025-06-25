@@ -112,7 +112,7 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
     //   echo $row['file'];
-	 $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file']; 
+	 $imagePath = $web_link.$row['file']; 
 	//   echo '<img src="' . $imagePath . '" width="400" height="400" style="margin:10px;">';
 	
         ?>

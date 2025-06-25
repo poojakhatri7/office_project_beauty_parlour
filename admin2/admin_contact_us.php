@@ -11,9 +11,9 @@ if (isset($_POST['submit'])) {
     $mobile_number = $_POST['mobile_number'];  // 'page_title' is used for title input
     $address = $_POST['address']; 
     $email_us = $_POST['email_us'];
-    $time = $_POST['time'];  // 'page_description' is used for description input
+  
     // SQL query to update the data (Not safe - vulnerable to SQL injection)
-    $query = "UPDATE tb_contact_us SET mobile_number = '$mobile_number', address = '$address' , email_us = '$email_us', time = '$time' WHERE id = 1";
+    $query = "UPDATE tb_contact_us SET mobile_number = '$mobile_number', address = '$address' , email_us = '$email_us' WHERE id = 1";
     mysqli_query($conn,$query);
     echo"<script> alert('updated successful') </script>";
     // Execute the query directly
@@ -83,12 +83,12 @@ if (isset($_POST['submit'])) {
                       <input type="email"name="email_us" class="form-control" id="inputEmail3" placeholder="Enter Email">
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">TIME</label>
                     <div class="col-sm-10">
                       <input type="time" name="time" class="form-control" id="inputPassword3" placeholder="Enter Time ">
                     </div>
-                  </div>
+                  </div> -->
                   <!-- <div class="form-group row">
                     <div class="offset-sm-2 col-sm-10">
                       <div class="form-check">

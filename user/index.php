@@ -1,8 +1,7 @@
 <?php
 include 'user_session.php';
  $mobile=   $_SESSION["mobile"];
-?>
-<?php
+
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
@@ -57,7 +56,7 @@ $total_services=mysqli_num_rows($query1);
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="/beauty_parlour_management_system/user/user_services2.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="user_services2" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -73,7 +72,7 @@ $totalappointment=mysqli_num_rows($query2);?>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="/beauty_parlour_management_system/user/appointment_history.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="appointment_history" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-3 col-6">
@@ -91,7 +90,7 @@ $invoice=mysqli_num_rows($query4);?>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="/beauty_parlour_management_system/user/user_invoice.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="user_invoice" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

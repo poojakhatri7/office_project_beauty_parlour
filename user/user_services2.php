@@ -1,6 +1,7 @@
 <?php
+
 include 'user_session.php';
- session_start();
+
  if (!isset($_SESSION["name"])) {
     header("Location: user_login.php");
     exit();
@@ -143,7 +144,7 @@ include('includes/sidebar.php');
                     <tr>
                         <th>S No.</th>
                         <th>Service Name</th>
-                        <th>Service Price</th>
+                        <th>Service Price (Rs)</th>
                      
                         <!-- <th>Actions</th> -->
                     </tr>

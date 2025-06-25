@@ -3,9 +3,6 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-
-<?php
 $defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
 if(isset($_POST["submit"])) {
@@ -37,7 +34,7 @@ if(isset($_POST["submit"])) {
 
 $updated_name ='';
 $name= $_SESSION["name"];
-$email=  $_SESSION["email"];
+$email= $_SESSION["email"];
 $mobile=   $_SESSION["mobile"];
 $address=  $_SESSION["address"];
  ?> 

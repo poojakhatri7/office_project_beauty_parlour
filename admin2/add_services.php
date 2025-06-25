@@ -1,9 +1,7 @@
-
 <?php
 include 'session.php';
 
- ?>
-<?php
+
 
 if (isset($_POST['service_name']) && isset($_POST['service_price'])) {
     $service_name = $conn->real_escape_string($_POST['service_name']);

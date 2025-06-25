@@ -14,9 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $category_id = $_POST['c_id'];
   $service_name = mysqli_real_escape_string($conn, $_POST['service_name']);
     $price = mysqli_real_escape_string($conn, $_POST['price']);
+     $discount_percentage = mysqli_real_escape_string($conn, $_POST['discount']);
+      $offer_price = mysqli_real_escape_string($conn, $_POST['offer_price']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
       move_uploaded_file($photo2, $uploadPath);
-    $sql = "INSERT INTO all_services (a_id, all_service,  price, description , file , service_number, c_id_category_service) VALUES ('','$service_name', '$price','$description','$uploadPath','$sub_service_id','$category_id')";
+    $sql = "INSERT INTO all_services (a_id, all_service,  price, discount_percentage ,price_after_discount, description , file , service_number, c_id_category_service) VALUES ('','$service_name','$price', '$discount_percentage','$offer_price','$description','$uploadPath','$sub_service_id','$category_id')";
 
       if (mysqli_query($conn, $sql)) {
           echo "<script>alert('Service added successfully!'); window.location.href='manage_service.php';</script>";
@@ -26,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo "Selected Sub-Service ID: " . $sub_service_id;
 }
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -103,7 +104,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">ENTER SERVICE PRICE</label>
                     <div class="col-sm-4">
-                      <input type="number" name="price" class="form-control" id="inputPassword3" placeholder="Enter Price">
+                      <input type="number" name="price" class="form-control" id="service_price" placeholder="Enter Price">
+                    </div>
+                  </div>
+                   <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">ENTER DISCOUNT (%) </label>
+                    <div class="col-sm-4">
+                      <input type="number" name="discount" class="form-control" id="discount_percentage" placeholder="Enter discount percentage ">
+                    </div>
+                  </div>
+                   <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label"> OFFER PRICE </label>
+                    <div class="col-sm-4">
+                      <input type="number" name="offer_price" class="form-control" id="price_after_discount" placeholder="offer price">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -194,6 +207,28 @@ $(document).ready(function () {
     });
 
 });
+
+</script>
+<script>
+const priceInput = document.getElementById('service_price');
+const discountInput = document.getElementById('discount_percentage');
+const offerPriceInput = document.getElementById('price_after_discount');
+
+function calculateOfferPrice() {
+    const price = parseFloat(priceInput.value);
+    const discount = parseFloat(discountInput.value);
+
+    if (!isNaN(price) && !isNaN(discount)) {
+        const discountAmount = (price * discount) / 100;
+        const finalPrice = price - discountAmount;
+        offerPriceInput.value = finalPrice.toFixed(2); // Round to 2 decimals
+    } else {
+        offerPriceInput.value = ''; // Clear if invalid input
+    }
+}
+
+priceInput.addEventListener('input', calculateOfferPrice);
+discountInput.addEventListener('input', calculateOfferPrice);
 </script>
 </body>
 </html>

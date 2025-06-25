@@ -143,7 +143,7 @@ $result = mysqli_query($conn, $sql);
 								<li class="nl-simple" aria-haspopup="true">
 									<a href="booking" class="btn btn--tra-white hover--white last-link">Book Online</a>
 								</li> 
-								<li class="nl-simple" aria-haspopup="true"><a href="/beauty_parlour_management_system/login_page" target="_blank" class="h-link">Login</a></li>
+								<li class="nl-simple" aria-haspopup="true"><a href="login_page"  class="h-link">Login</a></li>
 								<!-- <li class="nl-simple" aria-haspopup="true"><a href="admin2" target="_blank" class="h-link">admin</a></li> -->
 							</ul>
 						</nav>

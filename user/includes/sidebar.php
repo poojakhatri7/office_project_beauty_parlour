@@ -20,18 +20,7 @@
     background-color:rgb(33, 70, 77) !important; /* Darker pink on hover */
 }
 </style>
-<?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "beauty";
-// $port = 3307;
-// $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
-// if (!$conn) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
-?> 
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -67,7 +56,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="/beauty_parlour_management_system/user/" class="nav-link dashboard1">
+            <a href="../user/" class="nav-link dashboard1">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -76,7 +65,7 @@
           </li>
           </li>
           <li class="nav-item">
-            <a href="/beauty_parlour_management_system/user/user_services2.php" class="nav-link admin_services nav-link manage_services">
+            <a href="user_services2" class="nav-link admin_services nav-link manage_services">
             <p><i class="fa fa-magic"></i>
               <p>
                 Services
@@ -95,7 +84,7 @@
             </a> 
             <ul class="nav nav-treeview" style="background-color:rgb(53, 94, 94); display:none;">
 <li class="nav-item">
-            <a href="/beauty_parlour_management_system/user/user_booking.php" class="nav-link add_cutomer nav-link all_appointment nav-link search_appointment">
+            <a href="user_booking" class="nav-link add_cutomer nav-link all_appointment nav-link search_appointment">
             <i class="fa fa-clock"></i>
               <p>
                Book an appointment
@@ -104,7 +93,7 @@
             </a> 
 </li>
 <li class="nav-item">
-            <a href="/beauty_parlour_management_system/user/appointment_history.php" class="nav-link appointment_history nav-link">
+            <a href="appointment_history" class="nav-link appointment_history nav-link">
             <i class="fa fa-calendar-check"></i>
               <p>
                Appointment History 
@@ -115,7 +104,7 @@
 </li>
 </ul>
 <li class="nav-item">
-            <a href="/beauty_parlour_management_system/user/user_invoice.php" class="nav-link user_invoice nav-link user_invoice_details ">
+            <a href="user_invoice" class="nav-link user_invoice nav-link user_invoice_details ">
             <!-- <i class="fa fa-clock"></i> -->
             <i class="fa fa-file-invoice"></i>
               <p>
@@ -137,7 +126,7 @@
             </a> 
 <ul class="nav nav-treeview" style="background-color:rgb(53, 94, 94); display:none;">
 <li class="nav-item">
-            <a href="/beauty_parlour_management_system/user/update_profile.php" class="nav-link update_profile">
+            <a href="update_profile" class="nav-link update_profile">
             <i class="fas fa-edit"></i>
               <p>
                 Update Profile
@@ -158,7 +147,7 @@
 </li>
 </ul>
           <li class="nav-item">
-            <a href="/beauty_parlour_management_system/user/user_logout.php" class="nav-link">
+            <a href="user_logout" class="nav-link">
             <i class="fa fa-sign-out-alt "></i>
               <!-- <i class="nav-icon fas fa-copy"></i> -->
               <p>

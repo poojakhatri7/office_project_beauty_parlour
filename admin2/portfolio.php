@@ -3,11 +3,10 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
 
-<?php
-$defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
-$uploadPath = '';
+$defaultImage = "../user/assets/dist/img/dp.webp"; 
+$uploadPath = $defaultImage; 
+
 if (isset($_FILES['image'])) {
   // echo "<pre>";
   // print_r($_FILES);
@@ -104,9 +103,11 @@ $address=  $_SESSION["address"];
                 <div class="card-body">
                   <div class="row">
 					    <div class="col-12">
-        			     <div  style="text-align: center; margin-top:-15px;"><br>
+        			     <div  style="text-align: center; margin-top:-15px;">
+                    <br>
                    <img src="<?php echo $uploadPath; ?>" width="100" height="100" class="img3" id="profile-img-tag" height="240" width="300">
                           </div>
+                          
         			   </div>
 					      <div class="col-12" align="center">
 					          <br/>
@@ -115,6 +116,7 @@ $address=  $_SESSION["address"];
 							</label>
 							<div class="col-12 ">
 								<input type="file" name="image" id="profile-img" value="" class="form-control">
+                <br>
                 <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button>
 							</div>
 						</div>
@@ -155,7 +157,7 @@ $count = 0;
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $count++;
-        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+        $imagePath = "../admin2/" . $row['file'];
         ?>
         <tr>
             <th scope='row'><?php echo $count; ?></th>

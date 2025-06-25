@@ -88,7 +88,7 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
     //   echo $row['file'];
-	 $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file']; 
+	 $imagePath = $web_link.$row['file']; 
 	//   echo '<img src="' . $imagePath . '" width="400" height="400" style="margin:10px;">';
 	
         ?>
@@ -188,7 +188,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
     <div style="display: flex; flex-wrap: wrap; gap: 3 rem; justify-content: center; padding: 0 2rem;">
 <?php
     while ($row = mysqli_fetch_assoc($result_subcategories)) {
-	 $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file']; 
+	 $imagePath = $web_link.$row['file']; 
         $s_id = $row['s_id'];
 ?>
         <div class="card mx-4 mt-5" style="width: 15rem; font-size: 0.875rem;" onclick="scrollToSubCategory()">
@@ -372,7 +372,7 @@ $images = [];
 
 if (mysqli_num_rows($result) > 0) {
 				while ($row = mysqli_fetch_assoc($result)) {
-					$image[] = "/beauty_parlour_management_system/admin2/" . $row['file'];
+					$image[] = $web_link.$row['file'];
 				
 
 ?>

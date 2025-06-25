@@ -123,7 +123,7 @@ if (mysqli_num_rows($result) > 0) {
     // Step 5: Use a while loop to fetch each row of data
    
     while ($row = mysqli_fetch_assoc($result)) {
-          $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+          $imagePath = "../admin2/" . $row['file'];
       $count = $count+1 ;
       echo '<tr>
       <th scope="row">' . $count . '</th>

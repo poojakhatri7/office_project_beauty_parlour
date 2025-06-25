@@ -133,7 +133,7 @@ if ($result->num_rows > 0) {
                             </div>
 </div>
 <div class="card-footer">
-<button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); font-weight: 500; font-size: 16px;  padding: 7px 20px; ">Update</button>
+<button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: white; font-weight: 500; font-size: 16px;  padding: 7px 20px; ">Update</button>
   <button type="submit" class="btn btn-default float-right">Cancel</button>
 </div>
                 <!-- /.card-footer -->

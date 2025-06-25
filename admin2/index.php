@@ -1,10 +1,6 @@
-
 <?php
 include 'session.php';
-//  $name=   $_SESSION["name"];
-//  $mobile=   $_SESSION["mobile"];
-?>
-<?php
+
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
@@ -198,15 +194,44 @@ $user_registration=mysqli_num_rows($query3);?>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <?php $query4=mysqli_query($conn,"SELECT 
-    ta.id AS appointment_id, 
-    ta.name AS name, 
-    ta.date, 
-    ts.billing_number
-FROM tb_appointment ta
-JOIN tb_selected_services ts ON ta.id = ts.appointment_id
-GROUP BY ta.id, ts.billing_number");
-$invoice=mysqli_num_rows($query4);?>
+            <?php
+//              $query4=mysqli_query($conn,"SELECT 
+//     ta.id AS appointment_id, 
+//     ta.name AS name, 
+//     ta.date, 
+//     ts.billing_number
+// FROM tb_appointment ta
+// JOIN tb_selected_services ts ON ta.id = ts.appointment_id
+// GROUP BY ta.id, ts.billing_number");
+
+
+// $query5 =mysqli_query ($conn,"SELECT * 
+// FROM package_selected 
+// GROUP BY appointment_id 
+// ");
+$query5 = mysqli_query($conn, "
+    SELECT 
+        ta.id AS appointment_id, 
+        ta.name, 
+        ta.date, 
+        ts.billing_number
+    FROM tb_appointment ta
+    JOIN tb_selected_services ts ON ta.id = ts.appointment_id
+
+    UNION 
+    
+    SELECT 
+        ta.id AS appointment_id, 
+        ta.name, 
+        ta.date, 
+        ps.billing_number
+    FROM tb_appointment ta
+    JOIN package_selected ps ON ta.id = ps.appointment_id
+");
+
+
+
+$invoice=mysqli_num_rows($query5);?>
             <!-- <div class="small-box bg-secondary"> -->
             <div class="small-box" style="background-color:rgb(147, 88, 177);">
               <div class="inner">

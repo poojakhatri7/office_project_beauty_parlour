@@ -1,10 +1,11 @@
 <?php
+include 'session.php';
 //  session_start();
 //  if (!isset($_SESSION["name"])) {
 //     header("Location: admin_login1.php");
 //     exit();
 // }
-include 'session.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mobile = $_POST['mobile'];

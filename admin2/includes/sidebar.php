@@ -35,7 +35,7 @@
         $result = mysqli_query($conn, $sql);
         if ($result && mysqli_num_rows($result) > 0) {
           $row = mysqli_fetch_assoc($result);
-          $imagePath = $row['file'] ;
+          $imagePath = "../admin2/".$row['file'] ;
         }
         ?>
           <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2" alt="User Image" style="width: 40px; height: 40px; object-fit: cover;" alt="gallery-image">
@@ -69,7 +69,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="/beauty_parlour_management_system/admin2/" class="nav-link dashboard1">
+            <a href="../admin2/" class="nav-link dashboard1">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -222,7 +222,14 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a> 
-            <ul class="nav nav-treeview" style="background-color:rgb(47, 131, 131); display:none;">
+              <ul class="nav nav-treeview" style="background-color:rgb(47, 131, 131); display:none;">
+            <?php
+// if($role==1)
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
+// if (session_name() == "admin_session") 
+{
+?> 
+          
               <li class="nav-item">
                 <a href="admin_add_packages1" class="nav-link package">
                   <!-- <i class="fa fa-info-circle"></i> -->
@@ -230,6 +237,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                   <p>Add New Package</p>
                 </a>
               </li>
+   <?php } ?>
               <!-- <li class="nav-item">
                 <a href="/beauty_parlour_management_system/admin2/staff_gallery.php" class="nav-link update_staff"> -->
                   <!-- <i class="fa fa-info-circle"></i> -->

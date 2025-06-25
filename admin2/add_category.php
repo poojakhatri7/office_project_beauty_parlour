@@ -8,7 +8,7 @@ include('includes/sidebar.php');
 <?php
 
 // Handle category form submission
-$defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
+$defaultImage = "user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
 if (isset($_POST['add_category'])) {
   $photo = $_FILES["image"]["name"];
@@ -49,7 +49,7 @@ if (isset($_POST['add_category'])) {
 
 }
 
-$defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
+$defaultImage = "user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
 if (isset($_POST['add_sub_category'])) {
    $photo = $_FILES["sub_image"]["name"];

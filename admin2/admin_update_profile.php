@@ -5,7 +5,7 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
 <?php
-$defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
+$defaultImage = "../user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
 if (isset($_FILES['image'])) {
  
@@ -109,7 +109,7 @@ if(isset($_POST["submit1"])) {
         $result = mysqli_query($conn, $sql);
         if ($result && mysqli_num_rows($result) > 0) {
           $row = mysqli_fetch_assoc($result);
-          $imagePath = $row['file'] ;
+          $imagePath = "../admin2/".$row['file'] ;
           $gst_number = $row['gst_number'] ;
         }
         ?>
