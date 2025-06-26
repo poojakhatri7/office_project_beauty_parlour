@@ -4,8 +4,6 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 
-?>
- <?php
 $appointment_id = isset($_GET['appointment_id']) ? $_GET['appointment_id'] : null;
 $package1_id = isset($_GET['package1_id']) ? $_GET['package1_id'] : null;
 $billing_number = isset($_GET['billing_number']) ? $_GET['billing_number'] : null;
@@ -183,7 +181,7 @@ $billing_number = isset($_GET['billing_number']) ? $_GET['billing_number'] : nul
     if (mysqli_num_rows($result) > 0) {
         // Step 5: Use a while loop to fetch each row of data
         while ($row = mysqli_fetch_assoc($result)) {
-          $image = "/beauty_parlour_management_system/admin2/" . $row['Logo']; 
+          // $image =  $row['Logo']; 
       ?>
     <div class="invoice-header">
       <div class="company-info">

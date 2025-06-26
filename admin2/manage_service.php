@@ -4,7 +4,6 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-
 <main class="app-main">
 <!doctype html>
 <html lang="en">
@@ -35,6 +34,10 @@ include('includes/sidebar.php');
       <div class="col-sm-6">
       </div><!-- /.col -->
       <div class="col-sm-6">
+<?php
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
+{
+?>
       <ol class="breadcrumb float-sm-right">
       <button class="btn" style="background-color:rgb(51, 139, 139);border: none; cursor: pointer;  padding: 7px 7px;">
     <i class="fa fa-magic" style="margin-right: 2px; color: black; font-size: 14px;"></i>
@@ -48,6 +51,8 @@ include('includes/sidebar.php');
     </a>
   </button>
 </ol>
+<?php  } ?>
+
   </div><!-- /.col -->
         </div><!-- /.row -->
       
@@ -143,6 +148,7 @@ include('includes/sidebar.php');
                           <th>Image </th>
                             <th>Image </th>
                         <!-- <th>Service Number</th> -->
+                         
                         <th>Actions</th>
                     </tr>
                 </thead>

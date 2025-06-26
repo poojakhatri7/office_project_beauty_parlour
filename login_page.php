@@ -1,7 +1,8 @@
 <?php
+session_start();
 include 'db_connection.php';
 include 'asset.php';
-session_start();
+
 
 // Redirect if already logged in
 // if (isset($_SESSION["name"])) {
@@ -10,15 +11,14 @@ session_start();
 // }
 if (isset($_SESSION["name"])) {
     if (isset($_SESSION["user_role"])) {
-        // It's an admin (user_role is set only for admins in your code)
-        header("Location: /beauty_parlour_management_system/admin2");
+      
+        header("Location: admin2");
     } else {
         // It's a user
-        header("Location: /beauty_parlour_management_system/user");
+        header("Location: user");
     }
     exit();
 }
-
 
 
 if (isset($_POST["submit"])) {
@@ -39,7 +39,7 @@ if (isset($_POST["submit"])) {
             $_SESSION["gst_number"] = $admin["gst_number"];
             $_SESSION["user_role"] = (int)$admin["role"];
 
-            echo "<script> window.location.href = '/beauty_parlour_management_system/admin2'; </script>";
+            echo "<script> window.location.href = 'admin2'; </script>";
             exit();
         } else {
             echo "<script> alert('Wrong password for admin');  window.location.href = 'login_page'; </script>";
@@ -59,7 +59,7 @@ if (isset($_POST["submit"])) {
             $_SESSION["mobile"] = $user["mobile"];
             $_SESSION["address"] = $user["address"];
 
-            echo "<script> window.location.href = '/beauty_parlour_management_system/user'; </script>";
+            echo "<script> window.location.href = 'user'; </script>";
             exit();
         } else {
             echo "<script> alert('Wrong password for user');  window.location.href = 'login_page'; </script>";
@@ -191,7 +191,7 @@ background-size: cover;
 
          
             <div class="forgot-password">
-                <a href="/beauty_parlour_management_system/">Home</a>
+                <a href="./">Home</a>
             </div>
         </div>
     </div>

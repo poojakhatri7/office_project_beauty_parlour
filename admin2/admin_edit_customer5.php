@@ -37,6 +37,7 @@ if ($row) {
     $nextNumber = 1; // First billing number
 }
 
+
 $billing_number = $prefix . str_pad($nextNumber, 6, "0", STR_PAD_LEFT);
 $updateQuery = "UPDATE admin_login_details SET last_invoice_no = '$billing_number' WHERE role = '1'";
 mysqli_query($conn, $updateQuery);
@@ -67,12 +68,14 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
             $s_id = $row['service_number'];
             $a_id = $row['a_id'];
             $service_price = $row['price'];
+             $discount_percentage = $row['discount_percentage'];
+             $discount_price = $row['price_after_discount'];
             $totalPrice += $service_price; // Add price to total
 
             // Insert into tb_selected_services
             $insert_sql = "
-            INSERT INTO tb_selected_services (appointment_id, c_id,s_id, a_id, service_name, service_price, billing_number) 
-            VALUES ('$appointment_id','$c_id','$s_id','$a_id', '$service_name', '$service_price', '$billing_number')";
+            INSERT INTO tb_selected_services (appointment_id, c_id,s_id, a_id, service_name, service_price, discount_percentage, price_after_discount, billing_number) 
+            VALUES ('$appointment_id','$c_id','$s_id','$a_id', '$service_name', '$service_price','$discount_percentage','$discount_price', '$billing_number')";
             
             if (!mysqli_query($conn, $insert_sql)) {
                 echo "Error inserting service: " . mysqli_error($conn);
@@ -114,7 +117,7 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitpackage'])) {
   $appointment_id = $_GET['id'];  // Fetch appointment ID from the GET method
 
-  $prefix = "97"; 
+  $prefix = "92"; 
   $billing_number = $prefix . '000001'; 
   $query = "SELECT billing_number FROM package_selected ORDER BY id DESC LIMIT 1";
 $result = mysqli_query($conn, $query);

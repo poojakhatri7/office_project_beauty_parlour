@@ -68,7 +68,6 @@ if (isset($_POST['sub_service'])) {
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">S No.</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Name</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Service Price</th>
-                  
                        <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
                 </tr>
             </thead>
@@ -81,6 +80,8 @@ if (isset($_POST['sub_service'])) {
                     <td>{$sno}</td>
                     <td>{$row['all_service']}</td>
                     <td>{$row['price']}</td>
+                    <td>{$row['discount_percentage']}</td>
+                     <td>{$row['price_after_discount']}</td>
                  
     
                  

@@ -50,6 +50,8 @@ include('includes/sidebar.php');
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Name</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Mobile </th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Email</th>
+                       <th style="color: rgb(238, 230, 217); font-weight: 500;">Role</th>
+                         <th style="color: rgb(238, 230, 217); font-weight: 500;">IMAGE</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Address</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Action</th>
                   </tr>
@@ -59,15 +61,30 @@ include('includes/sidebar.php');
 $sql = "SELECT * FROM admin_login_details ";
 $result = mysqli_query($conn, $sql);
 $count = 0;
+$staff_role = "";
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $count++;
+          $imagePath = "../admin2/" . $row['file'];
         ?>
         <tr>
             <th scope='row'><?php echo $count; ?></th>
             <td><?php echo $row['name']; ?></td>
             <td><?php echo $row['mobile']; ?></td>
             <td><?php echo $row['email']; ?></td>
+            
+            <?php
+             if ($row['role'] == 1) 
+             {
+              $staff_role = "Admin";
+             }
+              else 
+             {
+               $staff_role = "Staff Member";
+             }
+             ?>
+             <td> <?php echo  $staff_role ?></td>
+               <td><img src="<?php echo $imagePath; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
             <td><?php echo $row['address']; ?></td>
             <td>
     <div style="display: inline-block; margin-right: 20px;">

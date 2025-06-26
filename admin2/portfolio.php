@@ -143,7 +143,7 @@ $address=  $_SESSION["address"];
                 <thead style="background-color: rgb(51, 139, 139) ">
                   <tr>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
-                    <th style="color: rgb(238, 230, 217); font-weight: 500;">file</th>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Image</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Action</th>
                     <!-- <th>Actions</th> -->
                   </tr>

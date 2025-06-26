@@ -1,5 +1,5 @@
 <?php include 'data.php'; 
-?>
+ ?>
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
    
     <a href="index" class="brand-link">

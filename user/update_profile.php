@@ -3,11 +3,10 @@ include 'user_session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
+
 // $defaultImage = "assets\dist\img\dp.webp-128x128.jpg";
 
-$defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
+$defaultImage = "../user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
 if (isset($_FILES['image'])) {
   // echo "<pre>";

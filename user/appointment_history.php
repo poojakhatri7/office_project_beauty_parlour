@@ -1,10 +1,9 @@
 <?php
- include 'user_session.php';
+include 'user_session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php 
+
 $mobile = $_SESSION["mobile"];
 ?>
 <!doctype html>

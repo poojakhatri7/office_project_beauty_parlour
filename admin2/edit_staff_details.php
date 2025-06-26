@@ -3,19 +3,30 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
+
 $id = $_GET ['id'];
 if (isset($_POST["submit"])) {
+   $photo = $_FILES["staff_image"]["name"];
+    $photo2 = $_FILES["staff_image"]["tmp_name"];
+    $uploadPath = "upload-images/" . $photo;
   $mobile = $_POST["mobile"];
   $name = $_POST["name"];
   $email = $_POST["email"];
   $address = $_POST["address"];
   $password = $_POST["password"];
+   move_uploaded_file($photo2, $uploadPath);
+  $query1 = "UPDATE `admin_login_details` SET name='$name', email='$email', mobile='$mobile', password='$password', file='$uploadPath', address='$address' WHERE id=$id";
+if( mysqli_query($conn, $query1))
+{
+   echo"<script> alert('updated successfully')
+     window.location.href='staff_details';
+      </script>";
 }
-// $query1 = "UPDATE `admin_login_details` SET name='$name', email='$email', mobile='$mobile', address='$address' WHERE id=$id";
-// $result = mysqli_query($conn, $query1);
- 
+else {
+   echo"<script> alert('error while updation ') </script>";
+}
+}
+
  $sql = "SELECT * FROM admin_login_details WHERE id={$id}";
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);
@@ -70,7 +81,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="card-header"style="background-color: rgb(51, 139, 139);">
                     <h3 class="card-title">Edit Staff Details</h3>
                 </div>
-                <form class="form-horizontal" action="" method="post">
+                <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                     <div class="card-body">
                     <div class="form-group row">          
                     <label for="mobile" class="col-sm-2 col-form-label">MOBILE NUMBER</label>
@@ -106,6 +117,12 @@ if (mysqli_num_rows($result) > 0) {
                             <label for="address" class="col-sm-2 col-form-label">PASSWORD</label>
                             <div class="col-sm-6">
                                 <input type="text" name="password" class="form-control" id="address" placeholder="Enter Password" value = "<?php echo $row['password'] ?>">
+                            </div>
+                        </div>
+                          <div class="form-group row">
+                            <label for="address" class="col-sm-2 col-form-label">IMAGE</label>
+                            <div class="col-sm-6">
+                                <input type="file" name="staff_image" class="form-control" id="address" placeholder="Enter Password" value = "<?php echo $row['file'] ?>">
                             </div>
                         </div>
     <div class="form-group row">

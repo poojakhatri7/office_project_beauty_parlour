@@ -1,13 +1,10 @@
 <?php
-
 include 'user_session.php';
 
- if (!isset($_SESSION["name"])) {
+if (!isset($_SESSION["name"])) {
     header("Location: user_login.php");
     exit();
 }
-?>
-<?php
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
@@ -145,6 +142,8 @@ include('includes/sidebar.php');
                         <th>S No.</th>
                         <th>Service Name</th>
                         <th>Service Price (Rs)</th>
+                         <th>Discount (%)</th>
+                          <th>Offer Price (Rs)</th>
                      
                         <!-- <th>Actions</th> -->
                     </tr>

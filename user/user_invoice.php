@@ -98,7 +98,7 @@ if (mysqli_num_rows($result) > 0) {
       <td>".$row['name']."</td>
        <td>".$row['date']."</td>
         <td> 
-  <a href='/beauty_parlour_management_system/user/user_invoice_details.php?appointment_id={$row["appointment_id"]}'>
+  <a href='user_invoice_details?appointment_id={$row["appointment_id"]}'>
      <button class='btn' style='background-color:rgb(51, 139, 139); color: white; border: none; cursor: pointer;  padding: 7px 12px; border: none;  cursor: pointer;'>
       <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
       View

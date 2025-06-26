@@ -3,8 +3,6 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
 
 if(isset($_POST["submit"])) {
   $name = mysqli_real_escape_string($conn, $_POST["name"]);
@@ -21,7 +19,7 @@ if(isset($_POST["submit"])) {
         echo "<script>
         alert('Appointment successful');
        
-            window.location.href='admin_appointment.php';
+            window.location.href='admin_appointment';
     </script>";
   
     } else {

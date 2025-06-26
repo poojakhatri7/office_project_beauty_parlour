@@ -51,9 +51,7 @@ include('includes/sidebar.php');
     </div>
     <div class="container-fluid">
  
-  <!-- </tbody>
-</table> -->
-<!-- <a href="/beauty_parlour_management_system/sign_up.php">Create a new account</a> -->
+
 <div class="card">
               <div class="card-header">
                 <!-- <h3 class="card-title">Appointment Details</h3> -->
@@ -136,6 +134,7 @@ if (mysqli_num_rows($result) > 0) {
         <i class="fa fa-eye" style="color: rgb(10, 90, 34);"></i>
       </a>
     </div>
+    
         <div style="display: inline-block;">
           <a href="delete_data?package_number=' . $row["package_number"] . '">
             <i class="fa fa-trash" style="color: red;"></i>
@@ -148,7 +147,6 @@ if (mysqli_num_rows($result) > 0) {
     echo "No package found.";
 }
 ?>
-
 <script>
 $(document).on('click', '.view-btn', function () {
     const package_number = $(this).data('package_number');

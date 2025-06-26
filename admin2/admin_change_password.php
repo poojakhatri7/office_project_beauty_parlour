@@ -15,8 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
     
     // Fetch the current password from the database
+     $email = $_SESSION['email'];
     $mobile = $_SESSION['mobile'];  // Assuming user is logged in and their ID is stored in session
-    $query = "SELECT password FROM admin_login_details WHERE mobile = '$mobile'";
+    // $query = "SELECT password FROM admin_login_details WHERE mobile = '$mobile'";
+    $query = "SELECT password FROM admin_login_details WHERE mobile = '$mobile' AND email = '$email'";
+
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
 
@@ -30,7 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
 
                 // Update the new password in the database
-                $update_query = "UPDATE admin_login_details SET password = '$new_password' WHERE mobile = '$mobile'";
+                // $update_query = "UPDATE admin_login_details SET password = '$new_password' WHERE mobile = '$mobile'";
+                $update_query = "UPDATE admin_login_details SET password = '$new_password' WHERE mobile = '$mobile' AND email = '$email'";
+
                 if (mysqli_query($conn, $update_query)) {
                     $success = "Password updated successfully!";
                 } else {

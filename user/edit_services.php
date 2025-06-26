@@ -3,8 +3,6 @@ include 'user_session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
 
 $id = $_GET ['id'];
 if (isset($_POST["submit"])) {
@@ -59,7 +57,7 @@ if (mysqli_num_rows($result) > 0) {
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/beauty_parlour_management_system/">Home</a></li>
+              <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active">Dashboard v1</li>
             </ol>
           </div><!-- /.col -->

@@ -3,9 +3,7 @@ include 'user_session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
 
- <?php
        $appointment_id = $_GET ['appointment_id'];
 if (isset($_GET['appointment_id'])) {
     // Retrieve and echo the value of 'appointment_id' from the URL
@@ -295,7 +293,8 @@ $roundedBill = round($gst_total, 0);
   <!-- Print Button -->
   <form method="POST">
   <div class="text-center">
-  <button type="submit" name="submit" class="btn btn-info " style="background-color:rgb(51, 139, 139)" onclick="printInvoice()">Print Invoice</button>
+  <!-- <button type="submit" name="submit" class="btn btn-info " style="background-color:rgb(51, 139, 139)" onclick="printInvoice()">Print Invoice</button> -->
+   <button type="submit" name="submit" class="btn btn" style="background-color:rgb(51, 139, 139); color:  rgb(238, 230, 217); margin-bottom: 20px;" onclick="printInvoice()"> <i class="fa fa-print" style="margin-right: 5px;"></i>Print Invoice</button>
     </div>
     </form>
 <!-- JavaScript Function -->

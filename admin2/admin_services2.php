@@ -3,8 +3,6 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  $photo = $_FILES["service_image"]["name"];
