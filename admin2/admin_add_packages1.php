@@ -3,8 +3,6 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
 
 if (isset($_POST["submit"])) {
  $photo = $_FILES["package_image"]["name"];

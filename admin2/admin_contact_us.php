@@ -3,9 +3,7 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
 
-<?php
 if (isset($_POST['submit'])) {
     // Get the form data
     $mobile_number = $_POST['mobile_number'];  // 'page_title' is used for title input

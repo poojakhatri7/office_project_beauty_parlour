@@ -239,7 +239,7 @@ if (isset($_POST['add_sub_category'])) {
                     $count = 0;
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+                            $imagePath =   $row['file'];
                             $count++;
                     ?>
                             <tr>
@@ -292,7 +292,7 @@ if (isset($_POST['add_sub_category'])) {
                     $count2 = 0;
                     if (mysqli_num_rows($result2) > 0) {
                         while ($row2 = mysqli_fetch_assoc($result2)) {
-                             $imagePath = "/beauty_parlour_management_system/admin2/" . $row2['file'];
+                             $imagePath =  $row2['file'];
                             $count2++;
                     ?>
                             <tr>

@@ -29,8 +29,6 @@ if(isset($_POST["submit"])) {
       echo "Failed to upload image.";
   } 
 }
- ?>
-<?php
 
 $updated_name ='';
 $name= $_SESSION["name"];
@@ -147,7 +145,7 @@ $count = 0;
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $count++;
-        $imagePath = "/beauty_parlour_management_system/admin2/" . $row['file'];
+        $imagePath = $row['file'];
         ?>
         <tr>
             <th scope='row'><?php echo $count; ?></th>

@@ -12,7 +12,7 @@ if($password== $row["password"])
 {
 $_SESSION["login"] = true ;
 $_SESSION["id"] = $row["id"];
-echo "<script> window.location.href = '/beauty_parlour_management_system/admin2'; </script>";
+echo "<script> window.location.href = 'admin2'; </script>";
 }
 else{
   echo

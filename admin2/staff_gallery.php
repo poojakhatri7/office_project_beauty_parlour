@@ -3,9 +3,7 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
 
-<?php
 if (isset($_POST['submit1'])) {
   $add_designation = $_POST['add_designation'];
   $query = "INSERT INTO staff_designation (designation ) VALUES ( '$add_designation')";
