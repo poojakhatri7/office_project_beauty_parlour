@@ -20,7 +20,6 @@ if (isset($_SESSION["name"])) {
     exit();
 }
 
-
 if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -42,7 +41,7 @@ if (isset($_POST["submit"])) {
             echo "<script> window.location.href = 'admin2'; </script>";
             exit();
         } else {
-            echo "<script> alert('Wrong password for admin');  window.location.href = 'login_page'; </script>";
+            echo "<script> alert('Wrong password ');  window.location.href = 'login_page'; </script>";
             exit();
         }
     }

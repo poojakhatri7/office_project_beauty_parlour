@@ -23,7 +23,7 @@ if (isset($_GET['id'], $_GET['table']) && is_numeric($_GET['id'])) {
     $id = (int)$_GET['id'];
     $table = $_GET['table'];
 
-    if ($table == 'portfolio' || $table == 'enquiry_message' || $table == 'tb_appointment' || $table == 'all_services' || $table == 'banner_management' || $table == 'staff_designation'|| $table == 'staff_gallery' || $table == 'admin_login_details '|| $table == 'sub_category_service' || $table == 'category_service') {
+    if ($table == 'portfolio' || $table == 'enquiry_message' || $table == 'tb_appointment' || $table == 'all_services' || $table == 'banner_management' || $table == 'staff_designation'|| $table == 'staff_gallery' || $table == 'admin_login_details'|| $table == 'sub_category_service' || $table == 'category_service') {
      
     //   if ($table == 'all_services') {
     //     $column = 'a_id';

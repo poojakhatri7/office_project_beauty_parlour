@@ -93,7 +93,7 @@ if (mysqli_num_rows($result) > 0) {
         </a> 
     </div>
     <div style="display: inline-block;">
-        <a href='delete_data?id=<?php echo $row["id"]; ?> &table=admin_login_details'>
+        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=admin_login_details'>
             <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
         </a>
     </div>

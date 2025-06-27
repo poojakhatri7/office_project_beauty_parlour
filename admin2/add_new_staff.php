@@ -18,6 +18,24 @@ if(isset($_POST["submit"])) {
     $role = $_POST['role'];
 
     move_uploaded_file($photo2, $uploadPath);
+       // Check if email already exists for another user (not same mobile)
+    // $duplicate = mysqli_query($conn, "SELECT * FROM `admin_login_details` WHERE email = '$email' ");
+    // if (mysqli_num_rows($duplicate) > 0) {
+    //     echo "<script> alert('Already registered with this email ID'); window.location.href='{$_SERVER['PHP_SELF']}'; </script>";
+    //     exit;
+    // }
+    // Check if email exists in admin_login_details
+$duplicate_admin = mysqli_query($conn, "SELECT * FROM `admin_login_details` WHERE email = '$email'");
+
+// Check if email exists in users table
+$duplicate_user = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'");
+
+if (mysqli_num_rows($duplicate_admin) > 0 || mysqli_num_rows($duplicate_user) > 0) {
+    echo "<script> alert('Already registered with this email ID'); window.location.href='{$_SERVER['PHP_SELF']}'; </script>";
+    exit;
+}
+
+
     $check_user = "SELECT * FROM admin_login_details  WHERE mobile = '$mobile'";
     $result_user = mysqli_query($conn, $check_user);
   
