@@ -1,5 +1,5 @@
 <?php
-include 'session.php';
+include 'user_session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
@@ -15,9 +15,8 @@ include('includes/sidebar.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-.invoice1 {
-  /* background : #157daf !important; */
-  background :rgb(33, 70, 77) !important;
+.user_invoice{
+  background : rgb(51, 139, 139); !important;
 }
 </style>
   </head>
@@ -43,26 +42,22 @@ include('includes/sidebar.php');
           <li class="breadcrumb-item " style= "color: white;  font-size: 14px; font-weight: 500; padding: 2px;" >Add New Customer</li>     
 </a> 
 </button> 
-            </ol> -->  
-            <ol class="breadcrumb float-sm-right">
-  <button class="btn" style="background-color: rgb(51, 139, 139);border: none; cursor: pointer;  padding: 7px 7px;" >
+            </ol> -->
+            <!-- <ol class="breadcrumb float-sm-right">
+  <button class="btn" style="background-color: rgb(33, 165, 100);border: none; cursor: pointer;  padding: 7px 7px;" >
     <i class="fa fa-user-plus fa-lg" style="margin-right: 2px; color: black; font-size: 14px;"></i>
-    <a href="admin_add_customer2" 
+    <a href="/beauty_parlour_management_system/admin2/admin_add_customer.php" 
        style="text-decoration: none; color: white; font-size: 14px; font-weight: 700;  margin: 4px 2px;">
-   Add Appointment
+      Add New Customer
     </a>
   </button>
-</ol>
-
+</ol> -->
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <div class="container-fluid">
    
- 
-  <!-- </tbody>
-</table> -->
 <!-- <a href="/beauty_parlour_management_system/sign_up.php">Create a new account</a> -->
 <div class="card">
               <div class="card-header">
@@ -72,110 +67,65 @@ include('includes/sidebar.php');
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
-                <!-- <thead style="background-color:rgb(23, 162, 184); color: white;"> -->
                 <thead style="background-color:rgb(51, 139, 139); color: white;">
                   <tr>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
-                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Invoice number</th>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Appointment Id</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Customer name</th>
-                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Mobile number</th>
-                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Type</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Date</th>
-                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Time</th>
-                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;"> Actions</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <?php
-//   = "SELECT distinct FROM tb_selected_services";
-//   $sql= "SELECT DISTINCT * FROM tb_selected_services";
- // $sql=" SELECT DISTINCT appointment_id FROM tb_selected_services";
-//  $sql ="p.name, p.date from tb_appointment p inner join tb_selected_services c on p.id = c.appointment_id";
-// $sql="SELECT distinct p.name, p.date 
-// FROM tb_appointment p 
-// INNER JOIN tb_selected_services c 
-// ON p.id = c.appointment_id";
-//
-// $sql="SELECT DISTINCT p.id AS appointment_id, p.name, p.date
-// FROM tb_appointment p
-// INNER JOIN tb_selected_services c
-// ON p.id = c.appointment_id";
+ 
+                 <?php
+$mobile = $_SESSION["mobile"];
+$mobile = mysqli_real_escape_string($conn, $mobile); // for safety
 
-$count = 0;
 $sql = "
-    (SELECT 
+(
+ SELECT DISTINCT p.id AS appointment_id, p.name, p.date
+  FROM tb_appointment p
+  INNER JOIN tb_selected_services c ON p.id = c.appointment_id
+  WHERE p.mobile = '$mobile'
+)
+UNION ALL
+(SELECT 
         ta.id AS appointment_id, 
         ta.name AS name, 
-        ta.date,
-        ta.mobile, 
-        ts.billing_number,
-        ts.time AS time,
-        ts.created_at,
-        'Service' AS invoice_type,
-        NULL AS package1_id
-    FROM tb_appointment ta
-    JOIN tb_selected_services ts ON ta.id = ts.appointment_id
-    GROUP BY ts.billing_number)
-
-    UNION ALL
-
-    (SELECT 
-        ta.id AS appointment_id, 
-        ta.name AS name, 
-        ta.date,
-        ta.mobile, 
-        sp.billing_number,
-        NULL AS time,
-        sp.created_at,
-        'Package' AS invoice_type,
         sp.package1_id
     FROM tb_appointment ta
     JOIN package_selected sp ON ta.id = sp.appointment_id
-    GROUP BY sp.billing_number)
+   WHERE ta.mobile = '$mobile' )
+  ";
 
-    ORDER BY created_at DESC
-";
-
-// Execute the query
+// Step 3: Execute the query
 $result = mysqli_query($conn, $sql);
-
-// Display results
+$count = 0;
+// Step 4: Check if the query returned any results
 if (mysqli_num_rows($result) > 0) {
+    // Step 5: Use a while loop to fetch each row of data
+   
     while ($row = mysqli_fetch_assoc($result)) {
-        $count++;
-        echo "<tr>
-            <th scope='row'>$count</th> 
-            <td>{$row['billing_number']}</td>
-            <td>{$row['name']}</td>
-            <td>{$row['mobile']}</td>
-            <td>{$row['invoice_type']}</td>
-            <td>{$row['date']}</td>
-            <td>" . ($row['time'] ? date("h:i", strtotime($row['time'])) : date("h:i", strtotime($row['created_at']))) . "</td>
-            <td>";
-        
-        if ($row['invoice_type'] === 'Service') {
-            echo "<a href='invoice_details2?appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>";
-        } else {
-            echo "<a href='invoice_package?package1_id={$row["package1_id"]}&appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>";
-        }
-
-        echo "<button class='btn' style='background-color: rgb(51, 139, 139); color: white; border: none; cursor: pointer; padding: 7px 12px;'>
-                <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
-                View
-              </button>
-              </a>
-            </td>
-        </tr>";
+      $count = $count+1 ;
+      echo"<tr>
+      <th scope='row'>".$count."</th> 
+     <td>".$row['appointment_id']."</td>
+      <td>".$row['name']."</td>
+       <td>".$row['date']."</td>
+        <td> 
+  <a href='user_invoice_details?appointment_id={$row["appointment_id"]}'>
+     <button class='btn' style='background-color:rgb(51, 139, 139); color: white; border: none; cursor: pointer;  padding: 7px 12px; border: none;  cursor: pointer;'>
+      <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
+      View
+     </button>
+  </a> 
+</td>
+    </tr>";
     }
 } else {
     echo "No invoice found.";
 }
-
-
-
-
-
-
 ?>
                   </table>
               </div>

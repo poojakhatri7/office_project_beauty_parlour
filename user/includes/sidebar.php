@@ -23,28 +23,33 @@
 
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-2 pb-2 mb-2 d-flex">
         <div class="image">
           
 <?php
+$defaultImage = "../user/assets/dist/img/dp.webp"; 
+$imagePath = $defaultImage;
  $mobile = $_SESSION["mobile"];
         $sql = "SELECT file FROM users WHERE mobile = '$mobile'";
         $result = mysqli_query($conn, $sql);
         if ($result && mysqli_num_rows($result) > 0) {
           $row = mysqli_fetch_assoc($result);
-          $imagePath = $row['file'] ;
+           // Check if image file is not empty and exists
+    if (!empty($row['file']) && file_exists($row['file'])) {
+        $imagePath = $row['file'];
+    }
         }
         ?>
-          <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2" alt="">
         </div>
         <div class="info">
           <a href="#" class="d-block" style="text-decoration: none;" > 
             <?php 
 // print_r ($_SESSION);
  //echo ucwords($_SESSION["name"]);
- echo '<span style="color:rgb(229, 240, 243); font-weight:500; font-size:15px;">' . ucwords($_SESSION["name"]) . "&nbsp;".'</span>'; 
+ echo '<span style="color:rgb(229, 240, 243); font-weight:600; font-size:15px;">' . ucwords($_SESSION["name"]) . "&nbsp;".'</span><br>'; 
 
- echo '<span style="color:rgb(229, 240, 243); font-weight:400; font-size:15px;">' ."(".($_SESSION["mobile"]) .")". '</span>';
+ echo '<span style="color:rgb(229, 240, 243); font-weight:500; font-size:15px;">' ."(".($_SESSION["mobile"]) .")". '</span>';
  //(' . $_SESSION["mobile"] . ')
 ?>
            </a>

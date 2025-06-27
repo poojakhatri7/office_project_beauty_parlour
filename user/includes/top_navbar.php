@@ -1,11 +1,15 @@
-<?php include 'data.php'; ?>
-<?php
+<?php include 'data.php'; 
+$defaultImage = "../user/assets/dist/img/dp.webp"; 
+$imagePath = $defaultImage;
  $mobile = $_SESSION["mobile"];
         $sql = "SELECT file FROM users WHERE mobile = '$mobile'";
         $result = mysqli_query($conn, $sql);
         if ($result && mysqli_num_rows($result) > 0) {
           $row = mysqli_fetch_assoc($result);
-          $imagePath = $row['file'] ;
+                // Check if image file is not empty and exists
+    if (!empty($row['file']) && file_exists($row['file'])) {
+        $imagePath = $row['file'];
+    }
         }
         ?>
 <div class="preloader flex-column justify-content-center align-items-center">
@@ -49,10 +53,10 @@
          <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">         
-  <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2 " alt="User Image" style="max-width: 25px; height: auto;">
+  <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2 " alt="Image" style="max-width: 25px; height: auto;">
 </a>
   <div class="dropdown-menu  dropdown-menu-right">
-          <a href="/beauty_parlour_management_system/user/user_logout.php" class="dropdown-item">
+          <a href="user_logout" class="dropdown-item">
             <i class="fa fa-sign-out-alt "></i> Logout
           </a>
           </div> 

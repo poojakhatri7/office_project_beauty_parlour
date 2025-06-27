@@ -62,7 +62,7 @@ if (isset($_POST["submit"])) {
 
             echo "<script>
                 alert('Package and related services inserted successfully');
-                window.location.href='admin_available_package.php';
+                window.location.href='admin_available_package';
             </script>";
         } else {
             echo "Error inserting package: " . mysqli_error($conn);

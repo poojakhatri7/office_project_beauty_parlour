@@ -18,7 +18,7 @@ if (isset($_POST['submit1'])) {
 }
 ?>
 <?php
-$defaultImage = "/beauty_parlour_management_system/user/assets/dist/img/dp.webp"; 
+$defaultImage = "../user/assets/dist/img/dp.webp"; 
 $uploadPath = $defaultImage; 
 // if (isset($_POST['submit']) && isset($_FILES['image']) && isset($_POST['designation']) && isset($_POST['name'])) {
 if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name'])) {

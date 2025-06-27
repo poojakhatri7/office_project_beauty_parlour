@@ -73,13 +73,14 @@ include('includes/sidebar.php');
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Appointment Id</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Customer name</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Date</th>
+                     <th style="color: rgb(238, 230, 217); font-weight: 500;"> Bill number</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;"> Actions</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php
 $mobile= $_SESSION["mobile"];
-$sql="SELECT DISTINCT p.id AS appointment_id, p.name, p.date
+$sql="SELECT DISTINCT p.id AS appointment_id, p.name, p.date,   c.billing_number
 FROM tb_appointment p
 INNER JOIN tb_selected_services c
 ON p.id = c.appointment_id  WHERE mobile = $mobile";
@@ -97,8 +98,9 @@ if (mysqli_num_rows($result) > 0) {
      <td>".$row['appointment_id']."</td>
       <td>".$row['name']."</td>
        <td>".$row['date']."</td>
+         <td>{$row['billing_number']}</td>
         <td> 
-  <a href='user_invoice_details?appointment_id={$row["appointment_id"]}'>
+  <a href='user_invoice_details?appointment_id={$row["appointment_id"]}&billing_number={$row["billing_number"]}'>
      <button class='btn' style='background-color:rgb(51, 139, 139); color: white; border: none; cursor: pointer;  padding: 7px 12px; border: none;  cursor: pointer;'>
       <i class='fa fa-eye fa-lg' style='margin-right: 2px; color: black; font-size: 14px;'></i>
       View

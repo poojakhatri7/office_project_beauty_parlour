@@ -1,5 +1,4 @@
 <?php
-
 include 'db_connection.php';
 include 'asset.php';
 ?>

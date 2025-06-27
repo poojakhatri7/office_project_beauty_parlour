@@ -145,7 +145,7 @@ $count = 0;
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $count++;
-        $imagePath = $row['file'];
+        $imagePath = "../admin2/" .$row['file'];
         ?>
         <tr>
             <th scope='row'><?php echo $count; ?></th>

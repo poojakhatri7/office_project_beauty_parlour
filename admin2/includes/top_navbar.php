@@ -1,6 +1,5 @@
-<?php include 'data.php'; ?>
+<?php include 'data.php'; 
 
-<?php
  $mobile = $_SESSION["mobile"];
         $sql = "SELECT file FROM admin_login_details WHERE mobile = '$mobile'";
         $result = mysqli_query($conn, $sql);

@@ -30,8 +30,7 @@ if (isset($_FILES['image'])) {
       echo "Failed to upload image.";
   } 
 }
- ?>
-<?php
+
 
 $updated_name ='';
 $name= $_SESSION["name"];

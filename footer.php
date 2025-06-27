@@ -1,5 +1,4 @@
-	
-	<?php
+<?php
 include 'db_connection.php';
 
 // Fetch business hours

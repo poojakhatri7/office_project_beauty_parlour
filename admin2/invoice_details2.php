@@ -18,6 +18,7 @@ $billing_number = isset($_GET['billing_number']) ? $_GET['billing_number'] : nul
 //     echo "No appointment ID passed in the URL.";
   
 // }
+
 ?>
 <html lang="en">
   <head>

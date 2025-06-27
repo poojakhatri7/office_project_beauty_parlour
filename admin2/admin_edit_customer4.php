@@ -3,8 +3,7 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
+
 
 //$id = $_GET ['id'];
 $id = $_GET ['id'];

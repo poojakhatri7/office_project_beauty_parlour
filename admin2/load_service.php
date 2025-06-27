@@ -7,8 +7,8 @@ $request_type = isset($_POST['request_type']) ? $_POST['request_type'] : '';
 // if($_POST['request_type']=="")
 if ($request_type == "service_data")
 {
-    print_r($_POST);
-    $request_type = $_POST['request_type'];
+    // print_r($_POST);
+    // $request_type = $_POST['request_type'];
     $sql = "SELECT * from category_service";
 
 $query = mysqli_query($conn,$sql);
@@ -18,7 +18,7 @@ while ($row = mysqli_fetch_assoc($query) )
 {
   echo $row['c_id'] ;
  echo  $row['c_service'];
-    $str.="<option value= '{$row['c_id']}'>{$row['c_service']}";
+    $str.="<option value= '{$row['c_id']}'>{$row['c_service']}</option>";
 }
 echo $str;
 }
@@ -28,14 +28,14 @@ if($_POST['request_type']=="sub_service_data")
     $sql = "SELECT * from sub_category_service WHERE sub_service = {$_POST['id']}";
 
     $query = mysqli_query($conn,$sql);
-    echo "pooja";
+    // echo "pooja";
     // $str = '<option value="">Select Service</option>';
     $str = '<option value="">Select a Sub Service</option>';
     while ($row = mysqli_fetch_assoc($query) )
     {
       echo $row['s_id'] ;
      echo  $row['s_name'];
-        $str.="<option value= '{$row['s_id']}'>{$row['s_name']}";
+        $str.="<option value= '{$row['s_id']}'>{$row['s_name']} </option>";
     }
     echo $str;
 }
@@ -94,6 +94,7 @@ if (isset($_POST['sub_service'])) {
   
                    <td>
                    
+                   
         <div style='display: inline-block; margin-right: 20px;'>
             <a href='edit_services?id=" . $row['a_id'] . "'>
                 <i class='fas fa-pencil-alt' style='color:rgb(18, 110, 40);'></i> <!-- Edit icon -->
@@ -104,6 +105,7 @@ if (isset($_POST['sub_service'])) {
                 <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
             </a>
         </div>
+        
     </td>
                  
                   </tr>";

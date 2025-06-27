@@ -4,8 +4,6 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
-<?php
 
 // Handle category form submission
 $defaultImage = "user/assets/dist/img/dp.webp"; 
@@ -239,7 +237,7 @@ if (isset($_POST['add_sub_category'])) {
                     $count = 0;
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $imagePath =   $row['file'];
+                            $imagePath = "../admin2/" .  $row['file'];
                             $count++;
                     ?>
                             <tr>
@@ -292,7 +290,7 @@ if (isset($_POST['add_sub_category'])) {
                     $count2 = 0;
                     if (mysqli_num_rows($result2) > 0) {
                         while ($row2 = mysqli_fetch_assoc($result2)) {
-                             $imagePath =  $row2['file'];
+                             $imagePath = "../admin2/" . $row2['file'];
                             $count2++;
                     ?>
                             <tr>
