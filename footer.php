@@ -131,7 +131,7 @@ $result1 = mysqli_query($conn, $sql);
 							<div class="col">
 								<div class="footer-copyright"><p>&copy; 2025 Demo Studio. All Rights Reserved</p>
 								<br>
-							<p>Developed by <a href="https://tvssolution.in/">TVS SOLUTION.</a></p>
+							<p>Developed by <a target="_blank" href="https://tvssolution.in/">TVS SOLUTION.</a></p>
 							</div>
 							</div>
 						</div>  

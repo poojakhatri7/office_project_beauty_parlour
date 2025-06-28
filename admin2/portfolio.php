@@ -17,12 +17,12 @@ if (isset($_FILES['image'])) {
   $uploadPath = "upload-images/" . $photo;
 
   if (move_uploaded_file($photo2, $uploadPath)) {
-      echo "Image uploaded successfully! <br>";
+      // echo "Image uploaded successfully! <br>";
       // $sql = "INSERT INTO users (file) VALUES ('$uploadPath')";
       // $sql = "UPDATE portfolio SET file = '$uploadPath' WHERE mobile = '$mobile'";
       $sql = "INSERT INTO portfolio (file) VALUES ('$uploadPath')";
       if ($conn->query($sql) === TRUE) {
-        echo "Image path saved to database!";
+        // echo "Image path saved to database!";
       } else {
           echo "Error saving to database: " . $conn->error;
       }

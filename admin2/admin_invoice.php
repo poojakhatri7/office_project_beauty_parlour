@@ -109,7 +109,7 @@ $sql = "
         ta.date,
         ta.mobile, 
         ts.billing_number,
-        ts.time AS time,
+        ts.created_at AS time,
         ts.created_at,
         'Service' AS invoice_type,
         NULL AS package1_id
@@ -170,10 +170,6 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "No invoice found.";
 }
-
-
-
-
 
 
 ?>

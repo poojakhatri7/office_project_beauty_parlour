@@ -119,7 +119,7 @@ $imagePath = $defaultImage;
             </a> 
 </li>
 <li class="nav-item">
-            <a href="/beauty_parlour_management_system/user/user_booking.php" class="nav-link update_profile nav-link change_password ">
+            <a href="user_booking" class="nav-link update_profile nav-link change_password ">
             <!-- <i class="fa fa-cog"></i> -->
             <!-- <i class="fa fa-gear"></i>
             <i class="fa fa-user-cog"></i> -->
@@ -140,7 +140,7 @@ $imagePath = $defaultImage;
             </a> 
 </li>
 <li class="nav-item">
-            <a href="/beauty_parlour_management_system/user/change_password.php" class="nav-link change_password">
+            <a href="change_password" class="nav-link change_password">
             <!-- <i class="fa fa-cog"></i> -->
             <i class="fas fa-user-edit"></i>
               <p>
