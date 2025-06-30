@@ -378,7 +378,7 @@ if (mysqli_num_rows($result) > 0) {
 				<div class="row">
 					<div class="col">
 						<div class="more-btn">
-							<a href="pprice.php?c_id=2" class="btn btn--tra-black hover--black mb-40">View Our Menu</a>
+							<a href="pprice?c_id=2" class="btn btn--tra-black hover--black mb-40">View Our Menu</a>
 						</div>
 					</div>
 				</div>

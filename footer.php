@@ -87,9 +87,12 @@ $time = $row['time'];
 
 								<!-- List -->
 								<ul class="foo-socials ico-20 text-center clearfix">									
-									<li><a href="#" class="ico-facebook"><span class="flaticon-facebook"></span></a></li>
-									<li><a href="#" class="ico-twitter"><span class="flaticon-twitter"></span></a></li>	
-									<li><a href="#" class="ico-youtube"><span class="flaticon-instagram"></span></a></li>
+									<li><a target="_blank" href="https://www.facebook.com/codermaniaalab/" class="ico-facebook"><span class="flaticon-facebook"></span></a></li>
+									<li><a  target="_blank" href="http://x.com/coder_maniaa" class="ico-twitter"><span class="flaticon-twitter"></span></a></li>	
+									<li><a target="_blank" href="https://www.linkedin.com/in/coder-maniaa/" class="ico-youtube"><span class="flaticon-instagram"></span></a></li>
+									
+										<li><a target="_blank" href="https://www.linkedin.com/in/coder-maniaa/" class="ico-youtube"><span class="fab fa-linkedin-in"></span></a></li>
+										<li><a target="_blank" href="https://www.linkedin.com/in/coder-maniaa/" class="ico-youtube"><span class="flaticon-youtube"></span></a></li>
 								</ul>
 
 							</div>
@@ -129,9 +132,8 @@ $result1 = mysqli_query($conn, $sql);
 					<div class="bottom-footer">
 						<div class="row">
 							<div class="col">
-								<div class="footer-copyright"><p>&copy; 2025 Demo Studio. All Rights Reserved</p>
-								<br>
-							<p>Developed by <a target="_blank" href="https://tvssolution.in/">TVS SOLUTION.</a></p>
+								<div class="footer-copyright"><p>&copy; 2025 Demo Studio. All Rights Reserved. Developed by <a target="_blank" href="https://tvssolution.in/">TVS SOLUTION.</a></p>
+							
 							</div>
 							</div>
 						</div>  

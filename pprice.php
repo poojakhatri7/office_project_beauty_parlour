@@ -135,7 +135,7 @@ $description = $row ['description'];
   flex-grow: 1;
   
 }
-.plus-sign {
+.plus-sign i {
   /* color: black;
   margin-right: 15px;
   font-weight: bold; */
@@ -150,21 +150,34 @@ $description = $row ['description'];
   /* line-height: 20px;
   margin-right: 8px;
   font-size: 16px;
-  transition: background-color 0.3s ease; */ */
-    color:rgb(24, 51, 80);           /* Bootstrap primary color */
-  font-size: 17px;          /* Size of the icon */
-  background-color:rgb(217, 235, 245);/* Light background */
-  padding: 1px;             /* Space around the icon */
-  border-radius: 50%;       /* Make it circular */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  transition: background-color 0.3s ease; */ 
+    /* color:rgb(24, 51, 80);           Bootstrap primary color */
+  /* font-size: 17px;         
+  background-color:rgb(217, 235, 245);
+  padding: 1px;            
+  border-radius: 50%;      
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); 
   transition: 0.3s ease;
-  cursor: pointer;
+  cursor: pointer; */
+  
+    font-size: 20px ;
+  color: rgb(97, 83, 190); /* Blue color */
+  background-color: #e6f0ff; /* Light blue background */
+  padding: 8px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
 }
-.plus-sign:hover {
+.plus-sign i:hover {
   /* background-color:rgb(189, 31, 44);
   cursor: pointer; */
-    background-color:rgb(176, 203, 231);
-  color: green;
+    /* background-color:rgb(176, 203, 231);
+  color: green; */
+    color: #fff;
+  background-color:rgb(47, 43, 75);
+  transform: scale(1.1);
+  cursor: pointer;
 }
 .carousel-control-prev-icon,
 .carousel-control-next-icon {

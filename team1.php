@@ -76,7 +76,24 @@ include 'asset.php';
 			<?php include 'header-1.php'; ?>
 			<!-- END HEADER -->
 
+<style>
+.plus-sign i {
+  font-size: 20px;
+  color: rgb(106, 90, 205); /* Blue color */
+  background-color: #e6f0ff; /* Light blue background */
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.plus-sign i:hover {
+  color: #fff;
+  background-color:rgb(47, 43, 75);
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
+    </style>
 
 
 			<!-- INNER PAGE HERO
@@ -94,6 +111,7 @@ include 'asset.php';
 				</div>	   <!-- End container --> 
 			</section>	<!-- END INNER PAGE HERO -->
 
+			
 
 <!-- Modal start -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >

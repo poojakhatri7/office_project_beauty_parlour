@@ -1,5 +1,4 @@
 <?php
-
 include 'db_connection.php';
 include 'admin2/includes/data.php';
 ?>
@@ -14,9 +13,9 @@ include 'admin2/includes/data.php';
 				<div class="wsmobileheader clearfix">
 					<span class="smllogo">
 						<a href="./" class="logo-black"><img src="<?php echo $brand_logo; ?>" alt="mobile-logo"  class="brand-image img-circle elevation-2"
-							style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
+							style="width: 100px; height: 50px; object-fit: contain;  background-color: white;"></a>
 						<a href="./" class="logo-white"><img src="<?php echo $brand_logo; ?>" alt="mobile-logo"  class="brand-image img-circle elevation-2"
-							style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
+							style="width: 100px; height: 50px; object-fit: contain;  background-color: white;"></a>
 					</span>
 					<a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
 				</div>
@@ -30,14 +29,14 @@ include 'admin2/includes/data.php';
 						<!-- HEADER BLACK LOGO -->
 						<div class="desktoplogo">
 							<a href="./" class="logo-black"><img src="<?php echo $brand_logo; ?>" alt="logo"  class="brand-image img-circle elevation-2"
-							style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
+							></a>
 						</div>
 
 
 						<!-- HEADER WHITE LOGO -->
 						<div class="desktoplogo">
 							<a href="#" class="logo-white"><img src="<?php echo $brand_logo; ?>" alt="logo" class="brand-image img-circle elevation-2" 
-    style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
+  ></a>
 						</div>
 
 
@@ -130,7 +129,7 @@ $result = mysqli_query($conn, $sql);
 								<!-- SIMPLE NAVIGATION LINK -->
 								 <li class="nl-simple" aria-haspopup="true"><a href="package" class="h-link">Packages</a></li>
 
-								<li class="nl-simple" aria-haspopup="true"><a href="gallery" class="h-link">Portfolio</a></li>
+								<li class="nl-simple" aria-haspopup="true"><a href="gallery" class="h-link">Gallery</a></li>
 
 								<li class="nl-simple" aria-haspopup="true"><a href="contact" class="h-link">Contact</a></li>
 

@@ -82,6 +82,9 @@
 }
 
 .wsmainwp {
+   display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 0 auto;
   max-width: 1140px;
   padding: 0 15px;
@@ -97,27 +100,37 @@
 }
 
 .desktoplogo img {
+    max-height: 80px; /* Controls height */
+  width: auto;
   vertical-align: middle;
+   object-fit: contain;
 }
 
 /* Navigation Menu */
 .wsmenu {
+   flex: 1;
+     display: flex;
   padding: 0;
-  float: right;
-  display: block;
+  align-items: center;
+  justify-content: flex-end;
+ 
+   gap: 20px;
+    align-items: center;
 }
 
 .wsmenu > .wsmenu-list {
+    display: flex;
   text-align: left;
   margin: 0 auto 0 auto;
   width: 100%;
   display: block;
   padding: 0;
+    align-items: center;
 }
 
 .wsmenu > .wsmenu-list > li {
-  text-align: center;
-  display: block;
+ 
+  display: flex;
   padding: 0;
   margin: 0;
   float: left;
@@ -172,15 +185,15 @@
 }
 
 .wsmenu > .wsmenu-list > li a.menuhomeicon {
-  padding-left: 29px;
-  padding-right: 29px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .wsmenu > .wsmenu-list > li > a i {
   display: inline-block;
   font-size: 16px;
   line-height: inherit;
-  margin-right: 12px;
+  margin-right: 8px;
   vertical-align: top;
 }
 
@@ -194,12 +207,12 @@
   border-right: 4px solid rgba(0, 0, 0, 0);
   border-top: 4px solid;
   content: "";
-  float: right;
+  float: left;
   right: 15px;
   height: 0;
   margin: 0 0 0 14px;
   position: absolute;
-  text-align: right;
+  text-align: left;
   top: 33px;
   width: 0;
 }

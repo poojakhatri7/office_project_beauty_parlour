@@ -2,7 +2,6 @@
 include 'db_connection.php';
 include 'asset.php';
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -188,6 +187,22 @@ $result = mysqli_query($conn, $sql);
     top: 50%; /* Move even further down on small screens */
   }
 
+}
+
+.plus-sign i {
+  font-size: 18px;
+  color: rgb(106, 90, 205); /* Blue color */
+  background-color: #e6f0ff; /* Light blue background */
+  padding: 8px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.plus-sign i:hover {
+  color: #fff;
+  background-color:rgb(47, 43, 75);
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
     </style>
