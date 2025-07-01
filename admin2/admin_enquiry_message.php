@@ -115,7 +115,7 @@ include('includes/sidebar.php');
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Name</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Email</th>
-                    <th style="color: rgb(238, 230, 217); font-weight: 500;">About</th>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Mobile</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Message</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Date and Time</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
@@ -135,7 +135,7 @@ if (mysqli_num_rows($result) > 0) {
             <th scope='row'><?php echo $count; ?></th>
             <td><?php echo $row['name']; ?></td>
             <td><?php echo $row['email']; ?></td>
-            <td><?php echo $row['about']; ?></td>
+            <td><?php echo $row['mobile']; ?></td>
             <td><?php echo $row['message']; ?></td>
           
             <td><?php echo date("d-m-Y h:i", strtotime($row['created_at'])); ?></td>
@@ -156,7 +156,8 @@ if (mysqli_num_rows($result) > 0) {
          </a> 
     </div> --> 
     <div style="display: inline-block;">
-        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=enquiry_message'>
+        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=enquiry_message'
+         onclick="return confirm('Are you sure you want to delete this?')">
             <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
         </a>
     </div>
@@ -166,7 +167,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 } 
  else {
-    echo "No Appointment found.";
+    echo "No Enquiry message found";
 }
 ?>
 

@@ -1213,7 +1213,7 @@ p.tra-link a:hover:after {
   width: auto;
   max-width: inherit;
   max-height: 85px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .desktoplogo.logo-square img {
@@ -1333,9 +1333,9 @@ p.tra-link a:hover:after {
 
 .wsmenu > .wsmenu-list > li a.btn {
   font-size: 0.75rem;
-  line-height: 30px;
+  line-height: 20px;
   padding: 4px 28px;
-  margin: 14px 0 0 8px;
+  margin: 10px 0 0 8px;
 }
 
 .book{

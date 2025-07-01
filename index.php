@@ -398,7 +398,7 @@ $result = mysqli_query($conn, $sql);
 			 		<div class="row">
 			 			<div class="col">
 			 				<div class="more-btn">
-								<a href="pprice.php?c_id=2" class="btn btn--tra-black hover--black">View Our Menu</a>
+								<a href="pprice?c_id=2" class="btn btn--tra-black hover--black">View Our Menu</a>
 							</div>
 						</div>
 					</div>	
@@ -743,7 +743,7 @@ if (mysqli_num_rows($result) > 0) {
 			 		<div class="row">
 			 			<div class="col">
 			 				<div class="more-btn mt-5">
-								<a href="pprice.php?c_id=1" class="btn btn--tra-black hover--black">View All Prices</a>
+								<a href="pprice?c_id=1" class="btn btn--tra-black hover--black">View All Prices</a>
 							</div>
 						</div>
 					</div>
@@ -1390,13 +1390,13 @@ $result = mysqli_query($conn, $sql);
 									<!-- Title -->	
 									<h3>Visit Demo Beauty Studio </h3>
 
-									<p class="ct-09-address">8721 Central Ave, Los Angeles, CA 90036</p>
+									<!-- <p class="ct-09-address">8721 Central Ave, Los Angeles, CA 90036</p> -->
 
 									<!-- Advantages List -->
 									<ul class="advantages ico-30 clearfix">
-										<li><p class="me-3">est. 2018</p></li>
-										<li><p><a href="contact">Learn More</a></p></li>
-										<li class="advantages-links-divider"><p><span class="flaticon-vertical-line"></span></p></li>
+										<!-- <li><p class="me-3">est. 2018</p></li> -->
+										<!-- <li><p><a href="contact">Learn More</a></p></li>
+										<li class="advantages-links-divider"><p><span class="flaticon-vertical-line"></span></p></li> -->
 										<li><p><a href="booking">Book Now</a></p></li>
 									</ul>
 
@@ -1424,13 +1424,13 @@ $result = mysqli_query($conn, $sql);
 									<!-- Title -->	
 									<h3>Visit Demo Beauty Studio</h3>
 
-									<p class="ct-09-address">8493 Sunset Blvd, Los Angeles, CA 90069</p>
+									<!-- <p class="ct-09-address">8493 Sunset Blvd, Los Angeles, CA 90069</p> -->
 
 									<!-- Advantages List -->
 									<ul class="advantages ico-30 clearfix">
-										<li><p class="me-3">est. 2021</p></li>
-										<li><p><a href="contact">Learn More</a></p></li>
-										<li class="advantages-links-divider"><p><span class="flaticon-vertical-line"></span></p></li>
+										<!-- <li><p class="me-3">est. 2021</p></li> -->
+										<!-- <li><p><a href="contact">Learn More</a></p></li> -->
+										<!-- <li class="advantages-links-divider"><p><span class="flaticon-vertical-line"></span></p></li> -->
 										<li><p><a href="booking">Book Now</a></p></li>
 									</ul>
 
@@ -1718,10 +1718,10 @@ $result = mysqli_query($conn, $sql);
 
       </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+       <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div> 
     </div>
   </div>
 </div>

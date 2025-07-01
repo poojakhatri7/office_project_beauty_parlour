@@ -95,7 +95,7 @@ if(isset($_POST["submit"])) {
              
                     <label for="mobile" class="col-sm-4 col-form-label">MOBILE NUMBER</label>
                     <div class="col-sm-8">
-                        <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Enter mobile number" required>
+                        <input type="tel" name="mobile" class="form-control" id="mobile" placeholder="Enter mobile number"  pattern="\d{10}" minlength="10" maxlength="10" required>
                     </div>
                 </div>
                
@@ -103,13 +103,13 @@ if(isset($_POST["submit"])) {
                 <div class="form-group row">
                     <label for="email" class="col-sm-4 col-form-label">EMAIL US</label>
                     <div class="col-sm-8">
-                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter email"required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="date" class="col-sm-4 col-form-label">DATE</label>
                     <div class="col-sm-8">
-                        <input type="date" name="date" class="form-control" id="date">
+                        <input type="date" name="date" class="form-control" id="date" required>
                     </div>
                 </div>
             </div>
@@ -119,19 +119,19 @@ if(isset($_POST["submit"])) {
                 <div class="form-group row">
                     <label for="name" class="col-sm-4 col-form-label">NAME</label>
                     <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="address" class="col-sm-4 col-form-label">ADDRESS</label>
                     <div class="col-sm-8">
-                        <input type="text" name="address" class="form-control" id="address" placeholder="Enter address">
+                        <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="time" class="col-sm-4 col-form-label">TIME</label>
                     <div class="col-sm-8">
-                        <input type="time" name="time" class="form-control" id="time">
+                        <input type="time" name="time" class="form-control" id="time" required>
                     </div>
                 </div>
             </div>

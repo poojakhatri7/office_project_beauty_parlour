@@ -29,14 +29,14 @@ include 'admin2/includes/data.php';
 						<!-- HEADER BLACK LOGO -->
 						<div class="desktoplogo">
 							<a href="./" class="logo-black"><img src="<?php echo $brand_logo; ?>" alt="logo"  class="brand-image img-circle elevation-2"
-							></a>
+							style="width: 100px; height: 100px; object-fit: contain;  background-color: white;"></a>
 						</div>
 
 
 						<!-- HEADER WHITE LOGO -->
 						<div class="desktoplogo">
-							<a href="#" class="logo-white"><img src="<?php echo $brand_logo; ?>" alt="logo" class="brand-image img-circle elevation-2" 
-  ></a>
+							<a href="./" class="logo-white"><img src="<?php echo $brand_logo; ?>" alt="logo" class="brand-image img-circle elevation-2" 
+  style="width: 100px; height: 100px; object-fit: contain;  background-color: white;"></a>
 						</div>
 
 
@@ -142,7 +142,9 @@ $result = mysqli_query($conn, $sql);
 								<li class="nl-simple" aria-haspopup="true">
 									<a href="booking" class="btn btn--tra-white hover--white last-link">Book Online</a>
 								</li> 
-								<li class="nl-simple" aria-haspopup="true"><a href="login_page"  class="h-link">Login</a></li>
+								<li class="nl-simple" aria-haspopup="true">
+									<a href="login_page"  class="h-link">Login</a>
+							</li>
 								<!-- <li class="nl-simple" aria-haspopup="true"><a href="admin2" target="_blank" class="h-link">admin</a></li> -->
 							</ul>
 						</nav>

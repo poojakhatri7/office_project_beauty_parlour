@@ -1,5 +1,4 @@
 <?php
-
 include 'db_connection.php';
 include 'admin2/includes/data.php';
 ?>
@@ -25,14 +24,14 @@ include 'admin2/includes/data.php';
 	    					<!-- HEADER BLACK LOGO -->
 	    					<div class="desktoplogo">
 	    						<a href="demo-9.php" class="logo-black"><img src="<?php echo $brand_logo; ?>" alt="logo"  class="brand-image img-circle elevation-2"
-							style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
+							style="width: 100px; height: 110px; object-fit: contain;  background-color: white; "></a>
 	    					</div>
 
 
 	    					<!-- HEADER WHITE LOGO -->
 	    					<div class="desktoplogo">
 	    						<a href="demo-9.php" class="logo-white"><img src="<?php echo $brand_logo; ?>" alt="logo"  class="brand-image img-circle elevation-2"
-							style="width: 100px; height: 50px; object-fit: contain;  background-color: white; border-radius: 50px;"></a>
+							style="width: 100px; height: 100px; object-fit: contain;  background-color: white; "></a>
 	    					</div>
 
 
@@ -120,7 +119,7 @@ $result = mysqli_query($conn, $sql);
 
 								    <!-- SIMPLE NAVIGATION LINK -->
 									 <li class="nl-simple" aria-haspopup="true"><a href="package" class="h-link">Packages</a></li>
-							    	<li class="nl-simple" aria-haspopup="true"><a href="gallery" class="h-link">Portfolio</a></li>
+							    	<li class="nl-simple" aria-haspopup="true"><a href="gallery" class="h-link">Gallery</a></li>
 
 									<li class="nl-simple" aria-haspopup="true"><a href="contact" class="h-link">Contact</a></li>
 
@@ -133,7 +132,9 @@ $result = mysqli_query($conn, $sql);
 								    <li class="nl-simple" aria-haspopup="true">
 								    	<a href="booking" class="btn btn--tra-white hover--white last-link book">Book Online</a>
 								    </li> 
-
+	<li class="nl-simple" aria-haspopup="true">
+									<a href="login_page"  class="h-link">Login</a>
+							</li>
 
 	        					</ul>
 	        				</nav>

@@ -123,7 +123,7 @@
   text-align: left;
   margin: 0 auto 0 auto;
   width: 100%;
-  display: block;
+  /* display: block; */
   padding: 0;
     align-items: center;
 }
@@ -1333,7 +1333,7 @@ body.wsactive {
   position: absolute;
   top: 0;
   right: 0;
-  display: block;
+  /* display: block; */
   cursor: pointer;
   width: 100%;
 }
@@ -1344,7 +1344,7 @@ body.wsactive {
 }
 
 .wsmenu > .wsmenu-list > li > .wsmenu-click > i {
-  display: block;
+  /* display: block; */
   height: 8px;
   width: 8px;
   float: right;

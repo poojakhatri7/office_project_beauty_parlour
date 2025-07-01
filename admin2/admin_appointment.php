@@ -67,29 +67,29 @@ include('includes/sidebar.php');
             <div class="form-group">
             <div id="message"></div>
                         <label for="mobile" style="color:rgb(51, 139, 139);" >Mobile</label>
-                        <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Enter Mobile number">
+                        <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Enter Mobile number" required>
                     </div>
                     <span id="error-message" style="color: red; display: block; font-weight:600; margin-bottom: 15px; text-align:  justify; padding-left: 50px; "></span>
                     <div class="form-group">
                         <label for="name" style="color:rgb(51, 139, 139);">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" required>
                     </div>
                     <div class="form-group">
                         <label for="email" style="color:rgb(51, 139, 139);">Email</label>
-                        <input type="text" name="email" class="form-control" id="email" placeholder="Enter Email">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email">
                     </div>
                     <div class="form-group">
                         <label for="address" style="color:rgb(51, 139, 139);">Address</label>
-                        <input type="text" name="address" class="form-control" id="address" placeholder="Enter Address">
+                        <input type="text" name="address" class="form-control" id="address" placeholder="Enter Address" required>
                     </div>
                     <div class="form-group">
                         <label for="date" style="color:rgb(51, 139, 139);">Date</label>
-                        <input type="date" name="date" class="form-control" id="date" placeholder="Enter Date">
+                        <input type="date" name="date" class="form-control" id="date" placeholder="Enter Date" required>
                     </div>
                  
                     <div class="form-group">
                         <label for="time" style="color:rgb(51, 139, 139);">Time</label>
-                        <input type="time" name="time" class="form-control" id="time" placeholder="Enter Time">
+                        <input type="time" name="time" class="form-control" id="time" placeholder="Enter Time" required>
                     </div>
                     <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -121,6 +121,7 @@ include('includes/sidebar.php');
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">S no.</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Name</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Email</th>
+                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Mobile</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Date</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Time</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Appointment for</th>
@@ -176,6 +177,7 @@ if (mysqli_num_rows($result) > 0) {
             <th scope='row'><?php echo $count; ?></th>
             <td><?php echo $row['name']; ?></td>
             <td><?php echo $row['email']; ?></td>
+             <td><?php echo $row['mobile']; ?></td>
             <td><?php echo $row['date']; ?></td>
             <td><?php echo $row['prefered_time']; ?></td>
             <td><?php echo $row['appointment_for']; ?></td>
@@ -263,6 +265,13 @@ if (mysqli_num_rows($result) > 0) {
         $(document).ready(function () {
             $("#submitBtn1").click(function (e) {
                 e.preventDefault(); // Prevent form submission
+                 const form = document.getElementById("appointment_form");
+
+        // Check if form is valid
+        if (!form.checkValidity()) {
+            form.reportValidity(); // Show built-in HTML5 error messages
+            return; // Stop if invalid
+        }
                 var mobile = $("#mobile").val();
                 var name = $("#name").val();
                 var email = $("#email").val();

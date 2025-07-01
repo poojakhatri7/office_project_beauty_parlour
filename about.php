@@ -57,7 +57,7 @@ $business_hours = [];
 
 	<!-- FONT ICONS -->
 	<link href="css/flaticon.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<!-- PLUGINS STYLESHEET -->
 	<link href="css/menu.css" rel="stylesheet">
 	<link id="effect" href="css/dropdown-effects/fade-down.css" media="all" rel="stylesheet">

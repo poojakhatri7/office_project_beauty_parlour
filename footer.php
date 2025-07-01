@@ -56,13 +56,16 @@ $time = $row['time'];
 								<!-- Title -->
 								<h5 class="h5-md">Quick Links</h5>
 
-								<!-- Salon Name -->
-								<p><a href="team1.php">Artists + Staff</a></p>
+							<p><a href="./">Home</a></p>
+								
 
 								<!-- Address -->
-								<p><a href="pprice.php?c_id=1">Hair Services</a></p> 
-								<p><a href="pprice.php?c_id=2">Beauty Services</a></p>
-								<p><a href="pprice.php?c_id=3">Hands & Feet</a></p>
+								
+								<p><a href="about">About us</a></p>
+								<p><a href="contact">Contact us</a></p>
+								<p><a href="team1">Staff Section</a></p>
+								<p><a href="gallery">Gallery Section</a></p> 
+								<p><a href="booking">Book now</a></p>
 
 							</div>	
 						</div>	
@@ -76,13 +79,13 @@ $time = $row['time'];
 								<h5 class="h5-md">Get in Touch</h5>
 
 								<!-- Phone -->
-								<p class="footer-phone"><a href="tel:123456789"><?php echo $mobile; ?></a></p>
+								<p class="footer-phone"><i class="fas fa-phone" aria-hidden="true" style="margin-right: 8px;"></i><a href=""><?php echo $mobile; ?></a></p>
 
 								<!-- Email -->
-								<p class="footer-email"><a href="mailto:yourdomain@mail.com"><?php echo $email_us ; ?></a></p>
+								<p class="footer-email"><i class="fa fa-envelope" aria-hidden="true" style="margin-right: 8px;"></i><a href=""><?php echo $email_us ; ?></a></p>
 								
 								<!-- Address -->
-								<p class="footer-address"><?php echo nl2br($address); ?><br>
+								<p class="footer-address"> <i class="fas fa-home" aria-hidden="true" style="margin-right: 8px;"></i><?php echo nl2br($address); ?><br>
 									</p>
 
 								<!-- List -->
@@ -105,14 +108,18 @@ $time = $row['time'];
 								
 								<!-- Title -->
 								<h5 class="h5-md">Working Hours</h5>
+								 <!-- List of working hours -->
+    <ul style="list-style: none;  mb-0 ">
 								<?php
 							// Fetch business hours
 $sql = "SELECT day, TIME_FORMAT(open_time, '%h:%i %p') AS open_time, TIME_FORMAT(close_time, '%h:%i %p') AS close_time FROM business_hours";
 $result1 = mysqli_query($conn, $sql);
 							while ($row = mysqli_fetch_assoc($result1)) {
-    echo "<li>" . $row['day'] . ": " . $row['open_time'] . " - " . $row['close_time'] . "</li>";
+    echo "<li>" . $row['day'] . " : " . $row['open_time'] . " - " . $row['close_time'] . "</li>";
 }
 ?>
+ </ul>
+ 
 								<!-- Text -->	
 								<!-- <p>Mon-Fri: <span>10:00AM - 9:00PM</span></p>
 								<p>Saturday: <span>10:00AM - 7:00PM</span></p>

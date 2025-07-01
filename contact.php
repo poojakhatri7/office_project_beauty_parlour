@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
 
 	<!-- FONT ICONS -->
 	<link href="css/flaticon.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<!-- PLUGINS STYLESHEET -->
 	<link href="css/menu.css" rel="stylesheet">
 	<link id="effect" href="css/dropdown-effects/fade-down.css" media="all" rel="stylesheet">
@@ -163,13 +163,13 @@ if (isset($_POST['submit'])) {
 							<h4>Our Location :</h4>
 
 							<!-- Address -->
-							<p><?php echo nl2br($address); ?></p>
+							<p> <i class="fas fa-home" aria-hidden="true" style="margin-right: 8px;"></i> <?php echo nl2br($address); ?></p>
 							
 
 							<!-- Contacts -->
 							<div class="cbox-2-contacts">
-								<p><a href="tel:123456789"><?php echo $mobile; ?></a></p>
-								<p><a href="mailto:yourdomain@mail.com"> <?php echo $email_us ; ?></a></p>
+								<p><i class="fas fa-phone" aria-hidden="true" style="margin-right: 8px;"></i><a href=""><?php echo $mobile; ?></a></p>
+								<p><i class="fa fa-envelope" aria-hidden="true" style="margin-right: 8px;"></i><a href="mailto:yourdomain@mail.com"> <?php echo $email_us ; ?></a></p>
 							</div>
 
 						</div>
@@ -178,15 +178,17 @@ if (isset($_POST['submit'])) {
 						<div class="cbox-2 cb-2">
 
 							<!-- Title -->
-							<h4>Salon Hours:</h4>
+							<h4> <i class="fas fa-clock" style="margin-right: 8px; color: rgb(145, 135, 209);"></i> Salon Hours:</h4>
+							<ul>
 							<?php
 							// Fetch business hours
 $sql = "SELECT day, TIME_FORMAT(open_time, '%h:%i %p') AS open_time, TIME_FORMAT(close_time, '%h:%i %p') AS close_time FROM business_hours";
 $result1 = mysqli_query($conn, $sql);
 							while ($row = mysqli_fetch_assoc($result1)) {
-    echo "<li>" . $row['day'] . ": " . $row['open_time'] . " - " . $row['close_time'] . "</li>";
+    echo "<li>" . $row['day'] . " : " . $row['open_time'] . " - " . $row['close_time'] . "</li>";
 }
 ?>
+	</ul>
 							<!-- Text -->
 							<!-- <p>Mon – Wed: <span>10:00AM - 9:00PM</span></p>
 							<p>Thursday: <span>10:00AM - 7:30PM</span></p>
@@ -210,25 +212,25 @@ $result1 = mysqli_query($conn, $sql);
 
 								<!-- Form Input -->
 								<div class="col-lg-6">
-									<input type="text" name="name" class="form-control name" placeholder="Your Name*">
+									<input type="text" name="name" class="form-control name" placeholder="Your Name*"required>
 								</div>
 
 								<!-- Form Input -->
 								<div class="col-lg-6">
 									<input type="email" name="email" class="form-control email"
-										placeholder="Email Address*">
+										placeholder="Email Address*"required>
 								</div>
 
 								<!-- Form Input -->
 								<div class="col-md-12">
-									<input type="text" name="subject" class="form-control subject"
-										placeholder="What's this about?">
+									<input type="mobile" name="subject" class="form-control subject"
+										placeholder="Mobile Number"required>
 								</div>
 
 								<!-- Form Textarea -->
 								<div class="col-md-12">
 									<textarea name="message" class="form-control message" rows="6"
-										placeholder="Your Message ..."></textarea>
+										placeholder="Your Message ..."required></textarea>
 								</div>
 
 								<!-- Form Button -->
@@ -251,7 +253,7 @@ $result1 = mysqli_query($conn, $sql);
 			</div> <!-- End container -->
 		</section> <!-- END CONTACTS-3 -->
 
-
+<br>
 		
 		<!-- CONTACTS-1
 			============================================= -->
