@@ -1,5 +1,4 @@
 <?php
-
 include 'db_connection.php';
 include 'asset.php';
 ?>
@@ -563,13 +562,13 @@ if (mysqli_num_rows($result) > 0) {
 			});
 		</script> -->
 
-		<script>
+		<!-- <script>
 			$(function() {
 			  $(".switch").click(function() {
 			  	 $("body").toggleClass("theme--dark");
 			  });
 			});
-		</script>
+		</script> -->
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->															
 		<!--

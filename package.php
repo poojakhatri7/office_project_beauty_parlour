@@ -81,7 +81,16 @@ include 'asset.php';
 			
 			<!-- END HEADER -->
 
+<style>
+body.theme--dark .card {
+  background-color: #2c2c2c !important;
+  color: #ffffff !important;
+}
+body.theme--dark .discount-text {
+  color:rgb(156, 210, 226) !important; /* or any color you like */
+}
 
+</style>
 
 
 		<!-- INNER PAGE TITLE
@@ -180,19 +189,20 @@ if (mysqli_num_rows($result_subcategories) > 0) {
  <img src="<?php echo $imagePath; ?>" class="card-img-top img-fluid " alt="..." style="width: 240px; height: 250px; object-fit: cover; ">
 
 
-<p class="card-text " style="font-size: 0.95rem; margin: 0;"> <strong>Price : </strong> <s> Rs <?php echo $s['total_price']; ?> </s> </p>
+<p class="card-text" style="font-size: 0.95rem; margin: 0;"> <strong>Price : </strong> <s> Rs <?php echo $s['total_price']; ?> </s> </p>
 <?php $services = explode(',', $s['services']);  ?>
     <p class="card-text" style="font-size: 0.98rem; margin: 0;">
         <strong>Services available :</strong>
     </p>
-    <ol style="padding-left: 20px; margin-top: 4px; font-size: 0.9rem; color: #444;">
+	
+    <ol style="padding-left: 20px; margin-top: 4px; font-size: 0.9rem; ">
         <?php foreach ($services as $service): ?>
             <li><?php echo htmlspecialchars($service); ?></li>
         <?php endforeach; ?>
     </ol>
 <p class="card-text" style="font-size: 0.95rem; margin: 0;"> <strong>Description : </strong> <?php echo $s['description']; ?> </p>
-<p class="card-text" style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);"> <strong>Discount (%) : </strong> <?php echo $s['discount']; ?> </p>
-<p class="card-text" style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);  "><strong>Price after discount : </strong> Rs <?php echo $s['total_price_after_discount']; ?> </p>
+<p class="card-text discount-text"  style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);"> <strong>Discount (%) : </strong> <?php echo $s['discount']; ?> </p>
+<p class="card-text discount-text" style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);  "><strong>Price after discount : </strong> Rs <?php echo $s['total_price_after_discount']; ?> </p>
 
 
 
@@ -267,13 +277,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 		});
 	</script> -->
 
-	<script>
-		$(function () {
-			$(".switch").click(function () {
-				$("body").toggleClass("theme--dark");
-			});
-		});
-	</script>
+
 
 	<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 	<!--

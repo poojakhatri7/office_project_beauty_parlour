@@ -165,7 +165,7 @@ $result = mysqli_query($conn, $sql);
 }
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    filter: invert(1); /* makes white icon black */
+    /* filter: invert(1); makes white icon black */
 }
 @media (max-width: 768px) {
   .carousel-bg {
@@ -204,6 +204,29 @@ $result = mysqli_query($conn, $sql);
   transform: scale(1.1);
   cursor: pointer;
 }
+body.theme--dark .modal-content {
+  background-color: #2c2c2c !important;
+  color: #fff !important;
+}
+
+body.theme--dark .modal-header,
+body.theme--dark .modal-body,
+body.theme--dark .modal-footer
+
+ {
+  background-color: #2c2c2c !important;
+  color: #fff !important;
+  border-color: #444 !important; /* optional: dark border */
+}
+
+
+/* body.theme--dark .changingmodal {
+  background-color: #2c2c2c !important;
+  color:rgb(95, 37, 37) !important;
+} */
+/* body.theme--dark .discount-text {
+  color:rgb(156, 210, 226) !important; or any color you like */
+
 
     </style>
 
@@ -442,8 +465,11 @@ if (mysqli_num_rows($result) > 0) {
 								<h2 class="h2-md"><?php echo $page_titile ?></h2>
 
 								<!-- Text -->	
-								<p class="mb-0"> <?php echo $page_description ?>
-								</p>
+								<!-- <p class="mb-0 " style="text-align:justify"> <?php echo $page_description ?>
+								</p> -->
+								<div class="mb-0" style="text-align: justify;">
+  <?php echo $page_description ?>
+</div>
 
 							</div>
 						</div>	<!-- END TEXT BLOCK -->	
@@ -1681,7 +1707,7 @@ $result = mysqli_query($conn, $sql);
 
 				<!-- Modal starts  -->
 
- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade changingmodal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -1733,7 +1759,7 @@ $result = mysqli_query($conn, $sql);
 			<!-- FOOTER-1
 			============================================= -->
 
-					<?php include 'footer.php'; ?>
+					
 						
 						<!-- END FOOTER NEWSLETTER FORM -->	
 
@@ -1788,11 +1814,30 @@ $result = mysqli_query($conn, $sql);
 		</script> -->
 
 		<script>
-			$(function() {
-			  $(".switch").click(function() {
-			  	 $("body").toggleClass("theme--dark");
-			  });
-			});
+			// $(function() {
+			//   $(".switch").click(function() {
+			//   	 $("body").toggleClass("theme--dark");
+			//   });
+			// });
+// 			  $(document).ready(function () {
+//     // Apply saved theme on page load
+//     if (localStorage.getItem("theme") === "dark") {
+//       $("body").addClass("theme--dark");
+//     }
+
+//     // Toggle theme on switch click
+//     $(".switch").click(function (e) {
+//       e.preventDefault(); // Prevent default anchor behavior
+//       $("body").toggleClass("theme--dark");
+
+//       // Save theme preference
+//       if ($("body").hasClass("theme--dark")) {
+//         localStorage.setItem("theme", "dark");
+//       } else {
+//         localStorage.setItem("theme", "light");
+//       }
+//     });
+//   });
 		</script>
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->															
@@ -1855,7 +1900,7 @@ $(document).on('click', '.plus-sign', function () {
 
 	</body>
 
-
+<?php include 'footer.php'; ?>
 
 <!-- Mirrored from dsathemes.com/html/r_eine_1.1/files/demo-9 by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Dec 2024 10:23:07 GMT -->
 </html>

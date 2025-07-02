@@ -1,8 +1,7 @@
 <?php
 include 'db_connection.php';
 include 'asset.php';
-?>
-<?php
+
 $c_id = $_GET ['c_id'];
 // echo $c_id;
 ?>
@@ -160,7 +159,7 @@ $description = $row ['description'];
   transition: 0.3s ease;
   cursor: pointer; */
   
-    font-size: 20px ;
+font-size: 20px ;
   color: rgb(97, 83, 190); /* Blue color */
   background-color: #e6f0ff; /* Light blue background */
   padding: 8px;
@@ -182,6 +181,10 @@ $description = $row ['description'];
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: invert(1); /* makes white icon black */
+}
+body.theme--dark .card {
+  background-color: #2c2c2c !important;
+  color: #ffffff !important;
 }
 	</style>
 

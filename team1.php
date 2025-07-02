@@ -92,6 +92,26 @@ include 'asset.php';
   transform: scale(1.1);
   cursor: pointer;
 }
+body.theme--dark .modal-content {
+  background-color: #2c2c2c !important;
+  color: #fff !important;
+}
+
+body.theme--dark .modal-header,
+body.theme--dark .modal-body,
+body.theme--dark .modal-footer
+
+ {
+  background-color: #2c2c2c !important;
+  color: #fff !important;
+  border-color: #444 !important; /* optional: dark border */
+}
+.h5-lg
+{
+	text-transform: capitalize;
+
+}
+
 
     </style>
 
@@ -208,18 +228,19 @@ if (mysqli_num_rows($result) > 0) {
 </span>
 
 
-									  <?php echo $row['name']; ?>
+								<h5 class="h5-lg" style="display: inline;">	  <?php echo $row['name']; ?> </h5>
 
 
 										<!-- Title -->		
 										<!-- <span class="section-id">Founder & Director</span>	 -->
-										<p><?php echo $row['designation']; ?></p>
-										<h5 class="h5-lg"></h5>
-
+										
 										<!-- Link -->
 										<!-- <p class="tra-link"><a href="artist-details.php">View Profile</a></p>	 -->
 
 									</div>	
+									<p><?php echo $row['designation']; ?></p>
+										
+
 	
 								</div>									
 							</div>	<!-- END TEAM MEMBER #1 -->
@@ -262,7 +283,7 @@ if (mysqli_num_rows($result) > 0) {
 
 								<!-- Button -->
 								<div class="txt-block-btn">
-									<a href="booking.php" class="btn btn--tra-black hover--black">Book Now</a>
+									<a href="booking" class="btn btn--tra-black hover--black">Book Now</a>
 								</div>		
 
 							</div>
@@ -333,13 +354,13 @@ if (mysqli_num_rows($result) > 0) {
 			});
 		</script> -->
 
-		<script>
+		<!-- <script>
 			$(function() {
 			  $(".switch").click(function() {
 			  	 $("body").toggleClass("theme--dark");
 			  });
 			});
-		</script>
+		</script> -->
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->															
 		<!--

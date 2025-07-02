@@ -148,7 +148,54 @@ $result1 = mysqli_query($conn, $sql);
 						<!-- BOTTOM FOOTER -->
 
 
-				</div>	   <!-- End container -->										
+				</div>	   <!-- End container -->
+				<script>
+  // Apply saved theme BEFORE user interaction
+//   document.addEventListener("DOMContentLoaded", function () {
+//     if (localStorage.getItem("theme") === "dark") {
+//       document.body.classList.add("theme--dark");
+//     }
+//   });
+
+//   $(document).ready(function () {
+//     $(".switch").click(function (e) {
+//       e.preventDefault();
+//       $("body").toggleClass("theme--dark");
+
+//       if ($("body").hasClass("theme--dark")) {
+//         localStorage.setItem("theme", "dark");
+//       } else {
+//         localStorage.setItem("theme", "light");
+//       }
+//     });
+//   });
+// Apply saved theme on page load
+document.addEventListener("DOMContentLoaded", function () {
+  // Check if user previously selected dark mode
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("theme--dark");
+  }
+
+  // Handle toggle click
+  const switchElement = document.querySelector(".switch");
+
+  if (switchElement) {
+    switchElement.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent <a href="#"> from jumping
+
+      // Toggle dark mode class
+      document.body.classList.toggle("theme--dark");
+
+      // Save preference to localStorage
+      if (document.body.classList.contains("theme--dark")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    });
+  }
+});
+</script>										
 			</footer>
 			<?php mysqli_close($conn); // Close database connection ?>
 		<!-- END FOOTER-1 -->

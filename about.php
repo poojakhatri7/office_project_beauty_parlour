@@ -152,7 +152,6 @@ $business_hours = [];
 
 
 <?php
-
 $sql = "SELECT * FROM tb_about_us";
 $result = mysqli_query($conn, $sql);
 
@@ -185,25 +184,24 @@ if (mysqli_num_rows($result) > 0) {
 
 							<!-- IMAGE -->
 							<div class="ct-03-img mb-5">
-								<img class="img-fluid" src="<?php echo $imagePath1; ?>" alt="Image" style="width: 600px; height: 500px; object-fit: cover;" alt="content-image" alt="content-image">
+								<img class="img-fluid" src="<?php echo $imagePath1; ?>" alt="Image" style="width: 600px; height: 500px; object-fit: cover;" alt="content-image" >
 							</div>
 
 							<?php } } ?>
 							<!-- TEXT -->
-							<div class="ct-03-txt">
 
 								<!-- Text -->
-								<p class="mb-0"><?php 
+								<div class="mb-0 " style="text-align: justify;"><?php 
                                 
     $words = explode(" ", $text_area); // Split text into words
     $chunks = array_chunk($words, 50); // Split words into chunks of 30
 
     $totalChunks = count($chunks);
     for ($i = 1; $i < $totalChunks; $i++) {
-        echo "<p class='mb-5'>" . implode(" ", $chunks[$i]) . "</p>"; // Print each chunk in a paragraph
+        echo "<div class='mb-5' style='text-align: justify;'>" . implode(" ", $chunks[$i]) . "</div>"; // Print each chunk in a paragraph
     }
 ?>
-								</p>
+								</div>
 
 							</div>
 
@@ -605,17 +603,17 @@ if (mysqli_num_rows($result) > 0) {
 
 								<!-- Advantages List -->
 								<ul class="advantages ico-30 clearfix">
-									<li>
+									<!-- <li>
 										<p class="me-3">est. 2018</p>
-									</li>
-									<li>
+									</li> -->
+									<!-- <li>
 										<p><a href="contact.php">Learn More</a></p>
-									</li>
-									<li class="advantages-links-divider">
+									</li> -->
+									<!-- <li class="advantages-links-divider">
 										<p><span class="flaticon-vertical-line"></span></p>
-									</li>
+									</li> -->
 									<li>
-										<p><a href="booking.php">Book Now</a></p>
+										<p><a href="booking">Book Now</a></p>
 									</li>
 								</ul>
 
@@ -647,17 +645,17 @@ if (mysqli_num_rows($result) > 0) {
 
 								<!-- Advantages List -->
 								<ul class="advantages ico-30 clearfix">
-									<li>
+									<!-- <li>
 										<p class="me-3">est. 2021</p>
-									</li>
-									<li>
+									</li> -->
+									<!-- <li>
 										<p><a href="contact.php">Learn More</a></p>
 									</li>
 									<li class="advantages-links-divider">
 										<p><span class="flaticon-vertical-line"></span></p>
-									</li>
+									</li> -->
 									<li>
-										<p><a href="booking.php">Book Now</a></p>
+										<p><a href="booking">Book Now</a></p>
 									</li>
 								</ul>
 
@@ -721,13 +719,13 @@ if (mysqli_num_rows($result) > 0) {
 		});
 	</script> -->
 
-	<script>
+	<!-- <script>
 		$(function () {
 			$(".switch").click(function () {
 				$("body").toggleClass("theme--dark");
 			});
 		});
-	</script>
+	</script> -->
 
 	<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 	<!--
