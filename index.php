@@ -30,6 +30,8 @@ include 'asset.php';
 		<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
 
 
@@ -1470,6 +1472,22 @@ $result = mysqli_query($conn, $sql);
 				</div>	   <!-- End container -->
 			</section>	<!-- END TEXT CONTENT -->
 
+  <!-- <div class="text-center">
+    <span class="arrow style" onclick="previous()" style="color: black; font-size: 24px;"><
+    </span>
+    <span class="arrow" onclick="next()" style="color: black; font-size: 24px;">>
+    </span>
+  </div> -->
+  <!-- <div id="imageModal" class="modal" style="display:none;">
+  <span class="close" onclick="closeModal()">&times;</span>
+
+  <span class="arrow left" onclick="previousImage()">&#10094;</span>
+  <img id="modalImage" src="" class="modal-content" />
+  <span class="arrow right" onclick="nextImage()">&#10095;</span>
+</div> -->
+
+
+
 
 
 
@@ -1504,8 +1522,10 @@ $result = mysqli_query($conn, $sql);
 									
 									<!-- Image Zoom -->
 									<div class="image-data">
+										 
 										<div class="gallery-link ico-40 color--white">
-											<a class="image-link" href="images/gallery/woman_08.jpg">
+											<a class="image-link"
+											 href="images/gallery/woman_08.jpg" data-lightbox="gallery" >
 												<span class="flaticon-visibility"></span>
 											</a>
 										</div>																					 
@@ -1551,7 +1571,8 @@ $result = mysqli_query($conn, $sql);
 									<!-- Image Zoom -->
 									<div class="image-data">
 										<div class="gallery-link ico-40 color--white">
-											<a class="image-link" href="images/gallery/woman_07.jpg">
+											<a class="image-link" 
+											  href="images/gallery/woman_07.jpg" data-lightbox="gallery"  >
 												<span class="flaticon-visibility"></span>
 											</a>
 										</div>																						 
@@ -1574,7 +1595,7 @@ $result = mysqli_query($conn, $sql);
 									<!-- Image Zoom -->
 									<div class="image-data">
 										<div class="gallery-link ico-40 color--white">
-											<a class="image-link" href="images/gallery/beauty_01.jpg">
+											<a class="image-link" href="images/gallery/beauty_01.jpg" data-lightbox="gallery" >
 												<span class="flaticon-visibility"></span>
 											</a>
 										</div>																						 
@@ -1897,6 +1918,8 @@ $(document).on('click', '.plus-sign', function () {
     });
 });
 </script>
+
+
 
 	</body>
 

@@ -91,7 +91,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
                 <label for="name" class="col-sm-2 col-form-label">Add Designation</label>
                 
                 <div class="col-sm-6">
-                  <input type="text" name="add_designation" class="form-control" id="name" placeholder="Add new designation">
+                  <input type="text" name="add_designation" class="form-control" id="name" placeholder="Add new designation" required>
                 </div>
                 
                 <div class="col-sm-4">
@@ -122,19 +122,19 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
               <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required>
                 </div>
               </div>
                <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Bios</label>
                 <div class="col-sm-10">
-                  <input type="text" name="bios" class="form-control" id="name" placeholder="Write short bios">
+                  <input type="text" name="bios" class="form-control" id="name" placeholder="Write short bios" required>
                 </div>
               </div>
                <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Experience</label>
                 <div class="col-sm-10">
-                  <input type="text" name="experience" class="form-control" id="name" placeholder="Write experience in years">
+                  <input type="text" name="experience" class="form-control" id="name" placeholder="Write experience in years" required>
                 </div>
               </div>
                <div class="form-group row">
@@ -150,7 +150,7 @@ if ( isset($_FILES['image']) && isset($_POST['staff_id'] ) && isset($_POST['name
 
               <div class="col-12 text-center mt-3">
                 <label for="photo">Select Photo <span class="required"></span></label>
-                <input type="file" name="image" id="profile-img" class="form-control">
+                <input type="file" name="image" id="profile-img" class="form-control" required>
                 <br>
                 <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button>
               </div>

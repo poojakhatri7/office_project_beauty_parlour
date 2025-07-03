@@ -2,7 +2,7 @@
  ?>
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
    
-    <a href="index" class="brand-link">
+    <a href="./" class="brand-link">
       
       <img src="<?php echo $brand_logo; ?>" alt="Logo" class="brand-image img-circle elevation-2" style="width: 70px; height: auto; object-fit: contain;  background-color: white;object-position: top; border-radius: 40%">
       <span  class="brand-text font-weight-dark"  style="text-decoration: none; font-size: 20px;"><?php echo $short_form; ?> </span>
@@ -41,7 +41,7 @@
           <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2" alt="User Image" style="width: 40px; height: 40px; object-fit: cover;" alt="gallery-image">
         </div>
         <div class="info">
-          <a href="#" class="d-block" style="text-decoration: none;" > 
+          <a href="./" class="d-block" style="text-decoration: none;" > 
 
 
 
@@ -357,7 +357,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 <!-- <i class="fa fa-briefcase"></i> -->
                 <!-- <i class="fa fa-folder-open"></i> -->
                 <i class="fa fa-id-card"></i>
-                  <p>Update Portfolio</p>
+                  <p>Update Gallery</p>
                 </a>
               </li>
               <li class="nav-item">

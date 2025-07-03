@@ -265,10 +265,7 @@ $result1 = mysqli_query($conn, $sql);
 					<div class="row">
 						<div class="col">
 							<div class="google-map">
-								<iframe
-									src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d12607.845959455892!2d144.9569035!3d-37.814371!3m2!1i1024!2i768!4f13.1!2m1!1senvato%20!5e0!3m2!1sen!2sua!4v1688668190206!5m2!1sen!2sua"
-									width="1300" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-									referrerpolicy="no-referrer-when-downgrade"></iframe>
+								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1198788435363!2d80.82633237535462!3d26.836139163377318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bff3e34dd1d4f%3A0xc5d69250c13efe61!2sTVS%20SOLUTIONS!5e0!3m2!1sen!2sin!4v1751522471677!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 							</div>
 						</div>
 					</div> <!-- END GOOGLE MAP -->

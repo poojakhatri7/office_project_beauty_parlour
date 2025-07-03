@@ -66,7 +66,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                       <div class="form-group">
                         <label>Select Category</label>
                         <select class="form-control" id="service">
-                        <option>Select Service Category</option>
+                        <option>Select Service Category </option>
                         </select>
                       </div>
                     </div>
@@ -96,7 +96,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             <form id="serviceForm">
                     <div class="form-group">
                         <label for="serviceName" style="color:rgb(51, 139, 139);" >Service Name</label>
-                        <input type="text" name="service_name" class="form-control" id="serviceName" placeholder="Enter service name">
+                        <input type="text" name="service_name" class="form-control" id="serviceName" placeholder="Enter service name" required>
                     </div>
                     <div class="form-group">
                         <label for="servicePrice" style="color:rgb(51, 139, 139);">Price</label>

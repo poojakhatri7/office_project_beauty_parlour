@@ -114,7 +114,7 @@ $address=  $_SESSION["address"];
 							<label for="photo">Select Photo<span class="required">*</span>
 							</label>
 							<div class="col-12 ">
-								<input type="file" name="image" id="profile-img" value="" class="form-control">
+								<input type="file" name="image" id="profile-img" value="" class="form-control" required>
                 <br>
                 <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button>
 							</div>

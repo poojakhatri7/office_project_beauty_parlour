@@ -63,7 +63,7 @@ $time = $row['time'];
 								
 								<p><a href="about">About us</a></p>
 								<p><a href="contact">Contact us</a></p>
-								<p><a href="team1">Staff Section</a></p>
+								<p><a href="artist_and_staff">Staff Section</a></p>
 								<p><a href="gallery">Gallery Section</a></p> 
 								<p><a href="booking">Book now</a></p>
 

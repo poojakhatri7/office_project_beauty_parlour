@@ -13,7 +13,8 @@ if ($request_type == "service_data")
 
 $query = mysqli_query($conn,$sql);
 // echo "pooja";
-$str = '<option value="">Select Category</option>';
+$str = '<option value="">Select Category </option>';
+$str .= '</select>';
 while ($row = mysqli_fetch_assoc($query) )
 {
   echo $row['c_id'] ;

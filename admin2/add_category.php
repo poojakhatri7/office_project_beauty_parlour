@@ -138,7 +138,7 @@ if (isset($_POST['add_sub_category'])) {
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> ADD CATEGORY</label>
                     <div class="col-sm-4">
-                      <input type="text" name="c_service" class="form-control" id="add_category" placeholder="Category Name">
+                      <input type="text" name="c_service" class="form-control" id="add_category" placeholder="Category Name" required>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -151,7 +151,7 @@ if (isset($_POST['add_sub_category'])) {
                      <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> IMAGE </label>
                     <div class="col-sm-4">
-                      <input type="file" name="image" class="form-control" id="add_category" placeholder="Add category image ">
+                      <input type="file" name="image" class="form-control" id="add_category" placeholder="Add category image" required>
                     </div>
                   </div>
                   <!-- <button type="submit" name="add_category">Add Category</button> -->
@@ -181,7 +181,7 @@ if (isset($_POST['add_sub_category'])) {
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> ADD SUB CATEGORY</label>
                     <div class="col-sm-4">
-                      <input type="text" name="s_name" class="form-control" id="sub" placeholder="Sub-Category-Name">
+                      <input type="text" name="s_name" class="form-control" id="sub" placeholder="Sub-Category-Name" required>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -194,7 +194,7 @@ if (isset($_POST['add_sub_category'])) {
                    <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"> IMAGE </label>
                     <div class="col-sm-4">
-                      <input type="file" name="sub_image" class="form-control" id="add_sub_category" placeholder="Add sub category image ">
+                      <input type="file" name="sub_image" class="form-control" id="add_sub_category" placeholder="Add sub category image" required>
                     </div>
                   </div>
                 </div>
@@ -247,7 +247,8 @@ if (isset($_POST['add_sub_category'])) {
                                  <td><img src="<?php echo $imagePath; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
                                 <td>
                                     <div style="display: inline-block;">
-                                        <a href='delete_data?id=<?php echo $row["c_id"]; ?>&table=category_service'>
+                                        <a href='delete_data?id=<?php echo $row["c_id"]; ?>&table=category_service'
+                                          onclick="return confirm('Are you sure you want to delete this?')">
                                             <i class='fa fa-trash' style='color: red;'></i>
                                         </a>
                                     </div>
@@ -301,7 +302,8 @@ if (isset($_POST['add_sub_category'])) {
                              <td><img src="<?php echo $imagePath; ?>" alt="Image" style="width: 50px; height: 50px; object-fit: cover;"></td>
                                 <td>
                                     <div style="display: inline-block;">
-                                        <a href='delete_data?id=<?php echo $row2["s_id"]; ?>&table=sub_category_service'>
+                                        <a href='delete_data?id=<?php echo $row2["s_id"]; ?>&table=sub_category_service'
+                                          onclick="return confirm('Are you sure you want to delete this?')">
                                             <i class='fa fa-trash' style='color: red;'></i>
                                         </a>
                                     </div>

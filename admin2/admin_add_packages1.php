@@ -111,19 +111,19 @@ if (isset($_POST["submit"])) {
                   <div class="form-group row">
                     <label for="inputEmail3"  class="col-sm-2 col-form-label">PACKAGE NAME</label>
                     <div class="col-sm-10">
-                      <input type="text" name="package_name" id="package" class="form-control" id="inputEmail3" placeholder="Enter package name">
+                      <input type="text" name="package_name" id="package" class="form-control" id="inputEmail3" placeholder="Enter package name" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">DESCRIPTION</label>
                     <div class="col-sm-10">
-                      <input type="text" name="description" class="form-control" id="inputEmail3" placeholder="Enter package description">
+                      <input type="text" name="description" class="form-control" id="inputEmail3" placeholder="Enter package description" required>
                     </div>
                   </div>
                    <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">IMAGE</label>
                     <div class="col-sm-10">
-                      <input type="file" name="package_image" class="form-control" id="inputEmail3" placeholder="Enter package description">
+                      <input type="file" name="package_image" class="form-control" id="inputEmail3" placeholder="Enter package description" required>
                     </div>
                   </div>
                   <h5 class="my-4">Add Services to the Package</h5>
@@ -241,7 +241,7 @@ $(document).ready(function () {
 <div class="form-group">
     <label for="discount" style="display: inline-block; width: 200px;"> Discount price of package</label>
     <input type="number" step="0.01" id="discount" name="discount" class="form-control d-inline-block" 
-        style="width: calc(35% - 100px);" placeholder="Enter discount in percentage">
+        style="width: calc(35% - 100px);" placeholder="Enter discount in percentage" required>
 </div>
 <!-- Discount input field -->
 <div class="form-group">

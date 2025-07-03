@@ -3,9 +3,7 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-?>
 
-<?php
 if (isset($_POST['submit'])) {
     // Get the form data
     $name = $_POST['name'];  
@@ -74,13 +72,13 @@ if (isset($_POST['submit'])) {
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-4">
-                      <input type="text"name="name" class="form-control" id="inputEmail3" placeholder="Enter name of the customer">
+                      <input type="text"name="name" class="form-control" id="inputEmail3" placeholder="Enter name of the customer" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="comment" class="col-sm-2 col-form-label">Comment</label>
                     <div class="col-sm-4">
-                      <textarea name="comment" class="form-control" id="inputEmail3" placeholder=""> </textarea>
+                      <textarea name="comment" class="form-control" id="inputEmail3" placeholder="" required></textarea>
                     </div>
                   </div>
                   <!-- <div class="form-group row">
@@ -116,12 +114,80 @@ if (isset($_POST['submit'])) {
                 <div class="card-footer">
                   <!-- <button type="submit" name="submit" class="btn btn-info">UPDATE</button> -->
                   <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: rgb(244, 247, 230);; font-weight: 500; font-size: 16px;  padding: 7px 15px; ">Add Review</button>
-                  <button type="submit" class="btn btn-danger float-right">CANCEL</button>
+                  <button type="reset" class="btn btn-danger float-right">CANCEL</button>
                 </div>
                 <!-- /.card-footer -->
               </form>
             </div>
 </div>
+  <section class="content">
+ <div class="container-fluid">
+<div class="card">
+              <div class="card-header">
+                <h5 class="m-0">  Update Comments and Reviews</h5>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                <thead style="background-color: rgb(51, 139, 139)">
+                  <tr>
+                    <th style="color: rgb(39, 30, 21); font-weight: 500;">S no.</th>
+                    <th style="color: rgb(29, 27, 24); font-weight: 500;">Name</th>
+                    <th style="color: rgb(27, 25, 23); font-weight: 500;">Comments</th>
+                    <th style="color: rgb(39, 36, 30); font-weight: 500;">Action</th>
+                    <!-- <th>Actions</th> -->
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+$sql = "SELECT * FROM reviews order BY id DESC";
+$result = mysqli_query($conn, $sql);
+$count = 0;
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $count++;
+      
+        ?>
+        <tr>
+            <th scope='row'><?php echo $count; ?></th>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['comment']; ?></td>
+         
+         
+
+<td>
+    <div style="display: inline-block;">
+        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=reviews'
+         onclick="return confirm('Are you sure you want to delete this?')">
+          
+            <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
+        </a>
+    </div>
+</td>
+        </tr>
+        <?php
+    }
+} 
+?>
+
+                  </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+
+
+
 </body>
 </html>
 <?php

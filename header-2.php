@@ -44,8 +44,8 @@ include 'admin2/includes/data.php';
 
 									<li aria-haspopup="true"><a href="#" class="h-link">About <span class="wsarrow"></span></a>
 	            						<ul class="sub-menu">
-	            							<li aria-haspopup="true"><a href="about.php">About Us</a></li>
-	            							<li aria-haspopup="true"><a href="team1.php">Artist + Staff</a></li>
+	            							<li aria-haspopup="true"><a href="about">About Us</a></li>
+	            							<li aria-haspopup="true"><a href="artist_and_staff">Artist + Staff</a></li>
 						           		</ul>
 								    </li>
 
@@ -67,7 +67,7 @@ $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
             // echo '<li aria-haspopup="true"><a href="pricing-' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
 			// echo '<li aria-haspopup="true"><a href="pricing">' . htmlspecialchars($row['c_service']) . '</a></li>';
-			echo '<li aria-haspopup="true"><a href="pprice.php?c_id=' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
+			echo '<li aria-haspopup="true"><a href="pprice?c_id=' . $row['c_id'] . '">' . htmlspecialchars($row['c_service']) . '</a></li>';
         }
         ?>
     </ul>

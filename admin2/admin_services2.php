@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO all_services (a_id, all_service,  price, discount_percentage ,price_after_discount, description , file , service_number, c_id_category_service) VALUES ('','$service_name','$price', '$discount_percentage','$offer_price','$description','$uploadPath','$sub_service_id','$category_id')";
 
       if (mysqli_query($conn, $sql)) {
-          echo "<script>alert('Service added successfully!'); window.location.href='manage_service.php';</script>";
+          echo "<script>alert('Service added successfully!'); window.location.href='manage_service';</script>";
       } else {
           echo "<script>alert('Error: " . mysqli_error($conn) . "'); </script>";
       }
@@ -96,19 +96,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">ENTER SERVICE NAME</label>
                     <div class="col-sm-4">
-                      <input type="text" name="service_name" class="form-control" id="inputPassword3" placeholder="Enter New Service">
+                      <input type="text" name="service_name" class="form-control" id="inputPassword3" placeholder="Enter New Service" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">ENTER SERVICE PRICE</label>
                     <div class="col-sm-4">
-                      <input type="number" name="price" class="form-control" id="service_price" placeholder="Enter Price">
+                      <input type="number" name="price" class="form-control" id="service_price" placeholder="Enter Price" required>
                     </div>
                   </div>
                    <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">ENTER DISCOUNT (%) </label>
                     <div class="col-sm-4">
-                      <input type="number" name="discount" class="form-control" id="discount_percentage" placeholder="Enter discount percentage ">
+                      <input type="number" name="discount" class="form-control" id="discount_percentage" placeholder="Enter discount percentage " required>
                     </div>
                   </div>
                    <div class="form-group row">
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE</label>
                     <div class="col-sm-4">
-                      <input type="file" name="service_image" class="form-control" id="inputPassword3" placeholder="Any Description of the service">
+                      <input type="file" name="service_image" class="form-control" id="inputPassword3" placeholder="Any Description of the service" required>
                     </div>
                   </div>
                   <!-- <div class="form-group row">

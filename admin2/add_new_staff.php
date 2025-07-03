@@ -109,7 +109,7 @@ if (mysqli_num_rows($duplicate_admin) > 0 || mysqli_num_rows($duplicate_user) > 
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">NAME</label>
                             <div class="col-sm-6">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" >
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required>
                             </div>
                         </div>
                         <!-- <div class="form-group row">          
@@ -121,26 +121,26 @@ if (mysqli_num_rows($duplicate_admin) > 0 || mysqli_num_rows($duplicate_user) > 
                 <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">EMAIL US</label>
                             <div class="col-sm-6">
-                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" >
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="address" class="col-sm-2 col-form-label">ADDRESS</label>
                             <div class="col-sm-6">
-                                <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" >
+                                <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="address" class="col-sm-2 col-form-label">PASSWORD</label>
                             <div class="col-sm-6">
-                                <input type="text" name="password" class="form-control" id="address" placeholder="Enter Password" >
+                                <input type="text" name="password" class="form-control" id="address" placeholder="Enter Password" required>
                             </div>
                         </div>
     <div class="form-group row">
                             <label for="role" class="col-sm-2 col-form-label"> ROLE/DESIGNATION </label>
                             <div class="col-sm-4">
                                 <!-- <input type="text" name="appointment_for" class="form-control" id="appointment_for" > -->
-                                <select id="role" name="role" class="form-control">
+                                <select id="role" name="role" class="form-control" required>
                                 <option value="" selected disabled>Select Role</option>
                                 <option value="1">Admin </option>
     <option value="2">Staff </option>
@@ -151,7 +151,7 @@ if (mysqli_num_rows($duplicate_admin) > 0 || mysqli_num_rows($duplicate_user) > 
                         <div class="form-group row">
                             <label for="image" class="col-sm-2 col-form-label">IMAGE</label>
                             <div class="col-sm-6">
-                                <input type="file" name="image" class="form-control" id="address" placeholder="Enter image" >
+                                <input type="file" name="image" class="form-control" id="address" placeholder="Enter image" required>
                             </div>
                         </div>       
                         <div class="card-footer">
