@@ -160,12 +160,12 @@ echo "<script>window.location.href='".$_SERVER['PHP_SELF']."';</script>";
 			============================================= -->
 			<div id="booking-1" class="pt-8 pb-7 booking-section division">
 				<div class="container">
-
+ <span id="mobileError" style="color: red; display: block; margin-left: 180px"></span>
 
 					<!-- BOOKING FORM -->
 					<div class="row justify-content-center">	
 						<div class="col-lg-10 col-xl-9">
-							<form name="bookinkform" class="row booking-form" action="" method="post">
+							<form name="bookinkform" class="row booking-form" action="" method="post" onsubmit="return validateMobile();">
 
 								<!-- Form Input -->
 				                <div class="col-lg-6">
@@ -179,7 +179,7 @@ echo "<script>window.location.href='".$_SERVER['PHP_SELF']."';</script>";
 				                  
 				                <!-- Form Input -->        
 				                <div class="col-lg-6">
-				                	<input type="number" name="mobile" class="form-control lastname" placeholder="Phone Number*" required> 
+				                	<input type="number" id="mobile" name="mobile" class="form-control lastname" placeholder="Phone Number*" required> 
 				                </div>
 
 				                <!-- Form Input -->   
@@ -456,6 +456,21 @@ $result = mysqli_query($conn, $sql);
 		<script src="js/custom.js"></script>
 
 		<script>
+function validateMobile() {
+    var mobile = document.getElementById("mobile").value;
+    var error = document.getElementById("mobileError");
+
+    if (!/^\d{10}$/.test(mobile)) {
+        error.textContent = "Please enter exactly 10 digits for mobile number ";
+        return false; // prevent form submission
+    }
+
+    error.textContent = ""; // clear error if valid
+    return true;
+}
+</script>
+
+		<script>
 			$(document).on({
 			    "contextmenu": function (e) {
 			        console.log("ctx menu button:", e.which); 
@@ -472,13 +487,13 @@ $result = mysqli_query($conn, $sql);
 			});
 		</script>
 
-		<script>
+		<!-- <script>
 			$(function() {
 			  $(".switch").click(function() {
 			  	 $("body").toggleClass("theme--dark");
 			  });
 			});
-		</script>
+		</script> -->
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->															
 		<!--

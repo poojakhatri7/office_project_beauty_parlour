@@ -208,7 +208,7 @@ $result1 = mysqli_query($conn, $sql);
 							<h4>Send a Message</h4>
 
 
-							<form id="contactForm" class="row contact-form" action="" method="post" >
+							<form id="contactForm" class="row contact-form" action="" method="post" onsubmit="return validateMobile();">
 
 								<!-- Form Input -->
 								<div class="col-lg-6">
@@ -223,10 +223,10 @@ $result1 = mysqli_query($conn, $sql);
 
 								<!-- Form Input -->
 								<div class="col-md-12">
-									<input type="mobile" name="subject" class="form-control subject"
+									<input type="mobile" name="subject" id="mobile" class="form-control subject"
 										placeholder="Mobile Number"required>
 								</div>
-
+ <span id="mobileError" style="color: red;"></span>
 								<!-- Form Textarea -->
 								<div class="col-md-12">
 									<textarea name="message" class="form-control message" rows="6"
@@ -327,13 +327,13 @@ $result1 = mysqli_query($conn, $sql);
 		});
 	</script> -->
 
-	<script>
+	<!-- <script>
 		$(function () {
 			$(".switch").click(function () {
 				$("body").toggleClass("theme--dark");
 			});
 		});
-	</script>
+	</script> -->
 
 	<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 	<!--
@@ -349,7 +349,20 @@ $result1 = mysqli_query($conn, $sql);
 			})();
 		</script>
 		-->
+<script>
+function validateMobile() {
+    var mobile = document.getElementById("mobile").value;
+    var error = document.getElementById("mobileError");
 
+    if (!/^\d{10}$/.test(mobile)) {
+        error.textContent = "Please enter exactly 10 digits.";
+        return false; // prevent form submission
+    }
+
+    error.textContent = ""; // clear error if valid
+    return true;
+}
+</script>
 
 </body>
 

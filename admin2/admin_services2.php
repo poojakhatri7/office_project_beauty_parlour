@@ -3,8 +3,9 @@ include 'session.php';
 include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
-
+ $defaultImage = "../user/assets/dist/img/dp.webp"; 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ 
  $photo = $_FILES["service_image"]["name"];
     $photo2 = $_FILES["image"]["tmp_name"];
     $uploadPath = "upload-images/" . $photo;
@@ -16,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $offer_price = mysqli_real_escape_string($conn, $_POST['offer_price']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
       move_uploaded_file($photo2, $uploadPath);
-    $sql = "INSERT INTO all_services (a_id, all_service,  price, discount_percentage ,price_after_discount, description , file , service_number, c_id_category_service) VALUES ('','$service_name','$price', '$discount_percentage','$offer_price','$description','$uploadPath','$sub_service_id','$category_id')";
+    $sql = "INSERT INTO all_services (a_id, all_service,  price, discount_percentage ,price_after_discount, description , file , file1 , file2, service_number, c_id_category_service) VALUES ('','$service_name','$price', '$discount_percentage','$offer_price','$description','$uploadPath','$defaultImage','$defaultImage','$sub_service_id','$category_id')";
 
       if (mysqli_query($conn, $sql)) {
           echo "<script>alert('Service added successfully!'); window.location.href='manage_service';</script>";

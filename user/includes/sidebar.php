@@ -1,7 +1,7 @@
 <?php include 'data.php' ?>
  <aside class="main-sidebar sidebar-dark-pink elevation-4">
     <!-- Brand Logo -->
-    <a href="index" class="brand-link">
+    <a href="./" class="brand-link">
       <img src="<?php echo $brand_logo; ?>" alt="Logo" class="brand-image img-circle elevation-2" style="width: 70px; height: auto; object-fit: contain;  background-color: white;object-position: top; border-radius: 40%">
       <span class="brand-text font-weight-light"><?php echo $brand_name; ?></span>
     </a>
@@ -43,7 +43,7 @@ $imagePath = $defaultImage;
           <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2" alt="">
         </div>
         <div class="info">
-          <a href="#" class="d-block" style="text-decoration: none;" > 
+          <a href="" class="d-block" style="text-decoration: none;" > 
             <?php 
 // print_r ($_SESSION);
  //echo ucwords($_SESSION["name"]);

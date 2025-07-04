@@ -61,6 +61,7 @@ include('includes/sidebar.php');
     <div class="container-fluid">
    
  
+    
   <!-- </tbody>
 </table> -->
 <!-- <a href="/beauty_parlour_management_system/sign_up.php">Create a new account</a> -->

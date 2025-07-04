@@ -8,18 +8,38 @@ if(isset($_POST["submit"]))
     $address =  $_POST["address"]; 
     $password =  $_POST["password"];
     // $confirmpassword =  $_POST["confirmpassword"];
-    $duplicate = mysqli_query($conn, "SELECT * FROM `users` WHERE mobile = '$mobile'");
-    if (mysqli_num_rows($duplicate)>0)
-    {
-    echo "<script> alert('Already registerted with this Mobile number ') </script>";
-}
-else 
-{
- $query = "INSERT INTO users values ('','$name','$mobile','$email','$address',
-    '$password','')";
-    mysqli_query($conn,$query);
- echo"<script> alert('registration successful you can login now') </script>"; 
- echo "<script> window.location.href = 'login_page'; </script>";
+//     $duplicate = mysqli_query($conn, "SELECT * FROM `users` WHERE mobile = '$mobile'");
+//     if (mysqli_num_rows($duplicate)>0)
+//     {
+//     echo "<script> alert('Already registerted with this Mobile number ') </script>";
+// }
+// else 
+// {
+//  $query = "INSERT INTO users values ('','$name','$mobile','$email','$address',
+//     '$password','')";
+//     mysqli_query($conn,$query);
+//  echo"<script> alert('registration successful you can login now') </script>"; 
+//  echo "<script> window.location.href = 'login_page'; </script>";
+// }
+// Check for duplicate mobile or email
+$duplicate = mysqli_query($conn, "SELECT * FROM `users` WHERE mobile = '$mobile' OR email = '$email'");
+
+if (mysqli_num_rows($duplicate) > 0) {
+    $row = mysqli_fetch_assoc($duplicate);
+    
+    if ($row['mobile'] == $mobile) {
+        echo "<script>alert('Already registered with this Mobile number'); window.location.href = 'user_registration';</script>";
+    } elseif ($row['email'] == $email) {
+        echo "<script>alert('Already registered with this Email ID'); window.location.href = 'user_registration';</script>";
+    }
+} else {
+   $query = "INSERT INTO users values ('','$name','$mobile','$email','$address', '$password','')";
+
+    if (mysqli_query($conn, $query)) {
+        echo "<script>alert('Registration successful! You can login now.'); window.location.href = 'login_page.php';</script>";
+    } else {
+        echo "<script>alert('Error occurred while registering.'); window.location.href = 'user_registration';</script>";
+    }
 }
 }
 ?>
@@ -126,7 +146,7 @@ else
 
     <div class="form-container">
         <h2>Register Now</h2>
-         <form class ="" action="" method= "post" >
+         <form class ="" action="" method= "post" onsubmit="return validateMobile();">
             <div class="form-group">
                 <label for="name">Full Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -135,6 +155,7 @@ else
                 <label for="mobile">Mobile Number:</label>
                 <input type="text" id="mobile" name="mobile" required>
             </div>
+              <span id="mobileError" style="color: red;"></span>
             <div class="form-group">
                 <label for="email">Email Address:</label>
                 <input type="email" id="email" name="email" required>
@@ -153,5 +174,19 @@ else
             </div>
         </form>
     </div>
+    <script>
+function validateMobile() {
+    var mobile = document.getElementById("mobile").value;
+    var error = document.getElementById("mobileError");
+
+    if (!/^\d{10}$/.test(mobile)) {
+        error.textContent = "Please enter exactly 10 digits.";
+        return false; // prevent form submission
+    }
+
+    error.textContent = ""; // clear error if valid
+    return true;
+}
+</script>
 </body>
 </html>

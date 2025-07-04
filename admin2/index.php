@@ -257,12 +257,12 @@ $invoice=mysqli_num_rows($query5);?>
               <div class="card-header" style="background-color:rgb(61, 136, 165)">
                 <h3 class="card-title">Dashboard Data</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
                   <button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i class="fas fa-times"></i>
-                  </button>
+                  </button> -->
                 </div>
               </div>
               <div class="card-body">
@@ -279,12 +279,12 @@ $invoice=mysqli_num_rows($query5);?>
               <div class="card-header" style="background-color:rgb(201, 111, 81)">
                 <h3 class="card-title">Dashboard Data</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  </button> -->
+                  <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i class="fas fa-times"></i>
-                  </button>
+                  </button> -->
                 </div>
               </div>
               <div class="card-body">

@@ -66,19 +66,19 @@ if (isset($_POST['submit'])) {
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">MOBILE NUMBER</label>
                     <div class="col-sm-10">
-                      <input type="number" name="mobile_number" class="form-control" id="inputEmail3" placeholder="Enter Mobile Number">
+                      <input type="number" name="mobile_number" class="form-control" id="inputEmail3" placeholder="Enter Mobile Number" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">ADDRESS</label>
                     <div class="col-sm-10">
-                      <input type="text" name="address" class="form-control" id="inputEmail3" placeholder="Enter  New  Address">
+                      <input type="text" name="address" class="form-control" id="inputEmail3" placeholder="Enter  New  Address" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">EMAIL US</label>
                     <div class="col-sm-10">
-                      <input type="email"name="email_us" class="form-control" id="inputEmail3" placeholder="Enter Email">
+                      <input type="email"name="email_us" class="form-control" id="inputEmail3" placeholder="Enter Email" required>
                     </div>
                   </div>
                   <!-- <div class="form-group row">

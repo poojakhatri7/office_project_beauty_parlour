@@ -106,6 +106,7 @@ if (isset($_POST['sub_service'])) {
                 <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
             </a>
         </div>
+
         
     </td>
                  

@@ -74,13 +74,15 @@ include('includes/sidebar.php');
 </div>
 </div>
 </body>
+
 <?php
 if(isset($_POST['search']))
 { 
 $sdata=$_POST['searchdata'];
   ?>
-  <h4 align="center">Result against mobile number "<?php echo $sdata;?>" </h4> 
-  <table class="table table-bordered"> 
+ 
+
+      <table id="example1" class="table table-bordered table-striped">
   <thead style="background-color:rgb(51, 139, 139); color: white;">
          <tr> <th>Sno</th> 
          <th>Name</th>
@@ -90,6 +92,7 @@ $sdata=$_POST['searchdata'];
          <th>Mobile</th>
          <th>Address</th>
          <!-- <th>Action</th> -->
+           <h4 >Result against mobile number "<?php echo $sdata;?>" </h4> 
 </thead>
 <tbody>
 <?php
@@ -148,7 +151,7 @@ if (mysqli_num_rows($result) > 0) {
         }
     }
 } else {
-    echo "<tr><td colspan='8' style='color: red; font-weight:700; text-align: center;'>No Appointment has been booked from this number</td></tr>";
+    echo "<tr><td colspan='8' style='color: red; font-weight:700; '>No Appointment has been booked from this number</td></tr>";
 }
 }
 ?>

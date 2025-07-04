@@ -81,7 +81,7 @@ if(isset($_POST["submit"])) {
           
                     <h3 class="card-title">ADD CUSTOMER DETAILS</h3>
                 </div>
-                <form class="form-horizontal" action="" method="post">
+                <form class="form-horizontal" action="" method="post" onsubmit="return validateMobile();">
              
     <div class="card-body">
  
@@ -95,7 +95,8 @@ if(isset($_POST["submit"])) {
              
                     <label for="mobile" class="col-sm-4 col-form-label">MOBILE NUMBER</label>
                     <div class="col-sm-8">
-                        <input type="tel" name="mobile" class="form-control" id="mobile" placeholder="Enter mobile number"  pattern="\d{10}" minlength="10" maxlength="10" required>
+                        <input type="tel" name="mobile" class="form-control" id="mobile" placeholder="Enter mobile number"  required >
+                         <span id="mobileError" style="color: red;"></span>
                     </div>
                 </div>
                
@@ -158,6 +159,20 @@ if(isset($_POST["submit"])) {
             </div>
         </div>
     </div>
+    <script>
+function validateMobile() {
+    var mobile = document.getElementById("mobile").value;
+    var error = document.getElementById("mobileError");
+
+    if (!/^\d{10}$/.test(mobile)) {
+        error.textContent = "Please enter exactly 10 digits.";
+        return false; // prevent form submission
+    }
+
+    error.textContent = ""; // clear error if valid
+    return true;
+}
+</script>
     <script>
         $(document).ready(function() {
             // Trigger AJAX when the user types in the mobile number

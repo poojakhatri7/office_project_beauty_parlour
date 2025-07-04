@@ -26,13 +26,12 @@ if (isset($_FILES['image'])) {
       echo "Failed to upload image.";
   } 
 }
- ?>
-<?php
+ 
 $updated_name ='';
 $name= $_SESSION["name"];
-$email=  $_SESSION["email"];
-$mobile=   $_SESSION["mobile"];
-$address=  $_SESSION["address"];
+$email=$_SESSION["email"];
+$mobile= $_SESSION["mobile"];
+$address=$_SESSION["address"];
 
 if(isset($_POST["submit1"])) {
 
@@ -40,21 +39,24 @@ if(isset($_POST["submit1"])) {
   $updated_email = mysqli_real_escape_string($conn, $_POST["email"]);
   $mobile = mysqli_real_escape_string($conn, $_POST["mobile"]);
   $updated_address = mysqli_real_escape_string($conn, $_POST["address"]);
+  $gst_number = mysqli_real_escape_string($conn, $_POST["gst_number"]);
   $check_user = "SELECT * FROM users WHERE mobile = '$mobile'";
   $result_user = mysqli_query($conn, $check_user);
 
   if(mysqli_num_rows($result_user) > 0) {
       // Update the user record (no success/error message)
-      $query2 = "UPDATE users 
-                 SET name='$updated_name', email='$updated_email', address='$updated_address',password='123' 
-                 WHERE mobile='$mobile'"; 
+      // $query2 = "UPDATE users 
+      //            SET name='$updated_name', email='$updated_email', address='$updated_address',password='123' 
+      //            WHERE mobile='$mobile'"; 
                  $query_admin = "UPDATE admin_login_details 
-                 SET name='$updated_name', email='$updated_email', password='123' 
+                 SET name='$updated_name', email='$updated_email' ,gst_number='$gst_number', address='$updated_address'
                  WHERE mobile='$mobile'";  
                  $result_admin = mysqli_query($conn, $query_admin);       
-     if (mysqli_query($conn, $query2))
+     if (mysqli_query($conn, $query_admin))
      {
       $_SESSION['name'] = $updated_name;
+       $_SESSION['email'] = $updated_email;
+        $_SESSION['address'] = $updated_address;
       echo"<script> alert('Updation successful') </script>";
      }
      else
@@ -109,7 +111,7 @@ if(isset($_POST["submit1"])) {
         if ($result && mysqli_num_rows($result) > 0) {
           $row = mysqli_fetch_assoc($result);
           $imagePath = "../admin2/".$row['file'] ;
-          $gst_number = $row['gst_number'] ;
+        $gst_number =$row['gst_number'];
         }
         ?>
 					    <div class="col-12">
@@ -174,7 +176,7 @@ if(isset($_POST["submit1"])) {
                   </div>
                   <div class="col-md-6 form-group">
                       <lable>GST Number</lable>
-                      <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" value = "<?php echo $gst_number ?>">
+                      <input type="text" name="gst_number" class="form-control" id="address" placeholder="Enter address" value = "<?php echo $gst_number ?>">
                       <!-- <textarea class="form-control"  name="full_add" id="full_add"   value=""></textarea> --> 
                   </div>
                   <div class="card-footer">

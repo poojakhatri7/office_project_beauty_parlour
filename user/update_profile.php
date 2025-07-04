@@ -239,7 +239,7 @@ if(isset($_POST["submit1"])) {
                   </div>
                   <div class="card-footer">
                             <button type="submit" name="submit1" class="btn" style="background-color: rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Save Details</button>
-                            <button type="reset" class="btn btn-danger float-right">Cancel</button>
+                            <!-- <button type="reset" class="btn btn-danger float-right">Cancel</button> -->
                         </div>
                   </div>
                   

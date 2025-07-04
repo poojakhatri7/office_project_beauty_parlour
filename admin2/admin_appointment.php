@@ -63,11 +63,16 @@ include('includes/sidebar.php');
             </div>
             <div class="modal-body">
           <!-- <h4 style="color:rgb(1, 12, 6);" >Add New Services </h4> -->
-            <form id="appointment_form">
+        
+            <form id="appointment_form" >
             <div class="form-group">
             <div id="message"></div>
+         
                         <label for="mobile" style="color:rgb(51, 139, 139);" >Mobile</label>
-                        <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Enter Mobile number" required>
+                        <input type="tel" name="mobile" class="form-control" id="mobile" placeholder="Enter Mobile number" pattern="[0-9]{10}"
+       maxlength="10"
+       minlength="10" required>
+                      
                     </div>
                     <span id="error-message" style="color: red; display: block; font-weight:600; margin-bottom: 15px; text-align:  justify; padding-left: 50px; "></span>
                     <div class="form-group">
