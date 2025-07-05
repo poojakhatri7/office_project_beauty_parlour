@@ -86,7 +86,7 @@ $address=  $_SESSION["address"];
 						<div class="form-group row">
 							<label for="photo" class="col-sm-2 col-form-label">Select Slider<span class="required"></span> 	</label>
               <div class="col-sm-10">
-								<input type="file" name="image" id="profile-img" value="" class="form-control">
+								<input type="file" name="image" id="profile-img" value="" class="form-control" required>
 </div>
 
                 <div class="form-group row">

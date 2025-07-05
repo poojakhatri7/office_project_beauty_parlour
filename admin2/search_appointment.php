@@ -150,9 +150,10 @@ if (mysqli_num_rows($result) > 0) {
 <?php
         }
     }
-} else {
-    echo "<tr><td colspan='8' style='color: red; font-weight:700; '>No Appointment has been booked from this number</td></tr>";
-}
+} 
+// else {
+//     echo "<tr><td colspan='100%' style='color: red; font-weight:700; text-align: center; '>No Appointment has been booked from this number</td></tr>";
+// }
 }
 ?>
 

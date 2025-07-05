@@ -131,9 +131,10 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
           <!-- /.col -->
        
         <!-- /.row -->
+           <div class="container-fluid">
         <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Our Services</h3>
+            <h5 class="m-0 card-title" >Our Services</h5>
         </div>
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
@@ -153,11 +154,12 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td colspan="9" class="text-center">Select a Service and Sub-service  to see details</td></tr>
+                    <tr><td colspan="100%" class="text-center">Select a Service and Sub-service  to see details</td></tr>
                 </tbody>
             </table>
         </div>
     </div>
+</div>
 </div>
   
 

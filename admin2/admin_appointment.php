@@ -206,6 +206,12 @@ if (mysqli_num_rows($result) > 0) {
             <i class='fa fa-trash' style='color: red;'></i>
         </a>
     </div> -->
+  <div style="display: inline-block;">
+        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=tb_appointment'
+         onclick="return confirm('Are you sure you want to delete this?')">
+            <i class='fa fa-trash' style='color: red;'></i>
+        </a>
+    </div>
 </td>
         </tr>
         <?php

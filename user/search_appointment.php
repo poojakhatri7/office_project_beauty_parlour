@@ -146,7 +146,7 @@ $sdata=$_POST['searchdata'];
       }
   }
   else {
-    echo "<tr><td colspan='6'  style='color: red; font-weight:700 ;text-align: center;'>No Appointment Found</td></tr>";
+    echo "<tr><td colspan='100%'  style='color: red; font-weight:700 ;text-align: center;'>No Appointment Found</td></tr>";
 }
 }
 ?>

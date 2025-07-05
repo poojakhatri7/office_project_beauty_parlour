@@ -104,8 +104,8 @@ $address=  $_SESSION["address"];
 					    <div class="col-12">
         			     <div  style="text-align: center; margin-top:-15px;">
                     <br>
-                   <img src="<?php echo $uploadPath; ?>" width="100" height="100" class="img3" id="profile-img-tag" height="240" width="300">
-                          </div>
+                   <!-- <img src="<?php echo $uploadPath; ?>" width="100" height="100" class="img3" id="profile-img-tag" height="240" width="300">
+                          </div> -->
                           
         			   </div>
 					      <div class="col-12" align="center">
@@ -115,6 +115,8 @@ $address=  $_SESSION["address"];
 							</label>
 							<div class="col-12 ">
 								<input type="file" name="image" id="profile-img" value="" class="form-control" required>
+               
+                <img id="preview-img" src="" alt="Image Preview" style="max-width: 200px; margin-top: 10px; display: none;" />
                 <br>
                 <button type="submit" name="submit" class="btn" style="background-color:  rgb(51, 139, 139); color:  rgb(238, 230, 217); font-weight: 500; font-size: 16px; padding: 7px 20px;">Upload</button>
 							</div>
@@ -175,6 +177,24 @@ if (mysqli_num_rows($result) > 0) {
 } 
 
 ?>
+
+<script>
+  document.getElementById('profile-img').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const previewImg = document.getElementById('preview-img');
+        previewImg.src = e.target.result;
+        previewImg.style.display = 'block';
+      };
+
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
 
                   </table>
               </div>
