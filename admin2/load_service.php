@@ -88,7 +88,7 @@ if (isset($_POST['sub_service'])) {
                      <td>{$row['discount_percentage']}</td>
                       <td>{$row['price_after_discount']}</td>
                       
-                   <td><img src='{$row['file']}' alt='Service Image' style='width: 50px; height: 50px; object-fit: cover;'></td>
+<td><img src='{$row['file']}' alt='Service Image' style='width: 50px; height: 50px; object-fit: cover;'></td>
  <td><img src='{$row['file1']}' alt='Service Image' style='width: 50px; height: 50px; object-fit: cover;'></td>
   <td><img src='{$row['file2']}' alt='Service Image' style='width: 50px; height: 50px; object-fit: cover;'></td>
 

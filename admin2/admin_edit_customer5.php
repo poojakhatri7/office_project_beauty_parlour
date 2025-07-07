@@ -14,6 +14,7 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $mobile = $_POST["mobile"];
     $address = $_POST["address"];
+     $date = $_POST["date"];
  // Convert string to array
     // echo "<pre>";
     // print_r($selected_services); // Debug: Check if multiple services are received correctly
@@ -48,6 +49,9 @@ $appointment_id = $_GET['id'];  // Fetch appointment ID from the GET method
 // Update tb_appointment table
 $query1 = "UPDATE `tb_appointment` SET name='$name', email='$email', mobile='$mobile', address='$address' WHERE id=$appointment_id";
 $result = mysqli_query($conn, $query1);
+
+ $tb_invoice = "INSERT INTO tb_invoice values ('','$id','$name','$mobile','$email','$date')";
+     mysqli_query($conn, $tb_invoice);
 
 // Check if services are selected
 if (isset($_POST['services']) && !empty($_POST['services'])) {
@@ -103,11 +107,7 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
 } else {
     echo "No services selected.";
 }
-
  }
-
-
-
 
 
 // inserting packages into database 
@@ -235,6 +235,12 @@ if (mysqli_num_rows($result) > 0) {
                     <label for="inputEmail3" class="col-sm-2 col-form-label">TIME</label>
                     <div class="col-sm-10">
                       <input type="text"name="time" class="form-control" id="inputEmail3" placeholder="ENTER VISITING TIME" value = "<?php echo $row['prefered_time'] ?>">
+                    </div>
+                  </div>
+                   <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                      <input type="hidden"name="date" class="form-control" id="inputEmail3" placeholder="ENTER VISITING TIME" value = "<?php echo $row['date'] ?>"readonly>
                     </div>
                   </div>
 <div class="d-flex justify-content-center">

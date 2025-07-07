@@ -212,7 +212,7 @@ $result1 = mysqli_query($conn, $sql);
 
 								<!-- Form Input -->
 								<div class="col-lg-6">
-									<input type="text" name="name" class="form-control name" placeholder="Your Name*"required>
+									<input type="text" name="name" pattern="[A-Za-z\s]+" class="form-control name" placeholder="Your Name*"required>
 								</div>
 
 								<!-- Form Input -->

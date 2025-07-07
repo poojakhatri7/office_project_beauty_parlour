@@ -1548,7 +1548,7 @@ $result = mysqli_query($conn, $sql);
 									<!-- Image Zoom -->
 									<div class="image-data gallery-video">
 										<div class="gallery-link ico-40 color--white">
-											<a class="video-popup1" href="https://www.youtube.com/embed/SZEflIVnhH8">
+											<a class="video-popup1" href="https://www.youtube.com/watch?v=KJwYBJMSbPI">
 												<span class="flaticon-play"></span>
 											</a>
 										</div>																						 
@@ -1618,7 +1618,7 @@ $result = mysqli_query($conn, $sql);
 									<!-- Image Zoom -->
 									<div class="image-data gallery-video">
 										<div class="gallery-link ico-40 color--white">
-											<a class="video-popup2" href="https://www.youtube.com/watch?v=7e90gBu4pas">
+											<a class="video-popup2" href="https://www.youtube.com/watch?v=KJwYBJMSbPI">
 												<span class="flaticon-play"></span>
 											</a>
 										</div>																						 

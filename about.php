@@ -141,13 +141,13 @@ $business_hours = [];
 								<!-- Text -->
 								<!-- <p class="mb-5"><?php echo $text_area?>
 								</p> -->
-                                <p class="mb-5">
+                                <div class="mb-5" style="text-align:justify;">
     <?php 
         $words = explode(" ", $text_area); // Split text into words
         $limitedText = implode(" ", array_slice($words, 0, 50)); // Get first 30 words
         echo $limitedText . (count($words) > 40 ? "..." : ""); // Append "..." if text is longer
     ?>
-</p>
+</div>
 
 
 
@@ -191,7 +191,8 @@ if (mysqli_num_rows($result) > 0) {
 							<!-- TEXT -->
 
 								<!-- Text -->
-								<div class="mb-0 " style="text-align: justify;"><?php 
+								<div class="mb-0 " style="text-align: justify;">
+									<?php 
                                 
     $words = explode(" ", $text_area); // Split text into words
     $chunks = array_chunk($words, 50); // Split words into chunks of 30

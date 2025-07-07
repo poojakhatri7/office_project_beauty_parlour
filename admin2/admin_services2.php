@@ -6,7 +6,7 @@ include('includes/sidebar.php');
  $defaultImage = "../user/assets/dist/img/dp.webp"; 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
- $photo = $_FILES["service_image"]["name"];
+ $photo = $_FILES["image"]["name"];
     $photo2 = $_FILES["image"]["tmp_name"];
     $uploadPath = "upload-images/" . $photo;
   $sub_service_id = $_POST['s']; // Gets the selected service ID
@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">IMAGE</label>
                     <div class="col-sm-4">
-                      <input type="file" name="service_image" class="form-control" id="inputPassword3" placeholder="Any Description of the service" required>
+                      <input type="file" name="image" class="form-control" id="inputPassword3" placeholder="Any Description of the service" required>
                     </div>
                   </div>
                   <!-- <div class="form-group row">

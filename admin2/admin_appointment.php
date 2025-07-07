@@ -77,7 +77,7 @@ include('includes/sidebar.php');
                     <span id="error-message" style="color: red; display: block; font-weight:600; margin-bottom: 15px; text-align:  justify; padding-left: 50px; "></span>
                     <div class="form-group">
                         <label for="name" style="color:rgb(51, 139, 139);">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" required>
+                        <input type="text" name="name" pattern="[A-Za-z\s]+" class="form-control" id="name" placeholder="Enter Name" required>
                     </div>
                     <div class="form-group">
                         <label for="email" style="color:rgb(51, 139, 139);">Email</label>
@@ -206,6 +206,11 @@ if (mysqli_num_rows($result) > 0) {
             <i class='fa fa-trash' style='color: red;'></i>
         </a>
     </div> -->
+    <?php
+    if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
+// if (session_name() == "admin_session") 
+{
+?>
   <div style="display: inline-block;">
         <a href='delete_data?id=<?php echo $row["id"]; ?>&table=tb_appointment'
          onclick="return confirm('Are you sure you want to delete this?')">
@@ -213,6 +218,7 @@ if (mysqli_num_rows($result) > 0) {
         </a>
     </div>
 </td>
+<?php } ?>
         </tr>
         <?php
     }

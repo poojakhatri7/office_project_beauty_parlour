@@ -78,6 +78,15 @@ $imagePath = $defaultImage;
               </p>
             </a> 
 </li>
+  <li class="nav-item">
+            <a href="user_available_package" class="nav-link admin_services nav-link available_package">
+            <p><i class="fa fa-box"></i>
+              <p>
+                Packages
+                <!-- <i class="right fas fa-angle-left"></i> -->
+              </p>
+            </a> 
+</li>
 </li> 
 <li class="nav-item">
             <a href="#" class=" nav-link user_booking nav-link appointment_history">

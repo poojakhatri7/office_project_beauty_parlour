@@ -169,12 +169,12 @@ echo "<script>window.location.href='".$_SERVER['PHP_SELF']."';</script>";
 
 								<!-- Form Input -->
 				                <div class="col-lg-6">
-				                	<input type="text" name="name" class="form-control firstname" placeholder=" Name*" required>
+				                	<input type="text" name="name" pattern="[A-Za-z\s]+" class="form-control firstname" placeholder=" Name*" required>
 				                </div>
 
 				                <!-- Form Input -->
 				                <div class="col-lg-6">
-				                	<input type="text" name="email" class="form-control lastname" placeholder="Email Address*" required>
+				                	<input type="email" name="email" class="form-control lastname" placeholder="Email Address*" required>
 				                </div>
 				                  
 				                <!-- Form Input -->        
@@ -468,6 +468,13 @@ function validateMobile() {
     error.textContent = ""; // clear error if valid
     return true;
 }
+</script>
+<script>
+  $('#datetimepicker').datetimepicker({
+    minDate: 0, // Disables past dates
+    format: 'Y-m-d', // Match your desired format
+    timepicker: false // If you only want the date
+  });
 </script>
 
 		<script>

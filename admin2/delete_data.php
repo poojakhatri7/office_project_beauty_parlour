@@ -55,7 +55,7 @@ if (isset($_GET['id'], $_GET['table']) && is_numeric($_GET['id'])) {
             } elseif ($table == 'enquiry_message') {
                 header("Location: admin_enquiry_message");
             } elseif ($table == 'tb_appointment') {
-                header("Location: delete_old_records");
+                header("Location: admin_appointment");
             } elseif ($table == 'all_services') {
                  header("Location: manage_service");
             }
