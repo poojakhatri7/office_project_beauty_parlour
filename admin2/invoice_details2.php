@@ -205,7 +205,7 @@ $billing_number = isset($_GET['billing_number']) ? $_GET['billing_number'] : nul
     <!-- Billing Details -->
     <?php
     //$sql = "SELECT * FROM tb_contact_us";
-    $sql = "SELECT * FROM tb_appointment WHERE id={$appointment_id}";
+    $sql = "SELECT * FROM tb_invoice WHERE appointment_id={$appointment_id} GROUP BY appointment_id";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         // Step 5: Use a while loop to fetch each row of data

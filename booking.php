@@ -201,8 +201,8 @@ $result = mysqli_query($conn, $sql);
         ?>
 <!-- Form Select -->
 <div class="col-lg-6">
-    <select name="service" class="form-select service" aria-label="Service Select">
-        <option selected>Select Service</option>
+    <select name="service" class="form-select service" aria-label="Service Select" required>
+        <option  value="" selected disabled>Select Service</option>
         <?php
         // Reset the result pointer and fetch again for the select box
         mysqli_data_seek($result, 0);
@@ -215,8 +215,8 @@ $result = mysqli_query($conn, $sql);
 
 				                <!-- Form Select -->
 				                <div class="col-lg-6">
-				                	<select name="staff" class="form-select staff" aria-label="Staff Select">
-				                		<option selected>Select Staff</option>
+				                	<select name="staff" class="form-select staff" aria-label="Staff Select" required>
+				                		<option value="" selected>Select Staff</option>
 				                      	<option>Veronica Aaron</option>
 				                      	<option>Olivia Grosh</option>
 				                      	<option>Eva Anderson</option>
@@ -229,7 +229,10 @@ $result = mysqli_query($conn, $sql);
 
 				                <!-- Form Input -->
 				                <div class="col-md-12">
-				                	<input id="datetimepicker" type="text" name="date" class="form-control date" placeholder="Appointment Date*" required>
+				                	<input id="date" type="date" name="date" class="form-control date" placeholder=" Appointment Date*" required>
+				                </div>
+								 <div class="col-md-12">
+				                	<input id="time" type="time" name="date" class="form-control date" placeholder="Appointment Time*" required>
 				                </div>
 								
 				                                            
@@ -469,12 +472,13 @@ function validateMobile() {
     return true;
 }
 </script>
-<script>
-  $('#datetimepicker').datetimepicker({
-    minDate: 0, // Disables past dates
-    format: 'Y-m-d', // Match your desired format
-    timepicker: false // If you only want the date
-  });
+    <script>
+    // Set today's date as min value
+    document.addEventListener('DOMContentLoaded', function () {
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    });
 </script>
 
 		<script>

@@ -120,7 +120,7 @@ if(isset($_POST["submit"])) {
                 <div class="form-group row">
                     <label for="name" class="col-sm-4 col-form-label">NAME</label>
                     <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required>
+                        <input type="text" name="name"  pattern="[A-Za-z\s]+" class="form-control" id="name" placeholder="Enter name" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -210,6 +210,14 @@ function validateMobile() {
             });
         });
     </script>
+    <script>
+    // Set today's date as min value
+    document.addEventListener('DOMContentLoaded', function () {
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    });
+</script>
 </body>
 </html>
 <?php

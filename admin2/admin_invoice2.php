@@ -105,7 +105,7 @@ include('includes/sidebar.php');
 $count = 0;
 $sql = "
     (SELECT 
-        ta.id AS appointment_id, 
+        ta.appointment_id AS appointment_id, 
         ta.name AS name, 
         ta.date,
         ta.mobile, 
@@ -121,7 +121,7 @@ $sql = "
     UNION ALL
 
     (SELECT 
-        ta.id AS appointment_id, 
+        ta.appointment_id AS appointment_id, 
         ta.name AS name, 
         ta.date,
         ta.mobile, 
@@ -130,8 +130,8 @@ $sql = "
         sp.created_at,
         'Package' AS invoice_type,
         sp.package1_id
-    FROM tb_appointment ta
-    JOIN package_selected sp ON ta.id = sp.appointment_id
+    FROM tb_invoice ta
+    JOIN package_selected sp ON ta.appointment_id = sp.appointment_id
     GROUP BY sp.billing_number)
 
     ORDER BY created_at DESC

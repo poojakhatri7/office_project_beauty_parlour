@@ -199,7 +199,7 @@
 					patterns: {
 						youtube: {			   
 							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/SZEflIVnhH8'				
+							src: 'https://www.youtube.com/embed/KJwYBJMSbPI'				
 								}
 							}
 						}		  		  
@@ -216,7 +216,7 @@
 					patterns: {
 						youtube: {			   
 							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/7e90gBu4pas'				
+							src: 'https://www.youtube.com/embed/RzVvThhjAKw	'				
 								}
 							}
 						}		  		  

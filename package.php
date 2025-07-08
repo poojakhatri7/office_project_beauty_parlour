@@ -190,6 +190,8 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 
 
 <p class="card-text" style="font-size: 0.95rem; margin: 0;"> <strong>Price : </strong> <s> Rs <?php echo $s['total_price']; ?> </s> </p>
+<p class="card-text discount-text"  style="font-size: 0.99rem; margin: 0; color:rgb(78, 46, 92);"> <strong>Discount (%) : </strong> <?php echo $s['discount']; ?> </p>
+<p class="card-text discount-text" style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);  "><strong>Price after discount : </strong> Rs <?php echo $s['total_price_after_discount']; ?> </p>
 <?php $services = explode(',', $s['services']);  ?>
     <p class="card-text" style="font-size: 0.98rem; margin: 0;">
         <strong>Services available :</strong>
@@ -201,8 +203,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
         <?php endforeach; ?>
     </ol>
 <p class="card-text" style="font-size: 0.95rem; margin: 0;"> <strong>Description : </strong> <?php echo $s['description']; ?> </p>
-<p class="card-text discount-text"  style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);"> <strong>Discount (%) : </strong> <?php echo $s['discount']; ?> </p>
-<p class="card-text discount-text" style="font-size: 0.99rem; margin: 0; color:rgb(81, 46, 97);  "><strong>Price after discount : </strong> Rs <?php echo $s['total_price_after_discount']; ?> </p>
+
 
 
 

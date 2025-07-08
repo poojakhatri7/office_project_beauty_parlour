@@ -178,7 +178,7 @@ if (isset($_POST['submit'])) {
 						<div class="cbox-2 cb-2">
 
 							<!-- Title -->
-							<h4> <i class="fas fa-clock" style="margin-right: 8px; color: rgb(145, 135, 209);"></i> Salon Hours:</h4>
+							<h4> <i class="fas fa-clock" style="margin-right: 8px; color: rgb(145, 135, 209);"></i> Parlour Hours:</h4>
 							<ul>
 							<?php
 							// Fetch business hours

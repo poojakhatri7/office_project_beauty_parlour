@@ -89,7 +89,7 @@ include('includes/sidebar.php');
                     </div>
                     <div class="form-group">
                         <label for="date" style="color:rgb(51, 139, 139);">Date</label>
-                        <input type="date" name="date" class="form-control" id="date" placeholder="Enter Date" required>
+                        <input type="date" name="date" id="date" class="form-control"  placeholder="Enter Date" required>
                     </div>
                  
                     <div class="form-group">
@@ -317,6 +317,14 @@ if (mysqli_num_rows($result) > 0) {
             });
         });
     </script>
+    <script>
+    // Set today's date as min value
+    document.addEventListener('DOMContentLoaded', function () {
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    });
+</script>
 </body>
 </html>
 </main>

@@ -139,21 +139,21 @@
             </a>
 </li>
 <?php
-// if($role==1)
+
 if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
-// if (session_name() == "admin_session") 
+
 {
 ?>
-<li class="nav-item">
+<!-- <li class="nav-item">
             <a href="delete_old_records" class="nav-link delete_appointment">
               
               <i class="fa fa-trash"></i>
               <p>
               Delete old records 
-                <!-- <i class="fas fa-angle-left right"></i> -->
+               
               </p>
             </a>
-</li>
+</li> -->
 <?php } ?>
 </ul>
 
@@ -254,7 +254,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
               </li>
             </ul>
           <li class="nav-item">
-            <a href="admin_invoice" class="nav-link invoice1">
+            <a href="admin_invoice2" class="nav-link invoice1">
               <!-- <i class="nav-icon fas fa-copy"></i> -->
               <i class="fa fa-file-invoice"></i>
               <p>

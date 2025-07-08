@@ -50,7 +50,7 @@ $appointment_id = $_GET['id'];  // Fetch appointment ID from the GET method
 $query1 = "UPDATE `tb_appointment` SET name='$name', email='$email', mobile='$mobile', address='$address' WHERE id=$appointment_id";
 $result = mysqli_query($conn, $query1);
 
- $tb_invoice = "INSERT INTO tb_invoice values ('','$id','$name','$mobile','$email','$date')";
+ $tb_invoice = "INSERT INTO tb_invoice values ('','$appointment_id','$name','$mobile','$address','$email','$date')";
      mysqli_query($conn, $tb_invoice);
 
 // Check if services are selected
@@ -99,7 +99,7 @@ if (isset($_POST['services']) && !empty($_POST['services'])) {
     if (mysqli_query($conn, $sql_insert)) {
         echo "<script>
             alert('Invoice generated successfully');
-            window.location.href='admin_invoice.php';
+            window.location.href='admin_invoice2';
         </script>";
     } else {
         echo "Error inserting into orders: " . mysqli_error($conn);
@@ -162,7 +162,7 @@ $billing_number = $prefix . str_pad($nextNumber, 6, "0", STR_PAD_LEFT);
             }
         }
       }
-        echo "<script>alert('Package booked successfully.'); window.location.href='admin_invoice.php';</script>";
+        echo "<script>alert('Package booked successfully.'); window.location.href='admin_invoice2';</script>";
     } else {
         echo "<script>alert('Please select at least one package.'); window.history.back();</script>";
     }
