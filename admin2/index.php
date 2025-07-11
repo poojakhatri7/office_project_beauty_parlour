@@ -214,8 +214,8 @@ $query5 = mysqli_query($conn, "
         ta.name, 
         ta.date, 
         ts.billing_number
-    FROM tb_appointment ta
-    JOIN tb_selected_services ts ON ta.id = ts.appointment_id
+    FROM tb_invoice ta
+    JOIN tb_selected_services ts ON ta.appointment_id = ts.appointment_id GROUP BY ts.billing_number
 
     UNION 
     
@@ -224,8 +224,8 @@ $query5 = mysqli_query($conn, "
         ta.name, 
         ta.date, 
         ps.billing_number
-    FROM tb_appointment ta
-    JOIN package_selected ps ON ta.id = ps.appointment_id
+    FROM tb_invoice ta
+    JOIN package_selected ps ON ta.appointment_id = ps.appointment_id GROUP BY ps.billing_number
 ");
 
 
@@ -240,7 +240,7 @@ $invoice=mysqli_num_rows($query5);?>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="admin_invoice" class="small-box-footer" >More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="admin_invoice2" class="small-box-footer" >More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

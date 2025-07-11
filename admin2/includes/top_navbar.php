@@ -1,5 +1,4 @@
 <?php include 'data.php'; 
-
  $mobile = $_SESSION["mobile"];
         $sql = "SELECT file FROM admin_login_details WHERE mobile = '$mobile'";
         $result = mysqli_query($conn, $sql);
@@ -9,7 +8,7 @@
         }
         ?>
 <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="<?php echo $brand_logo; ?>" alt="Loading..." height="60" width="60">
+    <img class="animation__shake" src="<?php echo $brand_logo; ?>" alt="Loading..." height="80" width="80">
   </div>
 
 <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background :rgb(247, 231, 206)">

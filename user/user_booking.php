@@ -4,7 +4,6 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 
-
 if(isset($_POST["submit"])) {
    $name= $_SESSION["name"];
    $email=  $_SESSION["email"];
@@ -113,15 +112,15 @@ if(mysqli_num_rows($result_appointment) > 0) {
                             </div>
                         </div>
                         <?php
-                                $sql = "SELECT * FROM all_services";
+                                $sql = "SELECT * FROM category_service";
 $result = $conn->query($sql);
 // $options = "";
 if ($result->num_rows > 0) {
     $options = "<option value='' selected disabled>Select Service</option>\n";
     while($row = $result->fetch_assoc()) {
-        $service_name = $row["all_service"];
-        $service_price = $row["price"];
-        $options .= "<option value=\"$service_name\">$service_name (Rs  $service_price) </option>\n";
+        $service_name = $row["c_service"];
+        // $service_price = $row["price"];
+        $options .= "<option value=\"$service_name\">$service_name  </option>\n";
     }
 } else {
     $options .= "<option>No services available</option>\n";

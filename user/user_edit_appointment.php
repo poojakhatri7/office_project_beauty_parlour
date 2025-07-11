@@ -1,4 +1,3 @@
-
 <?php
 include 'user_session.php';
 include('includes/header.php');
@@ -6,8 +5,7 @@ include('includes/top_navbar.php');
 include('includes/sidebar.php');
 
 $id = $_GET ['id'];
-?>
-<?php
+
 $name= $_SESSION["name"];
 $email=  $_SESSION["email"];
 $mobile=   $_SESSION["mobile"];
@@ -106,16 +104,16 @@ if (mysqli_num_rows($result) > 0) {
                     <?php }}  ?>
                   </div>
                   <?php
-                                $sql = "SELECT * FROM all_services";
+                                $sql = "SELECT * FROM category_service";
 $result = $conn->query($sql);
 // $options = "";
 if ($result->num_rows > 0) {
     $options = "<option value='' selected disabled>Select Service</option>\n";
     while($row = $result->fetch_assoc()) {
-        $service_name = $row["all_service"];
+        $service_name = $row["c_service"];
         // $options .= "<option value=\"$service_name\">$service_name</option>\n";
-        $service_price = $row["price"];
-        $options .= "<option value=\"$service_name\">$service_name (Rs  $service_price) </option>\n";
+        // $service_price = $row["price"];
+        $options .= "<option value=\"$service_name\">$service_name  </option>\n";
     }
 } else {
     $options .= "<option>No services available</option>\n";
@@ -132,7 +130,7 @@ if ($result->num_rows > 0) {
 </div>
 <div class="card-footer">
 <button type="submit" name="submit" class="btn" style="background-color: rgb(51, 139, 139); color: white; font-weight: 500; font-size: 16px;  padding: 7px 20px; ">Update</button>
-  <button type="submit" class="btn btn-default float-right">Cancel</button>
+  <!-- <button type="submit" class="btn btn-default float-right">Cancel</button> -->
 </div>
                 <!-- /.card-footer -->
               </form>
