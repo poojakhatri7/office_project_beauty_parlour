@@ -1,4 +1,4 @@
-<!-- <?php include'data.php'; ?>
+<!-- <?php include '../asset.php'; ?>
 <footer class="main-footer">
     <strong>Copyright &copy; 2023 <a target="_blank" href="<?php echo $brand_link; ?>"><?php echo $brand_name; ?></a></strong>
     All rights reserved.

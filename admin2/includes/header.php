@@ -1,4 +1,4 @@
-<?php include 'data.php'; ?>
+<?php include '../asset.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

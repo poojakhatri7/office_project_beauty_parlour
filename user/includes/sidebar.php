@@ -1,9 +1,9 @@
-<?php include 'data.php' ?>
+<?php include '../asset.php' ?>
  <aside class="main-sidebar sidebar-dark-pink elevation-4">
     <!-- Brand Logo -->
     <a href="./" class="brand-link">
       <img src="<?php echo $brand_logo; ?>" alt="Logo" class="brand-image img-circle elevation-2" style="width: 70px; height: auto; object-fit: contain;  background-color: white;object-position: top; border-radius: 40%">
-      <span class="brand-text font-weight-light"><?php echo $brand_name; ?></span>
+      <span class="brand-text font-weight-light"><?php echo $short_form; ?></span>
     </a>
     <!-- Sidebar -->
      <style>

@@ -139,7 +139,7 @@ $result1 = mysqli_query($conn, $sql);
 					<div class="bottom-footer">
 						<div class="row">
 							<div class="col">
-								<div class="footer-copyright"><p>&copy; 2025 Demo Studio. All Rights Reserved. Developed by <a target="_blank" href="https://tvssolution.in/">TVS SOLUTION.</a></p>
+								<div class="footer-copyright"><p>&copy; 2025 <?php echo  $brand_name   ?>. All Rights Reserved. Developed by <a target="_blank" href="https://tvssolution.in/">TVS SOLUTION.</a></p>
 							
 							</div>
 							</div>
