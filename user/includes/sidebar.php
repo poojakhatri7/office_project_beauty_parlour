@@ -118,7 +118,7 @@ $imagePath = $defaultImage;
 </li>
 </ul>
 <li class="nav-item">
-            <a href="user_invoice" class="nav-link user_invoice nav-link user_invoice_details ">
+            <a href="user_invoice1" class="nav-link user_invoice nav-link user_invoice_details ">
             <!-- <i class="fa fa-clock"></i> -->
             <i class="fa fa-file-invoice"></i>
               <p>

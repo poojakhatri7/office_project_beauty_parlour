@@ -80,10 +80,10 @@ include('includes/sidebar.php');
                   <tbody>
                   <?php
 $mobile= $_SESSION["mobile"];
-$sql="SELECT DISTINCT p.appointment_id AS appointment_id, p.name, p.date,   c.billing_number
+$sql="SELECT DISTINCT p.appointment_id AS appointment_id, p.name, p.date,  c.billing_number
 FROM tb_invoice p
 INNER JOIN tb_selected_services c
-ON p.appointment_id = c.appointment_id  WHERE mobile = $mobile " ;
+ON p.appointment_id = c.appointment_id  WHERE mobile = $mobile" ;
 // Step 3: Execute the query
 $result = mysqli_query($conn, $sql);
 $count = 0;

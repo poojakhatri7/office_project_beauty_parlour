@@ -120,6 +120,7 @@ $sql = "
 
     UNION ALL
 
+    
     (SELECT 
         ta.appointment_id AS appointment_id, 
         ta.name AS name, 

@@ -77,11 +77,36 @@ $totalappointment=mysqli_num_rows($query2);?>
           </div>
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <?php $query4=mysqli_query($conn,"SELECT DISTINCT p.id AS appointment_id, p.name, p.date
-FROM tb_appointment p
-INNER JOIN tb_selected_services c
-ON p.id = c.appointment_id Where mobile = $mobile");
-$invoice=mysqli_num_rows($query4);?>
+            <?php
+//              $query4=mysqli_query($conn,"SELECT DISTINCT p.appointment_id AS appointment_id, p.name, p.date, c.billing_number
+// FROM tb_invoice p
+// INNER JOIN tb_selected_services c
+// ON p.appointment_id = c.appointment_id Where mobile = $mobile");
+$query4 = mysqli_query($conn, "
+    SELECT 
+        ta.id AS appointment_id, 
+        ta.name, 
+        ta.date, 
+        ts.billing_number
+    FROM tb_invoice ta
+    JOIN tb_selected_services ts ON ta.appointment_id = ts.appointment_id
+     where ta.mobile = '$mobile'
+    GROUP BY ts.billing_number
+
+    UNION 
+    
+    SELECT 
+        ta.id AS appointment_id, 
+        ta.name, 
+        ta.date, 
+        ps.billing_number
+    FROM tb_invoice ta
+    JOIN package_selected ps ON ta.appointment_id = ps.appointment_id 
+     where ta.mobile = '$mobile'
+    GROUP BY ps.billing_number
+");
+$invoice=mysqli_num_rows($query4);
+?>
             <div class="small-box bg-secondary">
               <div class="inner">
                 <h3><?php echo $invoice;?></h3>
@@ -90,7 +115,7 @@ $invoice=mysqli_num_rows($query4);?>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="user_invoice" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="user_invoice1" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
