@@ -31,11 +31,17 @@
         <div class="image">
         <?php
  $mobile = $_SESSION["mobile"];
+ 
+ $defaultImage = "../user/assets/dist/img/dp.webp"; 
+$imagePath = $defaultImage;
         $sql = "SELECT file FROM admin_login_details WHERE mobile = '$mobile'";
         $result = mysqli_query($conn, $sql);
-        if ($result && mysqli_num_rows($result) > 0) {
+     if ($result && mysqli_num_rows($result) > 0) {
           $row = mysqli_fetch_assoc($result);
-          $imagePath = "../admin2/".$row['file'] ;
+           // Check if image file is not empty and exists
+    if (!empty($row['file']) && file_exists($row['file'])) {
+        $imagePath = $row['file'];
+    }
         }
         ?>
           <img src="<?php echo $imagePath; ?>" class="img-circle elevation-2" alt="User Image" style="width: 40px; height: 40px; object-fit: cover;" alt="gallery-image">
@@ -288,13 +294,13 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
 {
 ?>
           <li class="nav-item">
-            <a href="#" class="nav-link staff_details ">
+            <a href="#" class="nav-link staff_details staff">
               <!-- <i class="nav-icon fas fa-copy"></i> -->
               <!-- <i class="fa fa-file-invoice"></i> -->
               <!-- <i class="fa fa-id-badge"></i> -->
               <i class="fa fa-clipboard"></i>
               <p>
-          Staff details
+          Staff 
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -315,7 +321,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
                 </a>
               </li> -->
               <li class="nav-item">
-                <a href="staff_details" class="nav-link staff">
+                <a href="staff_details" class="nav-link staff ">
                 <i class="fa fa-address-book"></i>
                   <p>Staff Details</p>
                 </a>
@@ -323,7 +329,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1)
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio update_portfolio top_slider staff update_staff business_hour">
+            <a href="#" class="nav-link about_us nav-link contact_us admin_review portfolio update_portfolio top_slider  update_staff business_hour">
               <!-- <i class="nav-icon fas fa-chart-pie"></i> -->
               <i class="fa fa-user-cog"></i>
               <p>

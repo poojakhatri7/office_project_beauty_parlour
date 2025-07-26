@@ -4,8 +4,6 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -58,7 +56,7 @@ include('includes/sidebar.php');
                   </thead>
                   <tbody>
                   <?php
-$sql = "SELECT * FROM admin_login_details ";
+$sql = "SELECT * FROM admin_login_details  where role = 2 ";
 $result = mysqli_query($conn, $sql);
 $count = 0;
 $staff_role = "";
