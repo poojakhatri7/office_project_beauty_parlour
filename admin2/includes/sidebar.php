@@ -91,17 +91,46 @@ $imagePath = $defaultImage;
 // echo $role;
 //if ($role == 1)
 ?>
-    <li class="nav-item">
-            <a href="admin_enquiry_message" class="nav-link admin_enquiry_message">
+ 
+             <li class="nav-item">
+            <a href="#" class="nav-link  admin_complete_enquiry admin_cancelled_enquiry admin_pending_enquiry" >
               <!-- <i class="nav-icon fas fa-copy"></i> -->
               <!-- <i class="fa fa-file-invoice"></i> -->
               <i class="fa fa-envelope"></i> 
-
               <p>
                Enquiry message 
-                <!-- <i class="fas fa-angle-left right"></i> -->
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+           <ul class="nav nav-treeview" style="background-color:rgb(47, 131, 131); display:none;">
+              <li class="nav-item">
+                <a href="admin_enquiry_message" class="nav-link">
+                  <!-- <i class="fa fa-info-circle"></i> -->
+                  <i class="fa fa-list-alt"></i>
+                  <p>All Enquires</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="complete_enquiry" class="nav-link admin_complete_enquiry">
+                  <!-- <i class="fa fa-info-circle"></i> -->
+                  <i class="fa fa-check"></i>
+                  <p>Complete Enquires </p>
+                </a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="pending_enquiry" class="nav-link admin_pending_enquiry">
+                <i class="fa fa-spinner"></i>
+                  <p> Pending Enquires</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="cancelled_enquiry" class="nav-link cancelled_enquiry">
+                <i class="fa fa-ban"></i>
+                  <p> Rejected Enquires</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
 

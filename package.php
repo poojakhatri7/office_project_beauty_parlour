@@ -27,11 +27,13 @@ include 'asset.php';
 	<link rel="icon" href="images/apple-touch-icon.png" type="image/x-icon">
 
 	<!-- GOOGLE FONTS -->
+	 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700&amp;display=swap"
 		rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&amp;display=swap"
 		rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- BOOTSTRAP CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -170,6 +172,7 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 ?>
 
  <div style="display: flex; flex-wrap: wrap; gap: 3 rem; justify-content: center; padding: 0 2rem;">
+	
 <?php
     while ($s = mysqli_fetch_assoc($result_subcategories)) {
 		
@@ -184,7 +187,13 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 <?php $serviceList = implode(',', $services); ?>
         <div class="card mx-4 mt-5" style="width: 15rem; font-size: 0.875rem;" >
           <div class="card-body">
-            <h5 class="card-title" style="font-size: 1.5rem;"><?php echo $s['package_name']; ?></h5>
+          <h5 class="card-title" style="font-size: 1.5rem;">
+  <?php echo $s['package_name']; ?>
+ 
+    <i class="fa fa-share-square" style="font-size: 1.2rem; color: rgb(106, 90, 205); font-weight: bold; margin-left: 10px;"></i>
+  </a>
+</h5>
+
 
  <img src="<?php echo $imagePath; ?>" class="card-img-top img-fluid " alt="..." style="width: 240px; height: 250px; object-fit: cover; ">
 

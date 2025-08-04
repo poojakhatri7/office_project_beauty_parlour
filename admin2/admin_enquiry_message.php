@@ -4,7 +4,6 @@ include('includes/header.php');
 include('includes/top_navbar.php');
 include('includes/sidebar.php');
 ?>
-
 <main class="app-main">
 <!doctype html>
 <html lang="en">
@@ -36,68 +35,6 @@ include('includes/sidebar.php');
           </div><!-- /.col -->
           <div class="col-sm-6">
            
-           <ol>
-            <ol class="breadcrumb float-sm-right">
-  <button class="btn" style="background-color: rgb(51, 139, 139);;border: none; cursor: pointer;  padding: 7px 7px;">
-    <i class="fa fa-user-plus fa-lg" style="margin-right: 2px; color: black; font-size: 14px;"></i>
-    <!-- <a href="/beauty_parlour_management_system/admin2/admin_add_customer2.php"  -->
-    <a href="#" class="text-white mx-1" data-toggle="modal" data-target="#modal-default" 
-       style="text-decoration: none; color:  rgb(238, 230, 217) !important; font-size: 14px; font-weight: 700;  margin: 4px 2px;">
-      Add Appointment
-    </a>
-  </button>
-  <div class="modal fade" id="modal-default">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Add New Appointment </h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-          <!-- <h4 style="color:rgb(1, 12, 6);" >Add New Services </h4> -->
-            <form id="appointment_form">
-            <div class="form-group">
-            <div id="message"></div>
-                        <label for="mobile" style="color:rgb(51, 139, 139);" >Mobile</label>
-                        <input type="number" name="mobile" class="form-control" id="mobile" placeholder="Enter Mobile number">
-                    </div>
-                    <span id="error-message" style="color: red; display: block; font-weight:600; margin-bottom: 15px; text-align:  justify; padding-left: 50px; "></span>
-                    <div class="form-group">
-                        <label for="name" style="color:rgb(51, 139, 139);">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" style="color:rgb(51, 139, 139);">Email</label>
-                        <input type="text" name="email" class="form-control" id="email" placeholder="Enter Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="address" style="color:rgb(51, 139, 139);">Address</label>
-                        <input type="text" name="address" class="form-control" id="address" placeholder="Enter Address">
-                    </div>
-                    <div class="form-group">
-                        <label for="date" style="color:rgb(51, 139, 139);">Date</label>
-                        <input type="date" name="date" class="form-control" id="date" placeholder="Enter Date">
-                    </div>
-                 
-                    <div class="form-group">
-                        <label for="time" style="color:rgb(51, 139, 139);">Time</label>
-                        <input type="time" name="time" class="form-control" id="time" placeholder="Enter Time">
-                    </div>
-                    <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" name="submit" id="submitBtn1" class="btn btn-secondary">Add</button>
-            </div>
-                </form>
-                <div id="message"></div>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-</ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -118,7 +55,8 @@ include('includes/sidebar.php');
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Mobile</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Message</th>
                     <th style="color: rgb(238, 230, 217); font-weight: 500;">Date and Time</th>
-                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Actions</th>
+                      <th style="color: rgb(238, 230, 217); font-weight: 500;">Status</th>
+                    <th style="color: rgb(238, 230, 217); font-weight: 500;">Select Enquiry Status</th>
                     <!-- <th>Actions</th> -->
                   </tr>
                   </thead>
@@ -138,8 +76,8 @@ if (mysqli_num_rows($result) > 0) {
             <td><?php echo $row['mobile']; ?></td>
             <td><?php echo $row['message']; ?></td>
           
-            <td><?php echo date("d-m-Y h:i", strtotime($row['created_at'])); ?></td>
-
+  <td><?php echo date("d-m-Y h:i", strtotime($row['created_at'])); ?></td>
+ <td id="status-text-<?php echo $row['id']; ?>"><?php echo $row['status']; ?></td>
             <!-- <td> 
   <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id=<?php echo $row["id"]; ?>'>
 
@@ -150,17 +88,11 @@ if (mysqli_num_rows($result) > 0) {
   </a> 
 </td> -->
 <td>
-    <!-- <div style="display: inline-block; margin-right: 20px;">
-        <a href='/beauty_parlour_management_system/admin2/admin_edit_customer.php?id=<?php echo $row["id"]; ?>'>
-            <i class='fas fa-pencil-alt' style='color:rgb(10, 90, 34);'></i> 
-         </a> 
-    </div> --> 
-    <div style="display: inline-block;">
-        <a href='delete_data?id=<?php echo $row["id"]; ?>&table=enquiry_message'
-         onclick="return confirm('Are you sure you want to delete this?')">
-            <i class='fa fa-trash' style='color: red;'></i> <!-- Trash icon -->
-        </a>
-    </div>
+  <select data-id="<?php echo $row['id']; ?>" class="form-control status-dropdown">
+    <option value="Pending" <?php echo ($row['status'] == 'Pending') ? 'selected' : ''; ?>>Pending</option>
+    <option value="Completed" <?php echo ($row['status'] == 'Completed') ? 'selected' : ''; ?>>Completed</option>
+    <option value="Rejected" <?php echo ($row['status'] == 'Rejected') ? 'selected' : ''; ?>>Rejected</option>
+  </select>
 </td>
         </tr>
         <?php
@@ -185,74 +117,31 @@ if (mysqli_num_rows($result) > 0) {
     </section>
     <!-- /.content -->
   </div>
+<script>
+document.querySelectorAll('.status-dropdown').forEach(function(select) {
+  select.addEventListener('change', function() {
+    const id = this.getAttribute('data-id');
+    const status = this.value;
 
-  <script>
-        $(document).ready(function() {
-            // Trigger AJAX when the user types in the mobile number
-            $("#mobile").on("keyup", function() {
-                var mobile = $("#mobile").val(); // Get the mobile number entered
-                if (mobile.length >= 8) { // Start searching after 3 characters (adjust as needed)
-                    $.ajax({
-                        url: "fetch_customer.php", // PHP file to fetch customer data
-                        method: "POST",
-                        data: { mobile: mobile },
-                        success: function(response) {
-                            // Handle the response from fetch_customer.php
-                            var data = JSON.parse(response); // Parse the JSON response
-                            if (data.success) {
-                                // Populate the fields with data
-                                $("#name").val(data.name);
-                                $("#email").val(data.email);
-                                $("#address").val(data.address);
-                                $("#error-message").hide();
-                            } else {
-                                // If customer not found
-                                $("#name").val("");
-                                $("#email").val("");
-                                $("#address").val("");
-                               // alert("Customer not found!");
-                               $("#error-message").text("No Record Found Please Fill Up The Details").show();
-                            }
-                        },
-                        error: function() {
-                            alert("An error occurred while fetching the data.");
-                        }
-                    });
-                }
-            });
-        });
+    fetch('update_status.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'id=' + id + '&status=' + status
+    })
+    .then(response => response.text())
+    .then(data => {
+      if (data.trim() === 'success') {
+        alert("Status updated successfully!");
+           document.getElementById('status-text-' + id).textContent = status;
+      } else {
+        alert("Error updating status.");
+      }
+    });
+  });
+});
+</script>
+
   
-        $(document).ready(function () {
-            $("#submitBtn1").click(function (e) {
-                e.preventDefault(); // Prevent form submission
-                var mobile = $("#mobile").val();
-                var name = $("#name").val();
-                var email = $("#email").val();
-                var address = $("#address").val();
-                var date = $("#date").val();
-                var time = $("#time").val();
-                console.log("Mobile:", mobile, "Name:", name, "Email:", email, "Address:", address, "Date:", date, "Time:", time);
-                $.ajax({
-                    type: "POST",
-                    url: "add_appointment.php", // PHP file that will handle the request
-                    data: {
-                       mobile: mobile,
-                      name: name,
-                      email: email,
-                      address: address,
-                      date : date,
-                      time : time
-                      },
-                    success: function (response) {
-                        $("#message").html(response); // Display response message
-                       $("#appointment_form")[0].reset(); // Reset form fields
-                     $("#appointment_form").trigger("reset");
-                     $("#error-message").hide();
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
 </main>
