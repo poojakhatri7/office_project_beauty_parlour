@@ -189,8 +189,12 @@ if (mysqli_num_rows($result_subcategories) > 0) {
           <div class="card-body">
           <h5 class="card-title" style="font-size: 1.5rem;">
   <?php echo $s['package_name']; ?>
+ <?php $link = "https://beautyparlour.ranjeetyadav.in/package?=" . $s['package_id']; ?>
  
-    <i class="fa fa-share-square" style="font-size: 1.2rem; color: rgb(106, 90, 205); font-weight: bold; margin-left: 10px;"></i>
+  <i class="fa fa-share-alt" style="font-size: 1.2rem; color: rgb(106, 90, 205);  margin-left: 10px;"
+	  onclick="sharePackage('<?php echo $link; ?>')">
+  </i>
+
   </a>
 </h5>
 
@@ -247,7 +251,35 @@ if (mysqli_num_rows($result_subcategories) > 0) {
 
 	</div> <!-- END PAGE CONTENT -->
 
+<!-- <script>
+function sharePackage(link) {
+  // Example: Copy the link to clipboard
+  navigator.clipboard.writeText(link)
+    .then(() => alert("Link copied to clipboard!"))
+    .catch(err => alert("Failed to copy the link: " + err));
+}
+</script> -->
 
+<script>
+const shareData = {
+  title: "MDN",
+  text: "Learn web development on MDN!",
+  url: "https://beautyparlour.ranjeetyadav.in/package?=9",
+};
+
+const btn = document.querySelector("i");
+const resultPara = document.querySelector(".result");
+
+// Share must be triggered by "user activation"
+btn.addEventListener("click", async () => {
+  try {
+    await navigator.share(shareData);
+    resultPara.textContent = "MDN shared successfully";
+  } catch (err) {
+    resultPara.textContent = `Error: ${err}`;
+  }
+});
+</script>
 
 
 	<!-- EXTERNAL SCRIPTS
